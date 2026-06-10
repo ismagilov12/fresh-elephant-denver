@@ -58,13 +58,16 @@ nav.menu a:hover{color:var(--blue)}
 .hero-in{max-width:530px}
 .fchip.hd1{top:13%;right:25%;z-index:2;animation:bob 5s ease-in-out infinite}
 .fchip.hd2{bottom:11%;right:5%;z-index:2;animation:bob 6s ease-in-out infinite reverse}
-@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.hero .pin{animation:heroIn .7s .08s cubic-bezier(.2,.7,.3,1) both}
-.hero h1{animation:heroIn .75s .22s cubic-bezier(.2,.7,.3,1) both}
-.hero-in>p{animation:heroIn .75s .36s cubic-bezier(.2,.7,.3,1) both}
-.hero .cta{animation:heroIn .75s .5s cubic-bezier(.2,.7,.3,1) both}
-.hero .mini{animation:heroIn .75s .64s cubic-bezier(.2,.7,.3,1) both}
-.fchip.hd1,.fchip.hd2{animation:heroIn .8s .55s cubic-bezier(.2,.7,.3,1) both,bob 5.5s 1.4s ease-in-out infinite}
+/* staged entrance — fail-safe: visible by default, JS triggers the play */
+.hero-in>*,.fchip.hd1,.fchip.hd2{transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+.hero-in>*:nth-child(2){transition-delay:.14s}
+.hero-in>*:nth-child(3){transition-delay:.28s}
+.hero-in>*:nth-child(4){transition-delay:.42s}
+.hero-in>*:nth-child(5){transition-delay:.56s}
+.fchip.hd1{transition-delay:.5s}
+.fchip.hd2{transition-delay:.66s}
+body.hpre .hero-in>*{opacity:0;transform:translateY(26px)}
+body.hpre .fchip.hd1,body.hpre .fchip.hd2{opacity:0}
 .hero .pin{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:99px;padding:8px 16px;font-size:13.5px;font-weight:600;color:var(--navy);box-shadow:var(--sh-sm);margin-bottom:20px}
 .hero .pin .dot{width:8px;height:8px;border-radius:50%;background:#22A55D;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
@@ -338,6 +341,12 @@ footer{padding:26px 0 34px;font-size:13.5px;color:var(--muted);text-align:center
 <footer>© 2026 Fresh Elephant Cleaning Co · Denver, Colorado</footer>
 
 <script>
+// hero entrance (fail-safe)
+try{
+  document.body.classList.add('hpre');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.remove('hpre')));
+  setTimeout(()=>document.body.classList.remove('hpre'),900);
+}catch(e){document.body.classList.remove('hpre')}
 // reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
