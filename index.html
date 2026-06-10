@@ -232,41 +232,86 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
 @media(max-width:980px){
+  /* ── layout ── */
   #about .wrap,#contact .wrap,.fgrid2{grid-template-columns:1fr}
-  .sgrid,.plans,.rgrid,.steps{grid-template-columns:1fr}
+  .sgrid,.plans,.rgrid,.steps{grid-template-columns:1fr;gap:14px}
   .steps::before{display:none}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .strip .wrap{grid-template-columns:1fr}
-  .fcols{grid-template-columns:1fr;gap:28px}
-  .hphone{display:none}
-  .nav{height:70px}
-  .nav .btn{padding:11px 16px;font-size:13.5px}
-  .burger{display:block}
+  .stats{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:44px}
+  .strip .wrap{grid-template-columns:1fr;gap:0}
+  .fcols{grid-template-columns:1fr;gap:26px}
+  section{padding:48px 0}
+  .util{display:none}
+  h2{font-size:26px;margin-bottom:10px}
+  .sub{font-size:15.5px;margin-bottom:28px}
+  .kick{font-size:11.5px;letter-spacing:2px;margin-bottom:10px}
+  /* ── header: one clean line ── */
+  .nav{height:60px;gap:10px}
+  .brand .mark{width:36px;height:36px;font-size:19px;border-radius:10px;box-shadow:none}
+  .brand b{font-size:17px;white-space:nowrap}
+  .brand small{display:none}
+  .hphone,.nav .btn{display:none}
+  .burger{display:block;width:42px;height:42px;font-size:20px;margin-left:auto}
   nav.menu{display:none}
-  nav.menu.open{display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:#fff;padding:14px 24px 20px;gap:4px;box-shadow:0 16px 30px rgba(16,38,78,.16);z-index:95}
-  nav.menu.open a{padding:11px 0;font-size:16px;border-bottom:1px solid var(--ice)}
+  nav.menu.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#fff;padding:8px 24px 16px;gap:0;box-shadow:0 16px 30px rgba(16,38,78,.16);z-index:95}
+  nav.menu.open a{padding:13px 0;font-size:16px;border-bottom:1px solid var(--ice)}
+  nav.menu.open a:last-child{border-bottom:none}
   nav.menu.open a::after{display:none}
   nav.menu.open .m-only{display:block !important}
-  .hero{min-height:auto;padding:48px 0 120px}
-  .hero .veil{background:linear-gradient(180deg,rgba(244,249,255,.96) 0%,rgba(244,249,255,.84) 55%,rgba(244,249,255,.6) 100%)}
-  .hero h1{font-size:clamp(32px,8.5vw,40px)}
-  .hero p.lead{font-size:16.5px}
-  .hero .cta .btn{width:100%;justify-content:center}
-  .plan.pop{transform:none}
-  section{padding:56px 0}
-  .util{display:none}
-  /* bubble transitions — compact on mobile */
-  .foamb,.foamt{height:46px}
-  .pb-foam{padding-bottom:104px !important}
-  .pt-foam{padding-top:104px !important}
-  .foam svg{height:64px}
+  /* ── hero: clean, text-only ── */
+  .hero{min-height:auto;padding:44px 0 56px}
+  .hero .bg,.hero .veil,.bub{display:none}
+  .hero{background:linear-gradient(180deg,#EAF3FC 0%,#F7FAFE 100%)}
+  .hero .pill{font-size:12.5px;padding:7px 14px;margin-bottom:16px;box-shadow:0 4px 12px rgba(16,38,78,.08)}
+  .hero h1{font-size:clamp(30px,8.6vw,38px);margin-bottom:14px}
+  .hero p.lead{font-size:16px;margin-bottom:22px}
+  .hero .cta{gap:10px;margin-bottom:24px}
+  .hero .cta .btn{width:100%;justify-content:center;padding:15px 20px;font-size:16px}
+  .hero .rate{gap:8px;font-size:13px}
+  .hero .rate .stars{font-size:15px}
+  /* ── transitions: thin & subtle ── */
+  .foamb,.foamt{height:34px}
+  .pb-foam{padding-bottom:84px !important}
+  .pt-foam{padding-top:84px !important}
+  .foam{display:none}
   .sided{display:none}
-  .band .wrap{flex-direction:column;text-align:center}
+  /* ── blocks ── */
+  .strip{padding-top:18px}
+  .strip .it{justify-content:flex-start;font-size:14px;padding:8px 0}
+  .strip .it span{flex:0 0 38px;height:38px;font-size:18px}
+  .about-art .float{font-size:12.5px;padding:10px 14px}
+  .about-art .blob{display:none}
+  .checks{gap:10px;margin:20px 0 24px}
+  .check{font-size:14.5px}
+  .stat{padding:18px 12px;border-radius:16px}
+  .svc{padding:24px 20px;border-radius:18px}
+  .svc .ico{width:50px;height:50px;font-size:23px;margin-bottom:14px;border-radius:14px}
+  .svc h3{font-size:19px}
+  .stp{padding:0}
+  .stp .n{width:64px;height:64px;font-size:26px;margin-bottom:12px;border-width:2px}
+  .stp .n i{width:24px;height:24px;font-size:12px}
+  .band{padding:44px 0}
+  .band .wrap{flex-direction:column;text-align:center;gap:18px}
   .band .btn{width:100%;justify-content:center}
-  .qcard{padding:28px 22px}
-  .stp .n{width:74px;height:74px;font-size:30px}
-  .miniprices{padding:24px 18px}
-  .fab{width:54px;height:54px;font-size:22px;right:16px;bottom:16px}
+  .band .bphone{font-size:22px}
+  .plan{padding:28px 22px;border-radius:22px}
+  .plan .pp{font-size:36px}
+  .plan.pop{transform:none}
+  .miniprices{padding:22px 16px;border-radius:20px}
+  .pchip{font-size:13px;padding:8px 14px}
+  .rev{padding:24px 20px;border-radius:20px}
+  .rev .q{font-size:42px}
+  .plats{gap:18px;font-size:13.5px;margin-top:28px}
+  summary{padding:16px 18px;font-size:14.5px}
+  details p{padding:0 18px 16px;font-size:14px}
+  .cway{padding:13px 16px;border-radius:14px}
+  .cway span{flex:0 0 40px;height:40px;font-size:18px}
+  .qcard{padding:24px 18px;border-radius:22px}
+  .qcard h3{font-size:20px}
+  #contact{padding:84px 0}
+  footer{padding:44px 0 26px}
+  footer .desc{font-size:13.5px}
+  .copy{flex-direction:column;align-items:center;text-align:center;gap:4px}
+  .fab{width:52px;height:52px;font-size:21px;right:14px;bottom:14px}
 }
 </style>
 </head>
