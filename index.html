@@ -85,6 +85,13 @@ nav.menu a:hover::after{width:100%}
 .bub{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);border:2px solid rgba(255,255,255,.8);z-index:2;animation:rise 7s linear infinite;pointer-events:none}
 @keyframes rise{from{transform:translateY(0);opacity:0}15%{opacity:1}to{transform:translateY(-46vh);opacity:0}}
 
+/* ───────── bubble transitions between sections ───────── */
+.foamb,.foamt{position:absolute;left:0;right:0;width:100%;height:92px;z-index:6;pointer-events:none;display:block}
+.foamb{bottom:-1px}
+.foamt{top:-1px;transform:scaleY(-1)}
+.pb-foam{padding-bottom:160px !important}
+.pt-foam{padding-top:160px !important}
+
 /* ───────── trust strip ───────── */
 .strip{background:var(--navy);color:#fff;padding:26px 0;position:relative;z-index:4}
 .strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -239,6 +246,20 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute"><defs>
+<g id="foamshape">
+  <circle cx="40" cy="140" r="86"/><circle cx="170" cy="150" r="74"/><circle cx="300" cy="135" r="92"/>
+  <circle cx="450" cy="155" r="78"/><circle cx="580" cy="138" r="88"/><circle cx="720" cy="152" r="74"/>
+  <circle cx="850" cy="134" r="90"/><circle cx="990" cy="154" r="80"/><circle cx="1120" cy="136" r="88"/>
+  <circle cx="1260" cy="150" r="76"/><circle cx="1390" cy="134" r="92"/>
+  <circle cx="110" cy="92" r="16" opacity=".75"/><circle cx="520" cy="84" r="12" opacity=".65"/>
+  <circle cx="930" cy="90" r="15" opacity=".7"/><circle cx="1310" cy="82" r="11" opacity=".6"/>
+  <circle cx="240" cy="64" r="8" opacity=".5"/><circle cx="700" cy="58" r="9" opacity=".45"/>
+  <circle cx="1080" cy="62" r="7" opacity=".5"/>
+  <rect y="118" width="1440" height="14"/>
+</g>
+</defs></svg>
+
 <div class="util">
   <div class="wrap">
     <div>📍 <b>Denver metro</b> · Mon–Sun 8am–8pm</div>
@@ -291,26 +312,20 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 
   <!-- foam cloud edge -->
-  <div class="foam"><svg viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff">
-    <circle cx="40" cy="140" r="86"/><circle cx="170" cy="150" r="74"/><circle cx="300" cy="135" r="92"/>
-    <circle cx="450" cy="155" r="78"/><circle cx="580" cy="138" r="88"/><circle cx="720" cy="152" r="74"/>
-    <circle cx="850" cy="134" r="90"/><circle cx="990" cy="154" r="80"/><circle cx="1120" cy="136" r="88"/>
-    <circle cx="1260" cy="150" r="76"/><circle cx="1390" cy="134" r="92"/>
-    <circle cx="110" cy="92" r="16" opacity=".75"/><circle cx="520" cy="84" r="12" opacity=".65"/>
-    <circle cx="930" cy="90" r="15" opacity=".7"/><circle cx="1310" cy="82" r="11" opacity=".6"/>
-    <rect y="118" width="1440" height="14"/>
-  </svg></div>
+  <div class="foam"><svg viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#10264E"><use href="#foamshape"/></svg></div>
 </div>
 
-<div class="strip">
+<div class="strip pb-foam" style="position:relative;overflow:hidden">
   <div class="wrap">
     <div class="it rv"><span>🛡️</span>All cleaners are bonded & insured</div>
     <div class="it rv" style="transition-delay:.1s"><span>📋</span>Trained with our 54-point checklists</div>
     <div class="it rv" style="transition-delay:.2s"><span>🌿</span>We bring & use green, pet-safe products</div>
   </div>
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff"><use href="#foamshape"/></svg>
 </div>
 
-<section id="about">
+<section id="about" class="pb-foam">
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#foamshape"/></svg>
   <div class="wrap">
     <div class="about-art rv">
       <div class="blob"></div>
@@ -338,7 +353,8 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 </section>
 
-<section id="services">
+<section id="services" class="pb-foam">
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff"><use href="#foamshape"/></svg>
   <div class="wrap t-center">
     <div class="kick">Our services</div>
     <h2>United way to best services</h2>
@@ -354,7 +370,8 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 </section>
 
-<section id="how">
+<section id="how" class="pb-foam">
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#2563C8"><use href="#foamshape"/></svg>
   <div class="wrap t-center">
     <div class="kick">How it works</div>
     <h2>Spotless in three easy steps</h2>
@@ -367,7 +384,8 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 </section>
 
-<div class="band">
+<div class="band pb-foam" style="position:relative">
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#foamshape"/></svg>
   <div class="wrap">
     <div>
       <h2>Get your place cleaned — it's simple and affordable</h2>
@@ -378,7 +396,8 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 </div>
 
-<section id="pricing">
+<section id="pricing" class="pb-foam">
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff"><use href="#foamshape"/></svg>
   <div class="wrap t-center">
     <div class="kick">Pricing</div>
     <h2>Flat prices. Zero surprises.</h2>
@@ -440,7 +459,8 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 </section>
 
-<section id="reviews">
+<section id="reviews" class="pb-foam">
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#foamshape"/></svg>
   <div class="wrap t-center">
     <div class="kick">Reviews</div>
     <h2>What our clients say</h2>
@@ -474,7 +494,9 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="pt-foam pb-foam">
+  <svg class="foamt" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#foamshape"/></svg>
+  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#0B1D3D"><use href="#foamshape"/></svg>
   <div class="wrap">
     <div class="rv">
       <div class="kick" style="color:var(--amber)">Free quote</div>
