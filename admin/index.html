@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fresh Elephant — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2563C8; --blue-dk:#1B4796; --navy:#10264E; --amber:#F59E2D;
+  --ice:#EAF3FC; --paper:#F5F9FE; --white:#fff;
+  --grey:#5A6A82; --line:#E2ECF7; --ok:#16A34A; --danger:#DC2626;
+  --sky:#9DC3F0;
+  --shadow:0 10px 30px -12px rgba(16,38,78,.18);
+  --shadow-sm:0 4px 14px -6px rgba(16,38,78,.16);
+  --r:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--navy);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.5}
+h1,h2,h3,h4{font-family:'Outfit',system-ui,sans-serif;margin:0;color:var(--navy)}
+a{color:var(--blue);text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:14px}
+.hidden{display:none!important}
+
+/* ---------- Login ---------- */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:linear-gradient(135deg,var(--ice),var(--paper))}
+.login-card{background:var(--white);border-radius:22px;box-shadow:var(--shadow);padding:34px 30px;width:100%;max-width:380px}
+.login-card .brand{display:flex;align-items:center;gap:11px;margin-bottom:22px}
+.login-card .mark{width:46px;height:46px;border-radius:13px;background:var(--ice);display:grid;place-items:center;font-size:24px}
+.login-card .brand b{font-family:'Outfit';font-size:18px;display:block}
+.login-card .brand small{color:var(--grey);font-size:12px;letter-spacing:.5px}
+.login-card label{display:block;font-weight:600;font-size:13px;margin:14px 0 6px}
+.login-card input{width:100%;padding:12px 13px;border:1.5px solid var(--line);border-radius:11px;outline:none;transition:.15s}
+.login-card input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,200,.12)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--blue);color:#fff;border:none;
+  padding:11px 18px;border-radius:11px;font-weight:600;font-size:14px;transition:.15s;text-decoration:none}
+.btn:hover{background:var(--blue-dk)}
+.btn.full{width:100%;margin-top:18px;padding:13px}
+.btn.ghost{background:var(--white);color:var(--navy);border:1.5px solid var(--line)}
+.btn.ghost:hover{background:var(--ice)}
+.btn.amber{background:var(--amber);color:#3a2400}
+.btn.amber:hover{filter:brightness(.95)}
+.btn.danger{background:var(--danger)}
+.btn.danger:hover{filter:brightness(.92)}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
+.btn.xs{padding:4px 8px;font-size:12px;border-radius:8px}
+.err{color:var(--danger);font-size:13px;margin-top:12px;min-height:16px}
+
+/* ---------- App shell ---------- */
+#app{display:flex;min-height:100vh}
+#sidebar{width:230px;background:var(--navy);color:#fff;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:50;transition:transform .25s}
+#sidebar .top{padding:20px 18px;display:flex;align-items:center;gap:11px;border-bottom:1px solid rgba(255,255,255,.1)}
+#sidebar .mark{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:22px}
+#sidebar .top b{font-family:'Outfit';font-size:15px;display:block;color:#fff}
+#sidebar .top small{color:var(--sky);font-size:11px;letter-spacing:.5px}
+#sidebar nav{padding:14px 12px;flex:1;display:flex;flex-direction:column;gap:4px}
+#sidebar nav a{display:flex;align-items:center;gap:11px;color:#cdddf5;padding:11px 13px;border-radius:11px;font-weight:600;font-size:14px;cursor:pointer}
+#sidebar nav a .ic{font-size:17px;width:20px;text-align:center}
+#sidebar nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+#sidebar nav a.active{background:var(--blue);color:#fff}
+#sidebar .bottom{padding:14px 14px 18px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:8px}
+#sidebar .bottom .who{font-size:12px;color:var(--sky);padding:0 2px;word-break:break-all}
+#sidebar .viewsite{color:#cdddf5;font-size:13px;font-weight:600;padding:7px 4px}
+#sidebar .viewsite:hover{color:#fff}
+#sidebar .logout{background:rgba(255,255,255,.1);color:#fff;border:none;padding:9px;border-radius:10px;font-weight:600;font-size:13px}
+#sidebar .logout:hover{background:rgba(255,255,255,.18)}
+
+#main{flex:1;margin-left:230px;min-width:0;display:flex;flex-direction:column}
+#topbar{display:none;align-items:center;gap:12px;padding:12px 16px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:40}
+#topbar .burger{background:rgba(255,255,255,.12);border:none;color:#fff;font-size:18px;width:38px;height:38px;border-radius:10px}
+#topbar b{font-family:'Outfit';font-size:15px}
+.content{padding:26px 30px 90px;max-width:1180px;width:100%;margin:0 auto}
+.page-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.page-head h1{font-size:24px}
+.page-head .sub{color:var(--grey);font-size:14px;margin-top:3px}
+
+.card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.card.pad{padding:20px}
+
+/* KPI cards */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow-sm);border:1px solid var(--line);padding:18px}
+.kpi .lab{color:var(--grey);font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px}
+.kpi .val{font-family:'Outfit';font-size:30px;font-weight:800;margin-top:6px;color:var(--navy)}
+.kpi.accent .val{color:var(--blue)}
+
+/* Toolbar / filters */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.toolbar input[type=text],.toolbar input[type=date],.toolbar select{padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;outline:none;background:#fff}
+.toolbar input:focus,.toolbar select:focus{border-color:var(--blue)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{padding:7px 13px;border-radius:20px;border:1.5px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--grey)}
+.chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.chip .ct{opacity:.8;font-weight:700;margin-left:3px}
+.range-btns{display:flex;gap:6px;background:var(--white);border:1px solid var(--line);padding:4px;border-radius:12px}
+.range-btns button{border:none;background:transparent;padding:7px 14px;border-radius:9px;font-weight:600;font-size:13px;color:var(--grey)}
+.range-btns button.active{background:var(--blue);color:#fff}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;padding:12px 14px;background:var(--ice);color:var(--navy);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr{cursor:pointer;transition:background .12s}
+tbody tr:hover{background:var(--paper)}
+td .msg-cell{max-width:240px;color:var(--grey)}
+td a.tel{color:var(--blue);font-weight:600;white-space:nowrap}
+
+/* status badge + select */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.st-new{background:#E0EDFF;color:#1B4796}
+.st-contacted{background:#FFF1D6;color:#9A5B00}
+.st-scheduled{background:#E6E0FF;color:#5B3FB8}
+.st-done{background:#DCFCE7;color:#15803D}
+.st-lost{background:#FEE2E2;color:#B91C1C}
+select.statsel{padding:5px 8px;border-radius:8px;border:1.5px solid var(--line);font-size:12.5px;font-weight:600;background:#fff;cursor:pointer}
+
+/* Drawer / modal */
+.overlay{position:fixed;inset:0;background:rgba(16,38,78,.45);z-index:100;display:none;align-items:stretch;justify-content:flex-end}
+.overlay.open{display:flex}
+.drawer{background:#fff;width:460px;max-width:100%;height:100%;overflow-y:auto;box-shadow:-10px 0 40px -10px rgba(0,0,0,.3);animation:slidein .22s ease}
+@keyframes slidein{from{transform:translateX(30px);opacity:.6}to{transform:none;opacity:1}}
+.drawer .dh{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
+.drawer .dh h3{font-size:18px}
+.drawer .db{padding:20px}
+.drawer .x{background:var(--ice);border:none;width:34px;height:34px;border-radius:9px;font-size:16px;color:var(--navy)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.field .v{font-size:14.5px;word-break:break-word}
+.field textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:11px;outline:none;resize:vertical}
+.field textarea:focus{border-color:var(--blue)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.src-box{background:var(--paper);border-radius:12px;padding:12px 14px;font-size:13px}
+.src-box .row{display:flex;justify-content:space-between;padding:3px 0;gap:10px}
+.src-box .row span:first-child{color:var(--grey)}
+.src-box .row span:last-child{font-weight:600;text-align:right;word-break:break-word}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;
+  padding:13px 22px;border-radius:13px;font-weight:600;font-size:14px;box-shadow:var(--shadow);z-index:300;opacity:0;transition:.3s;pointer-events:none}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+#toast.ok{background:var(--ok)} #toast.bad{background:var(--danger)}
+
+/* Editor */
+.ed-sec{margin-bottom:18px}
+.ed-sec>.head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;cursor:pointer}
+.ed-sec>.head .ttl{display:flex;align-items:center;gap:10px;font-family:'Outfit';font-weight:700;font-size:16px}
+.ed-sec>.head .ttl .em{font-size:18px}
+.ed-sec .toggle-wrap{display:flex;align-items:center;gap:10px}
+.ed-sec .body{padding:0 18px 18px;border-top:1px solid var(--line);display:none}
+.ed-sec.open .body{display:block}
+.ed-sec .arrow{transition:.2s;color:var(--grey)}
+.ed-sec.open .arrow{transform:rotate(90deg)}
+.ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.ed-grid .full{grid-column:1/-1}
+.fld label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.fld label .hint{color:var(--amber);font-weight:600;font-size:11px;margin-left:6px}
+.fld input[type=text],.fld textarea,.fld input[type=url]{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;outline:none;resize:vertical}
+.fld input:focus,.fld textarea:focus{border-color:var(--blue)}
+.subhead{font-family:'Outfit';font-weight:700;font-size:14px;margin:18px 0 8px;color:var(--blue-dk);display:flex;align-items:center;justify-content:space-between}
+.list-item{border:1.5px solid var(--line);border-radius:13px;padding:13px;margin-bottom:10px;background:var(--paper)}
+.list-item .li-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.list-item .li-head .n{font-weight:700;font-size:12px;color:var(--grey)}
+.list-item .li-actions{display:flex;gap:5px}
+.iconbtn{border:1.5px solid var(--line);background:#fff;border-radius:8px;width:30px;height:28px;font-size:13px;color:var(--navy);display:grid;place-items:center}
+.iconbtn:hover{background:var(--ice)}
+.iconbtn.del:hover{background:#FEE2E2;border-color:#FCA5A5;color:var(--danger)}
+
+/* toggle switch */
+.switch{position:relative;display:inline-block;width:44px;height:25px}
+.switch input{display:none}
+.switch .sl{position:absolute;inset:0;background:#cbd5e1;border-radius:25px;transition:.2s;cursor:pointer}
+.switch .sl:before{content:'';position:absolute;width:19px;height:19px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.switch input:checked+.sl{background:var(--blue)}
+.switch input:checked+.sl:before{transform:translateX(19px)}
+.tog-label{font-size:12px;font-weight:700;color:var(--grey)}
+
+/* image field */
+.imgfield{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.imgfield .prev{width:96px;height:64px;border-radius:10px;border:1.5px solid var(--line);background:var(--ice) center/cover no-repeat;display:grid;place-items:center;font-size:11px;color:var(--grey);flex:none;overflow:hidden}
+.imgfield .grow{flex:1;min-width:200px}
+.imgfield input[type=file]{display:none}
+
+/* sticky save */
+.savebar{position:fixed;bottom:0;left:230px;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);
+  padding:12px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px;z-index:45}
+.savebar .info{font-size:13px;color:var(--grey)}
+.savebar .info b{color:var(--navy)}
+
+.empty{text-align:center;padding:46px 20px;color:var(--grey)}
+.empty .em{font-size:38px;display:block;margin-bottom:10px}
+.spinner{width:34px;height:34px;border:3px solid var(--line);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:30px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loadwrap{text-align:center;padding:30px;color:var(--grey)}
+
+.set-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* responsive */
+@media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%)}
+  #sidebar.open{transform:none}
+  #main{margin-left:0}
+  #topbar{display:flex}
+  .savebar{left:0}
+  .content{padding:18px 14px 90px}
+  .ed-grid{grid-template-columns:1fr}
+  .set-grid{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+  .drawer{width:100%}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:49;display:none}
+  .scrim.show{display:block}
+}
+@media(max-width:520px){.kpis{grid-template-columns:1fr 1fr}.page-head h1{font-size:20px}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <div class="brand">
+      <span class="mark">🐘</span>
+      <span><b>Fresh Elephant</b><small>ADMIN PANEL</small></span>
+    </div>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" autocomplete="username" required placeholder="you@example.com">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autocomplete="current-password" required placeholder="••••••••">
+    <button class="btn full" type="submit" id="loginBtn">Sign in</button>
+    <div class="err" id="loginErr"></div>
+  </form>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar">
+    <div class="top">
+      <span class="mark">🐘</span>
+      <span><b>Fresh Elephant</b><small>ADMIN</small></span>
+    </div>
+    <nav id="nav">
+      <a data-tab="orders" class="active"><span class="ic">📋</span> Orders</a>
+      <a data-tab="analytics"><span class="ic">📈</span> Analytics</a>
+      <a data-tab="editor"><span class="ic">🎨</span> Landing editor</a>
+      <a data-tab="settings"><span class="ic">⚙️</span> Settings</a>
+    </nav>
+    <div class="bottom">
+      <a class="viewsite" href="https://fresh-elephant-denver.vercel.app" target="_blank" rel="noopener">View site ↗</a>
+      <div class="who" id="whoami"></div>
+      <button class="logout" id="logoutBtn">Log out</button>
+    </div>
+  </aside>
+
+  <div id="main">
+    <div id="topbar">
+      <button class="burger" id="burger">☰</button>
+      <span class="mark" style="font-size:20px">🐘</span>
+      <b>Fresh Elephant — Admin</b>
+    </div>
+    <div class="content">
+      <div id="tab-orders" class="tabpane"></div>
+      <div id="tab-analytics" class="tabpane hidden"></div>
+      <div id="tab-editor" class="tabpane hidden"></div>
+      <div id="tab-settings" class="tabpane hidden"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER DRAWER -->
+<div class="overlay" id="orderOverlay">
+  <div class="drawer" id="orderDrawer"></div>
+</div>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+"use strict";
+/* ============================================================
+   Fresh Elephant — Admin Panel (single file, vanilla JS)
+   ============================================================ */
+var SB_URL = "https://fsihlzzjewhxpogvjapu.supabase.co";
+var SB_KEY = "sb_publishable__o56Y-ust_UvMqvi9yWC8Q_qyjjkf0S";
+var VIEW_SITE = "https://fresh-elephant-denver.vercel.app";
+var sb = window.supabase.createClient(SB_URL, SB_KEY);
+
+/* ---- helpers ---- */
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function ce(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e;}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+function isObj(o){return o&&typeof o==="object"&&!Array.isArray(o);}
+function deepMerge(base,over){
+  if(!isObj(base)||!isObj(over))return(over===undefined?base:over);
+  var out={},k;
+  for(k in base)out[k]=base[k];
+  for(k in over){out[k]=isObj(base[k])&&isObj(over[k])?deepMerge(base[k],over[k]):over[k];}
+  return out;
+}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function toast(msg,kind){
+  var t=$("#toast");t.textContent=msg;t.className="";t.classList.add("show");if(kind)t.classList.add(kind);
+  clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove("show");},2800);
+}
+function fmtDate(s){
+  if(!s)return"";var d=new Date(s);if(isNaN(d))return s;
+  return d.toLocaleString(undefined,{month:"short",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"});
+}
+function fmtDay(s){var d=new Date(s);if(isNaN(d))return s;return d.toLocaleDateString(undefined,{month:"short",day:"numeric"});}
+
+/* ============================================================
+   DEFAULT content (EXACT copy of landing fe-cms.js DEFAULT)
+   ============================================================ */
+var DEFAULT = {
+  settings: {
+    brandEmoji:"🐘", brandName:"Fresh Elephant", brandSub:"CLEANING SERVICES",
+    phone:"(720) 555-0134", phoneHref:"+17205550134",
+    email:"hello@freshelephant.com",
+    instagram:"@freshelephant.denver", instagramUrl:"https://www.instagram.com/freshelephant.denver",
+    whatsappUrl:"https://wa.me/17205550134",
+    areaLine:"📍 Denver metro · Mon–Sun 8am–8pm",
+    fabVisible:true
+  },
+  visibility:{ util:true, header:true, hero:true, strip:true, about:true, services:true,
+    how:true, band:true, pricing:true, reviews:true, faq:true, contact:true, footer:true },
+  util:{ left:"📍 <b>Denver metro</b> · Mon–Sun 8am–8pm" },
+  header:{ hphoneSub:"Free quote in 30 min", ctaText:"Get a quote", nav:[
+    {label:"About",href:"#about"},{label:"Services",href:"#services"},
+    {label:"Pricing",href:"#pricing"},{label:"Reviews",href:"#reviews"},{label:"FAQ",href:"#faq"} ]},
+  hero:{
+    pill:"⭐ Trusted by 1,200+ Denver homes",
+    titleHtml:'Big clean energy for your <span>home<svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 9 Q 60 1 118 8" fill="none" stroke="#F59E2D" stroke-width="5" stroke-linecap="round"/></svg></span>',
+    lead:"House cleaning, deep cleaning and upholstery care with flat honest prices. We never forget a spot — and the quote never changes mid-job.",
+    ctaPrimary:"Get my free quote", ctaSecondary:"See flat prices",
+    ratingValue:"4.9 / 5", ratingNote:"· 120+ Google reviews · Licensed & insured",
+    video:"hero-video.mp4", poster:"hero-poster.jpg",
+    chip1:"🫧 We never forget a spot", chip2:"⚡ Quote in 30 min"
+  },
+  strip:{ items:[
+    {icon:"🛡️",text:"All cleaners are bonded & insured"},
+    {icon:"📋",text:"Trained with our 54-point checklists"},
+    {icon:"🌿",text:"We bring & use green, pet-safe products"} ]},
+  about:{
+    kick:"About us", title:"Our goal is to make life easy",
+    text:"Fresh Elephant is a Denver-grown cleaning company with one simple idea: cleaning should be the easiest thing on your to-do list. One crew, one flat price, one spotless result.",
+    checks:["Same trusted crew every visit — they learn your home",
+      "Dirt level never changes the price you were quoted",
+      "48-hour free re-clean guarantee, in writing"],
+    cta:"Explore services", ctaHref:"#services", photo:"",
+    f1:{icon:"💲",text:"Flat price lock — no surprises"},
+    f2:{icon:"⚡",text:"Quote in 30 minutes"},
+    stats:[ {count:"1200",label:"homes cleaned"}, {count:"500",label:"couches revived"},
+      {text:"4.9★",label:"average rating"}, {count:"98",label:"% clients return"} ]
+  },
+  services:{
+    kick:"Our services", title:"United way to best services",
+    sub:"Six ways we make Denver homes and businesses spotless — all with flat, upfront pricing.",
+    items:[
+      {ico:"🏠",title:"House Cleaning",text:"Weekly, bi-weekly or monthly. Kitchens, baths, floors, dust — handled.",from:"from $139"},
+      {ico:"🫧",title:"Deep Cleaning",text:"Baseboards, behind appliances, inside cabinets — the works.",from:"from $249"},
+      {ico:"📦",title:"Move-In / Move-Out",text:"Deposit-back clean with a 54-point landlord checklist.",from:"from $299"},
+      {ico:"🛋️",title:"Upholstery & Carpet",text:"Hot-water extraction for sofas, mattresses, rugs and carpets.",from:"<s>$74</s>from $59"},
+      {ico:"🏢",title:"Office Cleaning",text:"Recurring commercial cleaning that never misses a Monday.",from:"from $0.20/sq ft"},
+      {ico:"🔑",title:"Airbnb Turnover",text:"Guest-ready resets with photo report and restock checklist.",from:"from $119"} ]
+  },
+  how:{
+    kick:"How it works", title:"Spotless in three easy steps",
+    sub:"From first text to fresh home — usually within the same week.",
+    steps:[
+      {emoji:"📲",n:"1",title:"Book online",text:"Send a photo or the form — flat quote in 30 minutes, same-week slots."},
+      {emoji:"🧽",n:"2",title:"We clean",text:"Bonded, trained crew with pro equipment and green products."},
+      {emoji:"🛋️",n:"3",title:"You relax",text:"Walk through the result. Anything off — free re-clean within 48h."} ]
+  },
+  band:{ title:"Get your place cleaned — it's simple and affordable",
+    text:"Call now and get $25 off your first clean this week.", cta:"Get a free quote" },
+  pricing:{
+    kick:"Pricing", title:"Flat prices. Zero surprises.",
+    sub:"The price we quote is the price you pay. Dirt level doesn't change a thing.",
+    plans:[
+      {name:"Standard Clean",price:"$139",per:" / visit",desc:"For homes that need regular love",
+        features:["Kitchen, baths, floors, dusting","Same crew every visit","Recurring plans save 15%","Green, pet-safe products"],
+        cta:"Book standard",popular:false,tag:""},
+      {name:"Deep Clean",price:"$249",per:" / visit",desc:'For "it\'s been a while" homes',
+        features:["Everything in Standard","Baseboards, vents, behind appliances","Inside oven & fridge","Interior windows & tracks","54-point checklist"],
+        cta:"Book deep clean",popular:true,tag:"Most popular"},
+      {name:"Move-In / Out",price:"$299",per:" / visit",desc:"Deposit-back guarantee clean",
+        features:["Everything in Deep Clean","Inside all cabinets & closets","Landlord-ready photo report","Same-week availability"],
+        cta:"Book move clean",popular:false,tag:""} ],
+    miniTitle:"🛋️ Upholstery & carpet — flat per item",
+    chips:[ {label:"Armchair",price:"$59"},{label:"Loveseat",price:"$99"},{label:"Sofa 3-seat",price:"$139"},
+      {label:"Sectional",price:"from $189"},{label:"Mattress",price:"from $79"},{label:"Carpet",price:"$0.40/sq ft"},
+      {label:"Dining chair",price:"$15"},{label:"Odor treatment",price:"from $49"} ],
+    flatnote:"<b>Dirt level does NOT affect the price.</b> Free travel across Denver metro. Final flat price confirmed before we start."
+  },
+  reviews:{
+    kick:"Reviews", title:"What our clients say", sub:"Real Denver homes, real stains, real results.",
+    items:[
+      {text:"Two dogs, one toddler, beige sofa — I thought it was hopeless. It looks brand new and smells like nothing, which is exactly what I wanted.",name:"Sarah M.",meta:"Wash Park · sofa deep clean",avatar:"S"},
+      {text:"Quoted a flat price over text, showed up on time, and the price didn't move an inch. Rare these days. Booked them monthly.",name:"Dmitry K.",meta:"Aurora · recurring clean",avatar:"D"},
+      {text:"They handle our Airbnb turnovers. Photo report after every clean, zero missed check-ins in six months. Total lifesavers.",name:"Jess & Tom",meta:"Highlands · Airbnb turnover",avatar:"J"} ],
+    plats:[ {label:"Google",value:"4.9"},{label:"Yelp",value:"4.8"},{label:"Thumbtack",value:"Top Pro"} ]
+  },
+  faq:{
+    kick:"FAQ", title:"Frequently asked questions", sub:"Everything Denver asks before booking.",
+    items:[
+      {q:"Do you really not charge extra for heavy dirt?",a:"Really. Your flat price is based on home size or item size — never condition. Specialty treatments are quoted upfront as a separate line, never sprung on you mid-job."},
+      {q:"Is it safe for pets and kids?",a:"Yes — we bring and use certified green products, residue-free and safe for nurseries and animals. It's one of our written guarantees."},
+      {q:"How fast does upholstery dry?",a:"Usually 4–6 hours. We finish with forced-air drying, so most customers sit on their couch the same evening."},
+      {q:"What areas do you cover?",a:"All of Denver metro: Denver, Aurora, Lakewood, Littleton, Englewood, Westminster, Arvada, Centennial. Travel is always free."},
+      {q:"Do I need to be home during the clean?",a:"No — most clients give us entry instructions. Every cleaner is bonded and insured, and you get photo updates when we're done."},
+      {q:"What if I'm not happy with the result?",a:"Tell us within 48 hours and we re-clean free. Still not right? You don't pay for that item. No forms, no fight."} ]
+  },
+  contact:{
+    kick:"Free quote", title:"Let's make it spotless",
+    sub:"Send a photo of the couch, the carpet, or the whole place — we'll text back a flat price within 30 minutes.",
+    ways:[
+      {icon:"📞",title:"(720) 555-0134",sub:"Mon–Sun, 8am–8pm",href:"tel:+17205550134",blank:false},
+      {icon:"💬",title:"WhatsApp / Text",sub:"Fastest way — send a photo",href:"https://wa.me/17205550134",blank:true},
+      {icon:"📸",title:"@freshelephant.denver",sub:"Before & after, every week",href:"https://www.instagram.com/freshelephant.denver",blank:true} ],
+    formTitle:"Get your flat price", formBadge:"🔥 $25 off your first clean this week",
+    services:["House cleaning","Deep cleaning","Move-in / move-out","Sofa / upholstery","Carpet / rugs","Office / Airbnb"],
+    okMsg:"🐘 Got it! We'll text your flat price within 30 minutes."
+  },
+  footer:{
+    desc:"Denver's friendliest cleaning crew. Flat honest prices, green products, and a spot-free guarantee. We never forget a spot.",
+    servicesTitle:"Services", serviceLinks:[
+      {label:"House cleaning",href:"#services"},{label:"Deep cleaning",href:"#services"},
+      {label:"Move-in / move-out",href:"#services"},{label:"Upholstery & carpet",href:"#services"},
+      {label:"Office & Airbnb",href:"#services"} ],
+    companyTitle:"Company", companyLinks:[
+      {label:"About us",href:"#about"},{label:"Pricing",href:"#pricing"},
+      {label:"Reviews",href:"#reviews"},{label:"FAQ",href:"#faq"} ],
+    copy1:"© 2026 Fresh Elephant Cleaning Co · Denver, CO", copy2:"Licensed · Bonded · Insured"
+  }
+};
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+function showLogin(){ $("#login").classList.remove("hidden"); $("#app").classList.add("hidden"); }
+function showApp(session){
+  $("#login").classList.add("hidden"); $("#app").classList.remove("hidden");
+  $("#whoami").textContent = session && session.user ? session.user.email : "";
+  initApp();
+}
+
+$("#loginForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  var btn=$("#loginBtn"), errEl=$("#loginErr");
+  errEl.textContent=""; btn.disabled=true; btn.textContent="Signing in…";
+  sb.auth.signInWithPassword({ email:$("#email").value.trim(), password:$("#password").value })
+    .then(function(res){
+      btn.disabled=false; btn.textContent="Sign in";
+      if(res.error){ errEl.textContent=res.error.message||"Login failed"; return; }
+      sb.auth.getSession().then(function(s){ showApp(s.data.session); });
+    }, function(err){
+      btn.disabled=false; btn.textContent="Sign in";
+      errEl.textContent=(err&&err.message)||"Network error. Try again.";
+    });
+});
+
+$("#logoutBtn").addEventListener("click", function(){
+  sb.auth.signOut().then(function(){ location.reload(); });
+});
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+var APP_INITED=false;
+function setTab(tab){
+  $$("#nav a").forEach(function(a){ a.classList.toggle("active", a.getAttribute("data-tab")===tab); });
+  ["orders","analytics","editor","settings"].forEach(function(t){
+    $("#tab-"+t).classList.toggle("hidden", t!==tab);
+  });
+  closeSidebar();
+  if(tab==="orders") renderOrders();
+  else if(tab==="analytics") renderAnalytics();
+  else if(tab==="editor") renderEditor();
+  else if(tab==="settings") renderSettings();
+}
+function openSidebar(){ $("#sidebar").classList.add("open"); $("#scrim").classList.add("show"); }
+function closeSidebar(){ $("#sidebar").classList.remove("open"); $("#scrim").classList.remove("show"); }
+
+function initApp(){
+  if(APP_INITED) return; APP_INITED=true;
+  $$("#nav a").forEach(function(a){ a.addEventListener("click", function(){ setTab(a.getAttribute("data-tab")); }); });
+  $("#burger").addEventListener("click", openSidebar);
+  $("#scrim").addEventListener("click", closeSidebar);
+  loadContent(); // preload content for editor/settings
+  setTab("orders");
+}
+
+/* ============================================================
+   ORDERS
+   ============================================================ */
+var ORD = { rows:null, status:"all", q:"", from:"", to:"", loading:false, err:null };
+var STATUSES=["new","contacted","scheduled","done","lost"];
+var STATUS_LABEL={new:"New",contacted:"Contacted",scheduled:"Scheduled",done:"Done",lost:"Lost"};
+
+function fetchOrders(){
+  ORD.loading=true; ORD.err=null; paintOrders();
+  return sb.from("fe_orders").select("*").order("created_at",{ascending:false}).limit(1000)
+    .then(function(res){
+      ORD.loading=false;
+      if(res.error){ ORD.err=res.error.message; paintOrders(); return; }
+      ORD.rows=res.data||[]; paintOrders();
+    }, function(err){
+      ORD.loading=false; ORD.err=(err&&err.message)||"Failed to load orders"; paintOrders();
+    });
+}
+function renderOrders(){ if(ORD.rows===null && !ORD.loading) fetchOrders(); else paintOrders(); }
+
+function filteredOrders(){
+  var rows=ORD.rows||[];
+  return rows.filter(function(r){
+    if(ORD.status!=="all" && (r.status||"new")!==ORD.status) return false;
+    if(ORD.q){
+      var q=ORD.q.toLowerCase();
+      var hay=((r.name||"")+" "+(r.phone||"")+" "+(r.service||"")+" "+(r.message||"")).toLowerCase();
+      if(hay.indexOf(q)<0) return false;
+    }
+    if(ORD.from){ if(new Date(r.created_at) < new Date(ORD.from+"T00:00:00")) return false; }
+    if(ORD.to){ if(new Date(r.created_at) > new Date(ORD.to+"T23:59:59")) return false; }
+    return true;
+  });
+}
+function statusCounts(){
+  var c={all:0}; STATUSES.forEach(function(s){c[s]=0;});
+  (ORD.rows||[]).forEach(function(r){ c.all++; var s=r.status||"new"; if(c[s]!=null)c[s]++; });
+  return c;
+}
+
+function paintOrders(){
+  var root=$("#tab-orders");
+  if(ORD.loading && ORD.rows===null){
+    root.innerHTML='<div class="page-head"><div><h1>Orders</h1></div></div><div class="card pad"><div class="spinner"></div></div>';
+    return;
+  }
+  if(ORD.err){
+    root.innerHTML='<div class="page-head"><div><h1>Orders</h1></div></div>'+
+      '<div class="card pad empty"><span class="em">⚠️</span>Could not load orders.<br><small>'+esc(ORD.err)+'</small><br><br>'+
+      '<button class="btn" id="ordRetry">Retry</button></div>';
+    $("#ordRetry").onclick=fetchOrders; return;
+  }
+  var counts=statusCounts();
+  var chips='<button class="chip'+(ORD.status==="all"?" active":"")+'" data-st="all">All <span class="ct">'+counts.all+'</span></button>';
+  STATUSES.forEach(function(s){
+    chips+='<button class="chip'+(ORD.status===s?" active":"")+'" data-st="'+s+'">'+STATUS_LABEL[s]+' <span class="ct">'+counts[s]+'</span></button>';
+  });
+  var head='<div class="page-head"><div><h1>Orders</h1><div class="sub">'+counts.all+' total leads</div></div>'+
+    '<button class="btn ghost sm" id="ordRefresh">↻ Refresh</button></div>';
+  var toolbar='<div class="toolbar"><div class="chips">'+chips+'</div></div>'+
+    '<div class="toolbar">'+
+      '<input type="text" id="ordSearch" placeholder="Search name, phone, service…" value="'+esc(ORD.q)+'" style="min-width:240px;flex:1">'+
+      '<input type="date" id="ordFrom" value="'+esc(ORD.from)+'" title="From date">'+
+      '<input type="date" id="ordTo" value="'+esc(ORD.to)+'" title="To date">'+
+      (ORD.from||ORD.to||ORD.q?'<button class="btn ghost sm" id="ordClear">Clear</button>':'')+
+    '</div>';
+
+  var list=filteredOrders();
+  var body;
+  if(!list.length){
+    body='<div class="card pad empty"><span class="em">📭</span>No orders match your filters.</div>';
+  } else {
+    var rows=list.map(function(r){
+      var st=r.status||"new";
+      var msg=r.message?esc(r.message):'<span style="color:#b6c2d6">—</span>';
+      var phone=r.phone?'<a class="tel" href="tel:'+esc(r.phone)+'" onclick="event.stopPropagation()">'+esc(r.phone)+'</a>':'—';
+      return '<tr data-id="'+esc(r.id)+'">'+
+        '<td style="white-space:nowrap;color:var(--grey)">'+esc(fmtDate(r.created_at))+'</td>'+
+        '<td><b>'+esc(r.name||"—")+'</b></td>'+
+        '<td>'+phone+'</td>'+
+        '<td>'+esc(r.service||"—")+'</td>'+
+        '<td><span class="badge st-'+st+'">'+STATUS_LABEL[st]+'</span></td>'+
+        '<td class="msg-cell">'+msg+'</td>'+
+      '</tr>';
+    }).join("");
+    body='<div class="tbl-wrap"><table><thead><tr>'+
+      '<th>Date</th><th>Name</th><th>Phone</th><th>Service</th><th>Status</th><th>Message</th>'+
+      '</tr></thead><tbody>'+rows+'</tbody></table></div>';
+  }
+  root.innerHTML=head+toolbar+body;
+
+  $("#ordRefresh").onclick=fetchOrders;
+  $$("#tab-orders .chip").forEach(function(c){ c.onclick=function(){ ORD.status=c.getAttribute("data-st"); paintOrders(); }; });
+  var se=$("#ordSearch"); if(se){ se.oninput=function(){ ORD.q=se.value; clearTimeout(se._t); se._t=setTimeout(paintOrders,200);
+    setTimeout(function(){var n=$("#ordSearch");if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length);}},210); }; }
+  var fr=$("#ordFrom"); if(fr) fr.onchange=function(){ ORD.from=fr.value; paintOrders(); };
+  var to=$("#ordTo"); if(to) to.onchange=function(){ ORD.to=to.value; paintOrders(); };
+  var cl=$("#ordClear"); if(cl) cl.onclick=function(){ ORD.q="";ORD.from="";ORD.to=""; paintOrders(); };
+  $$("#tab-orders tbody tr").forEach(function(tr){ tr.onclick=function(){ openOrder(tr.getAttribute("data-id")); }; });
+}
+
+/* ---- order detail drawer ---- */
+function openOrder(id){
+  var r=(ORD.rows||[]).filter(function(x){return x.id===id;})[0];
+  if(!r) return;
+  var st=r.status||"new";
+  var stOpts=STATUSES.map(function(s){return '<option value="'+s+'"'+(s===st?" selected":"")+'>'+STATUS_LABEL[s]+'</option>';}).join("");
+  function row(lab,val){ return '<div class="row"><span>'+lab+'</span><span>'+(val?esc(val):"—")+'</span></div>'; }
+  var src='<div class="src-box">'+
+    row("UTM source",r.utm_source)+row("UTM medium",r.utm_medium)+row("UTM campaign",r.utm_campaign)+
+    row("Referrer",r.referrer)+row("Page path",r.page_path)+row("Session",r.session_id)+
+    row("User agent",r.user_agent)+'</div>';
+  var html='<div class="dh"><h3>Order details</h3><button class="x" id="drClose">✕</button></div>'+
+    '<div class="db">'+
+      '<div class="kv">'+
+        '<div class="field"><label>Name</label><div class="v">'+esc(r.name||"—")+'</div></div>'+
+        '<div class="field"><label>Phone</label><div class="v">'+(r.phone?'<a class="tel" href="tel:'+esc(r.phone)+'">'+esc(r.phone)+'</a>':"—")+'</div></div>'+
+      '</div>'+
+      '<div class="kv">'+
+        '<div class="field"><label>Service</label><div class="v">'+esc(r.service||"—")+'</div></div>'+
+        '<div class="field"><label>Created</label><div class="v">'+esc(fmtDate(r.created_at))+'</div></div>'+
+      '</div>'+
+      '<div class="field"><label>Message</label><div class="v">'+(r.message?esc(r.message):"—")+'</div></div>'+
+      '<div class="field"><label>Status</label><select class="statsel" id="drStatus" style="width:100%;padding:9px 11px">'+stOpts+'</select></div>'+
+      '<div class="field"><label>Admin note</label><textarea id="drNote" rows="4" placeholder="Internal notes…">'+esc(r.admin_note||"")+'</textarea>'+
+        '<button class="btn sm" id="drSaveNote" style="margin-top:8px">Save note</button></div>'+
+      '<div class="field"><label>Source / attribution</label>'+src+'</div>'+
+      '<div style="display:flex;justify-content:space-between;margin-top:18px">'+
+        '<button class="btn danger sm" id="drDelete">Delete order</button>'+
+      '</div>'+
+    '</div>';
+  $("#orderDrawer").innerHTML=html;
+  $("#orderOverlay").classList.add("open");
+
+  $("#drClose").onclick=closeDrawer;
+  $("#orderOverlay").onclick=function(e){ if(e.target===$("#orderOverlay")) closeDrawer(); };
+  $("#drStatus").onchange=function(){
+    var ns=$("#drStatus").value;
+    sb.from("fe_orders").update({status:ns}).eq("id",id).then(function(res){
+      if(res.error){ toast("Failed: "+res.error.message,"bad"); return; }
+      r.status=ns; toast("Status updated","ok"); paintOrders();
+    },function(){ toast("Network error","bad"); });
+  };
+  $("#drSaveNote").onclick=function(){
+    var note=$("#drNote").value;
+    var b=$("#drSaveNote"); b.disabled=true; b.textContent="Saving…";
+    sb.from("fe_orders").update({admin_note:note}).eq("id",id).then(function(res){
+      b.disabled=false; b.textContent="Save note";
+      if(res.error){ toast("Failed: "+res.error.message,"bad"); return; }
+      r.admin_note=note; toast("Note saved","ok");
+    },function(){ b.disabled=false; b.textContent="Save note"; toast("Network error","bad"); });
+  };
+  $("#drDelete").onclick=function(){
+    if(!confirm("Delete this order permanently? This cannot be undone.")) return;
+    sb.from("fe_orders").delete().eq("id",id).then(function(res){
+      if(res.error){ toast("Failed: "+res.error.message,"bad"); return; }
+      ORD.rows=ORD.rows.filter(function(x){return x.id!==id;});
+      toast("Order deleted","ok"); closeDrawer(); paintOrders();
+    },function(){ toast("Network error","bad"); });
+  };
+}
+function closeDrawer(){ $("#orderOverlay").classList.remove("open"); }
+
+/* ============================================================
+   ANALYTICS
+   ============================================================ */
+var AN = { days:30, loading:false, err:null, daily:null, sources:null, leads:null, chart:null };
+
+function rangeISO(days){
+  var to=new Date();
+  var from=new Date(); from.setDate(from.getDate()-(days-1)); from.setHours(0,0,0,0);
+  return { from:from.toISOString(), to:to.toISOString() };
+}
+function renderAnalytics(){ paintAnalytics(); if(AN.daily===null && !AN.loading) fetchAnalytics(); }
+
+function fetchAnalytics(){
+  AN.loading=true; AN.err=null; paintAnalytics();
+  var r=rangeISO(AN.days);
+  Promise.all([
+    sb.rpc("fe_daily_stats",{p_from:r.from,p_to:r.to}),
+    sb.rpc("fe_source_stats",{p_from:r.from,p_to:r.to}),
+    sb.from("fe_orders").select("name,phone,service,status,created_at").order("created_at",{ascending:false}).limit(10)
+  ]).then(function(res){
+    AN.loading=false;
+    var e=res[0].error||res[1].error||res[2].error;
+    if(e){ AN.err=e.message; paintAnalytics(); return; }
+    AN.daily=res[0].data||[]; AN.sources=res[1].data||[]; AN.leads=res[2].data||[];
+    paintAnalytics();
+  }, function(err){
+    AN.loading=false; AN.err=(err&&err.message)||"Failed to load analytics"; paintAnalytics();
+  });
+}
+
+function paintAnalytics(){
+  var root=$("#tab-analytics");
+  var rangeBtns='<div class="range-btns">'+
+    [7,30,90].map(function(d){return '<button data-d="'+d+'"'+(AN.days===d?' class="active"':'')+'>'+d+'d</button>';}).join("")+'</div>';
+  var head='<div class="page-head"><div><h1>Analytics</h1><div class="sub">Last '+AN.days+' days</div></div>'+rangeBtns+'</div>';
+
+  if(AN.loading && AN.daily===null){
+    root.innerHTML=head+'<div class="card pad"><div class="spinner"></div></div>';
+    bindRange(); return;
+  }
+  if(AN.err){
+    root.innerHTML=head+'<div class="card pad empty"><span class="em">⚠️</span>Could not load analytics.<br><small>'+esc(AN.err)+'</small><br><br><button class="btn" id="anRetry">Retry</button></div>';
+    bindRange(); $("#anRetry").onclick=fetchAnalytics; return;
+  }
+  var daily=AN.daily||[];
+  var pv=0,uv=0,ld=0;
+  daily.forEach(function(d){ pv+=+(d.pageviews||0); uv+=+(d.visitors||0); ld+=+(d.leads||0); });
+  var conv=uv>0?((ld/uv)*100):0;
+  var kpis='<div class="kpis">'+
+    kpi("👀","Total visits",pv.toLocaleString())+
+    kpi("🧑","Unique visitors",uv.toLocaleString())+
+    kpi("📨","Leads",ld.toLocaleString(),true)+
+    kpi("🎯","Conversion rate",conv.toFixed(1)+"%")+
+  '</div>';
+
+  var chartCard='<div class="card pad" style="margin-bottom:18px"><h3 style="font-size:16px;margin-bottom:14px">Traffic & leads</h3>'+
+    '<div style="position:relative;height:300px"><canvas id="anChart"></canvas></div></div>';
+
+  var srcRows=(AN.sources||[]).map(function(s){
+    var c=(+s.pageviews>0)?((+s.leads/+s.pageviews)*100):0;
+    return '<tr style="cursor:default"><td><b>'+esc(s.source||"(direct)")+'</b></td><td>'+(+s.pageviews).toLocaleString()+'</td>'+
+      '<td>'+(+s.leads).toLocaleString()+'</td><td>'+c.toFixed(1)+'%</td></tr>';
+  }).join("");
+  var srcCard='<div class="card pad" style="margin-bottom:18px"><h3 style="font-size:16px;margin-bottom:12px">Traffic sources</h3>'+
+    (srcRows?'<div class="tbl-wrap" style="box-shadow:none;border:1px solid var(--line)"><table><thead><tr><th>Source</th><th>Views</th><th>Leads</th><th>Conv%</th></tr></thead><tbody>'+srcRows+'</tbody></table></div>':'<div class="empty">No source data yet.</div>')+'</div>';
+
+  var leadRows=(AN.leads||[]).map(function(l){
+    var st=l.status||"new";
+    return '<tr style="cursor:default"><td style="white-space:nowrap;color:var(--grey)">'+esc(fmtDate(l.created_at))+'</td>'+
+      '<td><b>'+esc(l.name||"—")+'</b></td><td>'+esc(l.phone||"—")+'</td><td>'+esc(l.service||"—")+'</td>'+
+      '<td><span class="badge st-'+st+'">'+STATUS_LABEL[st]+'</span></td></tr>';
+  }).join("");
+  var leadCard='<div class="card pad"><h3 style="font-size:16px;margin-bottom:12px">Recent leads</h3>'+
+    (leadRows?'<div class="tbl-wrap" style="box-shadow:none;border:1px solid var(--line)"><table><thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Service</th><th>Status</th></tr></thead><tbody>'+leadRows+'</tbody></table></div>':'<div class="empty">No leads yet.</div>')+'</div>';
+
+  root.innerHTML=head+kpis+chartCard+srcCard+leadCard;
+  bindRange();
+  drawChart(daily);
+}
+function kpi(ic,lab,val,accent){
+  return '<div class="kpi'+(accent?" accent":"")+'"><div class="lab">'+ic+' '+lab+'</div><div class="val">'+val+'</div></div>';
+}
+function bindRange(){
+  $$("#tab-analytics .range-btns button").forEach(function(b){
+    b.onclick=function(){ AN.days=+b.getAttribute("data-d"); AN.daily=null; fetchAnalytics(); };
+  });
+}
+function drawChart(daily){
+  var cv=$("#anChart"); if(!cv||!window.Chart) return;
+  if(AN.chart){ AN.chart.destroy(); AN.chart=null; }
+  var labels=daily.map(function(d){return fmtDay(d.day);});
+  AN.chart=new Chart(cv.getContext("2d"),{
+    type:"line",
+    data:{ labels:labels, datasets:[
+      { label:"Pageviews", data:daily.map(function(d){return +d.pageviews||0;}),
+        borderColor:"#2563C8", backgroundColor:"rgba(37,99,200,.12)", fill:true, tension:.3, pointRadius:2, borderWidth:2 },
+      { label:"Leads", data:daily.map(function(d){return +d.leads||0;}),
+        borderColor:"#F59E2D", backgroundColor:"rgba(245,158,45,.12)", fill:true, tension:.3, pointRadius:2, borderWidth:2 }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:"top", labels:{ usePointStyle:true, font:{family:"Inter"} } } },
+      scales:{ y:{ beginAtZero:true, grid:{color:"#Eef4fb"} }, x:{ grid:{display:false} } }
+    }
+  });
+}
+
+/* ============================================================
+   CONTENT (CMS) — load / save
+   ============================================================ */
+var CONTENT = { working:null, loading:false, err:null, dirty:false };
+
+function loadContent(){
+  CONTENT.loading=true; CONTENT.err=null;
+  return sb.from("fe_content").select("data").eq("id","main").maybeSingle().then(function(res){
+    CONTENT.loading=false;
+    if(res.error){ CONTENT.err=res.error.message; }
+    else { var data=res.data&&res.data.data; CONTENT.working=deepMerge(DEFAULT, data||{}); CONTENT.dirty=false; }
+    if(!$("#tab-editor").classList.contains("hidden")) renderEditor();
+    if(!$("#tab-settings").classList.contains("hidden")) renderSettings();
+  }, function(err){
+    CONTENT.loading=false; CONTENT.err=(err&&err.message)||"Failed to load content";
+    if(!$("#tab-editor").classList.contains("hidden")) renderEditor();
+    if(!$("#tab-settings").classList.contains("hidden")) renderSettings();
+  });
+}
+function markDirty(){ CONTENT.dirty=true; var b=$("#saveBar"); if(b) b.querySelector(".info").innerHTML='<b>Unsaved changes</b> — remember to save.'; }
+
+function saveContent(btn){
+  if(!CONTENT.working){ return; }
+  var full=clone(CONTENT.working);
+  if(btn){ btn.disabled=true; btn.textContent="Saving…"; }
+  sb.from("fe_content").upsert({ id:"main", data:full, updated_at:new Date().toISOString() }).then(function(res){
+    if(btn){ btn.disabled=false; btn.textContent="Save changes"; }
+    if(res.error){ toast("Save failed: "+res.error.message,"bad"); return; }
+    CONTENT.dirty=false;
+    var info=$("#saveBar"); if(info) info.querySelector(".info").innerHTML='All changes saved. <b>Live on the site now.</b>';
+    toast("Saved — changes are live on the site","ok");
+  }, function(err){
+    if(btn){ btn.disabled=false; btn.textContent="Save changes"; }
+    toast("Network error while saving","bad");
+  });
+}
+
+/* ---- generic field builders (operate on a target object) ---- */
+function fldText(obj,key,label,opts){
+  opts=opts||{};
+  var id="f_"+Math.random().toString(36).slice(2);
+  var val=obj[key]==null?"":obj[key];
+  var hint=opts.html?'<span class="hint">HTML allowed</span>':'';
+  var input = opts.area
+    ? '<textarea id="'+id+'" rows="'+(opts.rows||3)+'">'+esc(val)+'</textarea>'
+    : '<input type="text" id="'+id+'" value="'+esc(val)+'">';
+  var wrap=ce("div",{class:"fld"+(opts.full?" full":"")},'<label>'+esc(label)+hint+'</label>'+input);
+  var node=wrap.querySelector("#"+id);
+  node.addEventListener("input",function(){ obj[key]=node.value; markDirty(); });
+  return wrap;
+}
+function fldToggle(obj,key,label){
+  var id="t_"+Math.random().toString(36).slice(2);
+  var on=obj[key]!==false;
+  var wrap=ce("div",{class:"toggle-wrap"},
+    '<span class="tog-label">'+esc(label)+'</span>'+
+    '<label class="switch"><input type="checkbox" id="'+id+'"'+(on?" checked":"")+'><span class="sl"></span></label>');
+  wrap.querySelector("#"+id).addEventListener("change",function(e){ obj[key]=e.target.checked; markDirty(); });
+  return wrap;
+}
+function fldImage(obj,key,label){
+  var id="img_"+Math.random().toString(36).slice(2);
+  var val=obj[key]||"";
+  var wrap=ce("div",{class:"fld full"},'<label>'+esc(label)+'</label>'+
+    '<div class="imgfield">'+
+      '<div class="prev" id="'+id+'_p">'+(val?'':'no image')+'</div>'+
+      '<div class="grow">'+
+        '<input type="text" id="'+id+'_u" value="'+esc(val)+'" placeholder="https://… or upload">'+
+        '<div style="margin-top:7px;display:flex;gap:8px;align-items:center">'+
+          '<button class="btn ghost sm" type="button" id="'+id+'_b">⬆ Upload</button>'+
+          '<input type="file" id="'+id+'_f" accept="image/*,video/mp4">'+
+          '<span id="'+id+'_s" style="font-size:12px;color:var(--grey)"></span>'+
+        '</div>'+
+      '</div>'+
+    '</div>');
+  var prev=wrap.querySelector("#"+id+"_p");
+  var urlIn=wrap.querySelector("#"+id+"_u");
+  function setPrev(u){
+    if(u && /\.(mp4|webm|mov)(\?|$)/i.test(u)){ prev.innerHTML=''; prev.style.backgroundImage=''; prev.textContent='video'; }
+    else if(u){ prev.textContent=''; prev.style.backgroundImage="url('"+u.replace(/'/g,"%27")+"')"; }
+    else { prev.style.backgroundImage=''; prev.textContent='no image'; }
+  }
+  setPrev(val);
+  urlIn.addEventListener("input",function(){ obj[key]=urlIn.value; setPrev(urlIn.value); markDirty(); });
+  wrap.querySelector("#"+id+"_b").addEventListener("click",function(){ wrap.querySelector("#"+id+"_f").click(); });
+  wrap.querySelector("#"+id+"_f").addEventListener("change",function(e){
+    var file=e.target.files&&e.target.files[0]; if(!file) return;
+    var statusEl=wrap.querySelector("#"+id+"_s"); statusEl.textContent="Uploading…";
+    var path="uploads/"+Date.now()+"_"+file.name.replace(/[^\w.\-]/g,"_");
+    sb.storage.from("fe-media").upload(path,file,{upsert:true}).then(function(res){
+      if(res.error){ statusEl.textContent="Upload failed"; toast(res.error.message,"bad"); return; }
+      var url=sb.storage.from("fe-media").getPublicUrl(path).data.publicUrl;
+      urlIn.value=url; obj[key]=url; setPrev(url); markDirty(); statusEl.textContent="Uploaded ✓";
+      toast("Image uploaded","ok");
+    },function(){ statusEl.textContent="Upload failed"; toast("Upload network error","bad"); });
+  });
+  return wrap;
+}
+
+/* ---- generic array list editor ----
+   arr: the array; render(item,idx)->[field nodes]; make(): new blank item */
+function listEditor(arr, title, makeItem, renderItem, addLabel){
+  var container=ce("div",{});
+  var head=ce("div",{class:"subhead"}, esc(title)+'<button class="btn ghost xs" type="button">+ '+(addLabel||"Add")+'</button>');
+  container.appendChild(head);
+  var listWrap=ce("div",{});
+  container.appendChild(listWrap);
+  function repaint(){
+    listWrap.innerHTML="";
+    arr.forEach(function(item,idx){
+      var card=ce("div",{class:"list-item"});
+      var actions='<div class="li-actions">'+
+        '<button class="iconbtn" data-act="up" title="Move up">↑</button>'+
+        '<button class="iconbtn" data-act="down" title="Move down">↓</button>'+
+        '<button class="iconbtn del" data-act="del" title="Remove">✕</button></div>';
+      card.appendChild(ce("div",{class:"li-head"},'<span class="n">#'+(idx+1)+'</span>'+actions));
+      var fieldsWrap=ce("div",{class:"ed-grid"});
+      renderItem(item,idx).forEach(function(f){ fieldsWrap.appendChild(f); });
+      card.appendChild(fieldsWrap);
+      card.querySelectorAll("[data-act]").forEach(function(b){
+        b.onclick=function(){
+          var act=b.getAttribute("data-act");
+          if(act==="del"){ if(!confirm("Remove this item?"))return; arr.splice(idx,1); }
+          else if(act==="up"&&idx>0){ var t=arr[idx-1];arr[idx-1]=arr[idx];arr[idx]=t; }
+          else if(act==="down"&&idx<arr.length-1){ var t2=arr[idx+1];arr[idx+1]=arr[idx];arr[idx]=t2; }
+          else return;
+          markDirty(); repaint();
+        };
+      });
+      listWrap.appendChild(card);
+    });
+    if(!arr.length) listWrap.appendChild(ce("div",{class:"empty",style:"padding:18px"},"No items yet."));
+  }
+  head.querySelector("button").onclick=function(){ arr.push(makeItem()); markDirty(); repaint(); };
+  repaint();
+  return container;
+}
+/* simple string-array editor */
+function stringListEditor(arr, title, placeholder, addLabel){
+  return listEditor(arr, title,
+    function(){ return ""; },
+    function(item,idx){
+      var f=ce("div",{class:"fld full"});
+      var inp=ce("input",{type:"text",value:""}); inp.value=arr[idx];
+      inp.placeholder=placeholder||"";
+      inp.addEventListener("input",function(){ arr[idx]=inp.value; markDirty(); });
+      f.appendChild(inp); return [f];
+    }, addLabel||"Add");
+}
+
+/* ============================================================
+   LANDING EDITOR
+   ============================================================ */
+var EDITOR_OPEN={}; // remember which sections are expanded
+var SECTION_META=[
+  {key:"util",  em:"📍", name:"Top bar",      vis:true},
+  {key:"header",em:"🧭", name:"Header / nav", vis:true},
+  {key:"hero",  em:"🎬", name:"Hero",          vis:true},
+  {key:"strip", em:"🛡️", name:"Trust strip",  vis:true},
+  {key:"about", em:"ℹ️", name:"About",         vis:true},
+  {key:"services",em:"🧹",name:"Services",     vis:true},
+  {key:"how",   em:"🔢", name:"How it works",  vis:true},
+  {key:"band",  em:"📣", name:"CTA band",      vis:true},
+  {key:"pricing",em:"💲",name:"Pricing",       vis:true},
+  {key:"reviews",em:"⭐",name:"Reviews",       vis:true},
+  {key:"faq",   em:"❓", name:"FAQ",            vis:true},
+  {key:"contact",em:"✉️",name:"Contact",       vis:true},
+  {key:"footer",em:"🦶", name:"Footer",        vis:true}
+];
+
+function renderEditor(){
+  var root=$("#tab-editor");
+  if(CONTENT.loading && !CONTENT.working){
+    root.innerHTML='<div class="page-head"><h1>Landing editor</h1></div><div class="card pad"><div class="spinner"></div></div>'; return;
+  }
+  if(CONTENT.err && !CONTENT.working){
+    root.innerHTML='<div class="page-head"><h1>Landing editor</h1></div>'+
+      '<div class="card pad empty"><span class="em">⚠️</span>Could not load content.<br><small>'+esc(CONTENT.err)+'</small><br><br><button class="btn" id="edRetry">Retry</button></div>';
+    $("#edRetry").onclick=loadContent; return;
+  }
+  var c=CONTENT.working;
+  root.innerHTML='<div class="page-head"><div><h1>Landing editor</h1><div class="sub">Edits go live immediately after saving.</div></div>'+
+    '<a class="btn ghost sm" href="'+VIEW_SITE+'" target="_blank" rel="noopener">View site ↗</a></div>'+
+    '<div id="edSections"></div>'+
+    '<div class="savebar" id="saveBar"><div class="info">'+(CONTENT.dirty?'<b>Unsaved changes</b> — remember to save.':'Make edits, then save. Changes are live instantly.')+'</div>'+
+    '<button class="btn" id="edSave">Save changes</button></div>';
+  var holder=$("#edSections");
+  SECTION_META.forEach(function(m){ holder.appendChild(buildSection(m,c)); });
+  $("#edSave").onclick=function(){ saveContent(this); };
+}
+
+function buildSection(m,c){
+  var sec=ce("div",{class:"card ed-sec"+(EDITOR_OPEN[m.key]?" open":"")});
+  var visToggle="";
+  var head=ce("div",{class:"head"});
+  head.appendChild(ce("div",{class:"ttl"},'<span class="em">'+m.em+'</span>'+esc(m.name)+' <span class="arrow">▶</span>'));
+  var rightWrap=ce("div",{class:"toggle-wrap"});
+  if(m.vis && c.visibility){
+    var t=fldToggle(c.visibility,m.key,"Visible");
+    rightWrap.appendChild(t);
+  }
+  head.appendChild(rightWrap);
+  sec.appendChild(head);
+  var body=ce("div",{class:"body"});
+  sec.appendChild(body);
+
+  head.addEventListener("click",function(e){
+    if(e.target.closest(".switch")) return; // don't toggle section when flipping visibility
+    sec.classList.toggle("open");
+    EDITOR_OPEN[m.key]=sec.classList.contains("open");
+    if(sec.classList.contains("open") && !body._built){ buildSectionBody(m.key,c,body); body._built=true; }
+  });
+  if(EDITOR_OPEN[m.key]){ buildSectionBody(m.key,c,body); body._built=true; }
+
+  // reset button
+  var resetWrap=ce("div",{style:"margin-top:16px;text-align:right"});
+  var rb=ce("button",{class:"btn ghost xs",type:"button"},"↺ Reset this section to default");
+  rb.onclick=function(){
+    if(!confirm("Reset \""+m.name+"\" to default content? Your edits to this section will be lost.")) return;
+    c[m.key]=clone(DEFAULT[m.key]);
+    if(m.vis && c.visibility && DEFAULT.visibility) c.visibility[m.key]=DEFAULT.visibility[m.key];
+    markDirty();
+    body.innerHTML=""; buildSectionBody(m.key,c,body); body._built=true;
+    sec.classList.add("open"); EDITOR_OPEN[m.key]=true;
+    toast("Section reset (not saved yet)","ok");
+  };
+  resetWrap.appendChild(rb);
+  body.appendChild(resetWrap);
+  return sec;
+}
+
+function grid(){ return ce("div",{class:"ed-grid"}); }
+function add(parent,node){ parent.appendChild(node); return node; }
+
+function buildSectionBody(key,c,body){
+  // insert content before the reset button (which is last child)
+  var resetWrap=body.lastChild && body.lastChild.querySelector && body.lastChild.querySelector("button") ? body.lastChild : null;
+  var frag=document.createDocumentFragment();
+  var s=c[key];
+
+  if(key==="util"){
+    add(frag, fldText(s,"left","Left text (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+  }
+  else if(key==="header"){
+    var g=grid();
+    g.appendChild(fldText(s,"hphoneSub","Phone sub-text"));
+    g.appendChild(fldText(s,"ctaText","CTA button text"));
+    frag.appendChild(g);
+    frag.appendChild(listEditor(s.nav,"Nav links",
+      function(){return {label:"",href:"#"};},
+      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
+  }
+  else if(key==="hero"){
+    add(frag, fldText(s,"pill","Pill badge",{full:true}));
+    add(frag, fldText(s,"titleHtml","Title (HTML allowed)",{full:true,html:true,area:true,rows:3}));
+    add(frag, fldText(s,"lead","Lead paragraph",{full:true,area:true}));
+    var hg=grid();
+    hg.appendChild(fldText(s,"ctaPrimary","Primary CTA"));
+    hg.appendChild(fldText(s,"ctaSecondary","Secondary CTA"));
+    hg.appendChild(fldText(s,"ratingValue","Rating value"));
+    hg.appendChild(fldText(s,"ratingNote","Rating note"));
+    hg.appendChild(fldText(s,"chip1","Video chip 1"));
+    hg.appendChild(fldText(s,"chip2","Video chip 2"));
+    frag.appendChild(hg);
+    add(frag, fldImage(s,"video","Hero video (mp4 URL)"));
+    add(frag, fldImage(s,"poster","Hero poster (image URL)"));
+  }
+  else if(key==="strip"){
+    frag.appendChild(listEditor(s.items,"Strip items",
+      function(){return {icon:"✨",text:""};},
+      function(it){ return [fldText(it,"icon","Icon/emoji"), fldText(it,"text","Text",{full:true})]; }, "Add item"));
+  }
+  else if(key==="about"){
+    var ag=grid();
+    ag.appendChild(fldText(s,"kick","Kicker"));
+    ag.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(ag);
+    add(frag, fldText(s,"text","Paragraph",{full:true,area:true}));
+    var ag2=grid();
+    ag2.appendChild(fldText(s,"cta","CTA label"));
+    ag2.appendChild(fldText(s,"ctaHref","CTA href"));
+    frag.appendChild(ag2);
+    add(frag, fldImage(s,"photo","About photo (empty = built-in mascot)"));
+    var sub=ce("div",{class:"subhead"},"Floating badges"); frag.appendChild(sub);
+    var fg=grid();
+    fg.appendChild(fldText(s.f1,"icon","Badge 1 icon"));
+    fg.appendChild(fldText(s.f1,"text","Badge 1 text"));
+    fg.appendChild(fldText(s.f2,"icon","Badge 2 icon"));
+    fg.appendChild(fldText(s.f2,"text","Badge 2 text"));
+    frag.appendChild(fg);
+    frag.appendChild(stringListEditor(s.checks,"Checklist","Check item","Add check"));
+    frag.appendChild(listEditor(s.stats,"Stats (count = animated number; leave empty & use text for e.g. 4.9★)",
+      function(){return {count:"",text:"",label:""};},
+      function(it){ return [fldText(it,"count","Count (number)"), fldText(it,"text","Text (if no count)"), fldText(it,"label","Label",{full:true})]; }, "Add stat"));
+  }
+  else if(key==="services"){
+    var sg=grid();
+    sg.appendChild(fldText(s,"kick","Kicker"));
+    sg.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(sg);
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.items,"Service cards",
+      function(){return {ico:"🧹",title:"",text:"",from:""};},
+      function(it){ return [
+        fldText(it,"ico","Icon/emoji"),
+        fldText(it,"title","Title"),
+        fldText(it,"text","Text",{full:true,area:true,rows:2}),
+        fldText(it,"from","Price/from (HTML allowed)",{full:true,html:true})
+      ]; }, "Add service"));
+  }
+  else if(key==="how"){
+    var hg2=grid();
+    hg2.appendChild(fldText(s,"kick","Kicker"));
+    hg2.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(hg2);
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.steps,"Steps",
+      function(){return {emoji:"✨",n:"",title:"",text:""};},
+      function(it){ return [
+        fldText(it,"emoji","Emoji"), fldText(it,"n","Number label"),
+        fldText(it,"title","Title"), fldText(it,"text","Text",{full:true,area:true,rows:2})
+      ]; }, "Add step"));
+  }
+  else if(key==="band"){
+    add(frag, fldText(s,"title","Title",{full:true}));
+    add(frag, fldText(s,"text","Text",{full:true,area:true,rows:2}));
+    add(frag, fldText(s,"cta","CTA label"));
+  }
+  else if(key==="pricing"){
+    var pg=grid();
+    pg.appendChild(fldText(s,"kick","Kicker"));
+    pg.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(pg);
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.plans,"Plans",
+      function(){return {name:"",price:"",per:"",desc:"",features:[],cta:"",popular:false,tag:""};},
+      function(it){
+        var nodes=[
+          fldText(it,"name","Name"), fldText(it,"price","Price"),
+          fldText(it,"per","Per (e.g. / visit)"), fldText(it,"desc","Description",{full:true}),
+          fldToggleField(it,"popular","Popular (highlighted)"),
+          fldText(it,"tag","Tag (e.g. Most popular)"),
+          fldText(it,"cta","CTA label",{full:true})
+        ];
+        var featWrap=ce("div",{class:"fld full"});
+        featWrap.appendChild(stringListEditor(it.features,"Features","Feature line","Add feature"));
+        nodes.push(featWrap);
+        return nodes;
+      }, "Add plan"));
+    add(frag, fldText(s,"miniTitle","Mini-prices title",{full:true}));
+    frag.appendChild(listEditor(s.chips,"Per-item chips",
+      function(){return {label:"",price:""};},
+      function(it){ return [fldText(it,"label","Label"), fldText(it,"price","Price")]; }, "Add chip"));
+    add(frag, fldText(s,"flatnote","Flat note (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+  }
+  else if(key==="reviews"){
+    var rg=grid();
+    rg.appendChild(fldText(s,"kick","Kicker"));
+    rg.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(rg);
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.items,"Reviews",
+      function(){return {text:"",name:"",meta:"",avatar:""};},
+      function(it){ return [
+        fldText(it,"text","Review text",{full:true,area:true,rows:3}),
+        fldText(it,"name","Name"), fldText(it,"meta","Meta (location · service)"),
+        fldText(it,"avatar","Avatar letter")
+      ]; }, "Add review"));
+    frag.appendChild(listEditor(s.plats,"Platform ratings",
+      function(){return {label:"",value:""};},
+      function(it){ return [fldText(it,"label","Platform"), fldText(it,"value","Value")]; }, "Add platform"));
+  }
+  else if(key==="faq"){
+    var fg2=grid();
+    fg2.appendChild(fldText(s,"kick","Kicker"));
+    fg2.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(fg2);
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.items,"Questions",
+      function(){return {q:"",a:""};},
+      function(it){ return [
+        fldText(it,"q","Question",{full:true}),
+        fldText(it,"a","Answer",{full:true,area:true,rows:3})
+      ]; }, "Add question"));
+  }
+  else if(key==="contact"){
+    var cg=grid();
+    cg.appendChild(fldText(s,"kick","Kicker"));
+    cg.appendChild(fldText(s,"title","Title"));
+    frag.appendChild(cg);
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    var cg2=grid();
+    cg2.appendChild(fldText(s,"formTitle","Form title"));
+    cg2.appendChild(fldText(s,"formBadge","Form badge"));
+    frag.appendChild(cg2);
+    add(frag, fldText(s,"okMsg","Success message",{full:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.ways,"Contact ways",
+      function(){return {icon:"📞",title:"",sub:"",href:"",blank:false};},
+      function(it){ return [
+        fldText(it,"icon","Icon"), fldText(it,"title","Title"),
+        fldText(it,"sub","Sub-text"), fldText(it,"href","Href"),
+        fldToggleField(it,"blank","Open in new tab")
+      ]; }, "Add way"));
+    frag.appendChild(stringListEditor(s.services,"Form service options","Service option","Add option"));
+  }
+  else if(key==="footer"){
+    add(frag, fldText(s,"desc","Description",{full:true,area:true,rows:3}));
+    var fg3=grid();
+    fg3.appendChild(fldText(s,"servicesTitle","Services column title"));
+    fg3.appendChild(fldText(s,"companyTitle","Company column title"));
+    frag.appendChild(fg3);
+    frag.appendChild(listEditor(s.serviceLinks,"Service links",
+      function(){return {label:"",href:"#"};},
+      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
+    frag.appendChild(listEditor(s.companyLinks,"Company links",
+      function(){return {label:"",href:"#"};},
+      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
+    var fg4=grid();
+    fg4.appendChild(fldText(s,"copy1","Copyright line 1"));
+    fg4.appendChild(fldText(s,"copy2","Copyright line 2"));
+    frag.appendChild(fg4);
+  }
+
+  if(resetWrap) body.insertBefore(frag, resetWrap);
+  else body.appendChild(frag);
+}
+
+/* toggle as a field (label above, switch below) for use inside grids */
+function fldToggleField(obj,key,label){
+  var id="tf_"+Math.random().toString(36).slice(2);
+  var on=obj[key]===true;
+  var wrap=ce("div",{class:"fld"},'<label>'+esc(label)+'</label>'+
+    '<label class="switch"><input type="checkbox" id="'+id+'"'+(on?" checked":"")+'><span class="sl"></span></label>');
+  wrap.querySelector("#"+id).addEventListener("change",function(e){ obj[key]=e.target.checked; markDirty(); });
+  return wrap;
+}
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+function renderSettings(){
+  var root=$("#tab-settings");
+  if(CONTENT.loading && !CONTENT.working){
+    root.innerHTML='<div class="page-head"><h1>Settings</h1></div><div class="card pad"><div class="spinner"></div></div>'; return;
+  }
+  if(CONTENT.err && !CONTENT.working){
+    root.innerHTML='<div class="page-head"><h1>Settings</h1></div>'+
+      '<div class="card pad empty"><span class="em">⚠️</span>Could not load settings.<br><small>'+esc(CONTENT.err)+'</small><br><br><button class="btn" id="setRetry">Retry</button></div>';
+    $("#setRetry").onclick=loadContent; return;
+  }
+  var s=CONTENT.working.settings;
+  root.innerHTML='<div class="page-head"><div><h1>Settings</h1><div class="sub">Brand & contact details — propagate across header, band, contact, footer & FAB.</div></div></div>'+
+    '<div class="card pad" id="setCard"></div>'+
+    '<div class="savebar" id="saveBar"><div class="info">'+(CONTENT.dirty?'<b>Unsaved changes</b> — remember to save.':'Edit settings, then save. Changes are live instantly.')+'</div>'+
+    '<button class="btn" id="setSave">Save changes</button></div>';
+  var card=$("#setCard");
+  var g=ce("div",{class:"set-grid"});
+  g.appendChild(fldText(s,"brandName","Brand name"));
+  g.appendChild(fldText(s,"brandSub","Brand sub-title"));
+  g.appendChild(fldText(s,"brandEmoji","Brand emoji"));
+  g.appendChild(fldText(s,"phone","Phone (display)"));
+  g.appendChild(fldText(s,"phoneHref","Phone href (e.g. +17205550134)"));
+  g.appendChild(fldText(s,"email","Email"));
+  g.appendChild(fldText(s,"instagram","Instagram handle"));
+  g.appendChild(fldText(s,"instagramUrl","Instagram URL"));
+  g.appendChild(fldText(s,"whatsappUrl","WhatsApp URL"));
+  g.appendChild(fldText(s,"areaLine","Area line",{full:true}));
+  card.appendChild(g);
+  var togWrap=ce("div",{style:"margin-top:16px"});
+  togWrap.appendChild(fldToggle(s,"fabVisible","Show floating call button (FAB)"));
+  card.appendChild(togWrap);
+  $("#setSave").onclick=function(){ saveContent(this); };
+}
+
+/* ============================================================
+   BOOT — check session
+   ============================================================ */
+sb.auth.getSession().then(function(res){
+  var session=res.data.session;
+  if(session) showApp(session);
+  else showLogin();
+}, function(){ showLogin(); });
+
+sb.auth.onAuthStateChange(function(evt,session){
+  if(evt==="SIGNED_OUT"){ showLogin(); }
+});
+
+window.addEventListener("beforeunload",function(e){
+  if(CONTENT.dirty){ e.preventDefault(); e.returnValue=""; }
+});
+</script>
+</body>
+</html>
