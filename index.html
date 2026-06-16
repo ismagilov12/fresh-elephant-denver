@@ -340,7 +340,66 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   .fab{width:52px;height:52px;font-size:21px;right:14px;bottom:14px}
 }
 </style>
+<style id="fe-edit-css">
+/* ===== inline visual editor chrome (only visible in edit mode) ===== */
+body.fe-editing [contenteditable="true"]{outline:1px dashed transparent;border-radius:4px;transition:outline-color .15s,background .15s;cursor:text}
+body.fe-editing [contenteditable="true"]:hover{outline-color:rgba(37,99,200,.45)}
+body.fe-editing [contenteditable="true"]:focus{outline:2px solid #2563C8;background:rgba(37,99,200,.06)}
+body.fe-editing .fe-block{position:relative}
+.fe-blockbar{position:absolute;top:8px;right:8px;z-index:40;display:none;gap:4px;background:#0B1D3D;border-radius:10px;padding:4px;box-shadow:0 6px 22px rgba(0,0,0,.28)}
+body.fe-editing .fe-block:hover>.fe-blockbar{display:flex}
+.fe-blockbar button{all:unset;cursor:pointer;width:26px;height:26px;line-height:26px;text-align:center;color:#fff;border-radius:6px;font-size:13px}
+.fe-blockbar button:hover{background:rgba(255,255,255,.18)}
+.fe-itembar{position:absolute;top:4px;right:4px;z-index:35;display:none;gap:2px;background:#2563C8;border-radius:8px;padding:2px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+body.fe-editing .it:hover>.fe-itembar,
+body.fe-editing .check:hover>.fe-itembar,
+body.fe-editing .svc:hover>.fe-itembar,
+body.fe-editing .stp:hover>.fe-itembar,
+body.fe-editing .plan:hover>.fe-itembar,
+body.fe-editing .pchip:hover>.fe-itembar,
+body.fe-editing .rev:hover>.fe-itembar,
+body.fe-editing .plats span:hover>.fe-itembar,
+body.fe-editing details:hover>.fe-itembar,
+body.fe-editing .cway:hover>.fe-itembar,
+body.fe-editing .stat:hover>.fe-itembar,
+body.fe-editing li:hover>.fe-itembar{display:flex}
+body.fe-editing .it,body.fe-editing .check,body.fe-editing .svc,body.fe-editing .stp,
+body.fe-editing .plan,body.fe-editing .pchip,body.fe-editing .rev,body.fe-editing .plats span,
+body.fe-editing details,body.fe-editing .cway,body.fe-editing .stat,body.fe-editing li{position:relative}
+.fe-itembar button{all:unset;cursor:pointer;width:20px;height:20px;line-height:20px;text-align:center;color:#fff;border-radius:5px;font-size:11px}
+.fe-itembar button:hover{background:rgba(255,255,255,.22)}
+.fe-add-item{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin:8px 6px 0;padding:6px 12px;border:1px dashed #2563C8;border-radius:20px;color:#2563C8;font-size:13px;font-weight:600;background:rgba(37,99,200,.06)}
+.fe-add-item:hover{background:rgba(37,99,200,.14)}
+.fe-media-wrap{position:relative}
+.fe-media-btn{all:unset;cursor:pointer;position:absolute;top:10px;left:10px;z-index:30;display:none;background:#0B1D3D;color:#fff;padding:7px 12px;border-radius:20px;font-size:13px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+body.fe-editing .fe-media-wrap:hover .fe-media-btn,
+body.fe-editing .hero-video:hover .fe-media-btn,
+body.fe-editing .about-art:hover .fe-media-btn{display:inline-block}
+.fe-addsec{display:none;justify-content:center;margin:0;position:relative;z-index:25}
+body.fe-editing .fe-addsec{display:flex;height:0;overflow:visible}
+.fe-addsec button{all:unset;cursor:pointer;transform:translateY(-50%);background:#fff;border:2px dashed #2563C8;color:#2563C8;padding:6px 16px;border-radius:24px;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.12);opacity:.35;transition:opacity .15s}
+.fe-addsec button:hover{opacity:1}
+.fe-toolbar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;display:flex;gap:6px;background:#0B1D3D;padding:8px 10px;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.4);align-items:center;font-family:system-ui,sans-serif}
+.fe-toolbar button{all:unset;cursor:pointer;color:#fff;padding:8px 12px;border-radius:10px;font-size:14px;font-weight:600;position:relative}
+.fe-toolbar button:hover{background:rgba(255,255,255,.16)}
+.fe-toolbar button.primary{background:#2563C8}
+.fe-toolbar button[disabled]{opacity:.35;cursor:default}
+.fe-toolbar button[disabled]:hover{background:transparent}
+.fe-dot{display:none;width:8px;height:8px;border-radius:50%;background:#F59E2D;position:absolute;top:4px;right:4px}
+.fe-toast{color:#fff;font-size:13px;max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:opacity .2s}
+.fe-toast.show{max-width:260px;opacity:1;padding-left:8px}
+.fe-picker-ov{position:fixed;inset:0;z-index:10000;background:rgba(11,29,61,.55);display:flex;align-items:center;justify-content:center}
+.fe-picker{background:#fff;border-radius:18px;padding:24px;max-width:440px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,.4);font-family:system-ui,sans-serif}
+.fe-picker h3{margin:0 0 14px;color:#0B1D3D}
+.fe-picker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fe-picker-grid button{all:unset;cursor:pointer;text-align:center;padding:14px 8px;border:1px solid #e3ebf5;border-radius:12px;color:#0B1D3D;font-weight:600;font-size:13px}
+.fe-picker-grid button:hover{background:#F5F9FE;border-color:#2563C8}
+.fe-picker-cancel{all:unset;cursor:pointer;display:block;margin:16px auto 0;color:#8a97a8;font-size:13px}
+body.fe-mobile #fe-body,body.fe-mobile header .nav,body.fe-mobile .util .wrap{max-width:420px!important}
+body.fe-mobile #fe-body{margin:0 auto;box-shadow:0 0 0 9999px rgba(11,29,61,.12)}
+</style>
 </head>
+
 <body>
 
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -374,334 +433,26 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
 </g>
 </defs></svg>
 
-<div class="util">
-  <div class="wrap">
-    <div>📍 <b>Denver metro</b> · Mon–Sun 8am–8pm</div>
-    <div>✉️ <a href="mailto:hello@freshelephant.com">hello@freshelephant.com</a> · 📸 <a href="https://www.instagram.com/freshelephant.denver" target="_blank">@freshelephant.denver</a></div>
-  </div>
-</div>
+<div class="util"><div class="wrap"></div></div>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top">
-      <span class="mark">🐘</span>
-      <span><b>Fresh Elephant</b><small>CLEANING SERVICES</small></span>
-    </a>
-    <nav class="menu" id="mnav">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="tel:+17205550134" class="m-only" style="display:none">📞 (720) 555-0134</a>
-    </nav>
-    <a class="hphone" href="tel:+17205550134"><b>(720) 555-0134</b><small>Free quote in 30 min</small></a>
-    <a class="btn" href="#contact">Get a quote</a>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
-  </div>
-</header>
+<header><div class="wrap nav"></div></header>
 
-<div class="hero" id="top">
-  <div class="bub" style="width:26px;height:26px;left:8%;bottom:18%;animation-delay:0s"></div>
-  <div class="bub" style="width:14px;height:14px;left:16%;bottom:10%;animation-delay:2s"></div>
-  <div class="bub" style="width:20px;height:20px;left:46%;bottom:14%;animation-delay:1s"></div>
-  <div class="bub" style="width:12px;height:12px;left:60%;bottom:8%;animation-delay:3.4s"></div>
-  <div class="bub" style="width:30px;height:30px;left:78%;bottom:16%;animation-delay:1.8s"></div>
+<div id="fe-body"></div>
 
-  <div class="wrap">
-    <div class="hero-in">
-      <div class="pill">⭐ Trusted by 1,200+ Denver homes</div>
-      <h1>Big clean energy for your <span>home<svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 9 Q 60 1 118 8" fill="none" stroke="#F59E2D" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
-      <p class="lead">House cleaning, deep cleaning and upholstery care with flat honest prices. We never forget a spot — and the quote never changes mid-job.</p>
-      <div class="cta">
-        <a class="btn" href="#contact">Get my free quote</a>
-        <a class="btn ghost" href="#pricing">See flat prices</a>
-      </div>
-      <div class="rate">
-        <span class="stars">★★★★★</span>
-        <b>4.9 / 5</b>
-        <span>· 120+ Google reviews · Licensed & insured</span>
-      </div>
-    </div>
-    <div class="hero-video">
-      <video src="hero-video.mp4" poster="hero-poster.jpg" autoplay muted loop playsinline></video>
-      <div class="vchip vc1">🫧 We never forget a spot</div>
-      <div class="vchip vc2">⚡ Quote in 30 min</div>
-    </div>
-  </div>
-
-  <!-- foam cloud edge -->
-  <div class="foam"><svg viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#10264E"><use href="#foamshape"/></svg></div>
-</div>
-
-<div class="strip pb-foam" style="position:relative;overflow:hidden">
-  <div class="wrap">
-    <div class="it rv"><span>🛡️</span>All cleaners are bonded & insured</div>
-    <div class="it rv" style="transition-delay:.1s"><span>📋</span>Trained with our 54-point checklists</div>
-    <div class="it rv" style="transition-delay:.2s"><span>🌿</span>We bring & use green, pet-safe products</div>
-  </div>
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff"><use href="#waveshape"/></svg>
-</div>
-
-<section id="about" class="pb-foam">
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#foamshape"/></svg>
-  <div class="wrap">
-    <div class="about-art rv">
-      <div class="blob"></div>
-      <div class="photo" role="img" aria-label="Fresh Elephant mascot ready to clean"></div>
-      <div class="float f1"><span>💲</span>Flat price lock — no surprises</div>
-      <div class="float f2"><span>⚡</span>Quote in 30 minutes</div>
-    </div>
-    <div class="rv" style="transition-delay:.15s">
-      <div class="kick">About us</div>
-      <h2>Our goal is to make life easy</h2>
-      <p style="color:var(--grey);font-size:16.5px">Fresh Elephant is a Denver-grown cleaning company with one simple idea: cleaning should be the easiest thing on your to-do list. One crew, one flat price, one spotless result.</p>
-      <div class="checks">
-        <div class="check">Same trusted crew every visit — they learn your home</div>
-        <div class="check">Dirt level never changes the price you were quoted</div>
-        <div class="check">48-hour free re-clean guarantee, in writing</div>
-      </div>
-      <a class="btn blue" href="#services">Explore services</a>
-    </div>
-  </div>
-  <div class="wrap stats">
-    <div class="stat rv"><b data-count="1200">0</b><span>homes cleaned</span></div>
-    <div class="stat rv" style="transition-delay:.08s"><b data-count="500">0</b><span>couches revived</span></div>
-    <div class="stat rv" style="transition-delay:.16s"><b>4.9★</b><span>average rating</span></div>
-    <div class="stat rv" style="transition-delay:.24s"><b data-count="98">0</b><span>% clients return</span></div>
-  </div>
-</section>
-
-<section id="services" class="pb-foam">
-  <svg class="sided" style="left:-34px;top:110px" width="150" height="170" viewBox="0 0 140 160" fill="#2563C8"><use href="#sidebub"/></svg>
-  <svg class="sided" style="right:-30px;bottom:190px;transform:scaleX(-1)" width="120" height="140" viewBox="0 0 140 160" fill="#2563C8"><use href="#sidebub"/></svg>
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff"><use href="#waveshape"/></svg>
-  <div class="wrap t-center">
-    <div class="kick">Our services</div>
-    <h2>United way to best services</h2>
-    <p class="sub">Six ways we make Denver homes and businesses spotless — all with flat, upfront pricing.</p>
-    <div class="sgrid" style="text-align:left">
-      <div class="svc rv"><div class="ico">🏠</div><h3>House Cleaning</h3><p>Weekly, bi-weekly or monthly. Kitchens, baths, floors, dust — handled.</p><div class="from">from $139</div></div>
-      <div class="svc rv" style="transition-delay:.08s"><div class="ico">🫧</div><h3>Deep Cleaning</h3><p>Baseboards, behind appliances, inside cabinets — the works.</p><div class="from">from $249</div></div>
-      <div class="svc rv" style="transition-delay:.16s"><div class="ico">📦</div><h3>Move-In / Move-Out</h3><p>Deposit-back clean with a 54-point landlord checklist.</p><div class="from">from $299</div></div>
-      <div class="svc rv"><div class="ico">🛋️</div><h3>Upholstery & Carpet</h3><p>Hot-water extraction for sofas, mattresses, rugs and carpets.</p><div class="from"><s>$74</s>from $59</div></div>
-      <div class="svc rv" style="transition-delay:.08s"><div class="ico">🏢</div><h3>Office Cleaning</h3><p>Recurring commercial cleaning that never misses a Monday.</p><div class="from">from $0.20/sq ft</div></div>
-      <div class="svc rv" style="transition-delay:.16s"><div class="ico">🔑</div><h3>Airbnb Turnover</h3><p>Guest-ready resets with photo report and restock checklist.</p><div class="from">from $119</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="how" class="pb-foam">
-  <svg class="foamb" viewBox="0 0 1560 130" preserveAspectRatio="none" fill="#2563C8"><use href="#scallop"/></svg>
-  <div class="wrap t-center">
-    <div class="kick">How it works</div>
-    <h2>Spotless in three easy steps</h2>
-    <p class="sub">From first text to fresh home — usually within the same week.</p>
-    <div class="steps">
-      <div class="stp rv"><div class="n">📲<i>1</i></div><h3>Book online</h3><p>Send a photo or the form — flat quote in 30 minutes, same-week slots.</p></div>
-      <div class="stp rv" style="transition-delay:.12s"><div class="n">🧽<i>2</i></div><h3>We clean</h3><p>Bonded, trained crew with pro equipment and green products.</p></div>
-      <div class="stp rv" style="transition-delay:.24s"><div class="n">🛋️<i>3</i></div><h3>You relax</h3><p>Walk through the result. Anything off — free re-clean within 48h.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="band pb-foam" style="position:relative">
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#waveshape"/></svg>
-  <div class="wrap">
-    <div>
-      <h2>Get your place cleaned — it's simple and affordable</h2>
-      <p>Call now and get $25 off your first clean this week.</p>
-      <a class="bphone" href="tel:+17205550134">📞 (720) 555-0134</a>
-    </div>
-    <a class="btn" href="#contact">Get a free quote</a>
-  </div>
-</div>
-
-<section id="pricing" class="pb-foam">
-  <svg class="sided" style="right:-36px;top:160px;transform:scaleX(-1)" width="150" height="170" viewBox="0 0 140 160" fill="#2563C8"><use href="#sidebub"/></svg>
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#ffffff"><use href="#foamshape"/></svg>
-  <div class="wrap t-center">
-    <div class="kick">Pricing</div>
-    <h2>Flat prices. Zero surprises.</h2>
-    <p class="sub">The price we quote is the price you pay. Dirt level doesn't change a thing.</p>
-    <div class="plans" style="text-align:left;margin-top:20px">
-      <div class="plan rv">
-        <h3>Standard Clean</h3>
-        <div class="pp">$139<small> / visit</small></div>
-        <div class="pd">For homes that need regular love</div>
-        <ul>
-          <li>Kitchen, baths, floors, dusting</li>
-          <li>Same crew every visit</li>
-          <li>Recurring plans save 15%</li>
-          <li>Green, pet-safe products</li>
-        </ul>
-        <a class="btn blue" href="#contact">Book standard</a>
-      </div>
-      <div class="plan pop rv" style="transition-delay:.1s">
-        <div class="tag">Most popular</div>
-        <h3>Deep Clean</h3>
-        <div class="pp">$249<small> / visit</small></div>
-        <div class="pd">For "it's been a while" homes</div>
-        <ul>
-          <li>Everything in Standard</li>
-          <li>Baseboards, vents, behind appliances</li>
-          <li>Inside oven & fridge</li>
-          <li>Interior windows & tracks</li>
-          <li>54-point checklist</li>
-        </ul>
-        <a class="btn" href="#contact">Book deep clean</a>
-      </div>
-      <div class="plan rv" style="transition-delay:.2s">
-        <h3>Move-In / Out</h3>
-        <div class="pp">$299<small> / visit</small></div>
-        <div class="pd">Deposit-back guarantee clean</div>
-        <ul>
-          <li>Everything in Deep Clean</li>
-          <li>Inside all cabinets & closets</li>
-          <li>Landlord-ready photo report</li>
-          <li>Same-week availability</li>
-        </ul>
-        <a class="btn blue" href="#contact">Book move clean</a>
-      </div>
-    </div>
-    <div class="miniprices rv">
-      <h3>🛋️ Upholstery & carpet — flat per item</h3>
-      <div class="chiprow">
-        <div class="pchip">Armchair <b>$59</b></div>
-        <div class="pchip">Loveseat <b>$99</b></div>
-        <div class="pchip">Sofa 3-seat <b>$139</b></div>
-        <div class="pchip">Sectional <b>from $189</b></div>
-        <div class="pchip">Mattress <b>from $79</b></div>
-        <div class="pchip">Carpet <b>$0.40/sq ft</b></div>
-        <div class="pchip">Dining chair <b>$15</b></div>
-        <div class="pchip">Odor treatment <b>from $49</b></div>
-      </div>
-      <div class="flatnote"><b>Dirt level does NOT affect the price.</b> Free travel across Denver metro. Final flat price confirmed before we start.</div>
-    </div>
-  </div>
-</section>
-
-<section id="reviews" class="pb-foam">
-  <svg class="sided" style="left:-32px;bottom:200px" width="130" height="150" viewBox="0 0 140 160" fill="#2563C8"><use href="#sidebub"/></svg>
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#waveshape"/></svg>
-  <div class="wrap t-center">
-    <div class="kick">Reviews</div>
-    <h2>What our clients say</h2>
-    <p class="sub">Real Denver homes, real stains, real results.</p>
-    <div class="rgrid" style="text-align:left">
-      <div class="rev rv"><div class="q">"</div><div class="stars">★★★★★</div><p>Two dogs, one toddler, beige sofa — I thought it was hopeless. It looks brand new and smells like nothing, which is exactly what I wanted.</p><div class="who"><div class="av">S</div><div><b>Sarah M.</b><span>Wash Park · sofa deep clean</span></div></div></div>
-      <div class="rev rv" style="transition-delay:.1s"><div class="q">"</div><div class="stars">★★★★★</div><p>Quoted a flat price over text, showed up on time, and the price didn't move an inch. Rare these days. Booked them monthly.</p><div class="who"><div class="av">D</div><div><b>Dmitry K.</b><span>Aurora · recurring clean</span></div></div></div>
-      <div class="rev rv" style="transition-delay:.2s"><div class="q">"</div><div class="stars">★★★★★</div><p>They handle our Airbnb turnovers. Photo report after every clean, zero missed check-ins in six months. Total lifesavers.</p><div class="who"><div class="av">J</div><div><b>Jess & Tom</b><span>Highlands · Airbnb turnover</span></div></div></div>
-    </div>
-    <div class="plats">
-      <span>⭐ Google <b style="color:var(--navy)">4.9</b></span>
-      <span>⭐ Yelp <b style="color:var(--navy)">4.8</b></span>
-      <span>⭐ Thumbtack <b style="color:var(--navy)">Top Pro</b></span>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap t-center">
-    <div class="kick">FAQ</div>
-    <h2>Frequently asked questions</h2>
-    <p class="sub">Everything Denver asks before booking.</p>
-    <div class="fgrid2" style="text-align:left">
-      <details class="rv"><summary>Do you really not charge extra for heavy dirt?</summary><p>Really. Your flat price is based on home size or item size — never condition. Specialty treatments are quoted upfront as a separate line, never sprung on you mid-job.</p></details>
-      <details class="rv"><summary>Is it safe for pets and kids?</summary><p>Yes — we bring and use certified green products, residue-free and safe for nurseries and animals. It's one of our written guarantees.</p></details>
-      <details class="rv"><summary>How fast does upholstery dry?</summary><p>Usually 4–6 hours. We finish with forced-air drying, so most customers sit on their couch the same evening.</p></details>
-      <details class="rv"><summary>What areas do you cover?</summary><p>All of Denver metro: Denver, Aurora, Lakewood, Littleton, Englewood, Westminster, Arvada, Centennial. Travel is always free.</p></details>
-      <details class="rv"><summary>Do I need to be home during the clean?</summary><p>No — most clients give us entry instructions. Every cleaner is bonded and insured, and you get photo updates when we're done.</p></details>
-      <details class="rv"><summary>What if I'm not happy with the result?</summary><p>Tell us within 48 hours and we re-clean free. Still not right? You don't pay for that item. No forms, no fight.</p></details>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="pt-foam pb-foam">
-  <svg class="foamt" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#F5F9FE"><use href="#foamshape"/></svg>
-  <svg class="foamb" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#0B1D3D"><use href="#waveshape"/></svg>
-  <div class="wrap">
-    <div class="rv">
-      <div class="kick" style="color:var(--amber)">Free quote</div>
-      <h2>Let's make it spotless</h2>
-      <p class="sub">Send a photo of the couch, the carpet, or the whole place — we'll text back a flat price within 30 minutes.</p>
-      <div class="cways">
-        <a class="cway" href="tel:+17205550134"><span>📞</span><div><b>(720) 555-0134</b><small>Mon–Sun, 8am–8pm</small></div></a>
-        <a class="cway" href="https://wa.me/17205550134" target="_blank"><span>💬</span><div><b>WhatsApp / Text</b><small>Fastest way — send a photo</small></div></a>
-        <a class="cway" href="https://www.instagram.com/freshelephant.denver" target="_blank"><span>📸</span><div><b>@freshelephant.denver</b><small>Before & after, every week</small></div></a>
-      </div>
-    </div>
-    <div class="qcard rv" style="transition-delay:.15s">
-      <h3>Get your flat price</h3>
-      <div class="qs">🔥 $25 off your first clean this week</div>
-      <form class="qform">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="tel" name="phone" placeholder="Phone number" required>
-        <select name="service" required>
-          <option value="" disabled selected>What needs cleaning?</option>
-          <option>House cleaning</option>
-          <option>Deep cleaning</option>
-          <option>Move-in / move-out</option>
-          <option>Sofa / upholstery</option>
-          <option>Carpet / rugs</option>
-          <option>Office / Airbnb</option>
-        </select>
-        <textarea name="msg" rows="3" placeholder="Anything we should know? (pets, stains, square footage…)"></textarea>
-        <button class="btn" type="submit" style="justify-content:center">Get my price in 30 min →</button>
-        <div class="ok">🐘 Got it! We'll text your flat price within 30 minutes.</div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="fcols">
-      <div>
-        <a class="brand" href="#top" style="color:#fff">
-          <span class="mark">🐘</span>
-          <span><b style="color:#fff">Fresh Elephant</b><small style="color:var(--sky)">CLEANING SERVICES</small></span>
-        </a>
-        <p class="desc">Denver's friendliest cleaning crew. Flat honest prices, green products, and a spot-free guarantee. We never forget a spot.</p>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <a href="#services">House cleaning</a>
-        <a href="#services">Deep cleaning</a>
-        <a href="#services">Move-in / move-out</a>
-        <a href="#services">Upholstery & carpet</a>
-        <a href="#services">Office & Airbnb</a>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#about">About us</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="tel:+17205550134">📞 (720) 555-0134</a>
-        <a href="mailto:hello@freshelephant.com">✉️ hello@freshelephant.com</a>
-        <a href="https://www.instagram.com/freshelephant.denver" target="_blank">📸 @freshelephant.denver</a>
-        <a>📍 Denver metro · Mon–Sun 8am–8pm</a>
-      </div>
-    </div>
-    <div class="copy">
-      <div>© 2026 Fresh Elephant Cleaning Co · Denver, CO</div>
-      <div>Licensed · Bonded · Insured</div>
-    </div>
-  </div>
-</footer>
+<footer><div class="wrap"></div></footer>
 
 <a class="fab" href="tel:+17205550134" title="Call us">📞</a>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ============================================================
-   Fresh Elephant — CMS runtime + analytics + lead capture
-   Non-destructive: original HTML stays as the no-JS / SEO base.
-   When admin edits exist in Supabase (fe_content), affected
-   sections are re-rendered from the same templates.
+   Fresh Elephant — data-driven BLOCK engine + INLINE VISUAL EDITOR
+   - Normal mode: renders chrome (util/header/footer/fab) from settings
+     and an ordered `blocks` array into the exact original markup.
+   - Edit mode (?fe_edit=1 + Supabase auth session): inline text editing,
+     media replace, block toolbar (move/hide/dup/delete), repeatable item
+     editing, add-section picker, floating toolbar (save/undo/redo/device/exit),
+     undo/redo history, dirty tracking, beforeunload guard, window.FE_EDIT API.
    ============================================================ */
 (function () {
   "use strict";
@@ -716,19 +467,20 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   function esc(s){ return String(s==null?"":s)
     .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
   function el(sel,root){ return (root||document).querySelector(sel); }
-  function uuid(){ return (crypto.randomUUID ? crypto.randomUUID() :
+  function uuid(){ return (window.crypto&&crypto.randomUUID ? crypto.randomUUID() :
     "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c=="x"?r:(r&0x3|0x8);return v.toString(16);})); }
+  function bid(){ return "b_"+Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4); }
   function ls(k,gen){ try{ var v=localStorage.getItem(k); if(!v){v=gen();localStorage.setItem(k,v);} return v; }catch(e){ return gen(); } }
   function ss(k,gen){ try{ var v=sessionStorage.getItem(k); if(!v){v=gen();sessionStorage.setItem(k,v);} return v; }catch(e){ return gen(); } }
   function isObj(o){ return o && typeof o==="object" && !Array.isArray(o); }
   function deepMerge(base, over){
     if(!isObj(base)||!isObj(over)) return (over===undefined?base:over);
-    var out={}; var k;
+    var out={}, k;
     for(k in base) out[k]=base[k];
     for(k in over){ out[k]= isObj(base[k])&&isObj(over[k]) ? deepMerge(base[k],over[k]) : over[k]; }
     return out;
   }
-  function jeq(a,b){ return JSON.stringify(a)===JSON.stringify(b); }
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
 
   /* ---------- analytics ---------- */
   var qs = new URLSearchParams(location.search);
@@ -752,117 +504,21 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
     }).then(function(){}, function(){});
   }
 
-  /* ---------- DEFAULT content (mirrors the static markup) ---------- */
-  var DEFAULT = {
-    settings: {
-      brandEmoji:"🐘", brandName:"Fresh Elephant", brandSub:"CLEANING SERVICES",
-      phone:"(720) 555-0134", phoneHref:"+17205550134",
-      email:"hello@freshelephant.com",
-      instagram:"@freshelephant.denver", instagramUrl:"https://www.instagram.com/freshelephant.denver",
-      whatsappUrl:"https://wa.me/17205550134",
-      areaLine:"📍 Denver metro · Mon–Sun 8am–8pm",
-      fabVisible:true
-    },
-    visibility:{ util:true, header:true, hero:true, strip:true, about:true, services:true,
-      how:true, band:true, pricing:true, reviews:true, faq:true, contact:true, footer:true },
-    util:{ left:"📍 <b>Denver metro</b> · Mon–Sun 8am–8pm" },
-    header:{ hphoneSub:"Free quote in 30 min", ctaText:"Get a quote", nav:[
-      {label:"About",href:"#about"},{label:"Services",href:"#services"},
-      {label:"Pricing",href:"#pricing"},{label:"Reviews",href:"#reviews"},{label:"FAQ",href:"#faq"} ]},
-    hero:{
-      pill:"⭐ Trusted by 1,200+ Denver homes",
-      titleHtml:'Big clean energy for your <span>home<svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 9 Q 60 1 118 8" fill="none" stroke="#F59E2D" stroke-width="5" stroke-linecap="round"/></svg></span>',
-      lead:"House cleaning, deep cleaning and upholstery care with flat honest prices. We never forget a spot — and the quote never changes mid-job.",
-      ctaPrimary:"Get my free quote", ctaSecondary:"See flat prices",
-      ratingValue:"4.9 / 5", ratingNote:"· 120+ Google reviews · Licensed & insured",
-      video:"hero-video.mp4", poster:"hero-poster.jpg",
-      chip1:"🫧 We never forget a spot", chip2:"⚡ Quote in 30 min"
-    },
-    strip:{ items:[
-      {icon:"🛡️",text:"All cleaners are bonded & insured"},
-      {icon:"📋",text:"Trained with our 54-point checklists"},
-      {icon:"🌿",text:"We bring & use green, pet-safe products"} ]},
-    about:{
-      kick:"About us", title:"Our goal is to make life easy",
-      text:"Fresh Elephant is a Denver-grown cleaning company with one simple idea: cleaning should be the easiest thing on your to-do list. One crew, one flat price, one spotless result.",
-      checks:["Same trusted crew every visit — they learn your home",
-        "Dirt level never changes the price you were quoted",
-        "48-hour free re-clean guarantee, in writing"],
-      cta:"Explore services", ctaHref:"#services", photo:"",
-      f1:{icon:"💲",text:"Flat price lock — no surprises"},
-      f2:{icon:"⚡",text:"Quote in 30 minutes"},
-      stats:[ {count:"1200",label:"homes cleaned"}, {count:"500",label:"couches revived"},
-        {text:"4.9★",label:"average rating"}, {count:"98",label:"% clients return"} ]
-    },
-    services:{
-      kick:"Our services", title:"United way to best services",
-      sub:"Six ways we make Denver homes and businesses spotless — all with flat, upfront pricing.",
-      items:[
-        {ico:"🏠",title:"House Cleaning",text:"Weekly, bi-weekly or monthly. Kitchens, baths, floors, dust — handled.",from:"from $139"},
-        {ico:"🫧",title:"Deep Cleaning",text:"Baseboards, behind appliances, inside cabinets — the works.",from:"from $249"},
-        {ico:"📦",title:"Move-In / Move-Out",text:"Deposit-back clean with a 54-point landlord checklist.",from:"from $299"},
-        {ico:"🛋️",title:"Upholstery & Carpet",text:"Hot-water extraction for sofas, mattresses, rugs and carpets.",from:"<s>$74</s>from $59"},
-        {ico:"🏢",title:"Office Cleaning",text:"Recurring commercial cleaning that never misses a Monday.",from:"from $0.20/sq ft"},
-        {ico:"🔑",title:"Airbnb Turnover",text:"Guest-ready resets with photo report and restock checklist.",from:"from $119"} ]
-    },
-    how:{
-      kick:"How it works", title:"Spotless in three easy steps",
-      sub:"From first text to fresh home — usually within the same week.",
-      steps:[
-        {emoji:"📲",n:"1",title:"Book online",text:"Send a photo or the form — flat quote in 30 minutes, same-week slots."},
-        {emoji:"🧽",n:"2",title:"We clean",text:"Bonded, trained crew with pro equipment and green products."},
-        {emoji:"🛋️",n:"3",title:"You relax",text:"Walk through the result. Anything off — free re-clean within 48h."} ]
-    },
-    band:{ title:"Get your place cleaned — it's simple and affordable",
-      text:"Call now and get $25 off your first clean this week.", cta:"Get a free quote" },
-    pricing:{
-      kick:"Pricing", title:"Flat prices. Zero surprises.",
-      sub:"The price we quote is the price you pay. Dirt level doesn't change a thing.",
-      plans:[
-        {name:"Standard Clean",price:"$139",per:" / visit",desc:"For homes that need regular love",
-          features:["Kitchen, baths, floors, dusting","Same crew every visit","Recurring plans save 15%","Green, pet-safe products"],
-          cta:"Book standard",popular:false,tag:""},
-        {name:"Deep Clean",price:"$249",per:" / visit",desc:'For "it\'s been a while" homes',
-          features:["Everything in Standard","Baseboards, vents, behind appliances","Inside oven & fridge","Interior windows & tracks","54-point checklist"],
-          cta:"Book deep clean",popular:true,tag:"Most popular"},
-        {name:"Move-In / Out",price:"$299",per:" / visit",desc:"Deposit-back guarantee clean",
-          features:["Everything in Deep Clean","Inside all cabinets & closets","Landlord-ready photo report","Same-week availability"],
-          cta:"Book move clean",popular:false,tag:""} ],
-      miniTitle:"🛋️ Upholstery & carpet — flat per item",
-      chips:[ {label:"Armchair",price:"$59"},{label:"Loveseat",price:"$99"},{label:"Sofa 3-seat",price:"$139"},
-        {label:"Sectional",price:"from $189"},{label:"Mattress",price:"from $79"},{label:"Carpet",price:"$0.40/sq ft"},
-        {label:"Dining chair",price:"$15"},{label:"Odor treatment",price:"from $49"} ],
-      flatnote:"<b>Dirt level does NOT affect the price.</b> Free travel across Denver metro. Final flat price confirmed before we start."
-    },
-    reviews:{
-      kick:"Reviews", title:"What our clients say", sub:"Real Denver homes, real stains, real results.",
-      items:[
-        {text:"Two dogs, one toddler, beige sofa — I thought it was hopeless. It looks brand new and smells like nothing, which is exactly what I wanted.",name:"Sarah M.",meta:"Wash Park · sofa deep clean",avatar:"S"},
-        {text:"Quoted a flat price over text, showed up on time, and the price didn't move an inch. Rare these days. Booked them monthly.",name:"Dmitry K.",meta:"Aurora · recurring clean",avatar:"D"},
-        {text:"They handle our Airbnb turnovers. Photo report after every clean, zero missed check-ins in six months. Total lifesavers.",name:"Jess & Tom",meta:"Highlands · Airbnb turnover",avatar:"J"} ],
-      plats:[ {label:"Google",value:"4.9"},{label:"Yelp",value:"4.8"},{label:"Thumbtack",value:"Top Pro"} ]
-    },
-    faq:{
-      kick:"FAQ", title:"Frequently asked questions", sub:"Everything Denver asks before booking.",
-      items:[
-        {q:"Do you really not charge extra for heavy dirt?",a:"Really. Your flat price is based on home size or item size — never condition. Specialty treatments are quoted upfront as a separate line, never sprung on you mid-job."},
-        {q:"Is it safe for pets and kids?",a:"Yes — we bring and use certified green products, residue-free and safe for nurseries and animals. It's one of our written guarantees."},
-        {q:"How fast does upholstery dry?",a:"Usually 4–6 hours. We finish with forced-air drying, so most customers sit on their couch the same evening."},
-        {q:"What areas do you cover?",a:"All of Denver metro: Denver, Aurora, Lakewood, Littleton, Englewood, Westminster, Arvada, Centennial. Travel is always free."},
-        {q:"Do I need to be home during the clean?",a:"No — most clients give us entry instructions. Every cleaner is bonded and insured, and you get photo updates when we're done."},
-        {q:"What if I'm not happy with the result?",a:"Tell us within 48 hours and we re-clean free. Still not right? You don't pay for that item. No forms, no fight."} ]
-    },
-    contact:{
-      kick:"Free quote", title:"Let's make it spotless",
-      sub:"Send a photo of the couch, the carpet, or the whole place — we'll text back a flat price within 30 minutes.",
-      ways:[
-        {icon:"📞",title:"(720) 555-0134",sub:"Mon–Sun, 8am–8pm",href:"tel:+17205550134",blank:false},
-        {icon:"💬",title:"WhatsApp / Text",sub:"Fastest way — send a photo",href:"https://wa.me/17205550134",blank:true},
-        {icon:"📸",title:"@freshelephant.denver",sub:"Before & after, every week",href:"https://www.instagram.com/freshelephant.denver",blank:true} ],
-      formTitle:"Get your flat price", formBadge:"🔥 $25 off your first clean this week",
-      services:["House cleaning","Deep cleaning","Move-in / move-out","Sofa / upholstery","Carpet / rugs","Office / Airbnb"],
-      okMsg:"🐘 Got it! We'll text your flat price within 30 minutes."
-    },
+  /* ============================================================
+     CONTENT DATA (per-block d:{} shapes mirror old DEFAULT sections)
+     ============================================================ */
+  var SETTINGS = {
+    brandEmoji:"🐘", brandName:"Fresh Elephant", brandSub:"CLEANING SERVICES",
+    phone:"(720) 555-0134", phoneHref:"+17205550134",
+    email:"hello@freshelephant.com",
+    instagram:"@freshelephant.denver", instagramUrl:"https://www.instagram.com/freshelephant.denver",
+    whatsappUrl:"https://wa.me/17205550134",
+    areaLine:"📍 Denver metro · Mon–Sun 8am–8pm",
+    fabVisible:true,
+    utilLeft:"📍 <b>Denver metro</b> · Mon–Sun 8am–8pm",
+    hphoneSub:"Free quote in 30 min", ctaText:"Get a quote",
+    nav:[ {label:"About",href:"#about"},{label:"Services",href:"#services"},
+      {label:"Pricing",href:"#pricing"},{label:"Reviews",href:"#reviews"},{label:"FAQ",href:"#faq"} ],
     footer:{
       desc:"Denver's friendliest cleaning crew. Flat honest prices, green products, and a spot-free guarantee. We never forget a spot.",
       servicesTitle:"Services", serviceLinks:[
@@ -876,130 +532,169 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
     }
   };
 
-  /* ---------- renderers (output identical markup to the static base) ---------- */
+  // background colors (hex) per section, captured from source/CSS.
+  var BG = { navy:"#0B1D3D", heroNavy:"#10264E", white:"#ffffff", paper:"#F5F9FE", blue:"#2563C8" };
+
+  function defaultBlocks(){
+    return [
+      { id:bid(), type:"hero", anchor:"top", bg:BG.heroNavy, visible:true, d:{
+        pill:"⭐ Trusted by 1,200+ Denver homes",
+        titleHtml:'Big clean energy for your <span>home<svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 9 Q 60 1 118 8" fill="none" stroke="#F59E2D" stroke-width="5" stroke-linecap="round"/></svg></span>',
+        lead:"House cleaning, deep cleaning and upholstery care with flat honest prices. We never forget a spot — and the quote never changes mid-job.",
+        ctaPrimary:"Get my free quote", ctaSecondary:"See flat prices",
+        ratingValue:"4.9 / 5", ratingNote:"· 120+ Google reviews · Licensed & insured",
+        video:"hero-video.mp4", poster:"hero-poster.jpg",
+        chip1:"🫧 We never forget a spot", chip2:"⚡ Quote in 30 min" } },
+      { id:bid(), type:"strip", anchor:"strip", bg:BG.white, visible:true, d:{ items:[
+        {icon:"🛡️",text:"All cleaners are bonded & insured"},
+        {icon:"📋",text:"Trained with our 54-point checklists"},
+        {icon:"🌿",text:"We bring & use green, pet-safe products"} ] } },
+      { id:bid(), type:"about", anchor:"about", bg:BG.paper, visible:true, d:{
+        kick:"About us", title:"Our goal is to make life easy",
+        text:"Fresh Elephant is a Denver-grown cleaning company with one simple idea: cleaning should be the easiest thing on your to-do list. One crew, one flat price, one spotless result.",
+        checks:["Same trusted crew every visit — they learn your home",
+          "Dirt level never changes the price you were quoted",
+          "48-hour free re-clean guarantee, in writing"],
+        cta:"Explore services", ctaHref:"#services", photo:"",
+        f1:{icon:"💲",text:"Flat price lock — no surprises"},
+        f2:{icon:"⚡",text:"Quote in 30 minutes"},
+        stats:[ {count:"1200",label:"homes cleaned"}, {count:"500",label:"couches revived"},
+          {text:"4.9★",label:"average rating"}, {count:"98",label:"% clients return"} ] } },
+      { id:bid(), type:"cards", anchor:"services", bg:BG.white, visible:true, d:{
+        kick:"Our services", title:"United way to best services",
+        sub:"Six ways we make Denver homes and businesses spotless — all with flat, upfront pricing.",
+        items:[
+          {ico:"🏠",title:"House Cleaning",text:"Weekly, bi-weekly or monthly. Kitchens, baths, floors, dust — handled.",from:"from $139"},
+          {ico:"🫧",title:"Deep Cleaning",text:"Baseboards, behind appliances, inside cabinets — the works.",from:"from $249"},
+          {ico:"📦",title:"Move-In / Move-Out",text:"Deposit-back clean with a 54-point landlord checklist.",from:"from $299"},
+          {ico:"🛋️",title:"Upholstery & Carpet",text:"Hot-water extraction for sofas, mattresses, rugs and carpets.",from:"<s>$74</s>from $59"},
+          {ico:"🏢",title:"Office Cleaning",text:"Recurring commercial cleaning that never misses a Monday.",from:"from $0.20/sq ft"},
+          {ico:"🔑",title:"Airbnb Turnover",text:"Guest-ready resets with photo report and restock checklist.",from:"from $119"} ] } },
+      { id:bid(), type:"steps", anchor:"how", bg:BG.blue, visible:true, d:{
+        kick:"How it works", title:"Spotless in three easy steps",
+        sub:"From first text to fresh home — usually within the same week.",
+        steps:[
+          {emoji:"📲",n:"1",title:"Book online",text:"Send a photo or the form — flat quote in 30 minutes, same-week slots."},
+          {emoji:"🧽",n:"2",title:"We clean",text:"Bonded, trained crew with pro equipment and green products."},
+          {emoji:"🛋️",n:"3",title:"You relax",text:"Walk through the result. Anything off — free re-clean within 48h."} ] } },
+      { id:bid(), type:"cta", anchor:"band", bg:BG.paper, visible:true, d:{
+        title:"Get your place cleaned — it's simple and affordable",
+        text:"Call now and get $25 off your first clean this week.", cta:"Get a free quote" } },
+      { id:bid(), type:"pricing", anchor:"pricing", bg:BG.white, visible:true, d:{
+        kick:"Pricing", title:"Flat prices. Zero surprises.",
+        sub:"The price we quote is the price you pay. Dirt level doesn't change a thing.",
+        plans:[
+          {name:"Standard Clean",price:"$139",per:" / visit",desc:"For homes that need regular love",
+            features:["Kitchen, baths, floors, dusting","Same crew every visit","Recurring plans save 15%","Green, pet-safe products"],
+            cta:"Book standard",popular:false,tag:""},
+          {name:"Deep Clean",price:"$249",per:" / visit",desc:'For "it\'s been a while" homes',
+            features:["Everything in Standard","Baseboards, vents, behind appliances","Inside oven & fridge","Interior windows & tracks","54-point checklist"],
+            cta:"Book deep clean",popular:true,tag:"Most popular"},
+          {name:"Move-In / Out",price:"$299",per:" / visit",desc:"Deposit-back guarantee clean",
+            features:["Everything in Deep Clean","Inside all cabinets & closets","Landlord-ready photo report","Same-week availability"],
+            cta:"Book move clean",popular:false,tag:""} ],
+        miniTitle:"🛋️ Upholstery & carpet — flat per item",
+        chips:[ {label:"Armchair",price:"$59"},{label:"Loveseat",price:"$99"},{label:"Sofa 3-seat",price:"$139"},
+          {label:"Sectional",price:"from $189"},{label:"Mattress",price:"from $79"},{label:"Carpet",price:"$0.40/sq ft"},
+          {label:"Dining chair",price:"$15"},{label:"Odor treatment",price:"from $49"} ],
+        flatnote:"<b>Dirt level does NOT affect the price.</b> Free travel across Denver metro. Final flat price confirmed before we start." } },
+      { id:bid(), type:"reviews", anchor:"reviews", bg:BG.paper, visible:true, d:{
+        kick:"Reviews", title:"What our clients say", sub:"Real Denver homes, real stains, real results.",
+        items:[
+          {text:"Two dogs, one toddler, beige sofa — I thought it was hopeless. It looks brand new and smells like nothing, which is exactly what I wanted.",name:"Sarah M.",meta:"Wash Park · sofa deep clean",avatar:"S"},
+          {text:"Quoted a flat price over text, showed up on time, and the price didn't move an inch. Rare these days. Booked them monthly.",name:"Dmitry K.",meta:"Aurora · recurring clean",avatar:"D"},
+          {text:"They handle our Airbnb turnovers. Photo report after every clean, zero missed check-ins in six months. Total lifesavers.",name:"Jess & Tom",meta:"Highlands · Airbnb turnover",avatar:"J"} ],
+        plats:[ {label:"Google",value:"4.9"},{label:"Yelp",value:"4.8"},{label:"Thumbtack",value:"Top Pro"} ] } },
+      { id:bid(), type:"faq", anchor:"faq", bg:BG.white, visible:true, d:{
+        kick:"FAQ", title:"Frequently asked questions", sub:"Everything Denver asks before booking.",
+        items:[
+          {q:"Do you really not charge extra for heavy dirt?",a:"Really. Your flat price is based on home size or item size — never condition. Specialty treatments are quoted upfront as a separate line, never sprung on you mid-job."},
+          {q:"Is it safe for pets and kids?",a:"Yes — we bring and use certified green products, residue-free and safe for nurseries and animals. It's one of our written guarantees."},
+          {q:"How fast does upholstery dry?",a:"Usually 4–6 hours. We finish with forced-air drying, so most customers sit on their couch the same evening."},
+          {q:"What areas do you cover?",a:"All of Denver metro: Denver, Aurora, Lakewood, Littleton, Englewood, Westminster, Arvada, Centennial. Travel is always free."},
+          {q:"Do I need to be home during the clean?",a:"No — most clients give us entry instructions. Every cleaner is bonded and insured, and you get photo updates when we're done."},
+          {q:"What if I'm not happy with the result?",a:"Tell us within 48 hours and we re-clean free. Still not right? You don't pay for that item. No forms, no fight."} ] } },
+      { id:bid(), type:"contact", anchor:"contact", bg:BG.navy, visible:true, d:{
+        kick:"Free quote", title:"Let's make it spotless",
+        sub:"Send a photo of the couch, the carpet, or the whole place — we'll text back a flat price within 30 minutes.",
+        ways:[
+          {icon:"📞",title:"(720) 555-0134",sub:"Mon–Sun, 8am–8pm",href:"tel:+17205550134",blank:false},
+          {icon:"💬",title:"WhatsApp / Text",sub:"Fastest way — send a photo",href:"https://wa.me/17205550134",blank:true},
+          {icon:"📸",title:"@freshelephant.denver",sub:"Before & after, every week",href:"https://www.instagram.com/freshelephant.denver",blank:true} ],
+        formTitle:"Get your flat price", formBadge:"🔥 $25 off your first clean this week",
+        services:["House cleaning","Deep cleaning","Move-in / move-out","Sofa / upholstery","Carpet / rugs","Office / Airbnb"],
+        okMsg:"🐘 Got it! We'll text your flat price within 30 minutes." } }
+    ];
+  }
+
+  function DEFAULT(){ return { settings:clone(SETTINGS), blocks:defaultBlocks() }; }
+  window.FE_DEFAULT = DEFAULT();
+
+  /* ---------- backward-compat: old named-section shape -> blocks ---------- */
+  // old DEFAULT had: util, header, hero, strip, about, services, how, band,
+  //                  pricing, reviews, faq, contact, footer + settings + visibility
+  function migrate(stored){
+    var base = DEFAULT();
+    if(!stored || typeof stored!=="object") return base;
+    // settings: deep-merge (handle old + new flat settings)
+    base.settings = deepMerge(base.settings, stored.settings||{});
+    // pull old chrome fields into flat settings if present
+    if(stored.util && stored.util.left!=null) base.settings.utilLeft = stored.util.left;
+    if(stored.header){
+      if(stored.header.hphoneSub!=null) base.settings.hphoneSub = stored.header.hphoneSub;
+      if(stored.header.ctaText!=null) base.settings.ctaText = stored.header.ctaText;
+      if(Array.isArray(stored.header.nav)) base.settings.nav = clone(stored.header.nav);
+    }
+    if(stored.footer) base.settings.footer = deepMerge(base.settings.footer, stored.footer);
+
+    if(Array.isArray(stored.blocks)){
+      // already new shape — adopt blocks, normalize fields
+      base.blocks = stored.blocks.map(function(b){
+        return { id:b.id||bid(), type:b.type, anchor:b.anchor||"", bg:b.bg||BG.white,
+          visible:b.visible!==false, d:b.d||{} };
+      });
+      return base;
+    }
+    // OLD shape: merge each section's data into matching default block d
+    var map = { hero:"hero", strip:"strip", about:"about", services:"cards", how:"steps",
+      band:"cta", pricing:"pricing", reviews:"reviews", faq:"faq", contact:"contact" };
+    var vis = stored.visibility||{};
+    var visMap = { cards:"services", steps:"how", cta:"band" }; // block.type -> old visibility key
+    base.blocks.forEach(function(b){
+      // find old section key for this block type
+      var oldKey=null, k;
+      for(k in map){ if(map[k]===b.type){ oldKey=k; break; } }
+      if(oldKey && stored[oldKey]) b.d = deepMerge(b.d, stored[oldKey]);
+      var visKey = b.type;
+      if(b.type in visMap){} // handled below
+      // visibility keys in old model: hero,strip,about,services,how,band,pricing,reviews,faq,contact
+      var vk = (b.type==="cards"?"services":b.type==="steps"?"how":b.type==="cta"?"band":b.type);
+      if(vis[vk]===false) b.visible=false;
+    });
+    return base;
+  }
+
+  /* ============================================================
+     RENDERERS (output identical markup to the static base)
+     ============================================================ */
   var R = {};
-  R.util = function(c,s){ return '<div>'+(c.util.left)+'</div>'+
+  R.util = function(s){ return '<div>'+(s.utilLeft||"")+'</div>'+
     '<div>✉️ <a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a> · 📸 <a href="'+esc(s.instagramUrl)+'" target="_blank">'+esc(s.instagram)+'</a></div>'; };
 
-  R.header = function(c,s){
-    var nav = c.header.nav.map(function(n){return '<a href="'+esc(n.href)+'">'+esc(n.label)+'</a>';}).join("");
+  R.header = function(s){
+    var nav = (s.nav||[]).map(function(n){return '<a href="'+esc(n.href)+'">'+esc(n.label)+'</a>';}).join("");
     return '<a class="brand" href="#top"><span class="mark">'+s.brandEmoji+'</span>'+
       '<span><b>'+esc(s.brandName)+'</b><small>'+esc(s.brandSub)+'</small></span></a>'+
       '<nav class="menu" id="mnav">'+nav+
         '<a href="tel:'+esc(s.phoneHref)+'" class="m-only" style="display:none">📞 '+esc(s.phone)+'</a></nav>'+
-      '<a class="hphone" href="tel:'+esc(s.phoneHref)+'"><b>'+esc(s.phone)+'</b><small>'+esc(c.header.hphoneSub)+'</small></a>'+
-      '<a class="btn" href="#contact">'+esc(c.header.ctaText)+'</a>'+
+      '<a class="hphone" href="tel:'+esc(s.phoneHref)+'"><b>'+esc(s.phone)+'</b><small>'+esc(s.hphoneSub)+'</small></a>'+
+      '<a class="btn" href="#contact">'+esc(s.ctaText)+'</a>'+
       '<button class="burger" id="burger" aria-label="Menu">☰</button>';
   };
 
-  R.hero = function(c){ var h=c.hero;
-    return '<div class="hero-in">'+
-      '<div class="pill">'+esc(h.pill)+'</div>'+
-      '<h1>'+h.titleHtml+'</h1>'+
-      '<p class="lead">'+esc(h.lead)+'</p>'+
-      '<div class="cta"><a class="btn" href="#contact">'+esc(h.ctaPrimary)+'</a>'+
-        '<a class="btn ghost" href="#pricing">'+esc(h.ctaSecondary)+'</a></div>'+
-      '<div class="rate"><span class="stars">★★★★★</span><b>'+esc(h.ratingValue)+'</b>'+
-        '<span>'+esc(h.ratingNote)+'</span></div></div>'+
-      '<div class="hero-video"><video src="'+esc(h.video)+'" poster="'+esc(h.poster)+'" autoplay muted loop playsinline></video>'+
-        '<div class="vchip vc1">'+esc(h.chip1)+'</div><div class="vchip vc2">'+esc(h.chip2)+'</div></div>';
-  };
-
-  R.strip = function(c){ return c.strip.items.map(function(it,i){
-    return '<div class="it rv"'+(i?' style="transition-delay:.'+i+'s"':'')+'><span>'+it.icon+'</span>'+esc(it.text)+'</div>';
-  }).join(""); };
-
-  R.about = function(c){ var a=c.about;
-    var photo = a.photo ? ' style="background-image:url(\''+esc(a.photo)+'\');background-size:cover;background-position:center"' : '';
-    return '<div class="about-art rv"><div class="blob"></div>'+
-      '<div class="photo" role="img" aria-label="Fresh Elephant mascot ready to clean"'+photo+'></div>'+
-      '<div class="float f1"><span>'+a.f1.icon+'</span>'+esc(a.f1.text)+'</div>'+
-      '<div class="float f2"><span>'+a.f2.icon+'</span>'+esc(a.f2.text)+'</div></div>'+
-      '<div class="rv" style="transition-delay:.15s">'+
-        '<div class="kick">'+esc(a.kick)+'</div><h2>'+esc(a.title)+'</h2>'+
-        '<p style="color:var(--grey);font-size:16.5px">'+esc(a.text)+'</p>'+
-        '<div class="checks">'+a.checks.map(function(ch){return '<div class="check">'+esc(ch)+'</div>';}).join("")+'</div>'+
-        '<a class="btn blue" href="'+esc(a.ctaHref)+'">'+esc(a.cta)+'</a></div>';
-  };
-  R.stats = function(c){ return c.about.stats.map(function(st,i){
-    var b = st.count!=null && st.count!=="" ? '<b data-count="'+esc(st.count)+'">0</b>' : '<b>'+esc(st.text)+'</b>';
-    return '<div class="stat rv"'+(i?' style="transition-delay:.'+(i*8<10?'0'+i*8:i*8)+'s"':'')+'>'+b+'<span>'+esc(st.label)+'</span></div>';
-  }).join(""); };
-
-  R.services = function(c){ var v=c.services;
-    var cards = v.items.map(function(it,i){ var d=(i%3)*8;
-      return '<div class="svc rv"'+(d?' style="transition-delay:.'+(d<10?'0'+d:d)+'s"':'')+'>'+
-        '<div class="ico">'+it.ico+'</div><h3>'+esc(it.title)+'</h3><p>'+esc(it.text)+'</p>'+
-        '<div class="from">'+it.from+'</div></div>'; }).join("");
-    return '<div class="kick">'+esc(v.kick)+'</div><h2>'+esc(v.title)+'</h2><p class="sub">'+esc(v.sub)+'</p>'+
-      '<div class="sgrid" style="text-align:left">'+cards+'</div>';
-  };
-
-  R.how = function(c){ var v=c.how;
-    var steps = v.steps.map(function(st,i){ var d=i*12;
-      return '<div class="stp rv"'+(d?' style="transition-delay:.'+d+'s"':'')+'>'+
-        '<div class="n">'+st.emoji+'<i>'+esc(st.n)+'</i></div><h3>'+esc(st.title)+'</h3><p>'+esc(st.text)+'</p></div>'; }).join("");
-    return '<div class="kick">'+esc(v.kick)+'</div><h2>'+esc(v.title)+'</h2><p class="sub">'+esc(v.sub)+'</p>'+
-      '<div class="steps">'+steps+'</div>';
-  };
-
-  R.band = function(c,s){ var b=c.band;
-    return '<div><h2>'+esc(b.title)+'</h2><p>'+esc(b.text)+'</p>'+
-      '<a class="bphone" href="tel:'+esc(s.phoneHref)+'">📞 '+esc(s.phone)+'</a></div>'+
-      '<a class="btn" href="#contact">'+esc(b.cta)+'</a>';
-  };
-
-  R.pricing = function(c){ var p=c.pricing;
-    var plans = p.plans.map(function(pl,i){
-      var feats = pl.features.map(function(f){return '<li>'+esc(f)+'</li>';}).join("");
-      return '<div class="plan'+(pl.popular?' pop':'')+' rv"'+(i?' style="transition-delay:.'+i+'s"':'')+'>'+
-        (pl.popular?'<div class="tag">'+esc(pl.tag)+'</div>':'')+
-        '<h3>'+esc(pl.name)+'</h3><div class="pp">'+esc(pl.price)+'<small>'+esc(pl.per)+'</small></div>'+
-        '<div class="pd">'+esc(pl.desc)+'</div><ul>'+feats+'</ul>'+
-        '<a class="'+(pl.popular?'btn':'btn blue')+'" href="#contact">'+esc(pl.cta)+'</a></div>'; }).join("");
-    var chips = p.chips.map(function(ch){return '<div class="pchip">'+esc(ch.label)+' <b>'+esc(ch.price)+'</b></div>';}).join("");
-    return '<div class="kick">'+esc(p.kick)+'</div><h2>'+esc(p.title)+'</h2><p class="sub">'+esc(p.sub)+'</p>'+
-      '<div class="plans" style="text-align:left;margin-top:20px">'+plans+'</div>'+
-      '<div class="miniprices rv"><h3>'+esc(p.miniTitle)+'</h3>'+
-        '<div class="chiprow">'+chips+'</div><div class="flatnote">'+p.flatnote+'</div></div>';
-  };
-
-  R.reviews = function(c){ var r=c.reviews;
-    var revs = r.items.map(function(rv,i){
-      return '<div class="rev rv"'+(i?' style="transition-delay:.'+i+'s"':'')+'>'+
-        '<div class="q">"</div><div class="stars">★★★★★</div><p>'+esc(rv.text)+'</p>'+
-        '<div class="who"><div class="av">'+esc(rv.avatar)+'</div><div><b>'+esc(rv.name)+'</b>'+
-        '<span>'+esc(rv.meta)+'</span></div></div></div>'; }).join("");
-    var plats = r.plats.map(function(pl){return '<span>⭐ '+esc(pl.label)+' <b style="color:var(--navy)">'+esc(pl.value)+'</b></span>';}).join("");
-    return '<div class="kick">'+esc(r.kick)+'</div><h2>'+esc(r.title)+'</h2><p class="sub">'+esc(r.sub)+'</p>'+
-      '<div class="rgrid" style="text-align:left">'+revs+'</div><div class="plats">'+plats+'</div>';
-  };
-
-  R.faq = function(c){ var f=c.faq;
-    var items = f.items.map(function(it){return '<details class="rv"><summary>'+esc(it.q)+'</summary><p>'+esc(it.a)+'</p></details>';}).join("");
-    return '<div class="kick">'+esc(f.kick)+'</div><h2>'+esc(f.title)+'</h2><p class="sub">'+esc(f.sub)+'</p>'+
-      '<div class="fgrid2" style="text-align:left">'+items+'</div>';
-  };
-
-  R.contact = function(c){ var ct=c.contact;
-    var ways = ct.ways.map(function(w){ return '<a class="cway" href="'+esc(w.href)+'"'+(w.blank?' target="_blank"':'')+'>'+
-      '<span>'+w.icon+'</span><div><b>'+esc(w.title)+'</b><small>'+esc(w.sub)+'</small></div></a>'; }).join("");
-    var opts = ct.services.map(function(o){return '<option>'+esc(o)+'</option>';}).join("");
-    return '<div class="rv"><div class="kick" style="color:var(--amber)">'+esc(ct.kick)+'</div>'+
-      '<h2>'+esc(ct.title)+'</h2><p class="sub">'+esc(ct.sub)+'</p><div class="cways">'+ways+'</div></div>'+
-      '<div class="qcard rv" style="transition-delay:.15s"><h3>'+esc(ct.formTitle)+'</h3>'+
-      '<div class="qs">'+esc(ct.formBadge)+'</div>'+
-      '<form class="qform"><input type="text" name="name" placeholder="Your name" required>'+
-      '<input type="tel" name="phone" placeholder="Phone number" required>'+
-      '<select name="service" required><option value="" disabled selected>What needs cleaning?</option>'+opts+'</select>'+
-      '<textarea name="msg" rows="3" placeholder="Anything we should know? (pets, stains, square footage…)"></textarea>'+
-      '<button class="btn" type="submit" style="justify-content:center">Get my price in 30 min →</button>'+
-      '<div class="ok">'+esc(ct.okMsg)+'</div></form></div>';
-  };
-
-  R.footer = function(c,s){ var f=c.footer;
-    var sl = f.serviceLinks.map(function(l){return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>';}).join("");
-    var cl = f.companyLinks.map(function(l){return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>';}).join("");
+  R.footer = function(s){ var f=s.footer;
+    var sl = (f.serviceLinks||[]).map(function(l){return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>';}).join("");
+    var cl = (f.companyLinks||[]).map(function(l){return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>';}).join("");
     return '<div class="fcols"><div>'+
       '<a class="brand" href="#top" style="color:#fff"><span class="mark">'+s.brandEmoji+'</span>'+
       '<span><b style="color:#fff">'+esc(s.brandName)+'</b><small style="color:var(--sky)">'+esc(s.brandSub)+'</small></span></a>'+
@@ -1014,46 +709,379 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
       '<div class="copy"><div>'+esc(f.copy1)+'</div><div>'+esc(f.copy2)+'</div></div>';
   };
 
-  /* container selectors + outer (for visibility) */
-  var TARGET = {
-    util:".util .wrap", header:"header .nav", hero:".hero .wrap", strip:".strip .wrap",
-    about:"#about .wrap:not(.stats)", stats:"#about .wrap.stats", services:"#services .wrap",
-    how:"#how .wrap", band:".band .wrap", pricing:"#pricing .wrap", reviews:"#reviews .wrap",
-    faq:"#faq .wrap", contact:"#contact .wrap", footer:"footer .wrap"
-  };
-  var OUTER = {
-    util:".util", header:"header", hero:".hero", strip:".strip", about:"#about", services:"#services",
-    how:"#how", band:".band", pricing:"#pricing", reviews:"#reviews", faq:"#faq", contact:"#contact", footer:"footer"
-  };
-
-  function renderInto(sel, html){ var node=el(sel); if(node) node.innerHTML=html; return node; }
-
-  function renderAll(c){
-    var s=c.settings;
-    renderInto(TARGET.util, R.util(c,s));
-    renderInto(TARGET.header, R.header(c,s));
-    renderInto(TARGET.hero, R.hero(c));
-    renderInto(TARGET.strip, R.strip(c));
-    renderInto(TARGET.about, R.about(c));
-    renderInto(TARGET.stats, R.stats(c));
-    renderInto(TARGET.services, R.services(c));
-    renderInto(TARGET.how, R.how(c));
-    renderInto(TARGET.band, R.band(c,s));
-    renderInto(TARGET.pricing, R.pricing(c));
-    renderInto(TARGET.reviews, R.reviews(c));
-    renderInto(TARGET.faq, R.faq(c));
-    renderInto(TARGET.contact, R.contact(c));
-    renderInto(TARGET.footer, R.footer(c,s));
-    applyVisibility(c);
-    var fab=el("a.fab"); if(fab){ fab.href="tel:"+s.phoneHref; fab.style.display = s.fabVisible===false ? "none":""; }
+  // --- block inner renderers (return INNER html for the block's .wrap) ---
+  // EDIT mode injects contenteditable + data-fe via the `fe()` / `feRich()` helpers.
+  var EDIT = false;            // editing active?
+  function fe(path){ return EDIT ? ' contenteditable="true" data-fe="'+path+'"' : ''; }
+  function feRich(path){ return EDIT ? ' contenteditable="true" data-fe-rich="'+path+'"' : ''; }
+  // media replace overlay (edit mode)
+  function media(path){ return EDIT ? '<button type="button" class="fe-media-btn" data-fe-media="'+path+'">📷 Заменить</button>' : ''; }
+  // per-item mini toolbar for repeatable lists
+  function itemBar(arrPath, idx, horizontal){
+    if(!EDIT) return '';
+    var ax = horizontal?'◀':'▲', bx = horizontal?'▶':'▼';
+    return '<div class="fe-itembar" data-fe-arr="'+arrPath+'" data-fe-idx="'+idx+'">'+
+      '<button type="button" data-act="up" title="Move">'+ax+'</button>'+
+      '<button type="button" data-act="down" title="Move">'+bx+'</button>'+
+      '<button type="button" data-act="dup" title="Duplicate">⧉</button>'+
+      '<button type="button" data-act="del" title="Delete">🗑</button></div>';
   }
-  function applyVisibility(c){
-    var vis=c.visibility||{}; Object.keys(OUTER).forEach(function(k){
-      var node=el(OUTER[k]); if(node) node.style.display = vis[k]===false ? "none" : "";
+  function addBtn(arrPath, label){
+    if(!EDIT) return '';
+    return '<button type="button" class="fe-add-item" data-fe-addarr="'+arrPath+'">➕ '+(label||'Добавить')+'</button>';
+  }
+
+  R.hero = function(b,i){ var h=b.d, p="blocks."+i+".d";
+    return '<div class="hero-in">'+
+      '<div class="pill"'+fe(p+".pill")+'>'+esc(h.pill)+'</div>'+
+      '<h1'+feRich(p+".titleHtml")+'>'+h.titleHtml+'</h1>'+
+      '<p class="lead"'+fe(p+".lead")+'>'+esc(h.lead)+'</p>'+
+      '<div class="cta"><a class="btn" href="#contact"'+fe(p+".ctaPrimary")+'>'+esc(h.ctaPrimary)+'</a>'+
+        '<a class="btn ghost" href="#pricing"'+fe(p+".ctaSecondary")+'>'+esc(h.ctaSecondary)+'</a></div>'+
+      '<div class="rate"><span class="stars">★★★★★</span><b'+fe(p+".ratingValue")+'>'+esc(h.ratingValue)+'</b>'+
+        '<span'+fe(p+".ratingNote")+'>'+esc(h.ratingNote)+'</span></div></div>'+
+      '<div class="hero-video">'+(EDIT?'<div class="fe-media-wrap">':'')+
+        '<video src="'+esc(h.video)+'" poster="'+esc(h.poster)+'" autoplay muted loop playsinline></video>'+
+        media(p+".video")+(EDIT?'</div>':'')+
+        '<div class="vchip vc1"'+fe(p+".chip1")+'>'+esc(h.chip1)+'</div>'+
+        '<div class="vchip vc2"'+fe(p+".chip2")+'>'+esc(h.chip2)+'</div></div>';
+  };
+
+  R.strip = function(b,i){ var p="blocks."+i+".d";
+    var items = (b.d.items||[]).map(function(it,j){ var ip=p+".items."+j;
+      return '<div class="it rv"'+(j?' style="transition-delay:.'+j+'s"':'')+'>'+itemBar(p+".items",j,false)+
+        '<span'+fe(ip+".icon")+'>'+it.icon+'</span><span'+fe(ip+".text")+'>'+esc(it.text)+'</span></div>'; }).join("");
+    return items + addBtn(p+".items","Пункт");
+  };
+
+  R.about = function(b,i){ var a=b.d, p="blocks."+i+".d";
+    var photo = a.photo ? ' style="background-image:url(\''+esc(a.photo)+'\');background-size:cover;background-position:center"' : '';
+    var checks = (a.checks||[]).map(function(ch,j){ return '<div class="check">'+itemBar(p+".checks",j,false)+
+      '<span'+fe(p+".checks."+j)+'>'+esc(ch)+'</span></div>'; }).join("");
+    return '<div class="about-art rv">'+(EDIT?'<div class="fe-media-wrap" style="position:absolute;inset:0;z-index:2">'+media(p+".photo")+'</div>':'')+
+      '<div class="blob"></div>'+
+      '<div class="photo" role="img" aria-label="Fresh Elephant mascot ready to clean"'+photo+'></div>'+
+      '<div class="float f1"><span'+fe(p+".f1.icon")+'>'+a.f1.icon+'</span><span'+fe(p+".f1.text")+'>'+esc(a.f1.text)+'</span></div>'+
+      '<div class="float f2"><span'+fe(p+".f2.icon")+'>'+a.f2.icon+'</span><span'+fe(p+".f2.text")+'>'+esc(a.f2.text)+'</span></div></div>'+
+      '<div class="rv" style="transition-delay:.15s">'+
+        '<div class="kick"'+fe(p+".kick")+'>'+esc(a.kick)+'</div><h2'+fe(p+".title")+'>'+esc(a.title)+'</h2>'+
+        '<p style="color:var(--grey);font-size:16.5px"'+fe(p+".text")+'>'+esc(a.text)+'</p>'+
+        '<div class="checks">'+checks+addBtn(p+".checks","Пункт")+'</div>'+
+        '<a class="btn blue" href="'+esc(a.ctaHref)+'"'+fe(p+".cta")+'>'+esc(a.cta)+'</a></div>';
+  };
+  R.aboutStats = function(b,i){ var p="blocks."+i+".d";
+    return (b.d.stats||[]).map(function(st,j){
+      var hasCount = st.count!=null && st.count!=="";
+      var bcontent = hasCount ? '<b data-count="'+esc(st.count)+'">0</b>' : '<b'+fe(p+".stats."+j+".text")+'>'+esc(st.text)+'</b>';
+      var delay = j*8;
+      return '<div class="stat rv"'+(j?' style="transition-delay:.'+(delay<10?'0'+delay:delay)+'s"':'')+'>'+itemBar(p+".stats",j,false)+
+        bcontent+'<span'+fe(p+".stats."+j+".label")+'>'+esc(st.label)+'</span></div>';
+    }).join("") + addBtn(p+".stats","Цифра");
+  };
+
+  R.cards = function(b,i){ var v=b.d, p="blocks."+i+".d";
+    var cards = (v.items||[]).map(function(it,j){ var d=(j%3)*8, ip=p+".items."+j;
+      return '<div class="svc rv"'+(d?' style="transition-delay:.'+(d<10?'0'+d:d)+'s"':'')+'>'+itemBar(p+".items",j,false)+
+        '<div class="ico"'+fe(ip+".ico")+'>'+it.ico+'</div><h3'+fe(ip+".title")+'>'+esc(it.title)+'</h3>'+
+        '<p'+fe(ip+".text")+'>'+esc(it.text)+'</p>'+
+        '<div class="from"'+feRich(ip+".from")+'>'+it.from+'</div></div>'; }).join("");
+    return '<div class="kick"'+fe(p+".kick")+'>'+esc(v.kick)+'</div><h2'+fe(p+".title")+'>'+esc(v.title)+'</h2>'+
+      '<p class="sub"'+fe(p+".sub")+'>'+esc(v.sub)+'</p>'+
+      '<div class="sgrid" style="text-align:left">'+cards+'</div>'+(EDIT?'<div style="margin-top:14px">'+addBtn(p+".items","Карточку")+'</div>':'');
+  };
+
+  R.steps = function(b,i){ var v=b.d, p="blocks."+i+".d";
+    var steps = (v.steps||[]).map(function(st,j){ var d=j*12, ip=p+".steps."+j;
+      return '<div class="stp rv"'+(d?' style="transition-delay:.'+d+'s"':'')+'>'+itemBar(p+".steps",j,false)+
+        '<div class="n"><span'+fe(ip+".emoji")+'>'+st.emoji+'</span><i'+fe(ip+".n")+'>'+esc(st.n)+'</i></div>'+
+        '<h3'+fe(ip+".title")+'>'+esc(st.title)+'</h3><p'+fe(ip+".text")+'>'+esc(st.text)+'</p></div>'; }).join("");
+    return '<div class="kick"'+fe(p+".kick")+'>'+esc(v.kick)+'</div><h2'+fe(p+".title")+'>'+esc(v.title)+'</h2>'+
+      '<p class="sub"'+fe(p+".sub")+'>'+esc(v.sub)+'</p>'+
+      '<div class="steps">'+steps+'</div>'+(EDIT?'<div style="margin-top:14px">'+addBtn(p+".steps","Шаг")+'</div>':'');
+  };
+
+  R.cta = function(b,i,s){ var v=b.d, p="blocks."+i+".d";
+    return '<div><h2'+fe(p+".title")+'>'+esc(v.title)+'</h2><p'+fe(p+".text")+'>'+esc(v.text)+'</p>'+
+      '<a class="bphone" href="tel:'+esc(s.phoneHref)+'">📞 '+esc(s.phone)+'</a></div>'+
+      '<a class="btn" href="#contact"'+fe(p+".cta")+'>'+esc(v.cta)+'</a>';
+  };
+
+  R.pricing = function(b,i){ var p=b.d, pp="blocks."+i+".d";
+    var plans = (p.plans||[]).map(function(pl,j){ var lp=pp+".plans."+j;
+      var feats = (pl.features||[]).map(function(f,k){ return '<li>'+itemBar(lp+".features",k,false)+
+        '<span'+fe(lp+".features."+k)+'>'+esc(f)+'</span></li>'; }).join("");
+      return '<div class="plan'+(pl.popular?' pop':'')+' rv"'+(j?' style="transition-delay:.'+j+'s"':'')+'>'+itemBar(pp+".plans",j,false)+
+        (pl.popular?'<div class="tag"'+fe(lp+".tag")+'>'+esc(pl.tag)+'</div>':'')+
+        '<h3'+fe(lp+".name")+'>'+esc(pl.name)+'</h3><div class="pp"><span'+fe(lp+".price")+'>'+esc(pl.price)+'</span><small'+fe(lp+".per")+'>'+esc(pl.per)+'</small></div>'+
+        '<div class="pd"'+fe(lp+".desc")+'>'+esc(pl.desc)+'</div><ul>'+feats+addBtn(lp+".features","Пункт")+'</ul>'+
+        '<a class="'+(pl.popular?'btn':'btn blue')+'" href="#contact"'+fe(lp+".cta")+'>'+esc(pl.cta)+'</a></div>'; }).join("");
+    var chips = (p.chips||[]).map(function(ch,j){ var cp=pp+".chips."+j;
+      return '<div class="pchip">'+itemBar(pp+".chips",j,true)+'<span'+fe(cp+".label")+'>'+esc(ch.label)+'</span> <b'+fe(cp+".price")+'>'+esc(ch.price)+'</b></div>'; }).join("");
+    return '<div class="kick"'+fe(pp+".kick")+'>'+esc(p.kick)+'</div><h2'+fe(pp+".title")+'>'+esc(p.title)+'</h2>'+
+      '<p class="sub"'+fe(pp+".sub")+'>'+esc(p.sub)+'</p>'+
+      '<div class="plans" style="text-align:left;margin-top:20px">'+plans+'</div>'+(EDIT?'<div style="margin:10px 0">'+addBtn(pp+".plans","План")+'</div>':'')+
+      '<div class="miniprices rv"><h3'+fe(pp+".miniTitle")+'>'+esc(p.miniTitle)+'</h3>'+
+        '<div class="chiprow">'+chips+addBtn(pp+".chips","Чип")+'</div>'+
+        '<div class="flatnote"'+feRich(pp+".flatnote")+'>'+p.flatnote+'</div></div>';
+  };
+
+  R.reviews = function(b,i){ var r=b.d, p="blocks."+i+".d";
+    var revs = (r.items||[]).map(function(rv,j){ var ip=p+".items."+j;
+      return '<div class="rev rv"'+(j?' style="transition-delay:.'+j+'s"':'')+'>'+itemBar(p+".items",j,false)+
+        '<div class="q">"</div><div class="stars">★★★★★</div><p'+fe(ip+".text")+'>'+esc(rv.text)+'</p>'+
+        '<div class="who"><div class="av"'+fe(ip+".avatar")+'>'+esc(rv.avatar)+'</div><div><b'+fe(ip+".name")+'>'+esc(rv.name)+'</b>'+
+        '<span'+fe(ip+".meta")+'>'+esc(rv.meta)+'</span></div></div></div>'; }).join("");
+    var plats = (r.plats||[]).map(function(pl,j){ var lp=p+".plats."+j;
+      return '<span>⭐ <span'+fe(lp+".label")+'>'+esc(pl.label)+'</span> <b style="color:var(--navy)"'+fe(lp+".value")+'>'+esc(pl.value)+'</b>'+itemBar(p+".plats",j,true)+'</span>'; }).join("");
+    return '<div class="kick"'+fe(p+".kick")+'>'+esc(r.kick)+'</div><h2'+fe(p+".title")+'>'+esc(r.title)+'</h2>'+
+      '<p class="sub"'+fe(p+".sub")+'>'+esc(r.sub)+'</p>'+
+      '<div class="rgrid" style="text-align:left">'+revs+'</div>'+(EDIT?'<div style="margin:8px 0">'+addBtn(p+".items","Отзыв")+'</div>':'')+
+      '<div class="plats">'+plats+addBtn(p+".plats","Площадку")+'</div>';
+  };
+
+  R.faq = function(b,i){ var f=b.d, p="blocks."+i+".d";
+    var items = (f.items||[]).map(function(it,j){ var ip=p+".items."+j;
+      return '<details class="rv">'+itemBar(p+".items",j,false)+
+        '<summary'+fe(ip+".q")+'>'+esc(it.q)+'</summary><p'+fe(ip+".a")+'>'+esc(it.a)+'</p></details>'; }).join("");
+    return '<div class="kick"'+fe(p+".kick")+'>'+esc(f.kick)+'</div><h2'+fe(p+".title")+'>'+esc(f.title)+'</h2>'+
+      '<p class="sub"'+fe(p+".sub")+'>'+esc(f.sub)+'</p>'+
+      '<div class="fgrid2" style="text-align:left">'+items+'</div>'+(EDIT?'<div style="margin-top:14px">'+addBtn(p+".items","Вопрос")+'</div>':'');
+  };
+
+  R.contact = function(b,i){ var ct=b.d, p="blocks."+i+".d";
+    var ways = (ct.ways||[]).map(function(w,j){ var wp=p+".ways."+j;
+      return '<a class="cway" href="'+esc(w.href)+'"'+(w.blank?' target="_blank"':'')+'>'+itemBar(p+".ways",j,false)+
+        '<span'+fe(wp+".icon")+'>'+w.icon+'</span><div><b'+fe(wp+".title")+'>'+esc(w.title)+'</b>'+
+        '<small'+fe(wp+".sub")+'>'+esc(w.sub)+'</small></div></a>'; }).join("");
+    var opts = (ct.services||[]).map(function(o){return '<option>'+esc(o)+'</option>';}).join("");
+    return '<div class="rv"><div class="kick" style="color:var(--amber)"'+fe(p+".kick")+'>'+esc(ct.kick)+'</div>'+
+      '<h2'+fe(p+".title")+'>'+esc(ct.title)+'</h2><p class="sub"'+fe(p+".sub")+'>'+esc(ct.sub)+'</p>'+
+      '<div class="cways">'+ways+addBtn(p+".ways","Контакт")+'</div></div>'+
+      '<div class="qcard rv" style="transition-delay:.15s"><h3'+fe(p+".formTitle")+'>'+esc(ct.formTitle)+'</h3>'+
+      '<div class="qs"'+fe(p+".formBadge")+'>'+esc(ct.formBadge)+'</div>'+
+      '<form class="qform"><input type="text" name="name" placeholder="Your name" required>'+
+      '<input type="tel" name="phone" placeholder="Phone number" required>'+
+      '<select name="service" required><option value="" disabled selected>What needs cleaning?</option>'+opts+'</select>'+
+      '<textarea name="msg" rows="3" placeholder="Anything we should know? (pets, stains, square footage…)"></textarea>'+
+      '<button class="btn" type="submit" style="justify-content:center">Get my price in 30 min →</button>'+
+      '<div class="ok">'+esc(ct.okMsg)+'</div></form></div>';
+  };
+
+  R.richtext = function(b,i){ var p="blocks."+i+".d";
+    return '<div class="wrap t-center"><div class="kick"'+fe(p+".kick")+'>'+esc(b.d.kick||"")+'</div>'+
+      '<h2'+fe(p+".title")+'>'+esc(b.d.title||"")+'</h2>'+
+      '<div class="sub" style="max-width:760px;margin:0 auto"'+feRich(p+".html")+'>'+(b.d.html||"")+'</div></div>';
+  };
+
+  /* ---------- block wrapper definitions (outer <section>/<div> markup) ---------- */
+  // Returns { open, close } strings; inner is filled by R[type]. `anchor` = element id.
+  // Wrapper markup mirrors fe-source.html exactly (classes, decorative SVGs, .wrap).
+  function sided(style){ return '<svg class="sided" style="'+style+'" width="150" height="170" viewBox="0 0 140 160" fill="#2563C8"><use href="#sidebub"/></svg>'; }
+  function foamb(vb,fill,shape){ return '<svg class="foamb" viewBox="0 0 '+vb+'" preserveAspectRatio="none" fill="'+fill+'"><use href="#'+shape+'"/></svg>'; }
+  function foamt(vb,fill,shape){ return '<svg class="foamt" viewBox="0 0 '+vb+'" preserveAspectRatio="none" fill="'+fill+'"><use href="#'+shape+'"/></svg>'; }
+
+  // shape + viewbox used by each block's bottom divider (to reproduce source look)
+  var FOAM = {
+    hero:    {vb:"1440 130", shape:"foamshape"},  // hero uses .foam (special)
+    strip:   {vb:"1440 130", shape:"waveshape"},
+    about:   {vb:"1440 130", shape:"foamshape"},
+    cards:   {vb:"1440 130", shape:"waveshape"},
+    steps:   {vb:"1560 130", shape:"scallop"},
+    cta:     {vb:"1440 130", shape:"waveshape"},
+    pricing: {vb:"1440 130", shape:"foamshape"},
+    reviews: {vb:"1440 130", shape:"waveshape"},
+    faq:     {vb:"1440 130", shape:"foamshape"},
+    contact: {vb:"1440 130", shape:"waveshape"},
+    richtext:{vb:"1440 130", shape:"waveshape"}
+  };
+
+  // Build the OUTER wrapper for a block. innerHtml is the R[type] output.
+  // `wrapClass` carries the design-specific section classes from source.
+  function wrapBlock(b, i, innerHtml, isLastVisible, isFirstVisible){
+    var anchor = esc(b.anchor||("block"+i));
+    var f = FOAM[b.type] || FOAM.richtext;
+    var hidden = b.visible===false ? ' style="display:none"' : '';
+    var bar = blockToolbar(i);
+    if(b.type==="hero"){
+      // hero is special: full-bleed gradient section with bubbles + .foam edge
+      var bubs = '<div class="bub" style="width:26px;height:26px;left:8%;bottom:18%;animation-delay:0s"></div>'+
+        '<div class="bub" style="width:14px;height:14px;left:16%;bottom:10%;animation-delay:2s"></div>'+
+        '<div class="bub" style="width:20px;height:20px;left:46%;bottom:14%;animation-delay:1s"></div>'+
+        '<div class="bub" style="width:12px;height:12px;left:60%;bottom:8%;animation-delay:3.4s"></div>'+
+        '<div class="bub" style="width:30px;height:30px;left:78%;bottom:16%;animation-delay:1.8s"></div>';
+      return '<div class="hero fe-block" id="'+anchor+'" data-fe-block="'+i+'"'+hidden+'>'+bar+bubs+
+        '<div class="wrap">'+innerHtml+'</div>'+
+        '<div class="foam"><svg viewBox="0 0 1440 130" preserveAspectRatio="none" fill="#10264E"><use href="#foamshape"/></svg></div></div>';
+    }
+    if(b.type==="strip"){
+      return '<div class="strip fe-block pb-foam" id="'+anchor+'" data-fe-block="'+i+'" style="position:relative;overflow:hidden'+(b.visible===false?';display:none':'')+'">'+bar+
+        '<div class="wrap">'+innerHtml+'</div>'+foamb(f.vb,b.bg,f.shape)+'</div>';
+    }
+    if(b.type==="cta"){
+      return '<div class="band fe-block pb-foam" id="'+anchor+'" data-fe-block="'+i+'" style="position:relative'+(b.visible===false?';display:none':'')+'">'+bar+
+        foamb(f.vb,b.bg,f.shape)+'<div class="wrap">'+innerHtml+'</div></div>';
+    }
+    if(b.type==="about"){
+      // about has TWO .wrap blocks (main + stats) and a foamb
+      var idx = i; // closure for stats render
+      var statsHtml = R.aboutStats(b, idx);
+      return '<section id="'+anchor+'" class="fe-block pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        foamb(f.vb,b.bg,f.shape)+
+        '<div class="wrap">'+innerHtml+'</div>'+
+        '<div class="wrap stats">'+statsHtml+'</div></section>';
+    }
+    if(b.type==="cards"){
+      return '<section id="'+anchor+'" class="fe-block pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        sided('left:-34px;top:110px')+sided('right:-30px;bottom:190px;transform:scaleX(-1)')+
+        foamb(f.vb,b.bg,f.shape)+
+        '<div class="wrap t-center">'+innerHtml+'</div></section>';
+    }
+    if(b.type==="steps"){
+      return '<section id="'+anchor+'" class="fe-block pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        foamb(f.vb,b.bg,f.shape)+
+        '<div class="wrap t-center">'+innerHtml+'</div></section>';
+    }
+    if(b.type==="pricing"){
+      return '<section id="'+anchor+'" class="fe-block pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        sided('right:-36px;top:160px;transform:scaleX(-1)')+
+        foamb(f.vb,b.bg,f.shape)+
+        '<div class="wrap t-center">'+innerHtml+'</div></section>';
+    }
+    if(b.type==="reviews"){
+      return '<section id="'+anchor+'" class="fe-block pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        sided('left:-32px;bottom:200px')+
+        foamb(f.vb,b.bg,f.shape)+
+        '<div class="wrap t-center">'+innerHtml+'</div></section>';
+    }
+    if(b.type==="faq"){
+      // faq: no foam divider in source
+      return '<section id="'+anchor+'" class="fe-block" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        '<div class="wrap t-center">'+innerHtml+'</div></section>';
+    }
+    if(b.type==="contact"){
+      // contact has foamt (top) + foamb (bottom into footer navy)
+      return '<section id="'+anchor+'" class="fe-block pt-foam pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+        foamt(f.vb,b.bg,"foamshape")+
+        foamb(f.vb,b.bg,f.shape)+
+        '<div class="wrap">'+innerHtml+'</div></section>';
+    }
+    // richtext / generic
+    return '<section id="'+anchor+'" class="fe-block pb-foam" data-fe-block="'+i+'"'+hidden+'>'+bar+
+      foamb(f.vb,b.bg,f.shape)+innerHtml+'</section>';
+  }
+
+  function renderBlockInner(b, i){
+    var s = work.settings;
+    switch(b.type){
+      case "hero": return R.hero(b,i);
+      case "strip": return R.strip(b,i);
+      case "about": return R.about(b,i);
+      case "cards": return R.cards(b,i);
+      case "steps": return R.steps(b,i);
+      case "cta": return R.cta(b,i,s);
+      case "pricing": return R.pricing(b,i);
+      case "reviews": return R.reviews(b,i);
+      case "faq": return R.faq(b,i);
+      case "contact": return R.contact(b,i);
+      case "richtext": return R.richtext(b,i);
+      default: return "";
+    }
+  }
+
+  function blockToolbar(i){
+    if(!EDIT) return '';
+    return '<div class="fe-blockbar" data-fe-blockbar="'+i+'">'+
+      '<button type="button" data-act="up" title="Вверх">▲</button>'+
+      '<button type="button" data-act="down" title="Вниз">▼</button>'+
+      '<button type="button" data-act="vis" title="Скрыть/показать">👁</button>'+
+      '<button type="button" data-act="dup" title="Дублировать">⧉</button>'+
+      '<button type="button" data-act="del" title="Удалить">🗑</button></div>';
+  }
+
+  function addSectionControl(idx){
+    if(!EDIT) return '';
+    return '<div class="fe-addsec" data-fe-addsec="'+idx+'"><button type="button">➕ Секция</button></div>';
+  }
+
+  /* ============================================================
+     RENDER ALL
+     ============================================================ */
+  var work = null;   // working content (live)
+
+  function renderChrome(){
+    var s = work.settings;
+    var u=el(".util .wrap"); if(u) u.innerHTML = R.util(s);
+    var h=el("header .nav"); if(h) h.innerHTML = R.header(s);
+    var f=el("footer .wrap"); if(f) f.innerHTML = R.footer(s);
+    var fab=el("a.fab"); if(fab){ fab.href="tel:"+s.phoneHref; fab.style.display = s.fabVisible===false ? "none":""; }
+    if(EDIT){
+      // mark chrome scalar fields editable
+      markChromeEditable();
+    }
+  }
+
+  function markChromeEditable(){
+    // settings.phone / brandName etc — apply minimal contenteditable to known chrome text nodes
+    setCE("header .brand b","settings.brandName");
+    setCE("header .brand small","settings.brandSub");
+    setCE("header .hphone b","settings.phone");
+    setCE("header .hphone small","settings.hphoneSub");
+    setCE("header .btn[href='#contact']","settings.ctaText");
+    var copy = document.querySelectorAll("footer .copy div");
+    if(copy[0]) setNode(copy[0],"settings.footer.copy1");
+    if(copy[1]) setNode(copy[1],"settings.footer.copy2");
+    setCE("footer .desc","settings.footer.desc");
+  }
+  function setCE(sel,path){ var n=el(sel); if(n) setNode(n,path); }
+  function setNode(n,path){ n.setAttribute("contenteditable","true"); n.setAttribute("data-fe",path); }
+
+  function renderBody(){
+    var host = el("#fe-body");
+    if(!host) return;
+    var html = "";
+    if(EDIT) html += addSectionControl(0);
+    work.blocks.forEach(function(b,i){
+      var inner = renderBlockInner(b,i);
+      html += wrapBlock(b,i,inner);
+      if(EDIT) html += addSectionControl(i+1);
+    });
+    host.innerHTML = html;
+    fixFoam();
+  }
+
+  function renderAll(){
+    renderChrome();
+    renderBody();
+    afterRender();
+  }
+
+  function afterRender(){
+    initReveal();
+    initCounters();
+  }
+
+  /* ---------- FOAM RECOMPUTE ----------
+     For each visible block in order: bottom divider (.foamb) fill = NEXT
+     visible block's bg; top divider (.foamt) fill = PREVIOUS visible block's bg.
+     hero's own .foam edge keeps hero color. */
+  function fixFoam(){
+    var visIdx = [];
+    work.blocks.forEach(function(b,i){ if(b.visible!==false) visIdx.push(i); });
+    work.blocks.forEach(function(b,i){
+      var sec = el('[data-fe-block="'+i+'"]'); if(!sec) return;
+      var pos = visIdx.indexOf(i);
+      var nextBg = (pos>=0 && pos<visIdx.length-1) ? work.blocks[visIdx[pos+1]].bg : null;
+      var prevBg = (pos>0) ? work.blocks[visIdx[pos-1]].bg : null;
+      var fb = sec.querySelector(":scope > .foamb");
+      var ft = sec.querySelector(":scope > .foamt");
+      if(fb && nextBg) fb.setAttribute("fill", nextBg);
+      if(ft && prevBg) ft.setAttribute("fill", prevBg);
     });
   }
 
-  /* ---------- behaviors (ported from original inline script) ---------- */
+  /* ============================================================
+     BEHAVIORS (ported from original inline script)
+     ============================================================ */
   function heroEntrance(){
     try{ document.body.classList.add("hpre");
       requestAnimationFrame(function(){requestAnimationFrame(function(){document.body.classList.remove("hpre");});});
@@ -1063,10 +1091,12 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
   var _io=null;
   function initReveal(){
     if(_io) _io.disconnect();
+    if(!("IntersectionObserver" in window)) { document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in");}); return; }
     _io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add("in"); _io.unobserve(e.target);} });},{threshold:.15});
-    document.querySelectorAll(".rv").forEach(function(el){ if(!el.classList.contains("in")) _io.observe(el); });
+    document.querySelectorAll(".rv").forEach(function(e){ if(!e.classList.contains("in")) _io.observe(e); });
   }
   function initCounters(){
+    if(!("IntersectionObserver" in window)) return;
     var co=new IntersectionObserver(function(es){es.forEach(function(e){
       if(!e.isIntersecting) return;
       var elx=e.target, end=+elx.dataset.count, t0=performance.now();
@@ -1075,7 +1105,7 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
         if(p<1) requestAnimationFrame(tick); })(t0);
       co.unobserve(elx);
     });},{threshold:.6});
-    document.querySelectorAll("[data-count]").forEach(function(el){ co.observe(el); });
+    document.querySelectorAll("[data-count]").forEach(function(e){ co.observe(e); });
   }
   function bindMenu(){
     document.addEventListener("click",function(e){
@@ -1084,13 +1114,14 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
       var a=e.target.closest && e.target.closest("#mnav a");
       if(a){ var m2=el("#mnav"); if(m2){ m2.classList.remove("open"); var bg=el("#burger"); if(bg) bg.textContent="☰"; } }
       var cta=e.target.closest && e.target.closest('a.btn[href="#contact"]');
-      if(cta){ track("cta_click",{label:(cta.textContent||"").trim().slice(0,60)}); }
+      if(cta && !EDIT){ track("cta_click",{label:(cta.textContent||"").trim().slice(0,60)}); }
     });
   }
   function bindForm(){
     document.addEventListener("submit",function(e){
       var f=e.target; if(!f.classList || !f.classList.contains("qform")) return;
       e.preventDefault();
+      if(EDIT) return; // don't submit while editing
       var data={ name:(f.name&&f.name.value||"").trim(), phone:(f.phone&&f.phone.value||"").trim(),
         service:(f.service&&f.service.value||""), message:(f.msg&&f.msg.value||"").trim() };
       var btn=f.querySelector('button[type=submit]'); if(btn) btn.disabled=true;
@@ -1105,31 +1136,326 @@ footer .desc{font-size:14.5px;max-width:300px;margin-top:14px}
     });
   }
 
-  /* ---------- boot ---------- */
-  function boot(){
+  /* ============================================================
+     EDIT MODE
+     ============================================================ */
+  var history=[], hpos=-1, dirty=false, changeCbs=[];
+  function snapshot(){ // push current work onto history before mutation
+    history = history.slice(0, hpos+1);
+    history.push(clone(work));
+    if(history.length>50) history.shift();
+    hpos = history.length-1;
+  }
+  function pushAfter(){ // record new state after a mutation
+    history = history.slice(0, hpos+1);
+    history.push(clone(work));
+    if(history.length>51) history.shift();
+    hpos = history.length-1;
+  }
+  function markDirty(){ dirty=true; updateBar(); changeCbs.forEach(function(cb){try{cb(work);}catch(e){}}); }
+
+  function getPath(obj, path){
+    var parts=path.split("."), o=obj;
+    for(var i=0;i<parts.length;i++){ if(o==null) return undefined; o=o[parts[i]]; }
+    return o;
+  }
+  function setPath(obj, path, val){
+    var parts=path.split("."), o=obj;
+    for(var i=0;i<parts.length-1;i++){ var k=parts[i]; if(o[k]==null) o[k]= /^\d+$/.test(parts[i+1])?[]:{}; o=o[k]; }
+    o[parts[parts.length-1]]=val;
+  }
+
+  var debTimer=null;
+  function commitText(path, text, rich){
+    setPath(work, path, text);
+    if(debTimer) clearTimeout(debTimer);
+    debTimer=setTimeout(function(){ pushAfter(); }, 600);
+    markDirty();
+  }
+
+  function bindInlineEditing(){
+    var host=document.body;
+    host.addEventListener("input", function(e){
+      var t=e.target;
+      var p=t.getAttribute && (t.getAttribute("data-fe")||t.getAttribute("data-fe-rich"));
+      if(!p) return;
+      var rich = t.hasAttribute("data-fe-rich");
+      var val = rich ? t.innerHTML : t.textContent;
+      commitText(p, val, rich);
+    }, true);
+  }
+
+  /* ----- media upload ----- */
+  function pickFile(accept, cb){
+    var inp=document.createElement("input"); inp.type="file"; if(accept) inp.accept=accept;
+    inp.style.display="none"; document.body.appendChild(inp);
+    inp.addEventListener("change", function(){ var f=inp.files&&inp.files[0]; document.body.removeChild(inp); if(f) cb(f); });
+    inp.click();
+  }
+  function uploadMedia(file){
+    var safe = (file.name||"file").replace(/[^a-zA-Z0-9._-]/g,"_");
+    var path = "uploads/"+Date.now()+"_"+safe;
+    return sb.storage.from("fe-media").upload(path, file, {upsert:true}).then(function(res){
+      if(res.error) throw res.error;
+      var pub = sb.storage.from("fe-media").getPublicUrl(path);
+      return pub.data.publicUrl;
+    });
+  }
+  function handleMedia(path, btn){
+    var accept = /\.video|video/i.test(path) ? "video/*" : "image/*,video/*";
+    pickFile(accept, function(file){
+      if(!sb){ alert("Нет соединения с хранилищем"); return; }
+      var old=btn.textContent; btn.textContent="⏳ Загрузка…"; btn.disabled=true;
+      snapshot();
+      uploadMedia(file).then(function(url){
+        setPath(work, path, url); pushAfter(); markDirty();
+        var bi=closestBlockIndex(btn); if(bi!=null) rerenderBlock(bi); else renderBody();
+        afterRender();
+      }).catch(function(err){ alert("Ошибка загрузки: "+(err&&err.message||err)); btn.textContent=old; btn.disabled=false; });
+    });
+  }
+
+  function closestBlockIndex(node){
+    var sec=node.closest && node.closest("[data-fe-block]");
+    return sec ? +sec.getAttribute("data-fe-block") : null;
+  }
+  function rerenderBlock(i){
+    // simplest robust approach: re-render whole body (keeps indices in sync)
+    renderBody();
+    afterRender();
+  }
+
+  /* ----- block operations ----- */
+  function moveBlock(i, dir){
+    var j=i+dir; if(j<0||j>=work.blocks.length) return;
+    snapshot();
+    var arr=work.blocks; var t=arr[i]; arr[i]=arr[j]; arr[j]=t;
+    pushAfter(); markDirty(); renderBody(); afterRender();
+  }
+  function toggleVis(i){ snapshot(); work.blocks[i].visible = !(work.blocks[i].visible!==false); pushAfter(); markDirty(); renderBody(); afterRender(); }
+  function dupBlock(i){ snapshot(); var c=clone(work.blocks[i]); c.id=bid(); if(c.anchor) c.anchor=c.anchor+"-copy"; work.blocks.splice(i+1,0,c); pushAfter(); markDirty(); renderBody(); afterRender(); }
+  function delBlock(i){ if(!confirm("Удалить блок?")) return; snapshot(); work.blocks.splice(i,1); pushAfter(); markDirty(); renderBody(); afterRender(); }
+
+  /* ----- repeatable item operations ----- */
+  function arrAt(path){ return getPath(work, path); }
+  function moveItem(arrPath, idx, dir){
+    var arr=arrAt(arrPath); if(!arr) return; var j=idx+dir; if(j<0||j>=arr.length) return;
+    snapshot(); var t=arr[idx]; arr[idx]=arr[j]; arr[j]=t; pushAfter(); markDirty(); renderBody(); afterRender();
+  }
+  function dupItem(arrPath, idx){ var arr=arrAt(arrPath); if(!arr) return; snapshot(); arr.splice(idx+1,0,clone(arr[idx])); pushAfter(); markDirty(); renderBody(); afterRender(); }
+  function delItem(arrPath, idx){ var arr=arrAt(arrPath); if(!arr) return; if(!confirm("Удалить элемент?")) return; snapshot(); arr.splice(idx,1); pushAfter(); markDirty(); renderBody(); afterRender(); }
+  function addItem(arrPath){
+    var arr=arrAt(arrPath); if(!arr){ setPath(work,arrPath,[]); arr=arrAt(arrPath); }
+    snapshot();
+    var tmpl = arr.length ? clone(arr[arr.length-1]) : defaultItemFor(arrPath);
+    // clear obvious text so user fills it
+    arr.push(tmpl);
+    pushAfter(); markDirty(); renderBody(); afterRender();
+  }
+  function defaultItemFor(arrPath){
+    if(/\.items$/.test(arrPath) && /cards/.test(currentTypeFor(arrPath))) return {ico:"✨",title:"New service",text:"Description",from:"from $0"};
+    if(/\.steps$/.test(arrPath)) return {emoji:"✨",n:"+",title:"New step",text:"Description"};
+    if(/\.plans$/.test(arrPath)) return {name:"New plan",price:"$0",per:" / visit",desc:"",features:["Feature"],cta:"Book",popular:false,tag:""};
+    if(/\.chips$/.test(arrPath)) return {label:"Item",price:"$0"};
+    if(/\.plats$/.test(arrPath)) return {label:"Platform",value:"5.0"};
+    if(/\.ways$/.test(arrPath)) return {icon:"📞",title:"Contact",sub:"",href:"#",blank:false};
+    if(/\.checks$/.test(arrPath)) return "New benefit";
+    if(/\.features$/.test(arrPath)) return "New feature";
+    if(/reviews.*\.items$/.test(arrPath)) return {text:"Great!",name:"Name",meta:"meta",avatar:"N"};
+    if(/faq.*\.items$/.test(arrPath)) return {q:"Question?",a:"Answer."};
+    if(/strip.*\.items$/.test(arrPath)) return {icon:"✨",text:"New point"};
+    return {text:"New"};
+  }
+  function currentTypeFor(arrPath){
+    var m=arrPath.match(/^blocks\.(\d+)\./); if(!m) return "";
+    var b=work.blocks[+m[1]]; return b?b.type:"";
+  }
+
+  /* ----- add section picker ----- */
+  var BLOCK_TYPES = ["hero","cards","steps","cta","pricing","reviews","faq","contact","richtext"];
+  function newBlockDefault(type){
+    var d = clone(DEFAULT().blocks.filter(function(b){return b.type===type;})[0] || null);
+    if(d){ d.id=bid(); d.anchor=type+"-"+Math.random().toString(36).slice(2,5); return d; }
+    // fallback for richtext (not in defaults)
+    if(type==="richtext") return { id:bid(), type:"richtext", anchor:"text-"+Math.random().toString(36).slice(2,5), bg:BG.white, visible:true,
+      d:{ kick:"Section", title:"New section", html:"<p>Edit this text…</p>" } };
+    return { id:bid(), type:type, anchor:type, bg:BG.white, visible:true, d:{} };
+  }
+  function showPicker(insertAt){
+    var ov=document.createElement("div"); ov.className="fe-picker-ov";
+    ov.innerHTML='<div class="fe-picker"><h3>Добавить секцию</h3><div class="fe-picker-grid">'+
+      BLOCK_TYPES.map(function(t){return '<button type="button" data-type="'+t+'">'+t+'</button>';}).join("")+
+      '</div><button type="button" class="fe-picker-cancel">Отмена</button></div>';
+    document.body.appendChild(ov);
+    ov.addEventListener("click", function(e){
+      if(e.target===ov || e.target.classList.contains("fe-picker-cancel")){ document.body.removeChild(ov); return; }
+      var t=e.target.getAttribute("data-type"); if(!t) return;
+      document.body.removeChild(ov);
+      addSection(t, insertAt);
+    });
+  }
+  function addSection(type, insertAt){
+    snapshot();
+    var nb=newBlockDefault(type);
+    if(insertAt==null||insertAt>work.blocks.length) insertAt=work.blocks.length;
+    work.blocks.splice(insertAt,0,nb);
+    pushAfter(); markDirty(); renderBody(); afterRender();
+  }
+
+  /* ----- edit-mode event delegation ----- */
+  function bindEditEvents(){
+    document.addEventListener("click", function(e){
+      var t=e.target;
+      // media replace
+      var mb=t.closest&&t.closest("[data-fe-media]");
+      if(mb){ e.preventDefault(); handleMedia(mb.getAttribute("data-fe-media"), mb); return; }
+      // block toolbar
+      var bb=t.closest&&t.closest(".fe-blockbar button");
+      if(bb){ e.preventDefault(); var bi=+bb.parentNode.getAttribute("data-fe-blockbar"); var act=bb.getAttribute("data-act");
+        if(act==="up") moveBlock(bi,-1); else if(act==="down") moveBlock(bi,1);
+        else if(act==="vis") toggleVis(bi); else if(act==="dup") dupBlock(bi); else if(act==="del") delBlock(bi);
+        return; }
+      // item toolbar
+      var ib=t.closest&&t.closest(".fe-itembar button");
+      if(ib){ e.preventDefault(); var bar=ib.parentNode; var ap=bar.getAttribute("data-fe-arr"); var ix=+bar.getAttribute("data-fe-idx"); var ac=ib.getAttribute("data-act");
+        if(ac==="up") moveItem(ap,ix,-1); else if(ac==="down") moveItem(ap,ix,1);
+        else if(ac==="dup") dupItem(ap,ix); else if(ac==="del") delItem(ap,ix);
+        return; }
+      // add item
+      var ai=t.closest&&t.closest(".fe-add-item");
+      if(ai){ e.preventDefault(); addItem(ai.getAttribute("data-fe-addarr")); return; }
+      // add section
+      var as=t.closest&&t.closest(".fe-addsec button");
+      if(as){ e.preventDefault(); showPicker(+as.parentNode.getAttribute("data-fe-addsec")); return; }
+      // prevent navigation on editable links
+      var lnk=t.closest&&t.closest('a[contenteditable="true"], a[href^="#"]');
+      if(lnk && EDIT && !t.closest(".fe-toolbar")){ e.preventDefault(); }
+    });
+  }
+
+  /* ----- floating toolbar ----- */
+  var device="desktop";
+  function buildToolbar(){
+    var bar=document.createElement("div"); bar.className="fe-toolbar"; bar.id="feToolbar";
+    bar.innerHTML =
+      '<button type="button" data-fa="save" class="primary">💾 Сохранить<span class="fe-dot" id="feDot"></span></button>'+
+      '<button type="button" data-fa="undo" title="Отменить">↶</button>'+
+      '<button type="button" data-fa="redo" title="Повторить">↷</button>'+
+      '<button type="button" data-fa="device" title="Десктоп/мобильный">📱</button>'+
+      '<button type="button" data-fa="exit" title="Выйти">✕</button>'+
+      '<span class="fe-toast" id="feToast"></span>';
+    document.body.appendChild(bar);
+    bar.addEventListener("click", function(e){
+      var b=e.target.closest("button"); if(!b) return; var a=b.getAttribute("data-fa");
+      if(a==="save") doSave();
+      else if(a==="undo") undo();
+      else if(a==="redo") redo();
+      else if(a==="device") setDevice(device==="desktop"?"mobile":"desktop");
+      else if(a==="exit") doExit();
+    });
+    updateBar();
+  }
+  function updateBar(){
+    var dot=el("#feDot"); if(dot) dot.style.display = dirty? "inline-block":"none";
+    var u=el('.fe-toolbar [data-fa="undo"]'); if(u) u.disabled=!canUndo();
+    var r=el('.fe-toolbar [data-fa="redo"]'); if(r) r.disabled=!canRedo();
+  }
+  function toast(msg){ var t=el("#feToast"); if(!t) return; t.textContent=msg; t.classList.add("show"); setTimeout(function(){t.classList.remove("show");},2600); }
+
+  function canUndo(){ return hpos>0; }
+  function canRedo(){ return hpos < history.length-1; }
+  function undo(){ if(!canUndo()) return; hpos--; work=clone(history[hpos]); renderAll(); markDirtyFromHistory(); }
+  function redo(){ if(!canRedo()) return; hpos++; work=clone(history[hpos]); renderAll(); markDirtyFromHistory(); }
+  function markDirtyFromHistory(){ dirty=true; updateBar(); changeCbs.forEach(function(cb){try{cb(work);}catch(e){}}); }
+
+  function doSave(){
+    if(!sb){ alert("Нет соединения"); return Promise.reject(); }
+    var btn=el('.fe-toolbar [data-fa="save"]'); if(btn) btn.disabled=true;
+    return sb.from("fe_content").upsert({ id:"main", data:work, updated_at:new Date().toISOString() })
+      .then(function(res){
+        if(res.error) throw res.error;
+        dirty=false; updateBar(); toast("Сохранено — уже на сайте");
+        if(btn) btn.disabled=false;
+      }, function(err){ if(btn) btn.disabled=false; alert("Ошибка сохранения: "+(err&&err.message||err)); throw err; });
+  }
+  function setDevice(w){
+    device = (w==="mobile"||w===390||w==="390") ? "mobile" : "desktop";
+    document.body.classList.toggle("fe-mobile", device==="mobile");
+  }
+  function doExit(){
+    if(dirty && !confirm("Есть несохранённые изменения. Выйти без сохранения?")) return;
+    location.href="/admin";
+  }
+
+  window.addEventListener("beforeunload", function(e){
+    if(EDIT && dirty){ e.preventDefault(); e.returnValue=""; return ""; }
+  });
+
+  /* ----- public API ----- */
+  window.FE_EDIT = {
+    getContent:function(){ return clone(work); },
+    save:function(){ return doSave(); },
+    undo:undo, redo:redo, canUndo:canUndo, canRedo:canRedo,
+    isDirty:function(){ return dirty; },
+    onChange:function(cb){ if(typeof cb==="function") changeCbs.push(cb); },
+    addSection:function(type){ addSection(type); },
+    setDevice:setDevice
+  };
+  window.FE_R = R;
+  window.FE_fixFoam = fixFoam;
+  window.FE_renderBodyHTML = function(content){ // for node smoke test
+    var saved=work, savedEdit=EDIT; work=content; EDIT=false;
+    var html=""; content.blocks.forEach(function(b,i){ html+=wrapBlock(b,i,renderBlockInner(b,i)); });
+    work=saved; EDIT=savedEdit; return html;
+  };
+
+  /* ============================================================
+     BOOT
+     ============================================================ */
+  function startNormal(content){
+    work = content; EDIT=false;
+    renderAll();
     heroEntrance();
-    initReveal();
-    initCounters();
     bindMenu();
     bindForm();
     track("pageview");
-    if(!sb) return;
-    sb.from("fe_content").select("data").eq("id","main").maybeSingle().then(function(res){
+  }
+  function startEdit(content){
+    work = content; EDIT=true;
+    document.body.classList.add("fe-editing");
+    history=[clone(work)]; hpos=0; dirty=false;
+    renderAll();
+    heroEntrance();
+    bindMenu();
+    bindForm();
+    bindInlineEditing();
+    bindEditEvents();
+    buildToolbar();
+  }
+
+  function loadContent(){
+    if(!sb) return Promise.resolve(DEFAULT());
+    return sb.from("fe_content").select("data").eq("id","main").maybeSingle().then(function(res){
       var data = res && res.data && res.data.data;
-      if(!data || !Object.keys(data).length) return;          // no edits -> keep static
-      var merged = deepMerge(DEFAULT, data);
-      if(jeq(merged, DEFAULT)) return;
-      renderAll(merged);
-      initReveal();
-      initCounters();
-    }, function(){});
+      return migrate(data && Object.keys(data).length ? data : null);
+    }, function(){ return DEFAULT(); });
+  }
+
+  function boot(){
+    var wantEdit = qs.get("fe_edit")==="1";
+    if(wantEdit && sb){
+      sb.auth.getSession().then(function(r){
+        var session = r && r.data && r.data.session;
+        loadContent().then(function(c){
+          if(session) startEdit(c); else startNormal(c);
+        });
+      }, function(){ loadContent().then(startNormal); });
+    } else {
+      loadContent().then(startNormal);
+    }
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
-
-  /* expose default + renderers for the admin / verification */
-  window.FE_DEFAULT = DEFAULT;
-  window.FE_R = R;
 })();
 
 </script>
