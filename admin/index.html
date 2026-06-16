@@ -249,7 +249,8 @@ select.statsel{padding:5px 8px;border-radius:8px;border:1.5px solid var(--line);
     <nav id="nav">
       <a data-tab="orders" class="active"><span class="ic">📋</span> Orders</a>
       <a data-tab="analytics"><span class="ic">📈</span> Analytics</a>
-      <a data-tab="editor"><span class="ic">🎨</span> Landing editor</a>
+      <a href="/?fe_edit=1" class="visual-link"><span class="ic">🖌️</span> Визуальный редактор</a>
+      <a data-tab="editor"><span class="ic">🎨</span> Редактор (формы)</a>
       <a data-tab="settings"><span class="ic">⚙️</span> Settings</a>
     </nav>
     <div class="bottom">
@@ -492,7 +493,7 @@ function closeSidebar(){ $("#sidebar").classList.remove("open"); $("#scrim").cla
 
 function initApp(){
   if(APP_INITED) return; APP_INITED=true;
-  $$("#nav a").forEach(function(a){ a.addEventListener("click", function(){ setTab(a.getAttribute("data-tab")); }); });
+  $$("#nav a").forEach(function(a){ a.addEventListener("click", function(){ var t=a.getAttribute("data-tab"); if(t) setTab(t); }); });
   $("#burger").addEventListener("click", openSidebar);
   $("#scrim").addEventListener("click", closeSidebar);
   loadContent(); // preload content for editor/settings
