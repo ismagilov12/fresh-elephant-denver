@@ -249,8 +249,7 @@ select.statsel{padding:5px 8px;border-radius:8px;border:1.5px solid var(--line);
     <nav id="nav">
       <a data-tab="orders" class="active"><span class="ic">📋</span> Orders</a>
       <a data-tab="analytics"><span class="ic">📈</span> Analytics</a>
-      <a href="/?fe_edit=1" class="visual-link"><span class="ic">🖌️</span> Визуальный редактор</a>
-      <a data-tab="editor"><span class="ic">🎨</span> Редактор (формы)</a>
+      <a data-tab="editor" class="active-default"><span class="ic">🎨</span> Редактор сайта (v5)</a>
       <a data-tab="settings"><span class="ic">⚙️</span> Settings</a>
     </nav>
     <div class="bottom">
@@ -322,125 +321,145 @@ function fmtDay(s){var d=new Date(s);if(isNaN(d))return s;return d.toLocaleDateS
    DEFAULT content (EXACT copy of landing fe-cms.js DEFAULT)
    ============================================================ */
 var DEFAULT = {
-  settings: {
-    brandEmoji:"🐘", brandName:"Fresh Elephant", brandSub:"CLEANING SERVICES",
-    phone:"(720) 555-0134", phoneHref:"+17205550134",
-    email:"hello@freshelephant.com",
-    instagram:"@freshelephant.denver", instagramUrl:"https://www.instagram.com/freshelephant.denver",
-    whatsappUrl:"https://wa.me/17205550134",
-    areaLine:"📍 Denver metro · Mon–Sun 8am–8pm",
-    fabVisible:true
+  settings:{
+    phone:"(983) 215-6432", phoneHref:"+19832156432", smsHref:"+19832156432",
+    instagramUrl:"https://www.instagram.com/curlycleaner.denver",
+    facebookUrl:"https://www.facebook.com/share/1NiahXi9R6/",
+    brandCu:"Curly", brandCl:"CLEANER", brandSub:"UPHOLSTERY CLEANING · DENVER"
   },
-  visibility:{ util:true, header:true, hero:true, strip:true, about:true, services:true,
-    how:true, band:true, pricing:true, reviews:true, faq:true, contact:true, footer:true },
-  util:{ left:"📍 <b>Denver metro</b> · Mon–Sun 8am–8pm" },
-  header:{ hphoneSub:"Free quote in 30 min", ctaText:"Get a quote", nav:[
-    {label:"About",href:"#about"},{label:"Services",href:"#services"},
-    {label:"Pricing",href:"#pricing"},{label:"Reviews",href:"#reviews"},{label:"FAQ",href:"#faq"} ]},
+  visibility:{ strip:true, pain:true, services:true, about:true, why:true,
+    prices:true, works:true, reviews:true, diy:true, faq:true, hours:true },
+  nav:[
+    {label:"Services",href:"#services"},{label:"About us",href:"#about"},
+    {label:"Pricing",href:"#prices"},{label:"Photos",href:"#works"},
+    {label:"FAQ",href:"#faq"},{label:"Contact",href:"#contact"} ],
   hero:{
-    pill:"⭐ Trusted by 1,200+ Denver homes",
-    titleHtml:'Big clean energy for your <span>home<svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 9 Q 60 1 118 8" fill="none" stroke="#F59E2D" stroke-width="5" stroke-linecap="round"/></svg></span>',
-    lead:"House cleaning, deep cleaning and upholstery care with flat honest prices. We never forget a spot — and the quote never changes mid-job.",
-    ctaPrimary:"Get my free quote", ctaSecondary:"See flat prices",
-    ratingValue:"4.9 / 5", ratingNote:"· 120+ Google reviews · Licensed & insured",
-    video:"hero-video.mp4", poster:"hero-poster.jpg",
-    chip1:"🫧 We never forget a spot", chip2:"⚡ Quote in 30 min"
+    pin:'🐾 <b>Family-owned</b> · husband &amp; wife team · Denver, CO',
+    titleSmall:"Curly Cleaner",
+    titleMain:"Deep Upholstery Cleaning in Denver",
+    lead:"Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — and furniture that's dry in just a few hours.",
+    hlist:["Sofas & Couches","Mattresses","Area Rugs","Armchairs & Chairs","Pet stains & odor","Delicate fabrics"],
+    ctaPrimary:"Get a free quote in 60 seconds",
+    ctaSecondary:"💬 Text for a quote",
+    area:'📍 <b>Denver Metro</b> · free travel within 30 miles',
+    photo:"", photoCaption:"Your photo goes here —<br>the two of you with the extractor,<br>smiling 🙂",
+    pawText:"Inspired by Perseus 🐶"
   },
-  strip:{ items:[
-    {icon:"🛡️",text:"All cleaners are bonded & insured"},
-    {icon:"📋",text:"Trained with our 54-point checklists"},
-    {icon:"🌿",text:"We bring & use green, pet-safe products"} ]},
-  about:{
-    kick:"About us", title:"Our goal is to make life easy",
-    text:"Fresh Elephant is a Denver-grown cleaning company with one simple idea: cleaning should be the easiest thing on your to-do list. One crew, one flat price, one spotless result.",
-    checks:["Same trusted crew every visit — they learn your home",
-      "Dirt level never changes the price you were quoted",
-      "48-hour free re-clean guarantee, in writing"],
-    cta:"Explore services", ctaHref:"#services", photo:"",
-    f1:{icon:"💲",text:"Flat price lock — no surprises"},
-    f2:{icon:"⚡",text:"Quote in 30 minutes"},
-    stats:[ {count:"1200",label:"homes cleaned"}, {count:"500",label:"couches revived"},
-      {text:"4.9★",label:"average rating"}, {count:"98",label:"% clients return"} ]
+  strip:[
+    {ic:"🪑",b:"Truly Deep Clean",span:"not just the surface"},
+    {ic:"🐾",b:"Pet & Kid Safe",span:"eco, non-toxic products"},
+    {ic:"⏱️",b:"Dry in 4–6 Hours",span:"no over-saturation"},
+    {ic:"👍",b:"Satisfaction Guarantee",span:"we return & fix it free"} ],
+  pain:{
+    title:'Tired of looking at dirty upholstery or a stained <em>mattress?</em>',
+    text:"Stains, odors, or just an overall dingy look? It's time to take action — and we're here to help. Professional cleaning doesn't just improve appearance: it removes dust mites, bacteria and allergens, helping your family breathe easier and stay healthier.",
+    items:["Say goodbye to stains and smells","Breathe cleaner air at home","Restore comfort and freshness"],
+    cta:"Bring my furniture back to life"
   },
   services:{
-    kick:"Our services", title:"United way to best services",
-    sub:"Six ways we make Denver homes and businesses spotless — all with flat, upfront pricing.",
+    title:'Our professional <em>services</em>',
+    sub:"We're fabric experts, not a general cleaning service. Upholstery is our craft — and our only focus.",
     items:[
-      {ico:"🏠",title:"House Cleaning",text:"Weekly, bi-weekly or monthly. Kitchens, baths, floors, dust — handled.",from:"from $139"},
-      {ico:"🫧",title:"Deep Cleaning",text:"Baseboards, behind appliances, inside cabinets — the works.",from:"from $249"},
-      {ico:"📦",title:"Move-In / Move-Out",text:"Deposit-back clean with a 54-point landlord checklist.",from:"from $299"},
-      {ico:"🛋️",title:"Upholstery & Carpet",text:"Hot-water extraction for sofas, mattresses, rugs and carpets.",from:"<s>$74</s>from $59"},
-      {ico:"🏢",title:"Office Cleaning",text:"Recurring commercial cleaning that never misses a Monday.",from:"from $0.20/sq ft"},
-      {ico:"🔑",title:"Airbnb Turnover",text:"Guest-ready resets with photo report and restock checklist.",from:"from $119"} ]
+      {star:"MAIN SERVICE",em:"🛋️",h3:"Sofas & Upholstery",p:"Deep cleaning for sofas, couches and sectionals — every cushion, every fiber.",pr:"from $140"},
+      {star:"",em:"🛏️",h3:"Mattresses",p:"Deep cleaning against dust mites and allergens for healthy sleep.",pr:"from $110 (King)"},
+      {star:"",em:"🧶",h3:"Area Rugs",p:"Careful cleaning for rugs and carpets — including delicate fibers.",pr:"custom quote"},
+      {star:"",em:"🪑",h3:"Armchairs & Chairs",p:"Armchairs, ottomans, dining and office chairs.",pr:"from $50"} ],
+    note:'<b>What we DON\'T do:</b> general house cleaning, windows or dusting. We stay focused on fabrics — that\'s what makes us the experts. <b>Minimum call-out: $99.</b>'
   },
-  how:{
-    kick:"How it works", title:"Spotless in three easy steps",
-    sub:"From first text to fresh home — usually within the same week.",
-    steps:[
-      {emoji:"📲",n:"1",title:"Book online",text:"Send a photo or the form — flat quote in 30 minutes, same-week slots."},
-      {emoji:"🧽",n:"2",title:"We clean",text:"Bonded, trained crew with pro equipment and green products."},
-      {emoji:"🛋️",n:"3",title:"You relax",text:"Walk through the result. Anything off — free re-clean within 48h."} ]
+  about:{
+    title:'Welcome to <em>Curly Cleaner</em>',
+    p1:"When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.",
+    p2:'As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.',
+    perseus:'Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn\'t safe for Perseus, it will never touch your furniture.</b>',
+    photo:"", photoCaption:"Family photo —<br>coming soon"
   },
-  band:{ title:"Get your place cleaned — it's simple and affordable",
-    text:"Call now and get $25 off your first clean this week.", cta:"Get a free quote" },
-  pricing:{
-    kick:"Pricing", title:"Flat prices. Zero surprises.",
-    sub:"The price we quote is the price you pay. Dirt level doesn't change a thing.",
-    plans:[
-      {name:"Standard Clean",price:"$139",per:" / visit",desc:"For homes that need regular love",
-        features:["Kitchen, baths, floors, dusting","Same crew every visit","Recurring plans save 15%","Green, pet-safe products"],
-        cta:"Book standard",popular:false,tag:""},
-      {name:"Deep Clean",price:"$249",per:" / visit",desc:'For "it\'s been a while" homes',
-        features:["Everything in Standard","Baseboards, vents, behind appliances","Inside oven & fridge","Interior windows & tracks","54-point checklist"],
-        cta:"Book deep clean",popular:true,tag:"Most popular"},
-      {name:"Move-In / Out",price:"$299",per:" / visit",desc:"Deposit-back guarantee clean",
-        features:["Everything in Deep Clean","Inside all cabinets & closets","Landlord-ready photo report","Same-week availability"],
-        cta:"Book move clean",popular:false,tag:""} ],
-    miniTitle:"🛋️ Upholstery & carpet — flat per item",
-    chips:[ {label:"Armchair",price:"$59"},{label:"Loveseat",price:"$99"},{label:"Sofa 3-seat",price:"$139"},
-      {label:"Sectional",price:"from $189"},{label:"Mattress",price:"from $79"},{label:"Carpet",price:"$0.40/sq ft"},
-      {label:"Dining chair",price:"$15"},{label:"Odor treatment",price:"from $49"} ],
-    flatnote:"<b>Dirt level does NOT affect the price.</b> Free travel across Denver metro. Final flat price confirmed before we start."
+  why:{
+    title:'Why choose <em>Curly Cleaner?</em>',
+    sub:"As a family-owned business, your satisfaction is our reputation.",
+    items:[
+      {ic:"🔧",b:"Professional expertise",p:"Advanced pro-grade equipment for deep cleaning without over-saturation. Thoroughly cleaned, sanitized and ready to use in just a few hours."},
+      {ic:"🌿",b:"Health & safety first",p:"Only professional, eco-friendly, non-toxic solutions — 100% safe for children, pregnant women and pets. No harsh chemicals, no strong odors."},
+      {ic:"🧵",b:"Delicate fabrics welcome",p:"We work with the delicate materials the big companies are afraid to touch. Husband does the tech work, wife runs quality control."},
+      {ic:"🛡️",b:"A personal standard",p:"Fully licensed and insured. The personalized, reliable service only a local family team can provide."} ]
+  },
+  prices:{
+    title:'Transparent <em>pricing</em>',
+    sub:"Starting prices below. We confirm your exact quote by phone or from a photo — and warn you in advance if critical soiling or special fabric care changes anything.",
+    leftTitle:"🛋️ Upholstery",
+    left:[
+      {label:"Standard sofa",price:"from $140"},
+      {label:"Loveseat",price:"from $110"},
+      {label:"Armchair",price:"from $50"},
+      {label:"Sectional",price:"custom quote"},
+      {label:"Dining / office chair",price:"from $15"} ],
+    rightTitle:"🛏️ Mattresses & rugs",
+    right:[
+      {label:"Mattress (King)",price:"from $110"},
+      {label:"Mattress (Queen / Full / Twin)",price:"custom quote"},
+      {label:"Area rugs",price:"custom quote"},
+      {label:"Pet stain & odor treatment",price:"quoted upfront"},
+      {label:"Minimum call-out",price:"$99"} ],
+    promos:[
+      {pe:"🎁",html:'<b>10% off</b> your second piece of furniture in the same visit'},
+      {pe:"⭐",html:'<b>15% off</b> your first order in exchange for a Google review'} ],
+    note:'📍 <b>Free travel</b> within 30 miles of Denver — beyond that for a small surcharge. Send a photo of your furniture and get your quote <b>in 60 seconds</b>.'
+  },
+  works:{
+    title:'Before & <em>after</em>',
+    sub:'Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.',
+    shots:["work-1.jpg","work-2.jpg","work-3.jpg","work-4.jpg","work-5.jpg","work-6.jpg","work-7.jpg","work-8.jpg"]
   },
   reviews:{
-    kick:"Reviews", title:"What our clients say", sub:"Real Denver homes, real stains, real results.",
+    title:'Reviews from our <em>clients</em>',
+    sub:"Your review could be here — and it comes with 15% off your first order.",
     items:[
-      {text:"Two dogs, one toddler, beige sofa — I thought it was hopeless. It looks brand new and smells like nothing, which is exactly what I wanted.",name:"Sarah M.",meta:"Wash Park · sofa deep clean",avatar:"S"},
-      {text:"Quoted a flat price over text, showed up on time, and the price didn't move an inch. Rare these days. Booked them monthly.",name:"Dmitry K.",meta:"Aurora · recurring clean",avatar:"D"},
-      {text:"They handle our Airbnb turnovers. Photo report after every clean, zero missed check-ins in six months. Total lifesavers.",name:"Jess & Tom",meta:"Highlands · Airbnb turnover",avatar:"J"} ],
-    plats:[ {label:"Google",value:"4.9"},{label:"Yelp",value:"4.8"},{label:"Thumbtack",value:"Top Pro"} ]
+      {p:'"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."',who:"Sarah M.",where:"Wash Park · sectional"},
+      {p:'"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."',who:"Dmitry K.",where:"Aurora · sofa + mattress"},
+      {p:'"You can tell it\'s a family business — they treat your home like their own. Photo updates and honest pricing."',who:"Jess & Tom",where:"Highlands Ranch · armchairs"} ],
+    gbadge:'⭐ Find us on <b>Google</b> · <b>Instagram</b> · <b>Facebook</b>'
+  },
+  diy:{
+    title:"Planning to clean your furniture yourself?",
+    text:'We have some important information for you: store-bought cleaners often <b>set stains permanently</b>, over-wet the foam and leave residue that attracts dirt faster. Text us a photo first — we\'ll honestly tell you if it\'s a DIY job or needs a pro.',
+    cta:"Ask us first — it's free"
   },
   faq:{
-    kick:"FAQ", title:"Frequently asked questions", sub:"Everything Denver asks before booking.",
+    title:'Do you have questions? <em>We have answers!</em>',
+    sub:"The most common ones — answered honestly.",
     items:[
-      {q:"Do you really not charge extra for heavy dirt?",a:"Really. Your flat price is based on home size or item size — never condition. Specialty treatments are quoted upfront as a separate line, never sprung on you mid-job."},
-      {q:"Is it safe for pets and kids?",a:"Yes — we bring and use certified green products, residue-free and safe for nurseries and animals. It's one of our written guarantees."},
-      {q:"How fast does upholstery dry?",a:"Usually 4–6 hours. We finish with forced-air drying, so most customers sit on their couch the same evening."},
-      {q:"What areas do you cover?",a:"All of Denver metro: Denver, Aurora, Lakewood, Littleton, Englewood, Westminster, Arvada, Centennial. Travel is always free."},
-      {q:"Do I need to be home during the clean?",a:"No — most clients give us entry instructions. Every cleaner is bonded and insured, and you get photo updates when we're done."},
-      {q:"What if I'm not happy with the result?",a:"Tell us within 48 hours and we re-clean free. Still not right? You don't pay for that item. No forms, no fight."} ]
+      {q:"How long does the furniture take to dry?",a:"Just 4–6 hours. Our equipment cleans deeply without over-saturation, so most clients use their furniture the same day."},
+      {q:"Are your products safe for kids and pets?",a:"100%. We use only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. If it isn't safe for our dog Perseus, it never touches your furniture."},
+      {q:"How is the price calculated?",a:"We quote by phone or from a photo of your furniture. The final price stays the same unless the soiling is critical or the fabric needs special care — and we always warn you about that in advance. Minimum call-out is $99."},
+      {q:"Do you work with delicate fabrics?",a:"Yes — that's our specialty. We test every fabric first and choose the right method, including low-moisture cleaning for delicate and natural materials."},
+      {q:"Can you remove pet stains and odors?",a:"Yes — we're pet owners ourselves. We remove odor at the source with deep sanitizing, not just cover it up."},
+      {q:"What if I'm not happy with the result?",a:"Satisfaction guarantee: if something's not right (within what's possible for the age of the furniture), we come back and fix it free."} ]
+  },
+  hours:{
+    title:'Hours & service <em>area</em>',
+    sub:"Based in Denver — we come to you.",
+    hoursTitle:"🕐 Hours of operation",
+    rows:[
+      {label:"Monday — Friday",val:"8:00 am — 7:00 pm"},
+      {label:"Saturday",val:"by appointment"},
+      {label:"Sunday",val:"closed"} ],
+    note:'<b>Offices & restaurants:</b> Sunday and after-hours service available on request.',
+    areaTitle:"📍 Service area — Denver Metro",
+    big:"30 mi", bigSub:"free travel around Denver · beyond — small surcharge",
+    cities:["Denver","Aurora","Lakewood","Highlands Ranch","Boulder"]
   },
   contact:{
-    kick:"Free quote", title:"Let's make it spotless",
-    sub:"Send a photo of the couch, the carpet, or the whole place — we'll text back a flat price within 30 minutes.",
-    ways:[
-      {icon:"📞",title:"(720) 555-0134",sub:"Mon–Sun, 8am–8pm",href:"tel:+17205550134",blank:false},
-      {icon:"💬",title:"WhatsApp / Text",sub:"Fastest way — send a photo",href:"https://wa.me/17205550134",blank:true},
-      {icon:"📸",title:"@freshelephant.denver",sub:"Before & after, every week",href:"https://www.instagram.com/freshelephant.denver",blank:true} ],
-    formTitle:"Get your flat price", formBadge:"🔥 $25 off your first clean this week",
-    services:["House cleaning","Deep cleaning","Move-in / move-out","Sofa / upholstery","Carpet / rugs","Office / Airbnb"],
-    okMsg:"🐘 Got it! We'll text your flat price within 30 minutes."
+    title:'Get a free quote <em>in 60 seconds</em>',
+    text:"Call, text a photo of your furniture, or send the form — we reply within 15–30 minutes during business hours.",
+    small:"Denver Metro · Mon–Fri 8am–7pm · Licensed & insured",
+    formTitle:"Free quote request",
+    qs:'📸 Best way: text a photo of your furniture to <b>(983) 215-6432</b> — or fill the form:',
+    services:["Sofa / couch","Sectional","Mattress","Area rug","Armchair / chairs","Pet stains & odor"],
+    okMsg:"🐶 Got it! We'll get back to you within 15–30 minutes during business hours.",
+    micro:"No spam — we only reply with your quote."
   },
   footer:{
-    desc:"Denver's friendliest cleaning crew. Flat honest prices, green products, and a spot-free guarantee. We never forget a spot.",
-    servicesTitle:"Services", serviceLinks:[
-      {label:"House cleaning",href:"#services"},{label:"Deep cleaning",href:"#services"},
-      {label:"Move-in / move-out",href:"#services"},{label:"Upholstery & carpet",href:"#services"},
-      {label:"Office & Airbnb",href:"#services"} ],
-    companyTitle:"Company", companyLinks:[
-      {label:"About us",href:"#about"},{label:"Pricing",href:"#pricing"},
-      {label:"Reviews",href:"#reviews"},{label:"FAQ",href:"#faq"} ],
-    copy1:"© 2026 Fresh Elephant Cleaning Co · Denver, CO", copy2:"Licensed · Bonded · Insured"
+    copy:"© 2026 Curly Cleaner · Denver, CO",
+    tagline:"Family-owned · Licensed & insured"
   }
 };
 
@@ -776,7 +795,7 @@ var CONTENT = { working:null, loading:false, err:null, dirty:false };
 
 function loadContent(){
   CONTENT.loading=true; CONTENT.err=null;
-  return sb.from("fe_content").select("data").eq("id","main").maybeSingle().then(function(res){
+  return sb.from("fe_content").select("data").eq("id","curly_v5").maybeSingle().then(function(res){
     CONTENT.loading=false;
     if(res.error){ CONTENT.err=res.error.message; }
     else { var data=res.data&&res.data.data; CONTENT.working=deepMerge(DEFAULT, data||{}); CONTENT.dirty=false; }
@@ -794,7 +813,7 @@ function saveContent(btn){
   if(!CONTENT.working){ return; }
   var full=clone(CONTENT.working);
   if(btn){ btn.disabled=true; btn.textContent="Saving…"; }
-  sb.from("fe_content").upsert({ id:"main", data:full, updated_at:new Date().toISOString() }).then(function(res){
+  sb.from("fe_content").upsert({ id:"curly_v5", data:full, updated_at:new Date().toISOString() }).then(function(res){
     if(btn){ btn.disabled=false; btn.textContent="Save changes"; }
     if(res.error){ toast("Save failed: "+res.error.message,"bad"); return; }
     CONTENT.dirty=false;
@@ -924,19 +943,21 @@ function stringListEditor(arr, title, placeholder, addLabel){
    ============================================================ */
 var EDITOR_OPEN={}; // remember which sections are expanded
 var SECTION_META=[
-  {key:"util",  em:"📍", name:"Top bar",      vis:true},
-  {key:"header",em:"🧭", name:"Header / nav", vis:true},
-  {key:"hero",  em:"🎬", name:"Hero",          vis:true},
-  {key:"strip", em:"🛡️", name:"Trust strip",  vis:true},
-  {key:"about", em:"ℹ️", name:"About",         vis:true},
-  {key:"services",em:"🧹",name:"Services",     vis:true},
-  {key:"how",   em:"🔢", name:"How it works",  vis:true},
-  {key:"band",  em:"📣", name:"CTA band",      vis:true},
-  {key:"pricing",em:"💲",name:"Pricing",       vis:true},
-  {key:"reviews",em:"⭐",name:"Reviews",       vis:true},
-  {key:"faq",   em:"❓", name:"FAQ",            vis:true},
-  {key:"contact",em:"✉️",name:"Contact",       vis:true},
-  {key:"footer",em:"🦶", name:"Footer",        vis:true}
+  {key:"hero",   em:"🎬", name:"Hero",            vis:false},
+  {key:"strip",  em:"🛡️", name:"Benefit strip",  vis:true},
+  {key:"pain",   em:"😣", name:"Pain intro",      vis:true},
+  {key:"services",em:"🧹",name:"Services",        vis:true},
+  {key:"about",  em:"ℹ️", name:"About us",        vis:true},
+  {key:"why",    em:"⭐", name:"Why us",          vis:true},
+  {key:"prices", em:"💲", name:"Pricing",         vis:true},
+  {key:"works",  em:"🖼️", name:"Before & after",  vis:true},
+  {key:"reviews",em:"💬",name:"Reviews",         vis:true},
+  {key:"diy",    em:"🛠️", name:"DIY callout",     vis:true},
+  {key:"faq",    em:"❓", name:"FAQ",              vis:true},
+  {key:"hours",  em:"🕐", name:"Hours & area",     vis:true},
+  {key:"contact",em:"✉️",name:"Contact",         vis:false},
+  {key:"nav",    em:"🧭", name:"Navigation menu", vis:false},
+  {key:"footer", em:"🦶", name:"Footer",          vis:false}
 ];
 
 function renderEditor(){
@@ -1009,190 +1030,147 @@ function buildSectionBody(key,c,body){
   var frag=document.createDocumentFragment();
   var s=c[key];
 
-  if(key==="util"){
-    add(frag, fldText(s,"left","Left text (HTML allowed)",{full:true,html:true,area:true,rows:2}));
-  }
-  else if(key==="header"){
-    var g=grid();
-    g.appendChild(fldText(s,"hphoneSub","Phone sub-text"));
-    g.appendChild(fldText(s,"ctaText","CTA button text"));
-    frag.appendChild(g);
-    frag.appendChild(listEditor(s.nav,"Nav links",
-      function(){return {label:"",href:"#"};},
-      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
-  }
-  else if(key==="hero"){
-    add(frag, fldText(s,"pill","Pill badge",{full:true}));
-    add(frag, fldText(s,"titleHtml","Title (HTML allowed)",{full:true,html:true,area:true,rows:3}));
-    add(frag, fldText(s,"lead","Lead paragraph",{full:true,area:true}));
+if(key==="hero"){
+    add(frag, fldText(s,"pin","Pill badge (HTML allowed)",{full:true,html:true}));
     var hg=grid();
-    hg.appendChild(fldText(s,"ctaPrimary","Primary CTA"));
-    hg.appendChild(fldText(s,"ctaSecondary","Secondary CTA"));
-    hg.appendChild(fldText(s,"ratingValue","Rating value"));
-    hg.appendChild(fldText(s,"ratingNote","Rating note"));
-    hg.appendChild(fldText(s,"chip1","Video chip 1"));
-    hg.appendChild(fldText(s,"chip2","Video chip 2"));
+    hg.appendChild(fldText(s,"titleSmall","Title — script line"));
+    hg.appendChild(fldText(s,"titleMain","Title — main line"));
     frag.appendChild(hg);
-    add(frag, fldImage(s,"video","Hero video (mp4 URL)"));
-    add(frag, fldImage(s,"poster","Hero poster (image URL)"));
+    add(frag, fldText(s,"lead","Lead paragraph",{full:true,area:true,rows:2}));
+    frag.appendChild(stringListEditor(s.hlist,"Hero checklist","List item","Add item"));
+    var hg2=grid();
+    hg2.appendChild(fldText(s,"ctaPrimary","Primary CTA"));
+    hg2.appendChild(fldText(s,"ctaSecondary","Secondary CTA"));
+    hg2.appendChild(fldText(s,"pawText","Paw-chip text"));
+    frag.appendChild(hg2);
+    add(frag, fldText(s,"area","Area line (HTML allowed)",{full:true,html:true}));
+    add(frag, fldImage(s,"photo","Hero photo (empty = placeholder)"));
+    add(frag, fldText(s,"photoCaption","Placeholder caption (HTML, shown if no photo)",{full:true,html:true,area:true,rows:2}));
   }
   else if(key==="strip"){
-    frag.appendChild(listEditor(s.items,"Strip items",
-      function(){return {icon:"✨",text:""};},
-      function(it){ return [fldText(it,"icon","Icon/emoji"), fldText(it,"text","Text",{full:true})]; }, "Add item"));
+    frag.appendChild(listEditor(s,"Benefit items",
+      function(){return {ic:"✨",b:"",span:""};},
+      function(it){ return [fldText(it,"ic","Icon/emoji"), fldText(it,"b","Title"), fldText(it,"span","Sub-text",{full:true})]; }, "Add benefit"));
   }
-  else if(key==="about"){
-    var ag=grid();
-    ag.appendChild(fldText(s,"kick","Kicker"));
-    ag.appendChild(fldText(s,"title","Title"));
-    frag.appendChild(ag);
-    add(frag, fldText(s,"text","Paragraph",{full:true,area:true}));
-    var ag2=grid();
-    ag2.appendChild(fldText(s,"cta","CTA label"));
-    ag2.appendChild(fldText(s,"ctaHref","CTA href"));
-    frag.appendChild(ag2);
-    add(frag, fldImage(s,"photo","About photo (empty = built-in mascot)"));
-    var sub=ce("div",{class:"subhead"},"Floating badges"); frag.appendChild(sub);
-    var fg=grid();
-    fg.appendChild(fldText(s.f1,"icon","Badge 1 icon"));
-    fg.appendChild(fldText(s.f1,"text","Badge 1 text"));
-    fg.appendChild(fldText(s.f2,"icon","Badge 2 icon"));
-    fg.appendChild(fldText(s.f2,"text","Badge 2 text"));
-    frag.appendChild(fg);
-    frag.appendChild(stringListEditor(s.checks,"Checklist","Check item","Add check"));
-    frag.appendChild(listEditor(s.stats,"Stats (count = animated number; leave empty & use text for e.g. 4.9★)",
-      function(){return {count:"",text:"",label:""};},
-      function(it){ return [fldText(it,"count","Count (number)"), fldText(it,"text","Text (if no count)"), fldText(it,"label","Label",{full:true})]; }, "Add stat"));
+  else if(key==="pain"){
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+    add(frag, fldText(s,"text","Paragraph",{full:true,area:true,rows:3}));
+    frag.appendChild(stringListEditor(s.items,"Pill list","Pill text","Add pill"));
+    add(frag, fldText(s,"cta","CTA button"));
   }
   else if(key==="services"){
-    var sg=grid();
-    sg.appendChild(fldText(s,"kick","Kicker"));
-    sg.appendChild(fldText(s,"title","Title"));
-    frag.appendChild(sg);
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
     add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
     frag.appendChild(listEditor(s.items,"Service cards",
-      function(){return {ico:"🧹",title:"",text:"",from:""};},
+      function(){return {star:"",em:"\U0001F9FD",h3:"",p:"",pr:""};},
       function(it){ return [
-        fldText(it,"ico","Icon/emoji"),
-        fldText(it,"title","Title"),
-        fldText(it,"text","Text",{full:true,area:true,rows:2}),
-        fldText(it,"from","Price/from (HTML allowed)",{full:true,html:true})
+        fldText(it,"em","Icon/emoji"), fldText(it,"star","Badge (empty = none)"),
+        fldText(it,"h3","Title"), fldText(it,"p","Text",{full:true,area:true,rows:2}),
+        fldText(it,"pr","Price line")
       ]; }, "Add service"));
+    add(frag, fldText(s,"note","Bottom note (HTML allowed)",{full:true,html:true,area:true,rows:2}));
   }
-  else if(key==="how"){
-    var hg2=grid();
-    hg2.appendChild(fldText(s,"kick","Kicker"));
-    hg2.appendChild(fldText(s,"title","Title"));
-    frag.appendChild(hg2);
+  else if(key==="about"){
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
+    add(frag, fldText(s,"p1","Paragraph 1 (HTML allowed)",{full:true,html:true,area:true,rows:3}));
+    add(frag, fldText(s,"p2","Paragraph 2 (HTML allowed)",{full:true,html:true,area:true,rows:3}));
+    add(frag, fldText(s,"perseus","Perseus box (HTML allowed)",{full:true,html:true,area:true,rows:3}));
+    add(frag, fldImage(s,"photo","Family photo (empty = placeholder)"));
+    add(frag, fldText(s,"photoCaption","Placeholder caption (HTML, shown if no photo)",{full:true,html:true,area:true,rows:2}));
+  }
+  else if(key==="why"){
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
     add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
-    frag.appendChild(listEditor(s.steps,"Steps",
-      function(){return {emoji:"✨",n:"",title:"",text:""};},
-      function(it){ return [
-        fldText(it,"emoji","Emoji"), fldText(it,"n","Number label"),
-        fldText(it,"title","Title"), fldText(it,"text","Text",{full:true,area:true,rows:2})
-      ]; }, "Add step"));
+    frag.appendChild(listEditor(s.items,"Why cards",
+      function(){return {ic:"✨",b:"",p:""};},
+      function(it){ return [fldText(it,"ic","Icon/emoji"), fldText(it,"b","Title"), fldText(it,"p","Text",{full:true,area:true,rows:2})]; }, "Add card"));
   }
-  else if(key==="band"){
-    add(frag, fldText(s,"title","Title",{full:true}));
-    add(frag, fldText(s,"text","Text",{full:true,area:true,rows:2}));
-    add(frag, fldText(s,"cta","CTA label"));
-  }
-  else if(key==="pricing"){
+  else if(key==="prices"){
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
     var pg=grid();
-    pg.appendChild(fldText(s,"kick","Kicker"));
-    pg.appendChild(fldText(s,"title","Title"));
+    pg.appendChild(fldText(s,"leftTitle","Left panel title"));
+    pg.appendChild(fldText(s,"rightTitle","Right panel title"));
     frag.appendChild(pg);
-    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
-    frag.appendChild(listEditor(s.plans,"Plans",
-      function(){return {name:"",price:"",per:"",desc:"",features:[],cta:"",popular:false,tag:""};},
-      function(it){
-        var nodes=[
-          fldText(it,"name","Name"), fldText(it,"price","Price"),
-          fldText(it,"per","Per (e.g. / visit)"), fldText(it,"desc","Description",{full:true}),
-          fldToggleField(it,"popular","Popular (highlighted)"),
-          fldText(it,"tag","Tag (e.g. Most popular)"),
-          fldText(it,"cta","CTA label",{full:true})
-        ];
-        var featWrap=ce("div",{class:"fld full"});
-        featWrap.appendChild(stringListEditor(it.features,"Features","Feature line","Add feature"));
-        nodes.push(featWrap);
-        return nodes;
-      }, "Add plan"));
-    add(frag, fldText(s,"miniTitle","Mini-prices title",{full:true}));
-    frag.appendChild(listEditor(s.chips,"Per-item chips",
+    frag.appendChild(listEditor(s.left,"Left panel rows",
       function(){return {label:"",price:""};},
-      function(it){ return [fldText(it,"label","Label"), fldText(it,"price","Price")]; }, "Add chip"));
-    add(frag, fldText(s,"flatnote","Flat note (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+      function(it){ return [fldText(it,"label","Item"), fldText(it,"price","Price")]; }, "Add row"));
+    frag.appendChild(listEditor(s.right,"Right panel rows",
+      function(){return {label:"",price:""};},
+      function(it){ return [fldText(it,"label","Item"), fldText(it,"price","Price")]; }, "Add row"));
+    frag.appendChild(listEditor(s.promos,"Promo cards",
+      function(){return {pe:"\U0001F381",html:""};},
+      function(it){ return [fldText(it,"pe","Emoji"), fldText(it,"html","Text (HTML allowed)",{full:true,html:true})]; }, "Add promo"));
+    add(frag, fldText(s,"note","Bottom note (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+  }
+  else if(key==="works"){
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
+    add(frag, fldText(s,"sub","Subtitle (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+    frag.appendChild(listEditor(s.shots,"Before/after photos",
+      function(){return "";},
+      function(item,idx){ return [ fldImage(s.shots, String(idx), "Photo "+(idx+1)) ]; }, "Add photo"));
   }
   else if(key==="reviews"){
-    var rg=grid();
-    rg.appendChild(fldText(s,"kick","Kicker"));
-    rg.appendChild(fldText(s,"title","Title"));
-    frag.appendChild(rg);
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
     add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
     frag.appendChild(listEditor(s.items,"Reviews",
-      function(){return {text:"",name:"",meta:"",avatar:""};},
+      function(){return {p:"",who:"",where:""};},
       function(it){ return [
-        fldText(it,"text","Review text",{full:true,area:true,rows:3}),
-        fldText(it,"name","Name"), fldText(it,"meta","Meta (location · service)"),
-        fldText(it,"avatar","Avatar letter")
+        fldText(it,"p","Review text",{full:true,area:true,rows:3}),
+        fldText(it,"who","Name"), fldText(it,"where","Location / service")
       ]; }, "Add review"));
-    frag.appendChild(listEditor(s.plats,"Platform ratings",
-      function(){return {label:"",value:""};},
-      function(it){ return [fldText(it,"label","Platform"), fldText(it,"value","Value")]; }, "Add platform"));
+    add(frag, fldText(s,"gbadge","Bottom badge (HTML allowed)",{full:true,html:true}));
+  }
+  else if(key==="diy"){
+    add(frag, fldText(s,"title","Title"));
+    add(frag, fldText(s,"text","Text (HTML allowed)",{full:true,html:true,area:true,rows:3}));
+    add(frag, fldText(s,"cta","CTA button"));
   }
   else if(key==="faq"){
-    var fg2=grid();
-    fg2.appendChild(fldText(s,"kick","Kicker"));
-    fg2.appendChild(fldText(s,"title","Title"));
-    frag.appendChild(fg2);
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
     add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
     frag.appendChild(listEditor(s.items,"Questions",
       function(){return {q:"",a:""};},
-      function(it){ return [
-        fldText(it,"q","Question",{full:true}),
-        fldText(it,"a","Answer",{full:true,area:true,rows:3})
-      ]; }, "Add question"));
+      function(it){ return [fldText(it,"q","Question",{full:true}), fldText(it,"a","Answer",{full:true,area:true,rows:3})]; }, "Add question"));
+  }
+  else if(key==="hours"){
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
+    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
+    var hrg=grid();
+    hrg.appendChild(fldText(s,"hoursTitle","Hours box title"));
+    hrg.appendChild(fldText(s,"areaTitle","Area box title"));
+    frag.appendChild(hrg);
+    frag.appendChild(listEditor(s.rows,"Hours rows",
+      function(){return {label:"",val:""};},
+      function(it){ return [fldText(it,"label","Day(s)"), fldText(it,"val","Hours")]; }, "Add row"));
+    add(frag, fldText(s,"note","Hours note (HTML allowed)",{full:true,html:true,area:true,rows:2}));
+    var hbg=grid();
+    hbg.appendChild(fldText(s,"big","Big number (e.g. 30 mi)"));
+    hbg.appendChild(fldText(s,"bigSub","Big number sub-text"));
+    frag.appendChild(hbg);
+    frag.appendChild(stringListEditor(s.cities,"City chips","City","Add city"));
   }
   else if(key==="contact"){
-    var cg=grid();
-    cg.appendChild(fldText(s,"kick","Kicker"));
-    cg.appendChild(fldText(s,"title","Title"));
-    frag.appendChild(cg);
-    add(frag, fldText(s,"sub","Subtitle",{full:true,area:true,rows:2}));
-    var cg2=grid();
-    cg2.appendChild(fldText(s,"formTitle","Form title"));
-    cg2.appendChild(fldText(s,"formBadge","Form badge"));
-    frag.appendChild(cg2);
+    add(frag, fldText(s,"title","Title (HTML allowed)",{full:true,html:true}));
+    add(frag, fldText(s,"text","Paragraph",{full:true,area:true,rows:2}));
+    add(frag, fldText(s,"small","Small line under buttons"));
+    add(frag, fldText(s,"formTitle","Form title"));
+    add(frag, fldText(s,"qs","Form helper text (HTML allowed)",{full:true,html:true,area:true,rows:2}));
     add(frag, fldText(s,"okMsg","Success message",{full:true,area:true,rows:2}));
-    frag.appendChild(listEditor(s.ways,"Contact ways",
-      function(){return {icon:"📞",title:"",sub:"",href:"",blank:false};},
-      function(it){ return [
-        fldText(it,"icon","Icon"), fldText(it,"title","Title"),
-        fldText(it,"sub","Sub-text"), fldText(it,"href","Href"),
-        fldToggleField(it,"blank","Open in new tab")
-      ]; }, "Add way"));
+    add(frag, fldText(s,"micro","Micro line under button"));
     frag.appendChild(stringListEditor(s.services,"Form service options","Service option","Add option"));
   }
+  else if(key==="nav"){
+    frag.appendChild(listEditor(s,"Menu links",
+      function(){return {label:"",href:"#"};},
+      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
+  }
   else if(key==="footer"){
-    add(frag, fldText(s,"desc","Description",{full:true,area:true,rows:3}));
-    var fg3=grid();
-    fg3.appendChild(fldText(s,"servicesTitle","Services column title"));
-    fg3.appendChild(fldText(s,"companyTitle","Company column title"));
-    frag.appendChild(fg3);
-    frag.appendChild(listEditor(s.serviceLinks,"Service links",
-      function(){return {label:"",href:"#"};},
-      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
-    frag.appendChild(listEditor(s.companyLinks,"Company links",
-      function(){return {label:"",href:"#"};},
-      function(it){ return [fldText(it,"label","Label"), fldText(it,"href","Href")]; }, "Add link"));
-    var fg4=grid();
-    fg4.appendChild(fldText(s,"copy1","Copyright line 1"));
-    fg4.appendChild(fldText(s,"copy2","Copyright line 2"));
-    frag.appendChild(fg4);
+    add(frag, fldText(s,"copy","Copyright line (HTML allowed)",{full:true,html:true}));
+    add(frag, fldText(s,"tagline","Tagline (right side)"));
   }
 
-  if(resetWrap) body.insertBefore(frag, resetWrap);
+    if(resetWrap) body.insertBefore(frag, resetWrap);
   else body.appendChild(frag);
 }
 
@@ -1220,26 +1198,21 @@ function renderSettings(){
     $("#setRetry").onclick=loadContent; return;
   }
   var s=CONTENT.working.settings;
-  root.innerHTML='<div class="page-head"><div><h1>Settings</h1><div class="sub">Brand & contact details — propagate across header, band, contact, footer & FAB.</div></div></div>'+
+  root.innerHTML='<div class="page-head"><div><h1>Settings</h1><div class="sub">Brand & contact details — used across header, hero, contact & footer.</div></div></div>'+
     '<div class="card pad" id="setCard"></div>'+
     '<div class="savebar" id="saveBar"><div class="info">'+(CONTENT.dirty?'<b>Unsaved changes</b> — remember to save.':'Edit settings, then save. Changes are live instantly.')+'</div>'+
     '<button class="btn" id="setSave">Save changes</button></div>';
   var card=$("#setCard");
   var g=ce("div",{class:"set-grid"});
-  g.appendChild(fldText(s,"brandName","Brand name"));
-  g.appendChild(fldText(s,"brandSub","Brand sub-title"));
-  g.appendChild(fldText(s,"brandEmoji","Brand emoji"));
+  g.appendChild(fldText(s,"brandCu","Brand — script word (Curly)"));
+  g.appendChild(fldText(s,"brandCl","Brand — bold word (CLEANER)"));
+  g.appendChild(fldText(s,"brandSub","Brand sub-line"));
   g.appendChild(fldText(s,"phone","Phone (display)"));
-  g.appendChild(fldText(s,"phoneHref","Phone href (e.g. +17205550134)"));
-  g.appendChild(fldText(s,"email","Email"));
-  g.appendChild(fldText(s,"instagram","Instagram handle"));
+  g.appendChild(fldText(s,"phoneHref","Phone href (e.g. +19832156432)"));
+  g.appendChild(fldText(s,"smsHref","SMS href (e.g. +19832156432)"));
   g.appendChild(fldText(s,"instagramUrl","Instagram URL"));
-  g.appendChild(fldText(s,"whatsappUrl","WhatsApp URL"));
-  g.appendChild(fldText(s,"areaLine","Area line",{full:true}));
+  g.appendChild(fldText(s,"facebookUrl","Facebook URL"));
   card.appendChild(g);
-  var togWrap=ce("div",{style:"margin-top:16px"});
-  togWrap.appendChild(fldToggle(s,"fabVisible","Show floating call button (FAB)"));
-  card.appendChild(togWrap);
   $("#setSave").onclick=function(){ saveContent(this); };
 }
 
