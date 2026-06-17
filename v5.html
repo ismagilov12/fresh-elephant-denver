@@ -69,9 +69,11 @@ nav.menu a:hover{color:var(--blue)}
 .hero .area b{color:var(--yellow)}
 /* hero photo slot */
 .hphoto{position:relative;justify-self:center;width:100%;max-width:420px}
-.hphoto .slot{aspect-ratio:4/5;border-radius:26px;border:3px dashed rgba(255,255,255,.45);background:rgba(255,255,255,.07);display:grid;place-items:center;text-align:center;padding:28px;color:#CBDDF9;font-size:15px;font-weight:600;box-shadow:var(--sh-lg)}
+.hphoto .slot{aspect-ratio:4/5;border-radius:26px;border:3px dashed rgba(255,255,255,.45);background:rgba(255,255,255,.07);display:grid;place-items:center;text-align:center;padding:28px;color:#CBDDF9;font-size:15px;font-weight:600;box-shadow:var(--sh-lg);overflow:hidden}
+.hphoto .slot.has-img{border-style:solid;padding:0}
+.hphoto .slot.has-img img{width:100%;height:100%;object-fit:cover;display:block}
 .hphoto .slot .big{font-size:44px;margin-bottom:10px}
-.hphoto .pawchip{position:absolute;top:-18px;right:-14px;background:#fff;border-radius:16px;box-shadow:var(--sh-lg);padding:10px 14px;display:flex;align-items:center;gap:9px;color:var(--navy);font-weight:800;font-size:13px;animation:bob 5s ease-in-out infinite}
+.hphoto .pawchip{position:absolute;top:-18px;right:-14px;background:#fff;border-radius:16px;box-shadow:var(--sh-lg);padding:10px 14px;display:flex;align-items:center;gap:9px;color:var(--navy);font-weight:800;font-size:13px;animation:bob 5s ease-in-out infinite;z-index:2}
 .hphoto .pawchip img{height:38px;width:auto}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 /* staged entrance — fail-safe */
@@ -117,7 +119,9 @@ body.hpre .hphoto{opacity:0}
 
 /* about us */
 #about .agrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
-#about .photo-slot{aspect-ratio:4/5;border-radius:26px;border:3px dashed #C7DBF7;background:var(--soft);display:grid;place-items:center;text-align:center;padding:28px;color:#9AB0D6;font-size:15px;font-weight:600}
+#about .photo-slot{aspect-ratio:4/5;border-radius:26px;border:3px dashed #C7DBF7;background:var(--soft);display:grid;place-items:center;text-align:center;padding:28px;color:#9AB0D6;font-size:15px;font-weight:600;overflow:hidden}
+#about .photo-slot.has-img{border-style:solid;padding:0}
+#about .photo-slot.has-img img{width:100%;height:100%;object-fit:cover;display:block}
 #about .photo-slot .big{font-size:44px;margin-bottom:10px}
 #about h2{text-align:left}
 #about .lead-p{color:var(--text);font-size:16px;margin-bottom:14px}
@@ -271,16 +275,15 @@ footer .fbrand img{height:44px;width:auto}
   <div class="wrap nav">
     <a class="brand" href="#top">
       <img src="cc-logo.png" alt="Curly Cleaner logo">
-      <span><span class="cu">Curly</span><span class="cl">CLEANER</span><small>UPHOLSTERY CLEANING · DENVER</small></span>
+      <span><span class="cu" data-ed="settings.brandCu">Curly</span><span class="cl" data-ed="settings.brandCl">CLEANER</span><small data-ed="settings.brandSub">UPHOLSTERY CLEANING · DENVER</small></span>
     </a>
-    <nav class="menu" id="mnav">
+    <nav class="menu" id="mnav" data-list="nav">
       <a href="#services">Services</a>
       <a href="#about">About us</a>
       <a href="#prices">Pricing</a>
       <a href="#works">Photos</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
-      <a href="tel:+19832156432" class="m-only" style="display:none">📞 (983) 215-6432</a>
     </nav>
     <a class="btn" href="#contact">Free quote</a>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
@@ -292,10 +295,10 @@ footer .fbrand img{height:44px;width:auto}
   <div class="spark" style="top:140px;right:10%;animation-delay:1s">✦</div>
   <div class="wrap">
     <div class="hero-in">
-      <div class="pin">🐾 <b>Family-owned</b> · husband & wife team · Denver, CO</div>
-      <h1><span class="fr">Curly Cleaner</span>Deep Upholstery Cleaning in Denver</h1>
-      <p class="lead">Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — and furniture that's dry in just a few hours.</p>
-      <div class="hlist">
+      <div class="pin" data-ed="hero.pin" data-html>🐾 <b>Family-owned</b> · husband &amp; wife team · Denver, CO</div>
+      <h1><span class="fr" data-ed="hero.titleSmall">Curly Cleaner</span><span data-ed="hero.titleMain">Deep Upholstery Cleaning in Denver</span></h1>
+      <p class="lead" data-ed="hero.lead">Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — and furniture that's dry in just a few hours.</p>
+      <div class="hlist" data-list="hero.hlist">
         <div>Sofas & Couches</div>
         <div>Mattresses</div>
         <div>Area Rugs</div>
@@ -304,21 +307,21 @@ footer .fbrand img{height:44px;width:auto}
         <div>Delicate fabrics</div>
       </div>
       <div class="cta">
-        <a class="btn" href="#contact">Get a free quote in 60 seconds</a>
-        <a class="btn line" href="sms:+19832156432">💬 Text for a quote</a>
+        <a class="btn" href="#contact" data-ed="hero.ctaPrimary">Get a free quote in 60 seconds</a>
+        <a class="btn line" data-sms href="sms:+19832156432" data-ed="hero.ctaSecondary">💬 Text for a quote</a>
       </div>
-      <div class="area">📍 <b>Denver Metro</b> · free travel within 30 miles</div>
+      <div class="area" data-ed="hero.area" data-html>📍 <b>Denver Metro</b> · free travel within 30 miles</div>
     </div>
     <div class="hphoto">
-      <div class="slot"><div><div class="big">📷</div>Your photo goes here —<br>the two of you with the extractor,<br>smiling 🙂</div></div>
-      <div class="pawchip"><img src="cc-logo.png" alt="">Inspired by Perseus 🐶</div>
+      <div class="slot" id="heroPhoto"><div><div class="big">📷</div><span id="heroPhotoCap">Your photo goes here —<br>the two of you with the extractor,<br>smiling 🙂</span></div></div>
+      <div class="pawchip"><img src="cc-logo.png" alt=""><span data-ed="hero.pawText">Inspired by Perseus 🐶</span></div>
     </div>
   </div>
 </div>
 
-<div class="bstrip">
+<div class="bstrip" data-sec="strip">
   <div class="wrap">
-    <div class="bgrid">
+    <div class="bgrid" data-list="strip">
       <div class="b rv"><div class="ic">🪑</div><div><b>Truly Deep Clean</b><span>not just the surface</span></div></div>
       <div class="b rv d1"><div class="ic">🐾</div><div><b>Pet & Kid Safe</b><span>eco, non-toxic products</span></div></div>
       <div class="b rv d2"><div class="ic">⏱️</div><div><b>Dry in 4–6 Hours</b><span>no over-saturation</span></div></div>
@@ -330,29 +333,29 @@ footer .fbrand img{height:44px;width:auto}
 <section id="pain">
   <div class="wrap">
     <div class="inner">
-      <h2 class="rv">Tired of looking at dirty upholstery or a stained <em>mattress?</em></h2>
-      <p class="rv">Stains, odors, or just an overall dingy look? It's time to take action — and we're here to help. Professional cleaning doesn't just improve appearance: it removes dust mites, bacteria and allergens, helping your family breathe easier and stay healthier.</p>
-      <div class="painlist">
+      <h2 class="rv" data-ed="pain.title" data-html>Tired of looking at dirty upholstery or a stained <em>mattress?</em></h2>
+      <p class="rv" data-ed="pain.text">Stains, odors, or just an overall dingy look? It's time to take action — and we're here to help. Professional cleaning doesn't just improve appearance: it removes dust mites, bacteria and allergens, helping your family breathe easier and stay healthier.</p>
+      <div class="painlist" data-list="pain.items">
         <div class="rv">Say goodbye to stains and smells</div>
         <div class="rv d1">Breathe cleaner air at home</div>
         <div class="rv d2">Restore comfort and freshness</div>
       </div>
-      <a class="btn blue rv" href="#contact">Bring my furniture back to life</a>
+      <a class="btn blue rv" href="#contact" data-ed="pain.cta">Bring my furniture back to life</a>
     </div>
   </div>
 </section>
 
 <section id="services">
   <div class="wrap">
-    <h2 class="rv">Our professional <em>services</em></h2>
-    <p class="sub rv">We're fabric experts, not a general cleaning service. Upholstery is our craft — and our only focus.</p>
-    <div class="sgrid">
+    <h2 class="rv" data-ed="services.title" data-html>Our professional <em>services</em></h2>
+    <p class="sub rv" data-ed="services.sub">We're fabric experts, not a general cleaning service. Upholstery is our craft — and our only focus.</p>
+    <div class="sgrid" data-list="services.items">
       <div class="svc rv"><div class="star">MAIN SERVICE</div><div class="em">🛋️</div><h3>Sofas & Upholstery</h3><p>Deep cleaning for sofas, couches and sectionals — every cushion, every fiber.</p><div class="pr">from $140</div></div>
       <div class="svc rv d1"><div class="em">🛏️</div><h3>Mattresses</h3><p>Deep cleaning against dust mites and allergens for healthy sleep.</p><div class="pr">from $110 (King)</div></div>
       <div class="svc rv d2"><div class="em">🧶</div><h3>Area Rugs</h3><p>Careful cleaning for rugs and carpets — including delicate fibers.</p><div class="pr">custom quote</div></div>
       <div class="svc rv d3"><div class="em">🪑</div><h3>Armchairs & Chairs</h3><p>Armchairs, ottomans, dining and office chairs.</p><div class="pr">from $50</div></div>
     </div>
-    <div class="alsonote rv"><b>What we DON'T do:</b> general house cleaning, windows or dusting. We stay focused on fabrics — that's what makes us the experts. <b>Minimum call-out: $99.</b></div>
+    <div class="alsonote rv" data-ed="services.note" data-html><b>What we DON'T do:</b> general house cleaning, windows or dusting. We stay focused on fabrics — that's what makes us the experts. <b>Minimum call-out: $99.</b></div>
   </div>
 </section>
 
@@ -360,15 +363,15 @@ footer .fbrand img{height:44px;width:auto}
   <div class="wrap">
     <div class="agrid">
       <div class="rv">
-        <div class="photo-slot"><div><div class="big">📷</div>Family photo —<br>coming soon</div></div>
+        <div class="photo-slot" id="aboutPhoto"><div><div class="big">📷</div><span id="aboutPhotoCap">Family photo —<br>coming soon</span></div></div>
       </div>
       <div class="rv d1">
-        <h2>Welcome to <em>Curly Cleaner</em></h2>
-        <p class="lead-p">When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.</p>
-        <p class="lead-p">As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.</p>
+        <h2 data-ed="about.title" data-html>Welcome to <em>Curly Cleaner</em></h2>
+        <p class="lead-p" data-ed="about.p1" data-html>When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.</p>
+        <p class="lead-p" data-ed="about.p2" data-html>As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.</p>
         <div class="perseus">
           <img src="cc-logo.png" alt="Perseus — the dog behind Curly Cleaner">
-          <p>Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn't safe for Perseus, it will never touch your furniture.</b></p>
+          <p data-ed="about.perseus" data-html>Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn't safe for Perseus, it will never touch your furniture.</b></p>
         </div>
       </div>
     </div>
@@ -377,9 +380,9 @@ footer .fbrand img{height:44px;width:auto}
 
 <section id="why">
   <div class="wrap">
-    <h2 class="rv">Why choose <em>Curly Cleaner?</em></h2>
-    <p class="sub rv">As a family-owned business, your satisfaction is our reputation.</p>
-    <div class="wgrid">
+    <h2 class="rv" data-ed="why.title" data-html>Why choose <em>Curly Cleaner?</em></h2>
+    <p class="sub rv" data-ed="why.sub">As a family-owned business, your satisfaction is our reputation.</p>
+    <div class="wgrid" data-list="why.items">
       <div class="wcard rv"><div class="wic">🔧</div><div><b>Professional expertise</b><p>Advanced pro-grade equipment for deep cleaning without over-saturation. Thoroughly cleaned, sanitized and ready to use in just a few hours.</p></div></div>
       <div class="wcard rv d1"><div class="wic">🌿</div><div><b>Health & safety first</b><p>Only professional, eco-friendly, non-toxic solutions — 100% safe for children, pregnant women and pets. No harsh chemicals, no strong odors.</p></div></div>
       <div class="wcard rv d2"><div class="wic">🧵</div><div><b>Delicate fabrics welcome</b><p>We work with the delicate materials the big companies are afraid to touch. Husband does the tech work, wife runs quality control.</p></div></div>
@@ -390,39 +393,43 @@ footer .fbrand img{height:44px;width:auto}
 
 <section id="prices">
   <div class="wrap">
-    <h2 class="rv">Transparent <em>pricing</em></h2>
-    <p class="sub rv">Starting prices below. We confirm your exact quote by phone or from a photo — and warn you in advance if critical soiling or special fabric care changes anything.</p>
+    <h2 class="rv" data-ed="prices.title" data-html>Transparent <em>pricing</em></h2>
+    <p class="sub rv" data-ed="prices.sub">Starting prices below. We confirm your exact quote by phone or from a photo — and warn you in advance if critical soiling or special fabric care changes anything.</p>
     <div class="pcols">
       <div class="panel rv">
-        <h3>🛋️ Upholstery</h3>
-        <div class="prow"><span>Standard sofa</span><b>from $140</b></div>
-        <div class="prow"><span>Loveseat</span><b>from $110</b></div>
-        <div class="prow"><span>Armchair</span><b>from $50</b></div>
-        <div class="prow"><span>Sectional</span><b>custom quote</b></div>
-        <div class="prow"><span>Dining / office chair</span><b>from $15</b></div>
+        <h3 data-ed="prices.leftTitle">🛋️ Upholstery</h3>
+        <div data-list="prices.left">
+          <div class="prow"><span>Standard sofa</span><b>from $140</b></div>
+          <div class="prow"><span>Loveseat</span><b>from $110</b></div>
+          <div class="prow"><span>Armchair</span><b>from $50</b></div>
+          <div class="prow"><span>Sectional</span><b>custom quote</b></div>
+          <div class="prow"><span>Dining / office chair</span><b>from $15</b></div>
+        </div>
       </div>
       <div class="panel rv d1">
-        <h3>🛏️ Mattresses & rugs</h3>
-        <div class="prow"><span>Mattress (King)</span><b>from $110</b></div>
-        <div class="prow"><span>Mattress (Queen / Full / Twin)</span><b>custom quote</b></div>
-        <div class="prow"><span>Area rugs</span><b>custom quote</b></div>
-        <div class="prow"><span>Pet stain & odor treatment</span><b>quoted upfront</b></div>
-        <div class="prow"><span>Minimum call-out</span><b>$99</b></div>
+        <h3 data-ed="prices.rightTitle">🛏️ Mattresses & rugs</h3>
+        <div data-list="prices.right">
+          <div class="prow"><span>Mattress (King)</span><b>from $110</b></div>
+          <div class="prow"><span>Mattress (Queen / Full / Twin)</span><b>custom quote</b></div>
+          <div class="prow"><span>Area rugs</span><b>custom quote</b></div>
+          <div class="prow"><span>Pet stain & odor treatment</span><b>quoted upfront</b></div>
+          <div class="prow"><span>Minimum call-out</span><b>$99</b></div>
+        </div>
       </div>
     </div>
-    <div class="promos">
+    <div class="promos" data-list="prices.promos">
       <div class="promo rv"><div class="pe">🎁</div><div><b>10% off</b> your second piece of furniture in the same visit</div></div>
       <div class="promo rv d1"><div class="pe">⭐</div><div><b>15% off</b> your first order in exchange for a Google review</div></div>
     </div>
-    <div class="pnote rv">📍 <b>Free travel</b> within 30 miles of Denver — beyond that for a small surcharge. Send a photo of your furniture and get your quote <b>in 60 seconds</b>.</div>
+    <div class="pnote rv" data-ed="prices.note" data-html>📍 <b>Free travel</b> within 30 miles of Denver — beyond that for a small surcharge. Send a photo of your furniture and get your quote <b>in 60 seconds</b>.</div>
   </div>
 </section>
 
 <section id="works">
   <div class="wrap">
-    <h2 class="rv">Before & <em>after</em></h2>
-    <p class="sub rv">Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.</p>
-    <div class="wgal">
+    <h2 class="rv" data-ed="works.title" data-html>Before & <em>after</em></h2>
+    <p class="sub rv" data-ed="works.sub" data-html>Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.</p>
+    <div class="wgal" data-list="works.shots">
       <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-1.jpg" alt="Sofa cleaning before and after — Denver" loading="lazy"></div>
       <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-2.jpg" alt="Couch deep cleaning before and after" loading="lazy"></div>
       <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-3.jpg" alt="Mattress cleaning result" loading="lazy"></div>
@@ -437,14 +444,14 @@ footer .fbrand img{height:44px;width:auto}
 
 <section id="reviews">
   <div class="wrap">
-    <h2 class="rv">Reviews from our <em>clients</em></h2>
-    <p class="sub rv">Your review could be here — and it comes with 15% off your first order.</p>
-    <div class="rgrid">
+    <h2 class="rv" data-ed="reviews.title" data-html>Reviews from our <em>clients</em></h2>
+    <p class="sub rv" data-ed="reviews.sub">Your review could be here — and it comes with 15% off your first order.</p>
+    <div class="rgrid" data-list="reviews.items">
       <div class="rev rv"><div class="stars">★★★★★</div><p>"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."</p><div class="who">Sarah M.<span>Wash Park · sectional</span></div></div>
       <div class="rev rv d1"><div class="stars">★★★★★</div><p>"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."</p><div class="who">Dmitry K.<span>Aurora · sofa + mattress</span></div></div>
       <div class="rev rv d2"><div class="stars">★★★★★</div><p>"You can tell it's a family business — they treat your home like their own. Photo updates and honest pricing."</p><div class="who">Jess & Tom<span>Highlands Ranch · armchairs</span></div></div>
     </div>
-    <div class="gbadge rv">⭐ Find us on <b>Google</b> · <b>Instagram</b> · <b>Facebook</b></div>
+    <div class="gbadge rv" data-ed="reviews.gbadge" data-html>⭐ Find us on <b>Google</b> · <b>Instagram</b> · <b>Facebook</b></div>
   </div>
 </section>
 
@@ -452,19 +459,19 @@ footer .fbrand img{height:44px;width:auto}
   <div class="wrap">
     <div class="box rv">
       <div>
-        <h2>Planning to clean your furniture yourself?</h2>
-        <p>We have some important information for you: store-bought cleaners often <b>set stains permanently</b>, over-wet the foam and leave residue that attracts dirt faster. Text us a photo first — we'll honestly tell you if it's a DIY job or needs a pro.</p>
+        <h2 data-ed="diy.title">Planning to clean your furniture yourself?</h2>
+        <p data-ed="diy.text" data-html>We have some important information for you: store-bought cleaners often <b>set stains permanently</b>, over-wet the foam and leave residue that attracts dirt faster. Text us a photo first — we'll honestly tell you if it's a DIY job or needs a pro.</p>
       </div>
-      <a class="btn" href="sms:+19832156432">Ask us first — it's free</a>
+      <a class="btn" data-sms href="sms:+19832156432" data-ed="diy.cta">Ask us first — it's free</a>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <h2 class="rv">Do you have questions? <em>We have answers!</em></h2>
-    <p class="sub rv">The most common ones — answered honestly.</p>
-    <div class="fgrid">
+    <h2 class="rv" data-ed="faq.title" data-html>Do you have questions? <em>We have answers!</em></h2>
+    <p class="sub rv" data-ed="faq.sub">The most common ones — answered honestly.</p>
+    <div class="fgrid" data-list="faq.items">
       <details class="rv"><summary>How long does the furniture take to dry?</summary><p>Just 4–6 hours. Our equipment cleans deeply without over-saturation, so most clients use their furniture the same day.</p></details>
       <details class="rv"><summary>Are your products safe for kids and pets?</summary><p>100%. We use only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. If it isn't safe for our dog Perseus, it never touches your furniture.</p></details>
       <details class="rv"><summary>How is the price calculated?</summary><p>We quote by phone or from a photo of your furniture. The final price stays the same unless the soiling is critical or the fabric needs special care — and we always warn you about that in advance. Minimum call-out is $99.</p></details>
@@ -477,20 +484,22 @@ footer .fbrand img{height:44px;width:auto}
 
 <section id="hours">
   <div class="wrap">
-    <h2 class="rv">Hours & service <em>area</em></h2>
-    <p class="sub rv">Based in Denver — we come to you.</p>
+    <h2 class="rv" data-ed="hours.title" data-html>Hours & service <em>area</em></h2>
+    <p class="sub rv" data-ed="hours.sub">Based in Denver — we come to you.</p>
     <div class="hagrid">
       <div class="hbox rv">
-        <h3>🕐 Hours of operation</h3>
-        <div class="hrow"><span>Monday — Friday</span><b>8:00 am — 7:00 pm</b></div>
-        <div class="hrow"><span>Saturday</span><b>by appointment</b></div>
-        <div class="hrow"><span>Sunday</span><b>closed</b></div>
-        <div class="note"><b>Offices & restaurants:</b> Sunday and after-hours service available on request.</div>
+        <h3 data-ed="hours.hoursTitle">🕐 Hours of operation</h3>
+        <div data-list="hours.rows">
+          <div class="hrow"><span>Monday — Friday</span><b>8:00 am — 7:00 pm</b></div>
+          <div class="hrow"><span>Saturday</span><b>by appointment</b></div>
+          <div class="hrow"><span>Sunday</span><b>closed</b></div>
+        </div>
+        <div class="note" data-ed="hours.note" data-html><b>Offices & restaurants:</b> Sunday and after-hours service available on request.</div>
       </div>
       <div class="hbox rv d1">
-        <h3>📍 Service area — Denver Metro</h3>
-        <div class="big"><b>30 mi</b><span>free travel around Denver · beyond — small surcharge</span></div>
-        <div class="cities">
+        <h3 data-ed="hours.areaTitle">📍 Service area — Denver Metro</h3>
+        <div class="big"><b data-ed="hours.big">30 mi</b><span data-ed="hours.bigSub">free travel around Denver · beyond — small surcharge</span></div>
+        <div class="cities" data-list="hours.cities">
           <span class="city">Denver</span><span class="city">Aurora</span><span class="city">Lakewood</span><span class="city">Highlands Ranch</span><span class="city">Boulder</span>
         </div>
       </div>
@@ -503,23 +512,23 @@ footer .fbrand img{height:44px;width:auto}
   <div class="spark" style="bottom:60px;right:10%;animation-delay:1.4s">✦</div>
   <div class="wrap cgrid">
     <div>
-      <h2 class="rv">Get a free quote <em>in 60 seconds</em></h2>
-      <p class="rv">Call, text a photo of your furniture, or send the form — we reply within 15–30 minutes during business hours.</p>
-      <a class="phone rv" href="tel:+19832156432">(983) 215-6432</a>
+      <h2 class="rv" data-ed="contact.title" data-html>Get a free quote <em>in 60 seconds</em></h2>
+      <p class="rv" data-ed="contact.text">Call, text a photo of your furniture, or send the form — we reply within 15–30 minutes during business hours.</p>
+      <a class="phone rv" data-tel data-phone-text href="tel:+19832156432">(983) 215-6432</a>
       <div class="cbtns rv">
-        <a class="btn" href="sms:+19832156432">💬 Text for a quote</a>
-        <a class="btn line" href="https://www.instagram.com/curlycleaner.denver" target="_blank">📸 Instagram</a>
-        <a class="btn line" href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">👥 Facebook</a>
+        <a class="btn" data-sms href="sms:+19832156432">💬 Text for a quote</a>
+        <a class="btn line" data-ig href="https://www.instagram.com/curlycleaner.denver" target="_blank">📸 Instagram</a>
+        <a class="btn line" data-fb href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">👥 Facebook</a>
       </div>
-      <div class="small rv">Denver Metro · Mon–Fri 8am–7pm · Licensed & insured</div>
+      <div class="small rv" data-ed="contact.small">Denver Metro · Mon–Fri 8am–7pm · Licensed & insured</div>
     </div>
     <div class="qcard rv d1">
-      <h3>Free quote request</h3>
-      <div class="qs">📸 Best way: text a photo of your furniture to <b>(983) 215-6432</b> — or fill the form:</div>
+      <h3 data-ed="contact.formTitle">Free quote request</h3>
+      <div class="qs" data-ed="contact.qs" data-html>📸 Best way: text a photo of your furniture to <b>(983) 215-6432</b> — or fill the form:</div>
       <form class="qform">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="tel" name="phone" placeholder="Phone number" required>
-        <select name="service" required>
+        <select name="service" required data-list="contact.services">
           <option value="" disabled selected>What needs cleaning?</option>
           <option>Sofa / couch</option>
           <option>Sectional</option>
@@ -530,8 +539,8 @@ footer .fbrand img{height:44px;width:auto}
         </select>
         <textarea name="msg" rows="3" placeholder="Anything we should know? (fabric, stains, pets…)"></textarea>
         <button class="btn blue" type="submit" style="width:100%">Get my free quote</button>
-        <div class="ok">🐶 Got it! We'll get back to you within 15–30 minutes during business hours.</div>
-        <div class="micro">No spam — we only reply with your quote.</div>
+        <div class="ok" data-ed="contact.okMsg">🐶 Got it! We'll get back to you within 15–30 minutes during business hours.</div>
+        <div class="micro" data-ed="contact.micro">No spam — we only reply with your quote.</div>
       </form>
     </div>
   </div>
@@ -539,28 +548,314 @@ footer .fbrand img{height:44px;width:auto}
 
 <footer>
   <div class="wrap">
-    <div class="fbrand"><img src="cc-logo.png" alt=""><span>© 2026 Curly Cleaner · Denver, CO</span></div>
-    <div>Family-owned · Licensed & insured</div>
-    <div><a href="tel:+19832156432">(983) 215-6432</a> · <a href="https://www.instagram.com/curlycleaner.denver" target="_blank">Instagram</a> · <a href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">Facebook</a></div>
+    <div class="fbrand"><img src="cc-logo.png" alt=""><span data-ed="footer.copy" data-html>© 2026 Curly Cleaner · Denver, CO</span></div>
+    <div data-ed="footer.tagline">Family-owned · Licensed & insured</div>
+    <div><a data-tel data-phone-text href="tel:+19832156432">(983) 215-6432</a> · <a data-ig href="https://www.instagram.com/curlycleaner.denver" target="_blank">Instagram</a> · <a data-fb href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">Facebook</a></div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-try{
-  document.body.classList.add('hpre');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.remove('hpre')));
-  setTimeout(()=>document.body.classList.remove('hpre'),900);
-}catch(e){document.body.classList.remove('hpre')}
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-const mnav=document.getElementById('mnav'),burger=document.getElementById('burger');
-burger.addEventListener('click',()=>{mnav.classList.toggle('open');burger.textContent=mnav.classList.contains('open')?'✕':'☰'});
-mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mnav.classList.remove('open');burger.textContent='☰'}));
-document.querySelectorAll('.qform').forEach(f=>f.addEventListener('submit',e=>{
-  e.preventDefault();
-  f.querySelector('.ok').style.display='block';
-  f.querySelector('button[type=submit]').disabled=true;
-}));
+(function(){
+"use strict";
+/* ============================================================
+   Curly Cleaner — CMS render + leads + analytics
+   Content row: fe_content id="curly_v5"  (edited from /admin)
+   ============================================================ */
+var SB_URL="https://fsihlzzjewhxpogvjapu.supabase.co";
+var SB_KEY="sb_publishable__o56Y-ust_UvMqvi9yWC8Q_qyjjkf0S";
+var sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(SB_URL,SB_KEY):null;
+var CMS_ID="curly_v5";
+
+/* ---- helpers ---- */
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function isObj(o){return o&&typeof o==="object"&&!Array.isArray(o);}
+function deepMerge(base,over){
+  if(!isObj(base)||!isObj(over))return(over===undefined?base:over);
+  var out={},k;for(k in base)out[k]=base[k];
+  for(k in over){out[k]=isObj(base[k])&&isObj(over[k])?deepMerge(base[k],over[k]):over[k];}
+  return out;
+}
+function getPath(o,p){var ps=p.split("."),x=o,i;for(i=0;i<ps.length;i++){if(x==null)return undefined;x=x[ps[i]];}return x;}
+function uuid(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c=="x"?r:(r&0x3|0x8);return v.toString(16);});}
+function ls(k,gen){try{var v=localStorage.getItem(k);if(!v){v=gen();localStorage.setItem(k,v);}return v;}catch(e){return gen();}}
+function ss(k,gen){try{var v=sessionStorage.getItem(k);if(!v){v=gen();sessionStorage.setItem(k,v);}return v;}catch(e){return gen();}}
+
+/* ---- DEFAULT (mirrors static markup; fallback when no remote data) ---- */
+var DEFAULT = {
+  settings:{
+    phone:"(983) 215-6432", phoneHref:"+19832156432", smsHref:"+19832156432",
+    instagramUrl:"https://www.instagram.com/curlycleaner.denver",
+    facebookUrl:"https://www.facebook.com/share/1NiahXi9R6/",
+    brandCu:"Curly", brandCl:"CLEANER", brandSub:"UPHOLSTERY CLEANING · DENVER"
+  },
+  visibility:{ strip:true, pain:true, services:true, about:true, why:true,
+    prices:true, works:true, reviews:true, diy:true, faq:true, hours:true },
+  nav:[
+    {label:"Services",href:"#services"},{label:"About us",href:"#about"},
+    {label:"Pricing",href:"#prices"},{label:"Photos",href:"#works"},
+    {label:"FAQ",href:"#faq"},{label:"Contact",href:"#contact"} ],
+  hero:{
+    pin:'🐾 <b>Family-owned</b> · husband &amp; wife team · Denver, CO',
+    titleSmall:"Curly Cleaner",
+    titleMain:"Deep Upholstery Cleaning in Denver",
+    lead:"Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — and furniture that's dry in just a few hours.",
+    hlist:["Sofas & Couches","Mattresses","Area Rugs","Armchairs & Chairs","Pet stains & odor","Delicate fabrics"],
+    ctaPrimary:"Get a free quote in 60 seconds",
+    ctaSecondary:"💬 Text for a quote",
+    area:'📍 <b>Denver Metro</b> · free travel within 30 miles',
+    photo:"", photoCaption:"Your photo goes here —<br>the two of you with the extractor,<br>smiling 🙂",
+    pawText:"Inspired by Perseus 🐶"
+  },
+  strip:[
+    {ic:"🪑",b:"Truly Deep Clean",span:"not just the surface"},
+    {ic:"🐾",b:"Pet & Kid Safe",span:"eco, non-toxic products"},
+    {ic:"⏱️",b:"Dry in 4–6 Hours",span:"no over-saturation"},
+    {ic:"👍",b:"Satisfaction Guarantee",span:"we return & fix it free"} ],
+  pain:{
+    title:'Tired of looking at dirty upholstery or a stained <em>mattress?</em>',
+    text:"Stains, odors, or just an overall dingy look? It's time to take action — and we're here to help. Professional cleaning doesn't just improve appearance: it removes dust mites, bacteria and allergens, helping your family breathe easier and stay healthier.",
+    items:["Say goodbye to stains and smells","Breathe cleaner air at home","Restore comfort and freshness"],
+    cta:"Bring my furniture back to life"
+  },
+  services:{
+    title:'Our professional <em>services</em>',
+    sub:"We're fabric experts, not a general cleaning service. Upholstery is our craft — and our only focus.",
+    items:[
+      {star:"MAIN SERVICE",em:"🛋️",h3:"Sofas & Upholstery",p:"Deep cleaning for sofas, couches and sectionals — every cushion, every fiber.",pr:"from $140"},
+      {star:"",em:"🛏️",h3:"Mattresses",p:"Deep cleaning against dust mites and allergens for healthy sleep.",pr:"from $110 (King)"},
+      {star:"",em:"🧶",h3:"Area Rugs",p:"Careful cleaning for rugs and carpets — including delicate fibers.",pr:"custom quote"},
+      {star:"",em:"🪑",h3:"Armchairs & Chairs",p:"Armchairs, ottomans, dining and office chairs.",pr:"from $50"} ],
+    note:'<b>What we DON\'T do:</b> general house cleaning, windows or dusting. We stay focused on fabrics — that\'s what makes us the experts. <b>Minimum call-out: $99.</b>'
+  },
+  about:{
+    title:'Welcome to <em>Curly Cleaner</em>',
+    p1:"When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.",
+    p2:'As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.',
+    perseus:'Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn\'t safe for Perseus, it will never touch your furniture.</b>',
+    photo:"", photoCaption:"Family photo —<br>coming soon"
+  },
+  why:{
+    title:'Why choose <em>Curly Cleaner?</em>',
+    sub:"As a family-owned business, your satisfaction is our reputation.",
+    items:[
+      {ic:"🔧",b:"Professional expertise",p:"Advanced pro-grade equipment for deep cleaning without over-saturation. Thoroughly cleaned, sanitized and ready to use in just a few hours."},
+      {ic:"🌿",b:"Health & safety first",p:"Only professional, eco-friendly, non-toxic solutions — 100% safe for children, pregnant women and pets. No harsh chemicals, no strong odors."},
+      {ic:"🧵",b:"Delicate fabrics welcome",p:"We work with the delicate materials the big companies are afraid to touch. Husband does the tech work, wife runs quality control."},
+      {ic:"🛡️",b:"A personal standard",p:"Fully licensed and insured. The personalized, reliable service only a local family team can provide."} ]
+  },
+  prices:{
+    title:'Transparent <em>pricing</em>',
+    sub:"Starting prices below. We confirm your exact quote by phone or from a photo — and warn you in advance if critical soiling or special fabric care changes anything.",
+    leftTitle:"🛋️ Upholstery",
+    left:[
+      {label:"Standard sofa",price:"from $140"},
+      {label:"Loveseat",price:"from $110"},
+      {label:"Armchair",price:"from $50"},
+      {label:"Sectional",price:"custom quote"},
+      {label:"Dining / office chair",price:"from $15"} ],
+    rightTitle:"🛏️ Mattresses & rugs",
+    right:[
+      {label:"Mattress (King)",price:"from $110"},
+      {label:"Mattress (Queen / Full / Twin)",price:"custom quote"},
+      {label:"Area rugs",price:"custom quote"},
+      {label:"Pet stain & odor treatment",price:"quoted upfront"},
+      {label:"Minimum call-out",price:"$99"} ],
+    promos:[
+      {pe:"🎁",html:'<b>10% off</b> your second piece of furniture in the same visit'},
+      {pe:"⭐",html:'<b>15% off</b> your first order in exchange for a Google review'} ],
+    note:'📍 <b>Free travel</b> within 30 miles of Denver — beyond that for a small surcharge. Send a photo of your furniture and get your quote <b>in 60 seconds</b>.'
+  },
+  works:{
+    title:'Before & <em>after</em>',
+    sub:'Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.',
+    shots:["work-1.jpg","work-2.jpg","work-3.jpg","work-4.jpg","work-5.jpg","work-6.jpg","work-7.jpg","work-8.jpg"]
+  },
+  reviews:{
+    title:'Reviews from our <em>clients</em>',
+    sub:"Your review could be here — and it comes with 15% off your first order.",
+    items:[
+      {p:'"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."',who:"Sarah M.",where:"Wash Park · sectional"},
+      {p:'"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."',who:"Dmitry K.",where:"Aurora · sofa + mattress"},
+      {p:'"You can tell it\'s a family business — they treat your home like their own. Photo updates and honest pricing."',who:"Jess & Tom",where:"Highlands Ranch · armchairs"} ],
+    gbadge:'⭐ Find us on <b>Google</b> · <b>Instagram</b> · <b>Facebook</b>'
+  },
+  diy:{
+    title:"Planning to clean your furniture yourself?",
+    text:'We have some important information for you: store-bought cleaners often <b>set stains permanently</b>, over-wet the foam and leave residue that attracts dirt faster. Text us a photo first — we\'ll honestly tell you if it\'s a DIY job or needs a pro.',
+    cta:"Ask us first — it's free"
+  },
+  faq:{
+    title:'Do you have questions? <em>We have answers!</em>',
+    sub:"The most common ones — answered honestly.",
+    items:[
+      {q:"How long does the furniture take to dry?",a:"Just 4–6 hours. Our equipment cleans deeply without over-saturation, so most clients use their furniture the same day."},
+      {q:"Are your products safe for kids and pets?",a:"100%. We use only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. If it isn't safe for our dog Perseus, it never touches your furniture."},
+      {q:"How is the price calculated?",a:"We quote by phone or from a photo of your furniture. The final price stays the same unless the soiling is critical or the fabric needs special care — and we always warn you about that in advance. Minimum call-out is $99."},
+      {q:"Do you work with delicate fabrics?",a:"Yes — that's our specialty. We test every fabric first and choose the right method, including low-moisture cleaning for delicate and natural materials."},
+      {q:"Can you remove pet stains and odors?",a:"Yes — we're pet owners ourselves. We remove odor at the source with deep sanitizing, not just cover it up."},
+      {q:"What if I'm not happy with the result?",a:"Satisfaction guarantee: if something's not right (within what's possible for the age of the furniture), we come back and fix it free."} ]
+  },
+  hours:{
+    title:'Hours & service <em>area</em>',
+    sub:"Based in Denver — we come to you.",
+    hoursTitle:"🕐 Hours of operation",
+    rows:[
+      {label:"Monday — Friday",val:"8:00 am — 7:00 pm"},
+      {label:"Saturday",val:"by appointment"},
+      {label:"Sunday",val:"closed"} ],
+    note:'<b>Offices & restaurants:</b> Sunday and after-hours service available on request.',
+    areaTitle:"📍 Service area — Denver Metro",
+    big:"30 mi", bigSub:"free travel around Denver · beyond — small surcharge",
+    cities:["Denver","Aurora","Lakewood","Highlands Ranch","Boulder"]
+  },
+  contact:{
+    title:'Get a free quote <em>in 60 seconds</em>',
+    text:"Call, text a photo of your furniture, or send the form — we reply within 15–30 minutes during business hours.",
+    small:"Denver Metro · Mon–Fri 8am–7pm · Licensed & insured",
+    formTitle:"Free quote request",
+    qs:'📸 Best way: text a photo of your furniture to <b>(983) 215-6432</b> — or fill the form:',
+    services:["Sofa / couch","Sectional","Mattress","Area rug","Armchair / chairs","Pet stains & odor"],
+    okMsg:"🐶 Got it! We'll get back to you within 15–30 minutes during business hours.",
+    micro:"No spam — we only reply with your quote."
+  },
+  footer:{
+    copy:"© 2026 Curly Cleaner · Denver, CO",
+    tagline:"Family-owned · Licensed & insured"
+  }
+};
+
+/* ---- analytics ---- */
+var qp=new URLSearchParams(location.search);
+var ctx={
+  visitor_id:ls("cc_vid",uuid), session_id:ss("cc_sid",uuid),
+  path:location.pathname, referrer:document.referrer||"",
+  utm_source:qp.get("utm_source")||"", utm_medium:qp.get("utm_medium")||"", utm_campaign:qp.get("utm_campaign")||"",
+  device:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?"mobile":"desktop"
+};
+function track(type,meta){
+  if(!sb)return;
+  sb.from("fe_analytics_events").insert({
+    type:type,visitor_id:ctx.visitor_id,session_id:ctx.session_id,path:ctx.path,
+    referrer:ctx.referrer,utm_source:ctx.utm_source,utm_medium:ctx.utm_medium,
+    utm_campaign:ctx.utm_campaign,device:ctx.device,meta:meta||null
+  }).then(function(){},function(){});
+}
+
+/* ---- render helpers ---- */
+function setScalars(c){
+  $$("[data-ed]").forEach(function(n){
+    var v=getPath(c,n.getAttribute("data-ed"));
+    if(v==null)return;
+    if(n.hasAttribute("data-html"))n.innerHTML=v;else n.textContent=v;
+  });
+  var s=c.settings||{};
+  $$("[data-tel]").forEach(function(a){a.href="tel:"+(s.phoneHref||"");});
+  $$("[data-sms]").forEach(function(a){a.href="sms:"+(s.smsHref||"");});
+  $$("[data-ig]").forEach(function(a){a.href=s.instagramUrl||"#";});
+  $$("[data-fb]").forEach(function(a){a.href=s.facebookUrl||"#";});
+  $$("[data-phone-text]").forEach(function(a){if(s.phone)a.textContent=s.phone;});
+}
+function fill(sel,html){var n=$('[data-list="'+sel+'"]');if(n)n.innerHTML=html;}
+function photo(slotId,capId,url,fallbackCap){
+  var slot=document.getElementById(slotId);if(!slot)return;
+  if(url){ slot.classList.add("has-img"); slot.innerHTML='<img src="'+esc(url)+'" alt="">'; }
+  else { slot.classList.remove("has-img"); var cap=document.getElementById(capId); if(cap)cap.innerHTML=fallbackCap; }
+}
+
+function render(c){
+  setScalars(c);
+  // nav
+  fill("nav",(c.nav||[]).map(function(i){return '<a href="'+esc(i.href)+'">'+esc(i.label)+'</a>';}).join(""));
+  // hero list
+  fill("hero.hlist",(c.hero.hlist||[]).map(function(t){return '<div>'+esc(t)+'</div>';}).join(""));
+  // strip
+  fill("strip",(c.strip||[]).map(function(b,i){return '<div class="b rv in'+(i?' d'+i:'')+'"><div class="ic">'+esc(b.ic)+'</div><div><b>'+esc(b.b)+'</b><span>'+esc(b.span)+'</span></div></div>';}).join(""));
+  // pain list
+  fill("pain.items",(c.pain.items||[]).map(function(t,i){return '<div class="rv in'+(i?' d'+i:'')+'">'+esc(t)+'</div>';}).join(""));
+  // services
+  fill("services.items",(c.services.items||[]).map(function(it,i){
+    return '<div class="svc rv in'+(i?' d'+i:'')+'">'+(it.star?'<div class="star">'+esc(it.star)+'</div>':'')+
+      '<div class="em">'+esc(it.em)+'</div><h3>'+esc(it.h3)+'</h3><p>'+esc(it.p)+'</p><div class="pr">'+esc(it.pr)+'</div></div>';
+  }).join(""));
+  // why
+  fill("why.items",(c.why.items||[]).map(function(it,i){
+    return '<div class="wcard rv in'+(i?' d'+i:'')+'"><div class="wic">'+esc(it.ic)+'</div><div><b>'+esc(it.b)+'</b><p>'+esc(it.p)+'</p></div></div>';
+  }).join(""));
+  // prices
+  fill("prices.left",(c.prices.left||[]).map(function(r){return '<div class="prow"><span>'+esc(r.label)+'</span><b>'+esc(r.price)+'</b></div>';}).join(""));
+  fill("prices.right",(c.prices.right||[]).map(function(r){return '<div class="prow"><span>'+esc(r.label)+'</span><b>'+esc(r.price)+'</b></div>';}).join(""));
+  fill("prices.promos",(c.prices.promos||[]).map(function(p,i){return '<div class="promo rv in'+(i?' d'+i:'')+'"><div class="pe">'+esc(p.pe)+'</div><div>'+p.html+'</div></div>';}).join(""));
+  // works
+  fill("works.shots",(c.works.shots||[]).map(function(u,i){return '<div class="shot rv in'+(i%4?' d'+(i%4):'')+'"><span class="tag">BEFORE / AFTER</span><img src="'+esc(u)+'" alt="Upholstery cleaning Denver" loading="lazy"></div>';}).join(""));
+  // reviews
+  fill("reviews.items",(c.reviews.items||[]).map(function(r,i){return '<div class="rev rv in'+(i?' d'+i:'')+'"><div class="stars">★★★★★</div><p>'+esc(r.p)+'</p><div class="who">'+esc(r.who)+'<span>'+esc(r.where)+'</span></div></div>';}).join(""));
+  // faq
+  fill("faq.items",(c.faq.items||[]).map(function(f){return '<details class="rv in"><summary>'+esc(f.q)+'</summary><p>'+esc(f.a)+'</p></details>';}).join(""));
+  // hours
+  fill("hours.rows",(c.hours.rows||[]).map(function(r){return '<div class="hrow"><span>'+esc(r.label)+'</span><b>'+esc(r.val)+'</b></div>';}).join(""));
+  fill("hours.cities",(c.hours.cities||[]).map(function(t){return '<span class="city">'+esc(t)+'</span>';}).join(""));
+  // contact service options
+  var sel=$('select[name="service"]');
+  if(sel){ sel.innerHTML='<option value="" disabled selected>What needs cleaning?</option>'+(c.contact.services||[]).map(function(o){return '<option>'+esc(o)+'</option>';}).join(""); }
+  // photos
+  photo("heroPhoto","heroPhotoCap",c.hero.photo,c.hero.photoCaption);
+  photo("aboutPhoto","aboutPhotoCap",c.about.photo,c.about.photoCaption);
+  // visibility
+  var vmap={strip:'[data-sec="strip"]',pain:"#pain",services:"#services",about:"#about",why:"#why",prices:"#prices",works:"#works",reviews:"#reviews",diy:"#diy",faq:"#faq",hours:"#hours"};
+  var vis=c.visibility||{};
+  Object.keys(vmap).forEach(function(k){var n=$(vmap[k]);if(n)n.style.display=(vis[k]===false)?"none":"";});
+  bindForm();
+}
+
+/* ---- form ---- */
+function bindForm(){
+  $$(".qform").forEach(function(f){
+    if(f._bound)return; f._bound=true;
+    f.addEventListener("submit",function(e){
+      e.preventDefault();
+      var data={ name:(f.name&&f.name.value||"").trim(), phone:(f.phone&&f.phone.value||"").trim(),
+        service:(f.service&&f.service.value||""), message:(f.msg&&f.msg.value||"").trim() };
+      var btn=f.querySelector('button[type=submit]'); if(btn)btn.disabled=true;
+      var ok=f.querySelector(".ok");
+      var rec={ name:data.name, phone:data.phone, service:data.service, message:data.message,
+        page_path:ctx.path, referrer:ctx.referrer, utm_source:ctx.utm_source, utm_medium:ctx.utm_medium,
+        utm_campaign:ctx.utm_campaign, session_id:ctx.session_id, user_agent:navigator.userAgent };
+      function done(){ if(ok)ok.style.display="block"; }
+      if(sb){ sb.from("fe_orders").insert(rec).then(function(){ track("lead",{service:data.service}); done(); }, function(){ done(); }); }
+      else { done(); }
+    });
+  });
+}
+
+/* ---- boot ---- */
+function boot(){
+  // hero entrance
+  try{
+    document.body.classList.add("hpre");
+    requestAnimationFrame(function(){requestAnimationFrame(function(){document.body.classList.remove("hpre");});});
+    setTimeout(function(){document.body.classList.remove("hpre");},900);
+  }catch(e){document.body.classList.remove("hpre");}
+  // reveal observer (initial static .rv)
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+  $$(".rv").forEach(function(el){io.observe(el);});
+  // mobile menu
+  var mnav=document.getElementById("mnav"),burger=document.getElementById("burger");
+  burger.addEventListener("click",function(){mnav.classList.toggle("open");burger.textContent=mnav.classList.contains("open")?"✕":"☰";});
+  document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("#mnav a");if(a){mnav.classList.remove("open");burger.textContent="☰";}});
+  // render defaults immediately, then overlay remote content
+  render(deepMerge(DEFAULT,{}));
+  track("pageview");
+  if(sb){
+    sb.from("fe_content").select("data").eq("id",CMS_ID).maybeSingle().then(function(res){
+      if(res&&!res.error&&res.data&&res.data.data){ render(deepMerge(DEFAULT,res.data.data)); }
+    },function(){});
+  }
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+})();
 </script>
 </body>
 </html>
