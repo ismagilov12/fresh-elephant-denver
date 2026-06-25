@@ -37,10 +37,10 @@ h2 em{font-style:normal;font-family:'Fredoka',sans-serif;font-weight:600;color:v
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
 /* header */
-header{position:sticky;top:0;z-index:80;background:#fff;box-shadow:0 2px 14px rgba(11,43,102,.08)}
+header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 14px rgba(11,43,102,.05)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:16px}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;line-height:1}
-.brand img{height:56px;width:auto}
+.brand img{height:92px;width:auto}
 .brand .cu{font-family:'Fredoka',sans-serif;font-weight:700;font-size:24px;color:var(--yellow-dk)}
 .brand .cl{font-weight:900;font-size:20px;color:var(--navy);letter-spacing:.5px;margin-left:5px}
 .brand small{display:block;font-size:8.5px;letter-spacing:2.4px;color:var(--blue);font-weight:700;margin-top:4px}
@@ -285,7 +285,7 @@ footer .fbrand img{height:44px;width:auto}
   nav.menu.open a:last-child{border-bottom:none}
   .nav .btn{display:none}
   .burger{display:grid;place-items:center}
-  .brand img{height:46px}
+  .brand img{height:72px}
   .hero{min-height:auto;padding:44px 0 84px}
   .hero .wrap{grid-template-columns:1fr;gap:34px}
   .hero h1{font-size:clamp(30px,8.2vw,38px)}
@@ -357,7 +357,7 @@ body.fe-editing{padding-bottom:70px}
   <div class="wrap nav">
     <a class="brand" href="#top">
       <img src="cc-logo.png" alt="Curly Cleaner logo">
-      <span><span class="cu" data-ed="settings.brandCu">Curly</span><span class="cl" data-ed="settings.brandCl">CLEANER</span><small data-ed="settings.brandSub">UPHOLSTERY CLEANING · DENVER</small></span>
+      <span><small data-ed="settings.brandSub">UPHOLSTERY CLEANING · DENVER</small></span>
     </a>
     <nav class="menu" id="mnav" data-list="nav">
       <a href="#services">Services</a>
