@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curly Cleaner — Deep Upholstery Cleaning in Denver | Family-Owned Experts</title>
+<meta name="description" content="Professional upholstery, mattress and area rug cleaning in Denver Metro. Family-owned, eco-friendly & pet-safe products, fast dry time. Sofas from $100. Homes & businesses. Get a free quote in 60 seconds!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1E63D0; --blue-dk:#1453B8; --navy:#0B2B66; --ink:#082052;
+  --yellow:#FFC727; --yellow-dk:#E5A800;
+  --light:#EAF2FE; --soft:#F5F9FF; --text:#33415F; --muted:#64748F;
+  --sh:0 10px 30px rgba(11,43,102,.12);
+  --sh-lg:0 20px 50px rgba(11,43,102,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:var(--text);background:#fff;line-height:1.6;font-size:16.5px}
+h1,h2,h3,h4{color:var(--navy);line-height:1.13;font-weight:800}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:70px 0;position:relative}
+h2{font-size:clamp(28px,3.6vw,42px);margin-bottom:12px;text-align:center}
+h2 em{font-style:normal;font-family:'Fredoka',sans-serif;font-weight:600;color:var(--blue)}
+.sub{color:var(--muted);max-width:640px;margin:0 auto 40px;font-size:17px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--yellow);color:var(--ink);font-weight:800;font-size:16.5px;padding:16px 32px;border-radius:99px;text-decoration:none;border:none;cursor:pointer;transition:.2s;font-family:'Outfit';box-shadow:0 8px 22px rgba(255,199,39,.45)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(255,199,39,.55);background:#FFD23F}
+.btn.blue{background:var(--blue);color:#fff;box-shadow:0 8px 22px rgba(30,99,208,.4)}
+.btn.blue:hover{background:var(--blue-dk)}
+.btn.line{background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.4);box-shadow:none}
+.btn.line:hover{background:#fff;color:var(--navy)}
+.spark{position:absolute;color:#fff;opacity:.8;animation:tw 3s ease-in-out infinite;pointer-events:none;z-index:1}
+@keyframes tw{0%,100%{opacity:.2;transform:scale(.85)}50%{opacity:.9;transform:scale(1)}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* header */
+header{position:sticky;top:0;z-index:80;background:#fff;box-shadow:0 2px 14px rgba(11,43,102,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;line-height:1}
+.brand img{height:56px;width:auto}
+.brand .cu{font-family:'Fredoka',sans-serif;font-weight:700;font-size:24px;color:var(--yellow-dk)}
+.brand .cl{font-weight:900;font-size:20px;color:var(--navy);letter-spacing:.5px;margin-left:5px}
+.brand small{display:block;font-size:8.5px;letter-spacing:2.4px;color:var(--blue);font-weight:700;margin-top:4px}
+nav.menu{display:flex;gap:22px}
+nav.menu a{text-decoration:none;color:var(--navy);font-weight:600;font-size:14.5px}
+nav.menu a:hover{color:var(--blue)}
+.nav .btn{padding:12px 22px;font-size:14.5px}
+.burger{display:none;background:var(--light);border:none;border-radius:12px;width:44px;height:44px;font-size:19px;color:var(--navy);cursor:pointer}
+
+/* hero */
+.hero{position:relative;color:#fff;padding:64px 0 92px;overflow:hidden;display:flex;align-items:center;min-height:78vh;
+  background:linear-gradient(150deg,var(--blue) 0%,var(--blue-dk) 55%,var(--navy) 100%)}
+.hero::before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.06);top:-180px;right:-140px}
+.hero::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,199,39,.12);bottom:-140px;left:-110px}
+.btn.call{background:#fff;color:var(--navy);box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.btn.call:hover{background:#f0f5ff}
+.herovideo{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.herovideo iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.6);width:100%;height:100%;border:0;min-width:100%;min-height:100%}
+.heroveil{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(30,99,208,.80),rgba(11,43,102,.90))}
+.bubbles{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
+.bubble{position:absolute;bottom:-80px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5),rgba(255,255,255,.06));box-shadow:inset 0 0 12px rgba(255,255,255,.25);animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0) scale(.7);opacity:0}10%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-110vh) scale(1.1);opacity:0}}
+.audbadge{display:inline-block;background:var(--blue);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;padding:7px 16px;border-radius:99px;margin-bottom:14px}
+.audbadge.biz{background:var(--navy)}
+.audtoggle{display:flex;justify-content:center;padding:34px 16px 0}
+.seg{display:inline-flex;background:#fff;border:2px solid var(--light);border-radius:99px;padding:5px;gap:4px;box-shadow:0 8px 22px rgba(11,43,102,.1)}
+.seg-btn{border:none;background:transparent;color:var(--navy);font-weight:800;font-size:15px;padding:12px 24px;border-radius:99px;cursor:pointer;font-family:'Outfit';transition:.2s;white-space:nowrap}
+.seg-btn.active{background:var(--blue);color:#fff;box-shadow:0 6px 16px rgba(30,99,208,.32)}
+body.aud-home #commercial{display:none!important}
+body.aud-biz #prices{display:none!important}
+@media(max-width:560px){.seg-btn{padding:11px 16px;font-size:13.5px}}
+.promobar{background:linear-gradient(90deg,var(--yellow),#ffd861);color:var(--ink);text-align:center;font-weight:800;font-size:14.5px;padding:11px 16px;line-height:1.35}
+.promobar b{color:var(--blue-dk)}
+.promobar a{color:var(--blue-dk);font-weight:900;text-decoration:underline;white-space:nowrap}
+.heropromo{display:inline-flex;align-items:center;gap:10px;background:var(--yellow);color:var(--ink);font-weight:900;font-size:clamp(14px,3.5vw,17px);padding:11px 20px;border-radius:99px;margin:18px 0 4px;box-shadow:0 10px 26px rgba(255,199,39,.5)}
+.heropromo .big15{font-size:1.35em;color:var(--blue-dk);line-height:1}
+@media(max-width:560px){.promobar{font-size:12.5px;padding:9px 12px}}
+#commercial{padding:70px 0;background:var(--soft)}
+.bizgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:14px;margin-top:26px}
+.bizcard{background:#fff;border:1px solid var(--light);border-radius:16px;padding:22px 14px;text-align:center;font-weight:800;color:var(--navy);box-shadow:0 6px 18px rgba(11,43,102,.06);transition:.2s}
+.bizcard:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(11,43,102,.12)}
+.bizcard .bizem{font-size:30px;margin-bottom:8px}
+.bizcard span{display:block;font-weight:600;font-size:12.5px;color:var(--blue);margin-top:3px}
+.panel h3{display:inline-block;background:var(--blue);color:#fff;font-size:13px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;padding:9px 16px;border-radius:12px;margin-bottom:16px;box-shadow:0 6px 16px rgba(30,99,208,.28)}
+.pcard{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--light);border-radius:16px;padding:11px 15px;margin-bottom:10px;box-shadow:0 5px 16px rgba(11,43,102,.06)}
+.pcard:last-child{margin-bottom:0}
+.pcard .pic{flex:0 0 50px;height:40px;color:#E7A400;display:flex;align-items:center;justify-content:center}
+.pcard .pic svg{width:100%;height:100%;display:block}
+.pcard .pic img{width:100%;height:100%;display:block;object-fit:contain}
+.pcard .nm{flex:1;font-weight:800;color:var(--navy);font-size:14px;line-height:1.2}
+.pcard .sep{align-self:stretch;width:1px;background:var(--light);margin:3px 2px}
+.pcard .pr{text-align:right;white-space:nowrap;font-weight:900;color:var(--navy);font-size:15.5px;line-height:1.15;text-transform:uppercase}
+.pcard .pr.lg{font-size:17px}
+@media(max-width:560px){.pcard .pic{flex-basis:40px;height:32px}.pcard .nm{font-size:13px}.pcard .pr{font-size:14px}}
+.hero .wrap{display:grid;grid-template-columns:1.06fr .94fr;gap:50px;align-items:center;position:relative;z-index:2;width:100%}
+.hero .pin{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;max-width:100%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:9px 18px;font-size:clamp(10.5px,3vw,13.5px);font-weight:700;margin-bottom:20px}
+.hero .pin b{color:var(--yellow)}
+.hero h1{color:#fff;font-size:clamp(32px,4.3vw,50px);font-weight:900;margin-bottom:8px}
+.hero h1 .fr{font-family:'Fredoka',sans-serif;font-weight:700;color:var(--yellow);display:block;font-size:.62em;margin-bottom:8px}
+.hero .lead{font-size:18px;color:#CBDDF9;margin:14px 0 22px;max-width:480px}
+.hlist{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;margin-bottom:28px;max-width:470px}
+.hlist div{display:flex;gap:9px;align-items:center;font-weight:600;font-size:15px}
+.hlist div::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;background:var(--yellow);color:var(--ink);display:grid;place-items:center;font-size:13px;font-weight:900}
+.hero .cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:26px}
+.hero .area{display:flex;align-items:center;gap:9px;font-size:14.5px;color:#CBDDF9;font-weight:600}
+.hero .area b{color:var(--yellow)}
+/* hero photo slot */
+.hphoto{position:relative;justify-self:center;width:100%;max-width:420px}
+.hphoto .slot{aspect-ratio:4/5;border-radius:26px;border:3px dashed rgba(255,255,255,.45);background:rgba(255,255,255,.07);display:grid;place-items:center;text-align:center;padding:28px;color:#CBDDF9;font-size:15px;font-weight:600;box-shadow:var(--sh-lg);overflow:hidden}
+.hphoto .slot.has-img{border-style:solid;padding:0}
+.hphoto .slot.has-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hphoto .slot .big{font-size:44px;margin-bottom:10px}
+.hphoto .pawchip{position:absolute;top:-18px;right:-14px;background:#fff;border-radius:16px;box-shadow:var(--sh-lg);padding:10px 14px;display:flex;align-items:center;gap:9px;color:var(--navy);font-weight:800;font-size:13px;animation:bob 5s ease-in-out infinite;z-index:2}
+.hphoto .pawchip img{height:38px;width:auto}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* staged entrance — fail-safe */
+.hero-in>*,.hphoto{transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+.hero-in>*:nth-child(2){transition-delay:.14s}
+.hero-in>*:nth-child(3){transition-delay:.28s}
+.hero-in>*:nth-child(4){transition-delay:.42s}
+.hero-in>*:nth-child(5){transition-delay:.56s}
+.hero-in>*:nth-child(6){transition-delay:.68s}
+.hphoto{transition-delay:.3s}
+body.hpre .hero-in>*{opacity:0;transform:translateY(26px)}
+body.hpre .hphoto{opacity:0}
+
+/* benefits strip */
+.bstrip{background:#fff;margin-top:-50px;position:relative;z-index:5}
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:#fff;border-radius:24px;box-shadow:var(--sh-lg);padding:26px}
+.b{display:flex;align-items:center;gap:13px}
+.b .ic{flex:0 0 52px;height:52px;border-radius:50%;background:var(--light);display:grid;place-items:center;font-size:24px;border:2px solid #D6E5FB}
+.b b{display:block;color:var(--navy);font-size:14.5px;line-height:1.25}
+.b span{font-size:12.5px;color:var(--muted)}
+
+/* pain intro */
+#pain{padding:64px 0 56px}
+#pain .inner{max-width:760px;margin:0 auto;text-align:center}
+#pain h2{font-size:clamp(26px,3.2vw,36px)}
+#pain p{color:var(--muted);margin:14px 0 24px;font-size:17px}
+.painlist{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.painlist div{background:var(--light);border-radius:99px;padding:11px 20px;font-weight:700;font-size:14.5px;color:var(--navy)}
+.painlist div::before{content:"✓ ";color:var(--blue);font-weight:900}
+
+/* services */
+#services{background:var(--soft)}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc{background:#fff;border-radius:22px;padding:26px 22px;box-shadow:var(--sh);transition:.25s;position:relative;border-top:4px solid var(--blue)}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--sh-lg)}
+.svc .em{font-size:32px;margin-bottom:11px}
+.svc h3{font-size:17.5px;margin-bottom:7px}
+.svc p{font-size:14px;color:var(--muted);margin-bottom:12px}
+.svc .pr{font-weight:800;color:var(--blue);font-size:15px}
+.svc .star{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--ink);font-size:10.5px;font-weight:900;letter-spacing:1px;border-radius:99px;padding:5px 11px}
+.alsonote{margin-top:24px;text-align:center;background:#fff;border-radius:20px;box-shadow:var(--sh);padding:18px 28px;font-size:15px;color:var(--text)}
+.alsonote b{color:var(--navy)}
+
+/* about us */
+#about .agrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
+#about .photo-slot{aspect-ratio:4/5;border-radius:26px;border:3px dashed #C7DBF7;background:var(--soft);display:grid;place-items:center;text-align:center;padding:28px;color:#9AB0D6;font-size:15px;font-weight:600;overflow:hidden}
+#about .photo-slot.has-img{border-style:solid;padding:0}
+#about .photo-slot.has-img img{width:100%;height:100%;object-fit:cover;display:block}
+#about .photo-slot .big{font-size:44px;margin-bottom:10px}
+#about h2{text-align:left}
+#about .lead-p{color:var(--text);font-size:16px;margin-bottom:14px}
+#about .lead-p b{color:var(--navy)}
+.perseus{display:flex;gap:16px;align-items:center;background:var(--light);border-radius:20px;padding:18px 22px;margin-top:20px}
+.perseus img{height:74px;width:auto}
+.perseus p{font-size:14.5px;color:var(--text)}
+.perseus b{color:var(--navy)}
+
+/* why us */
+#why{background:var(--soft)}
+#why .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:0 auto}
+.wcard{background:#fff;border-radius:20px;padding:26px;display:flex;gap:16px;align-items:flex-start;box-shadow:var(--sh)}
+.wcard .wic{flex:0 0 48px;height:48px;border-radius:14px;background:var(--yellow);display:grid;place-items:center;font-size:22px}
+.wcard b{display:block;color:var(--navy);font-size:16.5px;margin-bottom:4px}
+.wcard p{font-size:14.5px;color:var(--muted)}
+
+/* prices */
+.pcols{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left}
+.panel{background:#fff;border-radius:22px;box-shadow:var(--sh);padding:28px;border-top:4px solid var(--yellow)}
+.panel h3{font-size:18px;margin-bottom:14px}
+.prow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #EDF3FC;font-size:15px}
+.prow:last-of-type{border-bottom:none}
+.prow b{color:var(--navy);font-weight:800;white-space:nowrap}
+.pnote{margin-top:24px;background:linear-gradient(120deg,var(--blue),var(--blue-dk));color:#fff;border-radius:18px;padding:20px 26px;font-size:15px;text-align:center;box-shadow:var(--sh-lg)}
+.pnote b{color:var(--yellow)}
+.promos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.promo{background:#fff;border:2px dashed var(--yellow-dk);border-radius:18px;padding:18px 22px;display:flex;gap:13px;align-items:center;font-size:15px}
+.promo .pe{font-size:28px}
+.promo b{color:var(--navy)}
+.promos .promo:first-child{grid-column:1/-1;background:var(--blue);border:none;color:#fff;justify-content:center;text-align:center;font-size:18px;box-shadow:0 12px 30px rgba(30,99,208,.35)}
+.promos .promo:first-child b{color:var(--yellow);font-size:1.2em}
+.promos .promo:first-child .pe{font-size:34px}
+#prices{background:#fff}
+
+/* works */
+#works{background:var(--soft)}
+.wgal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.shot{aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:var(--sh);position:relative;transition:.25s;background:#fff}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+.shot .tag{position:absolute;top:10px;left:10px;background:var(--yellow);color:var(--ink);font-size:10.5px;font-weight:900;letter-spacing:1px;border-radius:99px;padding:5px 11px;z-index:2}
+
+/* reviews */
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--soft);border-radius:20px;padding:26px;text-align:left}
+.rev .stars{color:var(--yellow-dk);letter-spacing:3px;margin-bottom:11px;font-size:15px}
+.rev p{font-size:14.5px;color:var(--text)}
+.rev .who{margin-top:14px;font-weight:800;font-size:13.5px;color:var(--blue)}
+.rev .who span{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+#reviews{background:#fff}
+.gbadge{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:30px;font-weight:700;font-size:15px;color:var(--muted)}
+.gbadge b{color:var(--navy)}
+
+/* diy callout */
+#diy .box{background:var(--navy);border-radius:26px;color:#fff;padding:38px 40px;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;box-shadow:var(--sh-lg);overflow:hidden;position:relative}
+#diy .box::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,199,39,.12);right:-80px;top:-100px}
+#diy h2{color:#fff;text-align:left;font-size:clamp(22px,2.8vw,30px)}
+#diy p{color:#CBDDF9;margin:10px 0 0;font-size:15.5px}
+#diy p b{color:var(--yellow)}
+#diy .btn{justify-self:center;position:relative;z-index:1}
+
+/* faq */
+#faq{background:var(--soft)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;max-width:960px;margin:0 auto}
+details{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
+summary{padding:18px 22px;font-weight:700;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;color:var(--navy)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:0 0 28px;height:28px;border-radius:50%;background:var(--light);color:var(--blue);display:grid;place-items:center;font-size:18px;font-weight:600}
+details[open] summary::after{content:"–";background:var(--blue);color:#fff}
+details p{padding:0 22px 18px;color:var(--muted);font-size:14px}
+
+/* hours + area */
+#hours{background:#fff}
+.hagrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.hbox{background:var(--soft);border-radius:22px;padding:30px;border-top:4px solid var(--blue)}
+.hbox h3{font-size:18px;margin-bottom:14px}
+.hrow{display:flex;justify-content:space-between;font-size:14.5px;padding:8px 0;border-bottom:1px solid #E2ECFA}
+.hrow:last-of-type{border-bottom:none}
+.hrow b{color:var(--navy)}
+.hbox .note{margin-top:14px;font-size:13.5px;color:var(--muted);background:#fff;border-radius:14px;padding:13px 16px}
+.hbox .note b{color:var(--navy)}
+.hbox .cities{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.hbox .city{background:#fff;border-radius:99px;padding:7px 15px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:0 3px 8px rgba(11,43,102,.07)}
+.hbox .big{text-align:center;margin:14px 0 8px}
+.hbox .big b{font-size:42px;color:var(--blue);font-weight:900;display:block;line-height:1}
+.hbox .big span{font-size:13.5px;color:var(--muted);font-weight:600}
+
+/* contact */
+.cta-band{background:linear-gradient(120deg,var(--blue) 0%,var(--blue-dk) 100%);color:#fff;padding:68px 0;overflow:hidden;position:relative}
+.cta-band .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.cta-band h2{color:#fff;text-align:left}
+.cta-band h2 em{color:var(--yellow)}
+.cta-band p{color:#CBDDF9;margin-bottom:24px;font-size:16.5px}
+.cta-band .phone{display:block;font-size:clamp(26px,3.6vw,36px);font-weight:900;color:var(--yellow);text-decoration:none;margin-bottom:20px}
+.cbtns{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .small{margin-top:20px;font-size:13.5px;color:#9FBCE8}
+.qcard{background:#fff;border-radius:24px;padding:32px 30px;color:var(--navy);box-shadow:0 30px 70px rgba(0,0,0,.3)}
+.qcard h3{font-size:21px;margin-bottom:4px}
+.qcard .qs{color:var(--muted);font-size:14px;margin-bottom:18px}
+.qcard form{display:grid;gap:11px}
+input,select,textarea{font-family:'Outfit';font-size:15.5px;padding:13px 16px;border:2px solid var(--light);border-radius:14px;background:var(--soft);color:var(--navy);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
+.ok{display:none;background:var(--light);border-radius:14px;padding:14px;text-align:center;font-weight:700;color:var(--blue-dk);font-size:14.5px}
+.qcard .micro{font-size:12.5px;color:var(--muted);text-align:center}
+
+/* footer */
+footer{background:var(--ink);color:#8FA6CE;padding:30px 0;font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer a{color:#CBDDF9;text-decoration:none}
+footer a:hover{color:var(--yellow)}
+footer .fbrand{display:flex;align-items:center;gap:10px}
+footer .fbrand img{height:44px;width:auto}
+
+@media(max-width:940px){
+  section{padding:48px 0}
+  nav.menu{display:none}
+  nav.menu.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:#fff;padding:8px 22px 16px;box-shadow:0 16px 30px rgba(11,43,102,.16);z-index:95;gap:0}
+  nav.menu.open a{padding:13px 0;border-bottom:1px solid var(--light);font-size:16px}
+  nav.menu.open a:last-child{border-bottom:none}
+  .nav .btn{display:none}
+  .burger{display:grid;place-items:center}
+  .brand img{height:46px}
+  .hero{min-height:auto;padding:44px 0 84px}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .hero h1{font-size:clamp(30px,8.2vw,38px)}
+  .hlist{grid-template-columns:1fr}
+  .hero .cta .btn{width:100%}
+  .hphoto{max-width:100%}
+  .hphoto .slot{aspect-ratio:4/3}
+  .bgrid{grid-template-columns:1fr 1fr;gap:18px;padding:22px}
+  .sgrid{grid-template-columns:1fr 1fr}
+  .rgrid{grid-template-columns:1fr}
+  .pcols,.hagrid,#why .wgrid,.fgrid,.promos,#about .agrid,.cta-band .cgrid{grid-template-columns:1fr}
+  #about .agrid{gap:28px}
+  #about .photo-slot{aspect-ratio:4/3}
+  .wgal{grid-template-columns:1fr 1fr;gap:12px}
+  #diy .box{grid-template-columns:1fr;padding:30px 24px;text-align:center}
+  #diy h2{text-align:center}
+  .painlist{flex-direction:column;align-items:center}
+  .cta-band h2{text-align:center}
+  .cta-band .cgrid>div:first-child{text-align:center}
+  .cbtns{justify-content:center}
+}
+@media(max-width:560px){
+  .sgrid{grid-template-columns:1fr}
+  .hero .pin{gap:6px;padding:8px 13px}
+}
+
+/* ===== inline visual editor ===== */
+body.fe-editing{padding-bottom:70px}
+.fe-edit-text{outline:1px dashed rgba(30,99,208,.4);outline-offset:2px;border-radius:3px;cursor:text;min-width:10px;transition:background .15s}
+.fe-edit-text:hover{outline-color:var(--blue);background:rgba(30,99,208,.07)}
+.fe-edit-text:focus{outline:2px solid var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(30,99,208,.18)}
+.fe-itb{position:absolute;top:4px;right:4px;display:none;gap:3px;z-index:40;background:#0B2B66;border-radius:8px;padding:3px}
+.fe-itb button{width:24px;height:24px;border:none;background:#1E63D0;color:#fff;border-radius:5px;font-size:12px;cursor:pointer;line-height:1;padding:0;font-family:inherit}
+.fe-itb button:hover{background:#FFC727;color:#082052}
+.fe-itb button.del:hover{background:#e23;color:#fff}
+.fe-editing *:hover>.fe-itb{display:flex}
+.fe-addwrap{text-align:center;margin:14px 0}
+.fe-add{background:#fff;border:2px dashed var(--blue);color:var(--blue);border-radius:99px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Outfit'}
+.fe-add:hover{background:var(--blue);color:#fff}
+.fe-visbadge{position:absolute;top:8px;left:8px;z-index:41;background:#0B2B66;color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Outfit'}
+.fe-visbadge:hover{background:var(--blue)}
+.fe-dim{opacity:.5;outline:2px dashed #e23;outline-offset:-2px}
+.fe-imgslot{position:relative}
+.fe-imgbtn{position:absolute;bottom:8px;right:8px;z-index:42;background:#0B2B66;color:#fff;border:none;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Outfit'}
+.fe-imgbtn:hover{background:var(--blue)}
+#feBar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0B2B66;color:#fff;display:flex;align-items:center;gap:10px;padding:10px 16px;box-shadow:0 -6px 24px rgba(0,0,0,.3);font-family:'Outfit';font-size:14px;flex-wrap:wrap}
+#feBar .ttl{font-weight:800}
+#feBar .sp{flex:1}
+#feBar #feInfo{color:#CBDDF9;font-size:13px}
+#feBar button{background:#1E63D0;color:#fff;border:none;border-radius:9px;padding:9px 14px;font-weight:700;cursor:pointer;font-family:'Outfit';font-size:14px}
+#feBar button:hover{background:#2a72e0}
+#feBar button:disabled{opacity:.5;cursor:not-allowed}
+#feBar #feSave.pri{background:#FFC727;color:#082052}
+#feBar #feSave.pri:hover{background:#FFD23F}
+#feLogin{position:fixed;inset:0;z-index:10000;background:rgba(11,43,102,.65);display:grid;place-items:center}
+#feLogin .box{background:#fff;border-radius:18px;padding:28px;width:320px;max-width:90vw;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+#feLogin h3{margin-bottom:6px}#feLogin p{font-size:13px;color:var(--muted);margin-bottom:14px}
+#feLogin input{margin-bottom:10px}
+#feLogin #feGo{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-weight:800;cursor:pointer;font-family:'Outfit'}
+#feLogin #feErr{color:#e23;font-size:13px;margin-top:8px}
+.rev .who .nm{display:block;color:var(--blue);font-weight:800}
+</style>
+</head>
+<body>
+
+<div class="promobar" data-ed="settings.promoBar" data-html>🎁 <b>15% OFF your first order</b></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="cc-logo.png" alt="Curly Cleaner logo">
+      <span><span class="cu" data-ed="settings.brandCu">Curly</span><span class="cl" data-ed="settings.brandCl">CLEANER</span><small data-ed="settings.brandSub">UPHOLSTERY CLEANING · DENVER</small></span>
+    </a>
+    <nav class="menu" id="mnav" data-list="nav">
+      <a href="#services">Services</a>
+      <a href="#about">About us</a>
+      <a href="#prices">Pricing</a>
+      <a href="#works">Photos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Free quote</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="herovideo" aria-hidden="true"><iframe src="https://www.tiktok.com/player/v1/7650603119046364429?autoplay=1&amp;loop=1&amp;controls=0&amp;progress_bar=0&amp;music_info=0&amp;description=0&amp;rel=0&amp;volume_control=0&amp;closed_caption=0&amp;native_context_menu=0" allow="autoplay; encrypted-media" scrolling="no"></iframe></div>
+  <div class="heroveil" aria-hidden="true"></div>
+  <div class="bubbles" aria-hidden="true">
+    <span class="bubble" style="left:6%;width:26px;height:26px;animation-duration:15s;animation-delay:0s"></span>
+    <span class="bubble" style="left:18%;width:14px;height:14px;animation-duration:11s;animation-delay:2s"></span>
+    <span class="bubble" style="left:32%;width:38px;height:38px;animation-duration:19s;animation-delay:1s"></span>
+    <span class="bubble" style="left:47%;width:18px;height:18px;animation-duration:13s;animation-delay:4s"></span>
+    <span class="bubble" style="left:60%;width:30px;height:30px;animation-duration:17s;animation-delay:3s"></span>
+    <span class="bubble" style="left:73%;width:12px;height:12px;animation-duration:10s;animation-delay:0.5s"></span>
+    <span class="bubble" style="left:84%;width:42px;height:42px;animation-duration:21s;animation-delay:2.5s"></span>
+    <span class="bubble" style="left:92%;width:20px;height:20px;animation-duration:14s;animation-delay:5s"></span>
+  </div>
+  <div class="spark" style="top:60px;left:6%">✦</div>
+  <div class="spark" style="top:140px;right:10%;animation-delay:1s">✦</div>
+  <div class="wrap">
+    <div class="hero-in">
+      <div class="pin" data-ed="hero.pin" data-html>🐾 <b>Family-owned</b> · husband &amp; wife team · Denver, CO</div>
+      <h1><span class="fr" data-ed="hero.titleSmall">Curly Cleaner</span><span data-ed="hero.titleMain">Deep Upholstery Cleaning in Denver</span></h1>
+      <p class="lead" data-ed="hero.lead">Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — furniture typically dry within 12–24 hours.</p>
+      <div class="hlist" data-list="hero.hlist">
+        <div>Sofas & Couches</div>
+        <div>Mattresses</div>
+        <div>Area Rugs</div>
+        <div>Armchairs & Chairs</div>
+        <div>Pet stains & odor</div>
+        <div>Delicate fabrics</div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#contact" data-ed="hero.ctaPrimary">Get a free quote in 60 seconds</a>
+        <a class="btn line" data-sms href="sms:+19832156432" data-ed="hero.ctaSecondary">💬 Text for a quote</a>
+        <a class="btn call" data-tel href="tel:+19832156432">📞 (983) 215-6432</a>
+      </div>
+      <a class="heropromo" href="#contact" data-ed="hero.promo" data-html>🎁 <span class="big15">15%</span> OFF your first order</a>
+      <div class="area" data-ed="hero.area" data-html>📍 <b>Denver Metro</b> · Free 30 mi · homes & businesses</div>
+    </div>
+    <div class="hphoto">
+      <div class="slot" id="heroPhoto"><div><div class="big">📷</div><span id="heroPhotoCap">Matt Andrew &amp; Mary<br>Owners of Curly Cleaner</span></div></div>
+      <div class="pawchip"><img src="cc-logo.png" alt=""><span data-ed="hero.pawText">Inspired by Perseus 🐶</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="bstrip" data-sec="strip">
+  <div class="wrap">
+    <div class="bgrid" data-list="strip">
+      <div class="b rv"><div class="ic">🏡</div><div><b>Family-Owned</b><span>husband & wife team</span></div></div>
+      <div class="b rv d1"><div class="ic">🐾</div><div><b>Pet & Kid Safe</b><span>eco, non-toxic products</span></div></div>
+      <div class="b rv d2"><div class="ic">⏱️</div><div><b>Fast Drying</b><span>typically 12–24 hours</span></div></div>
+      <div class="b rv d3"><div class="ic">👍</div><div><b>Satisfaction Guarantee</b><span>we return & fix it free</span></div></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="audtoggle" id="audtoggle">
+  <div class="seg">
+    <button type="button" class="seg-btn active" data-target="prices">🏠 For your home</button>
+    <button type="button" class="seg-btn" data-target="commercial">🏢 For business</button>
+  </div>
+</div>
+
+<section id="prices">
+  <div class="wrap">
+    <h2 class="rv" data-ed="prices.title" data-html>Home cleaning <em>prices</em></h2>
+    <p class="sub rv" data-ed="prices.sub">Upholstery, mattresses and rugs for houses & apartments. Starting prices below — we confirm your exact quote by phone or from a photo, and warn you in advance if critical soiling or special fabric care changes anything.</p>
+    <div class="pcols">
+      <div class="panel rv">
+        <h3 data-ed="prices.sofasTitle">🛋️ Sofas & sectionals</h3>
+        <div data-list="prices.sofas">
+          <div class="prow"><span>Sofa (2-seat)</span><b>from $100</b></div>
+          <div class="prow"><span>Sofa (3-seat)</span><b>from $150</b></div>
+          <div class="prow"><span>Sectional</span><b>from $180</b></div>
+          <div class="prow"><span>Large sectional</span><b>from $280</b></div>
+          <div class="prow"><span>Sectional (per seat)</span><b>from $40–70</b></div>
+        </div>
+      </div>
+      <div class="panel rv d1">
+        <h3 data-ed="prices.chairsTitle">🪑 Chairs & ottomans</h3>
+        <div data-list="prices.chairs">
+          <div class="prow"><span>Office chair</span><b>from $30</b></div>
+          <div class="prow"><span>Dining chair</span><b>from $10</b></div>
+          <div class="prow"><span>Dining chair (upholstered back)</span><b>from $20</b></div>
+          <div class="prow"><span>Armchair</span><b>from $70</b></div>
+          <div class="prow"><span>Ottoman</span><b>from $30</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="pcols">
+      <div class="panel rv">
+        <h3 data-ed="prices.mattTitle">🛏️ Mattresses</h3>
+        <div data-list="prices.mattresses">
+          <div class="prow"><span>Twin mattress</span><b>from $80</b></div>
+          <div class="prow"><span>Full mattress</span><b>from $100</b></div>
+          <div class="prow"><span>Queen mattress</span><b>from $110</b></div>
+          <div class="prow"><span>King mattress</span><b>from $140</b></div>
+        </div>
+      </div>
+      <div class="panel rv d1">
+        <h3 data-ed="prices.rugTitle">🧶 Area rugs (on-site)</h3>
+        <div data-list="prices.rugs">
+          <div class="prow"><span>Runner</span><b>from $49</b></div>
+          <div class="prow"><span>Small rug (up to 5×7)</span><b>from $79</b></div>
+          <div class="prow"><span>Medium rug (6×9, 8×10)</span><b>from $99</b></div>
+          <div class="prow"><span>Large rug (9×12)</span><b>from $149</b></div>
+          <div class="prow"><span>Extra large rug</span><b>from $199</b></div>
+        </div>
+        <div class="pnote" data-ed="prices.rugAddonsTitle" style="margin-top:12px"><b>Add-ons:</b></div>
+        <div data-list="prices.rugAddons">
+          <div class="prow"><span>Pet odor treatment</span><b>+$25–50</b></div>
+          <div class="prow"><span>Heavy stain treatment</span><b>+$25–75</b></div>
+          <div class="prow"><span>Fabric protector</span><b>+$30–60</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="pcols">
+      <div class="panel rv">
+        <h3 data-ed="prices.extrasTitle">✨ Extras</h3>
+        <div data-list="prices.extras">
+          <div class="prow"><span>Pet stain & odor treatment</span><b>quoted upfront</b></div>
+          <div class="prow"><span>Turbo drying service</span><b>from $50</b></div>
+          <div class="prow"><span>Minimum call-out</span><b>from $99</b></div>
+        </div>
+        <div class="pnote" data-ed="prices.extrasNote" data-html style="margin-top:12px">Mattress cleaning removes dust mites, sweat &amp; body oils, allergens, pet odors and everyday stains.</div>
+      </div>
+      <div class="panel rv d1" style="text-align:center">
+        <img src="icons/pet-safe.png" alt="Safe for kids and pets" style="width:110px;height:110px;object-fit:contain;margin:4px auto 6px">
+        <h3>🐾 Safe for kids & pets</h3>
+        <div class="pnote" data-html style="margin-top:6px;text-align:left">Only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. We test every fabric first and treat delicate materials with care.<br><br>🏢 Running a business? See <a href="#commercial" style="color:var(--blue);font-weight:700;text-decoration:none">commercial pricing</a> below.</div>
+      </div>
+    </div>
+    <div class="promos" data-list="prices.promos">
+      <div class="promo rv"><div class="pe">🎁</div><div><b>15% off</b> your first order</div></div>
+      <div class="promo rv d1"><div class="pe">💲</div><div><b>10% off</b> any service over $300</div></div>
+      <div class="promo rv d2"><div class="pe">👥</div><div><b>Refer a friend — $10 off</b> (valid with referral)</div></div>
+    </div>
+    <div class="pnote rv" data-ed="prices.promoNote" data-html>ℹ️ One discount per order · offers cannot be combined.</div>
+    <div class="pnote rv" data-ed="prices.note" data-html>📍 <b>Free travel</b> within 30 miles of Denver — beyond that for a small surcharge. Send a photo of your furniture and get your quote <b>in 60 seconds</b>.</div>
+  </div>
+</section>
+
+<section id="commercial">
+  <div class="wrap">
+    <h2 class="rv" data-ed="biz.title" data-html>Commercial <em>cleaning</em></h2>
+    <p class="sub rv" data-ed="biz.sub">Furniture, rugs and carpet for businesses across Denver Metro — priced per sq.ft.</p>
+    <div class="bizgrid" data-list="biz.items">
+      <div class="bizcard rv"><div class="bizem">🏢</div><b>Apartments</b></div>
+      <div class="bizcard rv d1"><div class="bizem">🛏️</div><b>Airbnb</b></div>
+      <div class="bizcard rv d2"><div class="bizem">🍽️</div><b>Restaurants</b></div>
+      <div class="bizcard rv d3"><div class="bizem">🏨</div><b>Hotels</b></div>
+      <div class="bizcard rv"><div class="bizem">💈</div><b>Salons</b></div>
+      <div class="bizcard rv d1"><div class="bizem">🗂️</div><b>Offices</b></div>
+    </div>
+    <div class="pcols" style="margin-top:26px">
+      <div class="panel rv">
+        <h3 data-ed="prices.commTitle">🏢 Commercial rates (per sq.ft)</h3>
+        <div data-list="prices.commercial">
+          <div class="prow"><span>Maintenance cleaning</span><b>$0.18–0.25 / sq.ft</b></div>
+          <div class="prow"><span>Deep cleaning</span><b>$0.25–0.40 / sq.ft</b></div>
+        </div>
+        <div class="pnote" data-ed="prices.carpetNote" data-html style="margin-top:12px">🧼 <b>Carpet cleaning</b> — minimum service call <b>from $149</b>.</div>
+      </div>
+      <div class="panel rv d1">
+        <h3>📋 Free on-site estimate</h3>
+        <div class="pnote" data-html style="margin-top:6px">We visit your offices, restaurant, hotel, salon, Airbnb or rental, assess the scope and give you a clear per-sq.ft quote. Recurring & maintenance plans available.<br><br>📞 Call or text <b>(983) 215-6432</b> for a business quote.</div>
+      </div>
+    </div>
+    <div class="pnote rv" data-ed="biz.note" data-html>📷 Maintenance from <b>$0.18 / sq.ft</b> · Deep cleaning from <b>$0.25 / sq.ft</b> · free on-site estimate.</div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2 class="rv" data-ed="services.title" data-html>Our professional <em>services</em></h2>
+    <p class="sub rv" data-ed="services.sub">We're fabric experts, not a general cleaning service. Upholstery is our craft — and our only focus.</p>
+    <div class="sgrid" data-list="services.items">
+      <div class="svc rv"><div class="star">MAIN SERVICE</div><div class="em">🛋️</div><h3>Sofas & Sectionals</h3><p>Deep cleaning for sofas, couches and sectionals — every cushion, every fiber.</p><div class="pr">from $100</div></div>
+      <div class="svc rv d1"><div class="em">🛏️</div><h3>Mattresses</h3><p>Deep cleaning against dust mites and allergens for healthy sleep.</p><div class="pr">from $80</div></div>
+      <div class="svc rv d2"><div class="em">🪑</div><h3>Chairs & Ottomans</h3><p>Office, dining and accent chairs, armchairs and ottomans.</p><div class="pr">from $10</div></div>
+      <div class="svc rv d3"><div class="em">🧶</div><h3>Area Rugs & Carpet</h3><p>On-site cleaning for rugs and carpet — including delicate fibers.</p><div class="pr">from $49</div></div>
+      <div class="svc rv"><div class="em">🐾</div><h3>Pet Stain & Urine Odor</h3><p>We remove pet stains and urine odor at the source, not just cover it up.</p><div class="pr">quoted upfront</div></div>
+      <div class="svc rv d1"><div class="star">BUSINESSES</div><div class="em">🏢</div><h3>Commercial Cleaning</h3><p>Offices, restaurants, hotels, salons, Airbnb and rentals — furniture & carpet.</p><div class="pr">$0.18–0.40 / sq.ft</div></div>
+    </div>
+    <div class="alsonote rv" data-ed="services.note" data-html><b>What we DON'T do:</b> general house cleaning, windows or dusting. We stay focused on fabrics — that's what makes us the experts. <b>Minimum call-out: $99.</b></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="agrid">
+      <div class="rv">
+        <div class="photo-slot" id="aboutPhoto"><div><div class="big">📷</div><span id="aboutPhotoCap">Family photo —<br>coming soon</span></div></div>
+      </div>
+      <div class="rv d1">
+        <h2 data-ed="about.title" data-html>Welcome to <em>Curly Cleaner</em></h2>
+        <p class="lead-p" data-ed="about.p1" data-html>When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.</p>
+        <p class="lead-p" data-ed="about.p2" data-html>As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.</p>
+        <div class="perseus">
+          <img src="cc-logo.png" alt="Perseus — the dog behind Curly Cleaner">
+          <p data-ed="about.perseus" data-html>Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn't safe for Perseus, it will never touch your furniture.</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2 class="rv" data-ed="why.title" data-html>Why choose <em>Curly Cleaner?</em></h2>
+    <p class="sub rv" data-ed="why.sub">As a family-owned business, your satisfaction is our reputation.</p>
+    <div class="wgrid" data-list="why.items">
+      <div class="wcard rv"><div class="wic">🔧</div><div><b>Professional expertise</b><p>Advanced pro-grade equipment for deep cleaning without over-saturation. Thoroughly cleaned, sanitized and typically dry within 12–24 hours.</p></div></div>
+      <div class="wcard rv d1"><div class="wic">🌿</div><div><b>Health & safety first</b><p>Only professional, eco-friendly, non-toxic solutions — 100% safe for children, pregnant women and pets. No harsh chemicals, no strong odors.</p></div></div>
+      <div class="wcard rv d2"><div class="wic">🧵</div><div><b>Delicate fabrics welcome</b><p>We work with the delicate materials the big companies are afraid to touch. Husband does the tech work, wife runs quality control.</p></div></div>
+      <div class="wcard rv d3"><div class="wic">🛡️</div><div><b>A personal standard</b><p>Fully licensed and insured. The personalized, reliable service only a local family team can provide.</p></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="works">
+  <div class="wrap">
+    <h2 class="rv" data-ed="works.title" data-html>Before & <em>after</em></h2>
+    <p class="sub rv" data-ed="works.sub" data-html>Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.</p>
+    <div class="wgal" data-list="works.shots">
+      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-1.jpg" alt="Sofa cleaning before and after — Denver" loading="lazy"></div>
+      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-2.jpg" alt="Couch deep cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-3.jpg" alt="Mattress cleaning result" loading="lazy"></div>
+      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-4.jpg" alt="Upholstery stain removal" loading="lazy"></div>
+      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-5.jpg" alt="Armchair cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-6.jpg" alt="Sectional sofa cleaning" loading="lazy"></div>
+      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-7.jpg" alt="Upholstery deep clean result" loading="lazy"></div>
+      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-8.jpg" alt="Furniture cleaning Denver" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2 class="rv" data-ed="reviews.title" data-html>Reviews from our <em>clients</em></h2>
+    <p class="sub rv" data-ed="reviews.sub">Your review could be here — and it comes with 15% off your first order.</p>
+    <div class="rgrid" data-list="reviews.items">
+      <div class="rev rv"><div class="stars">★★★★★</div><p>"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."</p><div class="who">Sarah M.<span>Wash Park · sectional</span></div></div>
+      <div class="rev rv d1"><div class="stars">★★★★★</div><p>"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."</p><div class="who">Dmitry K.<span>Aurora · sofa + mattress</span></div></div>
+      <div class="rev rv d2"><div class="stars">★★★★★</div><p>"You can tell it's a family business — they treat your home like their own. Photo updates and honest pricing."</p><div class="who">Jess & Tom<span>Highlands Ranch · armchairs</span></div></div>
+    </div>
+    <div class="gbadge rv" data-ed="reviews.gbadge" data-html>⭐ Find us on <b>Google</b> · <b>Instagram</b> · <b>Facebook</b> · <b>TikTok</b></div>
+  </div>
+</section>
+
+<section id="diy">
+  <div class="wrap">
+    <div class="box rv">
+      <div>
+        <h2 data-ed="diy.title">Planning to clean your furniture yourself?</h2>
+        <p data-ed="diy.text" data-html>We have some important information for you: store-bought cleaners often <b>set stains permanently</b>, over-wet the foam and leave residue that attracts dirt faster. Text us a photo first — we'll honestly tell you if it's a DIY job or needs a pro.</p>
+      </div>
+      <a class="btn" data-sms href="sms:+19832156432" data-ed="diy.cta">Ask us first — it's free</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="rv" data-ed="faq.title" data-html>Do you have questions? <em>We have answers!</em></h2>
+    <p class="sub rv" data-ed="faq.sub">The most common ones — answered honestly.</p>
+    <div class="fgrid" data-list="faq.items">
+      <details class="rv"><summary>How long does the furniture take to dry?</summary><p>Most furniture typically dries within 12–24 hours, depending on fabric type, humidity, airflow and how much cleaning was needed. Thicker cushions and heavily soiled pieces can take longer. For faster results we offer an optional Turbo Drying Service for $50.</p></details>
+      <details class="rv"><summary>Do you clean area rugs?</summary><p>Yes! We clean area rugs of all sizes and materials, plus runners — in homes, apartments, offices and commercial spaces.</p></details>
+      <details class="rv"><summary>How often should furniture be professionally cleaned?</summary><p>For most homes we recommend professional cleaning every 6–12 months. Homes with children, pets or allergies, or heavy daily use, may benefit from cleaning every 6 months for a healthier, fresher environment.</p></details>
+      <details class="rv"><summary>Do you offer same-day appointments?</summary><p>Yes! Depending on availability we often offer same-day and next-day appointments. Contact us and we'll do our best to fit you into our schedule.</p></details>
+      <details class="rv"><summary>Do you move furniture?</summary><p>For safety reasons we don't move heavy furniture such as beds, dressers, entertainment centers or large cabinets. We're happy to clean accessible areas and can carefully move light items when possible — this protects your furniture, floors and our technicians.</p></details>
+      <details class="rv"><summary>Can you remove pet urine odors completely?</summary><p>We always do our best to eliminate pet odors and urine contamination, and in many cases achieve excellent results. However, if urine has penetrated deep into the cushions, padding or frame, complete odor removal can't always be guaranteed. Our goal is to improve the condition as much as possible and set honest expectations.</p></details>
+      <details class="rv"><summary>Can all stains be removed completely?</summary><p>Not always. Some stains — especially on delicate, natural or light-colored fabrics — may be permanent due to age, previous cleaning attempts, dyes or chemical reactions. We use the safest, most effective methods available, but no professional cleaner can guarantee 100% stain removal in every situation.</p></details>
+      <details class="rv"><summary>Are your products safe for kids and pets?</summary><p>100%. We use only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. If it isn't safe for our dog Perseus, it never touches your furniture.</p></details>
+      <details class="rv"><summary>Do you work with delicate fabrics?</summary><p>Yes — that's our specialty. We test every fabric first and choose the right method, including low-moisture cleaning for delicate and natural materials.</p></details>
+      <details class="rv"><summary>How is the price calculated?</summary><p>We quote by phone or from a photo of your furniture. The final price stays the same unless the soiling is critical or the fabric needs special care — and we always warn you about that in advance. Minimum call-out is from $99.</p></details>
+      <details class="rv"><summary>What if I'm not satisfied with the results?</summary><p>Your satisfaction matters to us. If something isn't right and further improvement is possible, we'll gladly return and address it at no additional charge. Please note the age, condition and type of fabric can affect the final outcome.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="hours">
+  <div class="wrap">
+    <h2 class="rv" data-ed="hours.title" data-html>Hours & service <em>area</em></h2>
+    <p class="sub rv" data-ed="hours.sub">Based in Denver — we come to you.</p>
+    <div class="hagrid">
+      <div class="hbox rv">
+        <h3 data-ed="hours.hoursTitle">🕐 Hours of operation</h3>
+        <div data-list="hours.rows">
+          <div class="hrow"><span>Monday — Saturday</span><b>8:00 am — 8:00 pm</b></div>
+          <div class="hrow"><span>Sunday</span><b>closed</b></div>
+        </div>
+        <div class="note" data-ed="hours.note" data-html><b>Offices & restaurants:</b> Sunday and after-hours service available on request.</div>
+      </div>
+      <div class="hbox rv d1">
+        <h3 data-ed="hours.areaTitle">📍 Service area — Denver Metro</h3>
+        <div class="big"><b data-ed="hours.big">30 mi</b><span data-ed="hours.bigSub">free travel around Denver · beyond — small surcharge</span></div>
+        <div class="cities" data-list="hours.cities">
+          <span class="city">Denver</span><span class="city">Aurora</span><span class="city">Lakewood</span><span class="city">Highlands Ranch</span><span class="city">Boulder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band" id="contact">
+  <div class="spark" style="top:50px;left:8%">✦</div>
+  <div class="spark" style="bottom:60px;right:10%;animation-delay:1.4s">✦</div>
+  <div class="wrap cgrid">
+    <div>
+      <h2 class="rv" data-ed="contact.title" data-html>Get a free quote <em>in 60 seconds</em></h2>
+      <p class="rv" data-ed="contact.text">Call, text a photo of your furniture, or send the form — we reply within 15–30 minutes during business hours.</p>
+      <a class="phone rv" data-tel data-phone-text href="tel:+19832156432">(983) 215-6432</a>
+      <div class="cbtns rv">
+        <a class="btn" data-sms href="sms:+19832156432">💬 Text for a quote</a>
+        <a class="btn line" data-ig href="https://www.instagram.com/curlycleaner.denver" target="_blank">📸 Instagram</a>
+        <a class="btn line" data-fb href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">👥 Facebook</a>
+        <a class="btn line" data-tt href="https://www.tiktok.com/@curlycleaner.denver" target="_blank">🎵 TikTok</a>
+      </div>
+      <div class="small rv" data-ed="contact.small">Denver Metro · Mon–Sat 8am–8pm · Licensed & insured</div>
+    </div>
+    <div class="qcard rv d1">
+      <h3 data-ed="contact.formTitle">Free quote request</h3>
+      <div class="qs" data-ed="contact.qs" data-html>📸 Best way: text a photo of your furniture to <b>(983) 215-6432</b> — or fill the form:</div>
+      <form class="qform">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="tel" name="phone" placeholder="Phone number" required>
+        <select name="service" required data-list="contact.services">
+          <option value="" disabled selected>What needs cleaning?</option>
+          <option>Sofa / couch</option>
+          <option>Sectional</option>
+          <option>Mattress</option>
+          <option>Area rug</option>
+          <option>Armchair / chairs</option>
+          <option>Pet stains & odor</option>
+        </select>
+        <textarea name="msg" rows="3" placeholder="Anything we should know? (fabric, stains, pets…)"></textarea>
+        <button class="btn blue" type="submit" style="width:100%">Get my free quote</button>
+        <div class="ok" data-ed="contact.okMsg">🐶 Got it! We'll get back to you within 15–30 minutes during business hours.</div>
+        <div class="micro" data-ed="contact.micro">No spam — we only reply with your quote.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="cc-logo.png" alt=""><span data-ed="footer.copy" data-html>© 2026 Curly Cleaner · Denver, CO</span></div>
+    <div data-ed="footer.tagline">Family-owned · Licensed & insured</div>
+    <div><a href="terms.html" style="color:inherit;text-decoration:underline">Terms &amp; Conditions</a></div>
+    <div><a data-tel data-phone-text href="tel:+19832156432">(983) 215-6432</a> · <a data-ig href="https://www.instagram.com/curlycleaner.denver" target="_blank">Instagram</a> · <a data-fb href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">Facebook</a> · <a data-tt href="https://www.tiktok.com/@curlycleaner.denver" target="_blank">TikTok</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+
+(function(){
+"use strict";
+/* ============================================================
+   Curly Cleaner — CMS render + leads + analytics + INLINE EDITOR
+   Content row: fe_content id="curly_v5"
+   Edit mode: ?fe_edit=1 + logged-in Supabase session
+   ============================================================ */
+var SB_URL="https://fsihlzzjewhxpogvjapu.supabase.co";
+var SB_KEY="sb_publishable__o56Y-ust_UvMqvi9yWC8Q_qyjjkf0S";
+var sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(SB_URL,SB_KEY):null;
+var CMS_ID="curly_v9";
+
+/* ---- helpers ---- */
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function isObj(o){return o&&typeof o==="object"&&!Array.isArray(o);}
+function deepMerge(base,over){
+  if(!isObj(base)||!isObj(over))return(over===undefined?base:over);
+  var out={},k;for(k in base)out[k]=base[k];
+  for(k in over){out[k]=isObj(base[k])&&isObj(over[k])?deepMerge(base[k],over[k]):over[k];}
+  return out;
+}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function getPath(o,p){var ps=p.split("."),x=o,i;for(i=0;i<ps.length;i++){if(x==null)return undefined;x=x[ps[i]];}return x;}
+function setPath(o,p,v){var ps=p.split("."),x=o,i;for(i=0;i<ps.length-1;i++){if(x[ps[i]]==null)x[ps[i]]={};x=x[ps[i]];}x[ps[ps.length-1]]=v;}
+function uuid(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c=="x"?r:(r&0x3|0x8);return v.toString(16);});}
+function ls(k,gen){try{var v=localStorage.getItem(k);if(!v){v=gen();localStorage.setItem(k,v);}return v;}catch(e){return gen();}}
+function ss(k,gen){try{var v=sessionStorage.getItem(k);if(!v){v=gen();sessionStorage.setItem(k,v);}return v;}catch(e){return gen();}}
+
+/* ---- DEFAULT (mirrors static markup; fallback when no remote data) ---- */
+var DEFAULT = {
+  settings:{
+    phone:"(983) 215-6432", phoneHref:"+19832156432", smsHref:"+19832156432",
+    instagramUrl:"https://www.instagram.com/curlycleaner.denver",
+    facebookUrl:"https://www.facebook.com/share/1NiahXi9R6/",
+    tiktokUrl:"https://www.tiktok.com/@curlycleaner.denver",
+    promoBar:'🎁 <b>15% OFF your first order</b>',
+    brandCu:"Curly", brandCl:"CLEANER", brandSub:"UPHOLSTERY CLEANING · DENVER"
+  },
+  visibility:{ strip:true, pain:true, services:true, about:true, why:true,
+    prices:true, biz:true, works:true, reviews:true, diy:true, faq:true, hours:true },
+  nav:[
+    {label:"Before & after",href:"#works"},{label:"Pricing",href:"#prices"},
+    {label:"Commercial",href:"#commercial"},{label:"Services",href:"#services"},
+    {label:"FAQ",href:"#faq"},{label:"Contact",href:"#contact"} ],
+  hero:{
+    pin:'🐾 <b>Family-owned</b> · husband &amp; wife team · Denver, CO',
+    titleSmall:"Curly Cleaner",
+    titleMain:"Deep Upholstery Cleaning in Denver",
+    lead:"Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — furniture typically dry within 12–24 hours.",
+    hlist:["Sofas & Couches","Mattresses","Area Rugs","Armchairs & Chairs","Pet stains & odor","Delicate fabrics"],
+    ctaPrimary:"Get a free quote in 60 seconds",
+    ctaSecondary:"💬 Text for a quote",
+    area:'📍 <b>Denver Metro</b> · Free 30 mi · homes & businesses',
+    promo:'🎁 <span class="big15">15%</span> OFF your first order',
+    photo:"", photoCaption:"Matt Andrew &amp; Mary<br>Owners of Curly Cleaner",
+    pawText:"Inspired by Perseus 🐶"
+  },
+  strip:[
+    {ic:"🏡",b:"Family-Owned",span:"husband & wife team"},
+    {ic:"🐾",b:"Pet & Kid Safe",span:"eco, non-toxic products"},
+    {ic:"⏱️",b:"Fast Drying",span:"typically 12–24 hours"},
+    {ic:"👍",b:"Satisfaction Guarantee",span:"we return & fix it free"} ],
+  pain:{
+    title:'Tired of looking at dirty upholstery or a stained <em>mattress?</em>',
+    text:"Stains, odors, or just an overall dingy look? It's time to take action — and we're here to help. Professional cleaning doesn't just improve appearance: it removes dust mites, bacteria and allergens, helping your family breathe easier and stay healthier.",
+    items:["Say goodbye to stains and smells","Breathe cleaner air at home","Restore comfort and freshness"],
+    cta:"Bring my furniture back to life"
+  },
+  services:{
+    title:'Our professional <em>services</em>',
+    sub:"We're fabric experts, not a general cleaning service. Upholstery is our craft — and our only focus.",
+    items:[
+      {star:"MAIN SERVICE",em:"🛋️",h3:"Sofas & Sectionals",p:"Deep cleaning for sofas, couches and sectionals — every cushion, every fiber.",pr:"from $100"},
+      {star:"",em:"🛏️",h3:"Mattresses",p:"Deep cleaning against dust mites and allergens for healthy sleep.",pr:"from $80"},
+      {star:"",em:"🪑",h3:"Chairs & Ottomans",p:"Office, dining and accent chairs, armchairs and ottomans.",pr:"from $10"},
+      {star:"",em:"🧶",h3:"Area Rugs & Carpet",p:"On-site cleaning for rugs and carpet — including delicate fibers.",pr:"from $49"},
+      {star:"",em:"🐾",h3:"Pet Stain & Urine Odor",p:"We remove pet stains and urine odor at the source, not just cover it up.",pr:"quoted upfront"},
+      {star:"BUSINESSES",em:"🏢",h3:"Commercial Cleaning",p:"Offices, restaurants, hotels, salons, Airbnb and rentals — furniture & carpet.",pr:"$0.18–0.40 / sq.ft"} ],
+    note:'<b>Homes · apartments · Airbnb · restaurants · hotels · salons · offices.</b> We focus on fabrics, rugs and carpet — for both households and businesses. <b>Minimum call-out: from $99.</b>'
+  },
+  about:{
+    title:'Welcome to <em>Curly Cleaner</em>',
+    p1:"When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.",
+    p2:'As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.',
+    perseus:'Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn\'t safe for Perseus, it will never touch your furniture.</b>',
+    photo:"", photoCaption:"Family photo —<br>coming soon"
+  },
+  why:{
+    title:'Why choose <em>Curly Cleaner?</em>',
+    sub:"As a family-owned business, your satisfaction is our reputation.",
+    items:[
+      {ic:"🔧",b:"Professional expertise",p:"Advanced pro-grade equipment for deep cleaning without over-saturation. Thoroughly cleaned, sanitized and typically dry within 12–24 hours."},
+      {ic:"🌿",b:"Health & safety first",p:"Only professional, eco-friendly, non-toxic solutions — 100% safe for children, pregnant women and pets. No harsh chemicals, no strong odors."},
+      {ic:"🧵",b:"Delicate fabrics welcome",p:"We work with the delicate materials the big companies are afraid to touch. Husband does the tech work, wife runs quality control."},
+      {ic:"🛡️",b:"A personal standard",p:"Fully licensed and insured. The personalized, reliable service only a local family team can provide."} ]
+  },
+  prices:{
+    title:'Home cleaning <em>prices</em>',
+    sub:"Upholstery, mattresses and rugs for houses & apartments. Starting prices below — we confirm your exact quote by phone or from a photo, and warn you in advance if critical soiling or special fabric care changes anything.",
+    sofasTitle:"🛋️ Sofas & sectionals",
+    sofas:[
+      {ic:"sofa2",label:"Sofa (2-seat)",price:"from $100"},
+      {ic:"sofa3",label:"Sofa (3-seat)",price:"from $150"},
+      {ic:"sectional",label:"Sectional",price:"from $180"},
+      {ic:"sectionalL",label:"Large sectional",price:"from $280"},
+      {ic:"seat",label:"Sectional (per seat)",price:"from $40–70"} ],
+    chairsTitle:"🪑 Chairs & ottomans",
+    chairs:[
+      {ic:"office",label:"Office chair",price:"from $30"},
+      {ic:"dining",label:"Dining chair",price:"from $10"},
+      {ic:"diningU",label:"Dining chair (upholstered back)",price:"from $20"},
+      {ic:"armchair",label:"Armchair",price:"from $70"},
+      {ic:"ottoman",label:"Ottoman",price:"from $30"} ],
+    mattTitle:"🛏️ Mattresses",
+    mattresses:[
+      {ic:"bed-twin",label:"Twin mattress",price:"from $80"},
+      {ic:"bed-full",label:"Full mattress",price:"from $100"},
+      {ic:"bed-queen",label:"Queen mattress",price:"from $110"},
+      {ic:"bed-king",label:"King mattress",price:"from $140"} ],
+    extrasTitle:"✨ Extras",
+    extras:[
+      {ic:"paw",label:"Pet stain & odor treatment",price:"quoted upfront"},
+      {ic:"drop",label:"Turbo drying service",price:"from $50"},
+      {ic:"tag",label:"Minimum call-out",price:"from $99"} ],
+    extrasNote:"Mattress cleaning removes dust mites, sweat &amp; body oils, allergens, pet odors and everyday stains.",
+    rugTitle:"🧶 Area rugs (on-site)",
+    rugs:[
+      {ic:"rug-runner",label:"Runner",price:"from $49"},
+      {ic:"rug-small",label:"Small rug (up to 5×7)",price:"from $79"},
+      {ic:"rug-medium",label:"Medium rug (6×9, 8×10)",price:"from $99"},
+      {ic:"rug-large",label:"Large rug (9×12)",price:"from $149"},
+      {ic:"rug-xl",label:"Extra large rug",price:"from $199"} ],
+    rugAddonsTitle:"Add-ons:",
+    rugAddons:[
+      {ic:"paw",label:"Pet odor treatment",price:"+$25–50"},
+      {ic:"drop",label:"Heavy stain treatment",price:"+$25–75"},
+      {ic:"tag",label:"Fabric protector",price:"+$30–60"} ],
+    commTitle:"🏢 Commercial rates (per sq.ft)",
+    commercial:[
+      {ic:"building",label:"Maintenance cleaning",price:"$0.18–0.25 / sq.ft"},
+      {ic:"carpet",label:"Deep cleaning",price:"$0.25–0.40 / sq.ft"} ],
+    carpetNote:'🧼 <b>Carpet cleaning</b> — minimum service call <b>from $149</b>.',
+    promos:[
+      {pe:"🎁",html:'<b>15% off</b> your first order'},
+      {pe:"💲",html:'<b>10% off</b> any service over $300'},
+      {pe:"👥",html:'<b>Refer a friend — $10 off</b> (valid with referral)'} ],
+    promoNote:'ℹ️ One discount per order · offers cannot be combined.',
+    note:'📍 <b>Free travel</b> within 30 miles of Denver — beyond that for a small surcharge. Send a photo of your furniture and get your quote <b>in 60 seconds</b>.'
+  },
+  biz:{
+    title:'Commercial <em>cleaning</em>',
+    sub:"Furniture, rugs and carpet for businesses across Denver Metro — priced per sq.ft.",
+    items:[
+      {em:"🏢",b:"Apartments"},
+      {em:"🛏️",b:"Airbnb"},
+      {em:"🍽️",b:"Restaurants"},
+      {em:"🏨",b:"Hotels"},
+      {em:"💈",b:"Salons"},
+      {em:"🗂️",b:"Offices"} ],
+    note:'📷 Maintenance from <b>$0.18 / sq.ft</b> · Deep cleaning from <b>$0.25 / sq.ft</b> · free on-site estimate.'
+  },
+  works:{
+    title:'Before & <em>after</em>',
+    sub:'Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.',
+    shots:["work-1.jpg","work-2.jpg","work-3.jpg","work-4.jpg","work-5.jpg","work-6.jpg","work-7.jpg","work-8.jpg"]
+  },
+  reviews:{
+    title:'Reviews from our <em>clients</em>',
+    sub:"Your review could be here — and it comes with 15% off your first order.",
+    items:[
+      {p:'"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."',who:"Sarah M.",where:"Wash Park · sectional"},
+      {p:'"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."',who:"Dmitry K.",where:"Aurora · sofa + mattress"},
+      {p:'"You can tell it\'s a family business — they treat your home like their own. Photo updates and honest pricing."',who:"Jess & Tom",where:"Highlands Ranch · armchairs"} ],
+    gbadge:'⭐ Find us on <b>Google</b> · <b>Instagram</b> · <b>Facebook</b> · <b>TikTok</b>'
+  },
+  diy:{
+    title:"Planning to clean your furniture yourself?",
+    text:'We have some important information for you: store-bought cleaners often <b>set stains permanently</b>, over-wet the foam and leave residue that attracts dirt faster. Text us a photo first — we\'ll honestly tell you if it\'s a DIY job or needs a pro.',
+    cta:"Ask us first — it's free"
+  },
+  faq:{
+    title:'Do you have questions? <em>We have answers!</em>',
+    sub:"The most common ones — answered honestly.",
+    items:[
+      {q:"How long does the furniture take to dry?",a:"Most furniture typically dries within 12–24 hours, depending on fabric type, humidity, airflow and how much cleaning was needed. Thicker cushions and heavily soiled pieces can take longer. For faster results we offer an optional Turbo Drying Service for $50."},
+      {q:"Do you clean area rugs?",a:"Yes! We clean area rugs of all sizes and materials, plus runners — in homes, apartments, offices and commercial spaces."},
+      {q:"How often should furniture be professionally cleaned?",a:"For most homes we recommend professional cleaning every 6–12 months. Homes with children, pets or allergies, or heavy daily use, may benefit from cleaning every 6 months for a healthier, fresher environment."},
+      {q:"Do you offer same-day appointments?",a:"Yes! Depending on availability we often offer same-day and next-day appointments. Contact us and we'll do our best to fit you into our schedule."},
+      {q:"Do you move furniture?",a:"For safety reasons we don't move heavy furniture such as beds, dressers, entertainment centers or large cabinets. We're happy to clean accessible areas and can carefully move light items when possible — this protects your furniture, floors and our technicians."},
+      {q:"Can you remove pet urine odors completely?",a:"We always do our best to eliminate pet odors and urine contamination, and in many cases achieve excellent results. However, if urine has penetrated deep into the cushions, padding or frame, complete odor removal can't always be guaranteed. Our goal is to improve the condition as much as possible and set honest expectations."},
+      {q:"Can all stains be removed completely?",a:"Not always. Some stains — especially on delicate, natural or light-colored fabrics — may be permanent due to age, previous cleaning attempts, dyes or chemical reactions. We use the safest, most effective methods available, but no professional cleaner can guarantee 100% stain removal in every situation."},
+      {q:"Are your products safe for kids and pets?",a:"100%. We use only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. If it isn't safe for our dog Perseus, it never touches your furniture."},
+      {q:"Do you work with delicate fabrics?",a:"Yes — that's our specialty. We test every fabric first and choose the right method, including low-moisture cleaning for delicate and natural materials."},
+      {q:"How is the price calculated?",a:"We quote by phone or from a photo of your furniture. The final price stays the same unless the soiling is critical or the fabric needs special care — and we always warn you about that in advance. Minimum call-out is from $99."},
+      {q:"What if I'm not satisfied with the results?",a:"Your satisfaction matters to us. If something isn't right and further improvement is possible, we'll gladly return and address it at no additional charge. Please note the age, condition and type of fabric can affect the final outcome."} ]
+  },
+  hours:{
+    title:'Hours & service <em>area</em>',
+    sub:"Based in Denver — we come to you.",
+    hoursTitle:"🕐 Hours of operation",
+    rows:[
+      {label:"Monday — Saturday",val:"8:00 am — 8:00 pm"},
+      {label:"Sunday",val:"closed"} ],
+    note:'<b>Offices & restaurants:</b> Sunday and after-hours service available on request.',
+    areaTitle:"📍 Service area — Denver Metro",
+    big:"30 mi", bigSub:"free travel around Denver · beyond — small surcharge",
+    cities:["Denver","Aurora","Lakewood","Highlands Ranch","Boulder"]
+  },
+  contact:{
+    title:'Get a free quote <em>in 60 seconds</em>',
+    text:"Call, text a photo of your furniture, or send the form — we reply within 15–30 minutes during business hours.",
+    small:"Denver Metro · Mon–Sat 8am–8pm · Licensed & insured",
+    formTitle:"Free quote request",
+    qs:'📸 Best way: text a photo of your furniture to <b>(983) 215-6432</b> — or fill the form:',
+    services:["Sofa / couch","Sectional","Mattress","Area rug","Armchair / chairs","Pet stains & odor"],
+    okMsg:"🐶 Got it! We'll get back to you within 15–30 minutes during business hours.",
+    micro:"No spam — we only reply with your quote."
+  },
+  footer:{
+    copy:"© 2026 Curly Cleaner · Denver, CO",
+    tagline:"Family-owned · Licensed & insured"
+  }
+};
+
+/* ---- working content + edit state ---- */
+var W = deepMerge(DEFAULT,{});
+var qp=new URLSearchParams(location.search);
+var EDIT = qp.get("fe_edit")==="1";
+var editor=null; // set after auth in edit mode
+
+/* ---- analytics ---- */
+var ctx={
+  visitor_id:ls("cc_vid",uuid), session_id:ss("cc_sid",uuid),
+  path:location.pathname, referrer:document.referrer||"",
+  utm_source:qp.get("utm_source")||"", utm_medium:qp.get("utm_medium")||"", utm_campaign:qp.get("utm_campaign")||"",
+  device:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?"mobile":"desktop"
+};
+function track(type,meta){
+  if(!sb||EDIT)return;
+  sb.from("fe_analytics_events").insert({
+    type:type,visitor_id:ctx.visitor_id,session_id:ctx.session_id,path:ctx.path,
+    referrer:ctx.referrer,utm_source:ctx.utm_source,utm_medium:ctx.utm_medium,
+    utm_campaign:ctx.utm_campaign,device:ctx.device,meta:meta||null
+  }).then(function(){},function(){});
+}
+
+/* ---- render helpers ---- */
+function setScalars(c){
+  $$("[data-ed]").forEach(function(n){
+    var v=getPath(c,n.getAttribute("data-ed"));
+    if(v==null)return;
+    if(n.hasAttribute("data-html"))n.innerHTML=v;else n.textContent=v;
+  });
+  var s=c.settings||{};
+  $$("[data-tel]").forEach(function(a){a.href="tel:"+(s.phoneHref||"");});
+  $$("[data-sms]").forEach(function(a){a.href="sms:"+(s.smsHref||"");});
+  $$("[data-ig]").forEach(function(a){a.href=s.instagramUrl||"#";});
+  $$("[data-fb]").forEach(function(a){a.href=s.facebookUrl||"#";});
+  $$("[data-tt]").forEach(function(a){a.href=s.tiktokUrl||"#";});
+  $$("[data-phone-text]").forEach(function(a){if(s.phone)a.textContent=s.phone;});
+}
+function fill(sel,html){var n=$('[data-list="'+sel+'"]');if(n)n.innerHTML=html;}
+function photo(slotId,capId,url,fallbackCap){
+  var slot=document.getElementById(slotId);if(!slot)return;
+  if(url){ slot.classList.add("has-img"); slot.innerHTML='<img src="'+esc(url)+'" alt="">'; }
+  else { slot.classList.remove("has-img"); slot.innerHTML='<div><div class="big">📷</div><span>'+(fallbackCap||"")+'</span></div>'; }
+}
+
+var ICONS={
+  sofa2:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="10" width="36" height="15" rx="5"/><rect x="6" y="22" width="10" height="16" rx="5"/><rect x="48" y="22" width="10" height="16" rx="5"/><rect x="17" y="24" width="14" height="11" rx="3"/><rect x="33" y="24" width="14" height="11" rx="3"/><path d="M11 38v5M53 38v5"/></svg>',
+  sofa3:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="10" width="40" height="15" rx="5"/><rect x="5" y="22" width="9" height="16" rx="5"/><rect x="50" y="22" width="9" height="16" rx="5"/><rect x="15" y="24" width="11" height="11" rx="3"/><rect x="27" y="24" width="11" height="11" rx="3"/><rect x="39" y="24" width="11" height="11" rx="3"/><path d="M10 38v5M54 38v5"/></svg>',
+  sectional:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V18a6 6 0 0 1 6-6h12a6 6 0 0 1 6 6v6h22a6 6 0 0 1 6 6v8a2 2 0 0 1-2 2H8Z"/><path d="M8 30h24V24"/><path d="M12 40v4M56 40v4"/></svg>',
+  sectionalL:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 40V27C5 18 12 12 22 12h20c10 0 17 6 17 15v13"/><path d="M5 31h54"/><path d="M11 40v4M53 40v4"/></svg>',
+  seat:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="12" width="28" height="13" rx="4"/><rect x="12" y="22" width="9" height="16" rx="4"/><rect x="43" y="22" width="9" height="16" rx="4"/><rect x="22" y="24" width="20" height="11" rx="3"/><path d="M16 38v5M48 38v5"/></svg>',
+  office:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v15H24Z"/><path d="M19 23h26v3a3 3 0 0 1-3 3H22a3 3 0 0 1-3-3Z"/><path d="M32 29v8"/><path d="M18 44l14-7 14 7"/><circle cx="18" cy="45" r="2"/><circle cx="46" cy="45" r="2"/></svg>',
+  dining:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v18M43 8v18"/><path d="M21 12h22M21 18h22"/><path d="M18 26h28"/><path d="M20 26v16M44 26v16"/></svg>',
+  diningU:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v17H22Z"/><rect x="18" y="25" width="28" height="6" rx="2"/><path d="M21 31v11M45 31v11"/></svg>',
+  armchair:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="19" y="10" width="26" height="15" rx="6"/><rect x="11" y="20" width="10" height="19" rx="5"/><rect x="43" y="20" width="10" height="19" rx="5"/><rect x="22" y="24" width="20" height="12" rx="3"/><path d="M15 39v4M49 39v4"/></svg>',
+  ottoman:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="20" rx="20" ry="7"/><path d="M12 20v8c0 4 9 7 20 7s20-3 20-7v-8"/><path d="M22 20q10 5 20 0"/><path d="M16 34l-3 6M48 34l3 6"/></svg>',
+  bed:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 38V18a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v6"/><rect x="13" y="24" width="45" height="10" rx="3"/><rect x="17" y="26" width="13" height="6" rx="3"/><path d="M58 24v14"/><path d="M13 34v5M58 34v5"/></svg>',
+  rug:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="13" width="42" height="22" rx="2"/><rect x="17" y="18" width="30" height="12" rx="1"/><path d="M16 13v-4M24 13v-4M32 13v-4M40 13v-4M48 13v-4"/><path d="M16 35v4M24 35v4M32 35v4M40 35v4M48 35v4"/></svg>',
+  paw:'<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="30" rx="9" ry="7"/><ellipse cx="19" cy="20" rx="3.5" ry="5"/><ellipse cx="27" cy="14" rx="3.5" ry="5"/><ellipse cx="37" cy="14" rx="3.5" ry="5"/><ellipse cx="45" cy="20" rx="3.5" ry="5"/></svg>',
+  drop:'<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6c7 9 12 15 12 22a12 12 0 0 1-24 0c0-7 5-13 12-22Z"/><path d="M27 30a5 5 0 0 0 5 5"/></svg>',
+  tag:'<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M34 8H16a4 4 0 0 0-4 4v18l20 6 16-16Z"/><circle cx="22" cy="18" r="3"/></svg>',
+  building:'<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="6" width="24" height="34" rx="2"/><path d="M38 16h12v24H38"/><path d="M20 13h4M28 13h4M20 20h4M28 20h4M20 27h4M28 27h4M43 22h3M43 29h3"/></svg>',
+  carpet:'<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12h30a9 9 0 0 1 0 18H22"/><ellipse cx="18" cy="21" rx="6" ry="9"/><path d="M26 17h22M26 25h22"/><path d="M18 30v8M48 30v8"/></svg>',
+  _default:'<svg viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/></svg>'
+};
+window.curlyIcon=function(img,slug){img.outerHTML=ICONS[slug]||ICONS[String(slug).split("-")[0]]||ICONS._default;};
+function pcard(r,i){
+  var slug=r.ic||"_default";
+  var lg=/^from\s+\$\d+$/i.test(String(r.price))?' lg':'';
+  var pic='<img src="icons/'+slug+'.png" alt="" loading="lazy" onerror="curlyIcon(this,\''+slug+'\')">';
+  return '<div class="pcard rv in'+(i%4?' d'+(i%4):'')+'"><div class="pic">'+pic+'</div><b class="nm" data-f="label">'+esc(r.label)+'</b><div class="sep"></div><b class="pr'+lg+'" data-f="price">'+esc(r.price)+'</b></div>';
+}
+function render(c){
+  setScalars(c);
+  fill("nav",(c.nav||[]).map(function(i){return '<a href="'+esc(i.href)+'"><span data-f="label">'+esc(i.label)+'</span></a>';}).join(""));
+  fill("hero.hlist",(c.hero.hlist||[]).map(function(t){return '<div><span data-f="@self">'+esc(t)+'</span></div>';}).join(""));
+  fill("strip",(c.strip||[]).map(function(b,i){return '<div class="b rv in'+(i?' d'+i:'')+'"><div class="ic" data-f="ic">'+esc(b.ic)+'</div><div><b data-f="b">'+esc(b.b)+'</b><span data-f="span">'+esc(b.span)+'</span></div></div>';}).join(""));
+  fill("pain.items",(c.pain.items||[]).map(function(t,i){return '<div class="rv in'+(i?' d'+i:'')+'"><span data-f="@self">'+esc(t)+'</span></div>';}).join(""));
+  fill("services.items",(c.services.items||[]).map(function(it,i){
+    return '<div class="svc rv in'+(i?' d'+i:'')+'">'+(it.star?'<div class="star" data-f="star">'+esc(it.star)+'</div>':'')+
+      '<div class="em" data-f="em">'+esc(it.em)+'</div><h3 data-f="h3">'+esc(it.h3)+'</h3><p data-f="p">'+esc(it.p)+'</p><div class="pr" data-f="pr">'+esc(it.pr)+'</div></div>';
+  }).join(""));
+  fill("why.items",(c.why.items||[]).map(function(it,i){
+    return '<div class="wcard rv in'+(i?' d'+i:'')+'"><div class="wic" data-f="ic">'+esc(it.ic)+'</div><div><b data-f="b">'+esc(it.b)+'</b><p data-f="p">'+esc(it.p)+'</p></div></div>';
+  }).join(""));
+  fill("prices.sofas",(c.prices.sofas||[]).map(pcard).join(""));
+  fill("prices.chairs",(c.prices.chairs||[]).map(pcard).join(""));
+  fill("prices.mattresses",(c.prices.mattresses||[]).map(pcard).join(""));
+  fill("prices.extras",(c.prices.extras||[]).map(pcard).join(""));
+  fill("prices.rugs",(c.prices.rugs||[]).map(pcard).join(""));
+  fill("prices.rugAddons",(c.prices.rugAddons||[]).map(pcard).join(""));
+  fill("prices.commercial",(c.prices.commercial||[]).map(pcard).join(""));
+  fill("prices.promos",(c.prices.promos||[]).map(function(p,i){return '<div class="promo rv in'+(i?' d'+i:'')+'"><div class="pe" data-f="pe">'+esc(p.pe)+'</div><div data-f="html" data-f-html>'+p.html+'</div></div>';}).join(""));
+  fill("biz.items",(c.biz&&c.biz.items||[]).map(function(it,i){return '<div class="bizcard rv in'+(i?' d'+(i%4):'')+'"><div class="bizem" data-f="em">'+esc(it.em)+'</div><b data-f="b">'+esc(it.b)+'</b></div>';}).join(""));
+  fill("works.shots",(c.works.shots||[]).map(function(u,i){return '<div class="shot rv in'+(i%4?' d'+(i%4):'')+'"><span class="tag">BEFORE / AFTER</span><img src="'+esc(u)+'" alt="Upholstery cleaning Denver" loading="lazy"></div>';}).join(""));
+  fill("reviews.items",(c.reviews.items||[]).map(function(r,i){return '<div class="rev rv in'+(i?' d'+i:'')+'"><div class="stars">★★★★★</div><p data-f="p">'+esc(r.p)+'</p><div class="who"><span class="nm" data-f="who">'+esc(r.who)+'</span><span data-f="where">'+esc(r.where)+'</span></div></div>';}).join(""));
+  fill("faq.items",(c.faq.items||[]).map(function(f){return '<details class="rv in"><summary data-f="q">'+esc(f.q)+'</summary><p data-f="a">'+esc(f.a)+'</p></details>';}).join(""));
+  fill("hours.rows",(c.hours.rows||[]).map(function(r){return '<div class="hrow"><span data-f="label">'+esc(r.label)+'</span><b data-f="val">'+esc(r.val)+'</b></div>';}).join(""));
+  fill("hours.cities",(c.hours.cities||[]).map(function(t){return '<span class="city"><span data-f="@self">'+esc(t)+'</span></span>';}).join(""));
+  var sel=$('select[name="service"]');
+  if(sel){ sel.innerHTML='<option value="" disabled selected>What needs cleaning?</option>'+(c.contact.services||[]).map(function(o){return '<option>'+esc(o)+'</option>';}).join(""); }
+  photo("heroPhoto","heroPhotoCap",c.hero.photo,c.hero.photoCaption);
+  photo("aboutPhoto","aboutPhotoCap",c.about.photo,c.about.photoCaption);
+  // visibility
+  var vmap={strip:'[data-sec="strip"]',pain:"#pain",services:"#services",about:"#about",why:"#why",prices:"#prices",biz:"#commercial",works:"#works",reviews:"#reviews",diy:"#diy",faq:"#faq",hours:"#hours"};
+  var vis=c.visibility||{};
+  Object.keys(vmap).forEach(function(k){
+    var n=$(vmap[k]); if(!n)return;
+    var hidden=(vis[k]===false);
+    if(EDIT){ n.style.display=""; n.classList.toggle("fe-dim",hidden); }
+    else { n.style.display=hidden?"none":""; n.classList.remove("fe-dim"); }
+  });
+  bindForm();
+  if(EDIT && editor) editor.decorate();
+}
+
+/* ---- public form ---- */
+function bindForm(){
+  $$(".qform").forEach(function(f){
+    if(f._bound)return; f._bound=true;
+    f.addEventListener("submit",function(e){
+      e.preventDefault();
+      if(EDIT){ return; }
+      var data={ name:(f.name&&f.name.value||"").trim(), phone:(f.phone&&f.phone.value||"").trim(),
+        service:(f.service&&f.service.value||""), message:(f.msg&&f.msg.value||"").trim() };
+      var btn=f.querySelector('button[type=submit]'); if(btn)btn.disabled=true;
+      var ok=f.querySelector(".ok");
+      var rec={ name:data.name, phone:data.phone, service:data.service, message:data.message,
+        page_path:ctx.path, referrer:ctx.referrer, utm_source:ctx.utm_source, utm_medium:ctx.utm_medium,
+        utm_campaign:ctx.utm_campaign, session_id:ctx.session_id, user_agent:navigator.userAgent };
+      function done(){ if(ok)ok.style.display="block"; }
+      if(sb){ sb.from("fe_orders").insert(rec).then(function(){ track("lead",{service:data.service}); done(); }, function(){ done(); }); }
+      else { done(); }
+    });
+  });
+}
+
+/* ============================================================
+   INLINE EDITOR
+   ============================================================ */
+var DEFAULT_ITEM={
+  "nav":function(){return {label:"New link",href:"#"};},
+  "hero.hlist":function(){return "New item";},
+  "strip":function(){return {ic:"✨",b:"Title",span:"subtitle"};},
+  "pain.items":function(){return "New point";},
+  "services.items":function(){return {star:"",em:"🧽",h3:"New service",p:"Description",pr:"from $0"};},
+  "why.items":function(){return {ic:"✨",b:"Title",p:"Description"};},
+  "prices.sofas":function(){return {ic:"sofa2",label:"Item",price:"from $0"};},
+  "prices.chairs":function(){return {ic:"armchair",label:"Item",price:"from $0"};},
+  "prices.mattresses":function(){return {ic:"bed",label:"Mattress",price:"from $0"};},
+  "prices.extras":function(){return {ic:"tag",label:"Extra",price:"from $0"};},
+  "biz.items":function(){return {em:"🏢",b:"Segment"};},
+  "prices.rugs":function(){return {ic:"rug",label:"Rug size",price:"from $0"};},
+  "prices.rugAddons":function(){return {ic:"tag",label:"Add-on",price:"+$0"};},
+  "prices.commercial":function(){return {ic:"building",label:"Service",price:"$0 / sq.ft"};},
+  "prices.promos":function(){return {pe:"🎁",html:"<b>Promo</b> description"};},
+  "works.shots":function(){return "work-1.jpg";},
+  "reviews.items":function(){return {p:"Great service!",who:"Name",where:"Area · service"};},
+  "faq.items":function(){return {q:"New question?",a:"Answer."};},
+  "hours.rows":function(){return {label:"Day",val:"hours"};},
+  "hours.cities":function(){return "City";}
+};
+var STRING_LISTS={"hero.hlist":1,"pain.items":1,"works.shots":1,"hours.cities":1};
+
+function buildEditor(){
+  var dirty=false, hist=[], hpos=-1, snapTimer=null;
+  function snapshot(){ hist=hist.slice(0,hpos+1); hist.push(clone(W)); if(hist.length>60)hist.shift(); hpos=hist.length-1; updUndo(); }
+  function snapSoon(){ clearTimeout(snapTimer); snapTimer=setTimeout(snapshot,500); }
+  function markDirty(){ dirty=true; var i=$("#feInfo"); if(i)i.textContent="Есть несохранённые изменения"; }
+  function updUndo(){ var u=$("#feUndo"),r=$("#feRedo"); if(u)u.disabled=hpos<=0; if(r)r.disabled=hpos>=hist.length-1; }
+
+  function makeEditable(el,path,idx,prop){
+    if(el._fe)return; el._fe=true;
+    el.setAttribute("contenteditable","true");
+    el.classList.add("fe-edit-text");
+    el.addEventListener("focus",snapSoon);
+    el.addEventListener("input",function(){
+      var html=el.hasAttribute("data-f-html");
+      var val=html?el.innerHTML:el.textContent;
+      if(idx==null){ setPath(W,path,val); }
+      else { var arr=getPath(W,path); if(!arr)return; if(prop==="@self"){arr[idx]=val;} else {arr[idx][prop]=val;} }
+      markDirty();
+    });
+    el.addEventListener("keydown",function(e){ if(e.key==="Enter"&&el.tagName!=="P"&&!el.hasAttribute("data-multiline")){ e.preventDefault(); el.blur(); } });
+  }
+
+  function itemToolbar(item,path,idx){
+    var arr=getPath(W,path); if(!arr)return;
+    var tb=document.createElement("div"); tb.className="fe-itb"; tb.setAttribute("contenteditable","false");
+    tb.innerHTML='<button title="Вверх">↑</button><button title="Вниз">↓</button><button title="Дублировать">⧉</button><button class="del" title="Удалить">✕</button>';
+    var b=tb.querySelectorAll("button");
+    b[0].onclick=function(e){e.stopPropagation(); if(idx>0){var t=arr[idx-1];arr[idx-1]=arr[idx];arr[idx]=t; snapshot(); markDirty(); render(W);}};
+    b[1].onclick=function(e){e.stopPropagation(); if(idx<arr.length-1){var t=arr[idx+1];arr[idx+1]=arr[idx];arr[idx]=t; snapshot(); markDirty(); render(W);}};
+    b[2].onclick=function(e){e.stopPropagation(); arr.splice(idx+1,0,clone(arr[idx])); snapshot(); markDirty(); render(W);};
+    b[3].onclick=function(e){e.stopPropagation(); if(arr.length<=1){alert("Нужен минимум один элемент.");return;} if(!confirm("Удалить элемент?"))return; arr.splice(idx,1); snapshot(); markDirty(); render(W);};
+    item.appendChild(tb);
+    if(getComputedStyle(item).position==="static") item.style.position="relative";
+  }
+
+  function addBtn(cont,path){
+    var arr=getPath(W,path); if(!arr)return;
+    var wrap=document.createElement("div"); wrap.className="fe-addwrap";
+    var btn=document.createElement("button"); btn.className="fe-add"; btn.textContent="+ Добавить";
+    btn.onclick=function(){ arr.push(DEFAULT_ITEM[path]?DEFAULT_ITEM[path]():{}); snapshot(); markDirty(); render(W); };
+    wrap.appendChild(btn);
+    cont.parentNode.insertBefore(wrap,cont.nextSibling);
+  }
+
+  function imgPick(cb){
+    var inp=document.createElement("input"); inp.type="file"; inp.accept="image/*";
+    inp.onchange=function(){
+      var file=inp.files&&inp.files[0]; if(!file)return;
+      var bar=$("#feInfo"); if(bar)bar.textContent="Загрузка фото…";
+      var p="uploads/"+Date.now()+"_"+file.name.replace(/[^\w.\-]/g,"_");
+      sb.storage.from("fe-media").upload(p,file,{upsert:true}).then(function(res){
+        if(res.error){ alert("Ошибка загрузки: "+res.error.message); return; }
+        var url=sb.storage.from("fe-media").getPublicUrl(p).data.publicUrl;
+        cb(url);
+      },function(){ alert("Сетевая ошибка при загрузке"); });
+    };
+    inp.click();
+  }
+
+  function decorate(){
+    if(!document._feNavGuard){ document._feNavGuard=true; document.addEventListener("click",function(e){ if(!EDIT)return; var a=e.target.closest&&e.target.closest("a"); if(a && !a.closest("#feBar") && !a.closest("#feLogin")){ e.preventDefault(); } },true); }
+    // scalar fields
+    $$("[data-ed]").forEach(function(n){ makeEditable(n,n.getAttribute("data-ed"),null,null); if(n.hasAttribute("data-html"))n.setAttribute("data-multiline","1"); });
+    // list items
+    $$("[data-list]").forEach(function(cont){
+      var path=cont.getAttribute("data-list");
+      if(path==="contact.services"){ return; }
+      Array.prototype.slice.call(cont.children).forEach(function(item,idx){
+        var isStr=STRING_LISTS[path];
+        if(item.hasAttribute("data-f")){ makeEditable(item,path,idx,item.getAttribute("data-f")); }
+        $$("[data-f]",item).forEach(function(fn){ makeEditable(fn,path,idx,fn.getAttribute("data-f")); });
+        itemToolbar(item,path,idx);
+      });
+      addBtn(cont,path);
+    });
+    // images: hero + about slots
+    [["heroPhoto","hero.photo"],["aboutPhoto","about.photo"]].forEach(function(pair){
+      var slot=document.getElementById(pair[0]); if(!slot||slot._feimg)return; slot._feimg=true;
+      slot.classList.add("fe-imgslot");
+      var b=document.createElement("button"); b.className="fe-imgbtn"; b.setAttribute("contenteditable","false"); b.textContent="📷 Фото";
+      b.onclick=function(e){e.stopPropagation(); imgPick(function(url){ setPath(W,pair[1],url); snapshot(); markDirty(); render(W); });};
+      slot.appendChild(b);
+    });
+    // works gallery images
+    var wg=$('[data-list="works.shots"]');
+    if(wg){ Array.prototype.slice.call(wg.children).forEach(function(shot,idx){
+      if(shot._feimg)return; shot._feimg=true;
+      var b=document.createElement("button"); b.className="fe-imgbtn"; b.setAttribute("contenteditable","false"); b.textContent="📷";
+      b.onclick=function(e){e.stopPropagation(); imgPick(function(url){ var arr=getPath(W,"works.shots"); arr[idx]=url; snapshot(); markDirty(); render(W); });};
+      shot.appendChild(b);
+    }); }
+    // section visibility badges
+    var secs={strip:'[data-sec="strip"]',pain:"#pain",services:"#services",about:"#about",why:"#why",prices:"#prices",works:"#works",reviews:"#reviews",diy:"#diy",faq:"#faq",hours:"#hours"};
+    Object.keys(secs).forEach(function(k){
+      var n=$(secs[k]); if(!n||n._fevis)return; n._fevis=true;
+      if(getComputedStyle(n).position==="static") n.style.position="relative";
+      var badge=document.createElement("button"); badge.className="fe-visbadge"; badge.setAttribute("contenteditable","false");
+      function lab(){ badge.textContent=(W.visibility&&W.visibility[k]===false)?"🚫 Секция скрыта — показать":"👁 Скрыть секцию"; }
+      lab();
+      badge.onclick=function(e){e.stopPropagation(); if(!W.visibility)W.visibility={}; W.visibility[k]=(W.visibility[k]===false); snapshot(); markDirty(); render(W); };
+      n.appendChild(badge);
+    });
+    updUndo();
+  }
+
+  function save(btn){
+    if(btn){btn.disabled=true;btn.textContent="Сохраняю…";}
+    sb.from("fe_content").upsert({id:CMS_ID,data:clone(W),updated_at:new Date().toISOString()}).then(function(res){
+      if(btn){btn.disabled=false;btn.textContent="💾 Сохранить";}
+      if(res.error){ alert("Ошибка сохранения: "+res.error.message); return; }
+      dirty=false; var i=$("#feInfo"); if(i)i.textContent="Сохранено — изменения на сайте ✓";
+    },function(){ if(btn){btn.disabled=false;btn.textContent="💾 Сохранить";} alert("Сетевая ошибка при сохранении"); });
+  }
+  function applyHist(){ W=clone(hist[hpos]); render(W); updUndo(); markDirty(); }
+
+  function bar(){
+    var d=document.createElement("div"); d.id="feBar";
+    d.innerHTML='<span class="ttl">✏️ Редактор</span><span id="feInfo">Кликай по тексту и фото, чтобы править</span>'+
+      '<span class="sp"></span>'+
+      '<button id="feUndo" title="Отменить">↶</button>'+
+      '<button id="feRedo" title="Повторить">↷</button>'+
+      '<button id="feSave" class="pri">💾 Сохранить</button>'+
+      '<button id="feExit" title="Выйти из редактора">Выход</button>';
+    document.body.appendChild(d);
+    document.body.classList.add("fe-editing");
+    $("#feSave").onclick=function(){ save(this); };
+    $("#feUndo").onclick=function(){ if(hpos>0){hpos--;applyHist();} };
+    $("#feRedo").onclick=function(){ if(hpos<hist.length-1){hpos++;applyHist();} };
+    $("#feExit").onclick=function(){ if(dirty&&!confirm("Есть несохранённые изменения. Выйти без сохранения?"))return; location.href=location.pathname; };
+    window.addEventListener("beforeunload",function(e){ if(dirty){ e.preventDefault(); e.returnValue=""; } });
+  }
+
+  return { start:function(){ bar(); snapshot(); render(W); }, decorate:decorate };
+}
+
+/* ---- login overlay for edit mode ---- */
+function showEditLogin(){
+  var o=document.createElement("div"); o.id="feLogin";
+  o.innerHTML='<div class="box"><h3>Вход в редактор</h3><p>Войди тем же аккаунтом, что и в админке.</p>'+
+    '<input id="feEm" type="email" placeholder="email"><input id="fePw" type="password" placeholder="пароль">'+
+    '<button id="feGo">Войти</button><div id="feErr"></div></div>';
+  document.body.appendChild(o);
+  $("#feGo").onclick=function(){
+    var b=this; b.disabled=true; b.textContent="…";
+    sb.auth.signInWithPassword({email:$("#feEm").value.trim(),password:$("#fePw").value}).then(function(res){
+      b.disabled=false; b.textContent="Войти";
+      if(res.error){ $("#feErr").textContent=res.error.message; return; }
+      o.remove(); startEditor();
+    },function(){ b.disabled=false; b.textContent="Войти"; $("#feErr").textContent="Ошибка сети"; });
+  };
+}
+function startEditor(){ editor=buildEditor(); editor.start(); }
+
+/* ---- boot ---- */
+function boot(){
+  try{
+    document.body.classList.add("hpre");
+    requestAnimationFrame(function(){requestAnimationFrame(function(){document.body.classList.remove("hpre");});});
+    setTimeout(function(){document.body.classList.remove("hpre");},900);
+  }catch(e){document.body.classList.remove("hpre");}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+  $$(".rv").forEach(function(el){io.observe(el);});
+  var mnav=document.getElementById("mnav"),burger=document.getElementById("burger");
+  if(burger){ burger.addEventListener("click",function(){mnav.classList.toggle("open");burger.textContent=mnav.classList.contains("open")?"✕":"☰";}); }
+  document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("#mnav a");if(a&&!EDIT){mnav.classList.remove("open");burger.textContent="☰";}});
+
+  render(W);
+  track("pageview");
+
+  function afterLoad(){
+    if(EDIT){
+      if(!sb){ return; }
+      sb.auth.getSession().then(function(r){
+        if(r&&r.data&&r.data.session){ startEditor(); }
+        else { showEditLogin(); }
+      },function(){ showEditLogin(); });
+    }
+  }
+  if(sb){
+    sb.from("fe_content").select("data").eq("id",CMS_ID).maybeSingle().then(function(res){
+      if(res&&!res.error&&res.data&&res.data.data){ W=deepMerge(DEFAULT,res.data.data); render(W); }
+      afterLoad();
+    },function(){ afterLoad(); });
+  }
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+})();
+
+</script>
+<script>
+(function(){
+  var body=document.body; if(!body.classList.contains("aud-biz"))body.classList.add("aud-home");
+  function setAud(mode){
+    body.classList.remove("aud-home","aud-biz");
+    body.classList.add(mode==="biz"?"aud-biz":"aud-home");
+    var activeId=mode==="biz"?"commercial":"prices";
+    Array.prototype.forEach.call(document.querySelectorAll(".seg-btn"),function(b){
+      b.classList.toggle("active",b.getAttribute("data-target")===activeId);
+    });
+    var sec=document.getElementById(activeId);
+    if(sec)Array.prototype.forEach.call(sec.querySelectorAll(".rv"),function(e){e.classList.add("in");});
+  }
+  document.addEventListener("click",function(e){
+    var btn=e.target.closest&&e.target.closest(".seg-btn");
+    if(btn){var t=btn.getAttribute("data-target");setAud(t==="commercial"?"biz":"home");
+      var s=document.getElementById(t);if(s&&s.scrollIntoView)s.scrollIntoView({behavior:"smooth",block:"start"});return;}
+    var a=e.target.closest&&e.target.closest('a[href="#commercial"],a[href="#prices"]');
+    if(a){var id=a.getAttribute("href").slice(1);setAud(id==="commercial"?"biz":"home");}
+  });
+})();
+</script>
+</body>
+</html>
