@@ -62,7 +62,13 @@ nav.menu a:hover{color:var(--blue)}
 .btn.call:hover{background:#f0f5ff}
 .herovideo{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .herovideo iframe,.herovideo video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;border:0;object-fit:cover}
-.heroveil{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(30,99,208,.40),rgba(11,43,102,.55))}
+.heroveil{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(30,99,208,.62),rgba(11,43,102,.80))}
+.hero .cta .btn{background:rgba(255,255,255,.16);color:#fff;border:1.6px solid rgba(255,255,255,.55);box-shadow:none;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.hero .cta .btn:hover{background:rgba(255,255,255,.26)}
+footer{line-height:1.8}
+footer .wrap>div{margin:5px 0}
+footer .fcontact{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);font-weight:700;color:#fff}
+footer .fcontact a{color:#fff;font-weight:700}
 .hero h1,.hero .lead,.hero .pin,.hero .area,.hero .hlist div{text-shadow:0 2px 14px rgba(8,18,40,.55)}
 .bubbles{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
 .bubble{position:absolute;bottom:-80px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5),rgba(255,255,255,.06));box-shadow:inset 0 0 12px rgba(255,255,255,.25);animation:rise linear infinite}
@@ -292,7 +298,8 @@ footer .fbrand img{height:44px;width:auto}
   .hero{min-height:auto;padding:44px 0 84px}
   .hero .wrap{grid-template-columns:1fr;gap:34px}
   .hero h1{font-size:clamp(30px,8.2vw,38px)}
-  .hlist{grid-template-columns:1fr}
+  .hlist{grid-template-columns:1fr 1fr;gap:8px 12px}
+.hlist div{font-size:13.5px}
   .hero .cta .btn{width:100%}
   .hphoto{max-width:100%}
   .hphoto .slot{aspect-ratio:4/3}
@@ -354,7 +361,7 @@ body.fe-editing{padding-bottom:70px}
 </head>
 <body>
 
-<div class="promobar" data-ed="settings.promoBar" data-html>🎁 <b>15% OFF your first order</b></div>
+<div class="promobar" data-ed="settings.promoBar" data-html>🎁 <b>10% OFF your first order</b></div>
 
 <header>
   <div class="wrap nav">
@@ -408,8 +415,8 @@ body.fe-editing{padding-bottom:70px}
         <a class="btn line" data-sms href="sms:+19832156432" data-ed="hero.ctaSecondary">💬 Text for a quote</a>
         <a class="btn call" data-tel href="tel:+19832156432">📞 (983) 215-6432</a>
       </div>
-      <a class="heropromo" href="#contact" data-ed="hero.promo" data-html>🎁 <span class="big15">15%</span> OFF your first order</a>
-      <div class="area" data-ed="hero.area" data-html>📍 <b>Denver Metro</b> · Free 30 mi · homes & businesses</div>
+      <a class="heropromo" href="#contact" data-ed="hero.promo" data-html>🎁 <span class="big15">10%</span> OFF your first order</a>
+      <div class="area" data-ed="hero.area" data-html>📍 <b>Denver Metro</b> · Free 30 miles · homes & businesses</div>
     </div>
     <div class="hphoto">
       <div class="slot" id="heroPhoto"><div><div class="big">📷</div><span id="heroPhotoCap">Matt Andrew &amp; Mary<br>Owners of Curly Cleaner</span></div></div>
@@ -508,7 +515,7 @@ body.fe-editing{padding-bottom:70px}
       </div>
     </div>
     <div class="promos" data-list="prices.promos">
-      <div class="promo rv"><div class="pe">🎁</div><div><b>15% off</b> your first order</div></div>
+      <div class="promo rv"><div class="pe">🎁</div><div><b>10% off</b> your first order</div></div>
       <div class="promo rv d1"><div class="pe">💲</div><div><b>10% off</b> any service over $300</div></div>
       <div class="promo rv d2"><div class="pe">👥</div><div><b>Refer a friend — $10 off</b> (valid with referral)</div></div>
     </div>
@@ -543,7 +550,7 @@ body.fe-editing{padding-bottom:70px}
         <div class="pnote" data-html style="margin-top:6px">We visit your offices, restaurant, hotel, salon, Airbnb or rental, assess the scope and give you a clear per-sq.ft quote. Recurring & maintenance plans available.<br><br>📞 Call or text <b>(983) 215-6432</b> for a business quote.</div>
       </div>
     </div>
-    <div class="pnote rv" data-ed="biz.note" data-html>📷 Maintenance from <b>$0.18 / sq.ft</b> · Deep cleaning from <b>$0.25 / sq.ft</b> · free on-site estimate.</div>
+    
   </div>
 </section>
 
@@ -576,7 +583,7 @@ body.fe-editing{padding-bottom:70px}
       <div class="svc rv"><div class="em">🐾</div><h3>Pet Stain & Urine Odor</h3><p>We remove pet stains and urine odor at the source, not just cover it up.</p><div class="pr">quoted upfront</div></div>
       <div class="svc rv d1"><div class="star">BUSINESSES</div><div class="em">🏢</div><h3>Commercial Cleaning</h3><p>Offices, restaurants, hotels, salons, Airbnb and rentals — furniture & carpet.</p><div class="pr">$0.18–0.40 / sq.ft</div></div>
     </div>
-    <div class="alsonote rv" data-ed="services.note" data-html><b>What we DON'T do:</b> general house cleaning, windows or dusting. We stay focused on fabrics — that's what makes us the experts. <b>Minimum call-out: $99.</b></div>
+    
   </div>
 </section>
 
@@ -621,7 +628,7 @@ body.fe-editing{padding-bottom:70px}
 <section id="reviews">
   <div class="wrap">
     <h2 class="rv" data-ed="reviews.title" data-html>Reviews from our <em>clients</em></h2>
-    <p class="sub rv" data-ed="reviews.sub">Your review could be here — and it comes with 15% off your first order.</p>
+    <p class="sub rv" data-ed="reviews.sub">Your review could be here — and it comes with 10% off your first order.</p>
     <div class="rgrid" data-list="reviews.items">
       <div class="rev rv"><div class="stars">★★★★★</div><p>"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."</p><div class="who">Sarah M.<span>Wash Park · sectional</span></div></div>
       <div class="rev rv d1"><div class="stars">★★★★★</div><p>"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."</p><div class="who">Dmitry K.<span>Aurora · sofa + mattress</span></div></div>
@@ -732,7 +739,7 @@ body.fe-editing{padding-bottom:70px}
     <div class="fbrand"><img src="cc-logo.png" alt=""><span data-ed="footer.copy" data-html>© 2026 Curly Cleaner · Denver, CO</span></div>
     <div data-ed="footer.tagline">Family-owned · Licensed & insured</div>
     <div><a href="terms.html" style="color:inherit;text-decoration:underline">Terms &amp; Conditions</a></div>
-    <div><a data-tel data-phone-text href="tel:+19832156432">(983) 215-6432</a> · <a data-ig href="https://www.instagram.com/curlycleaner.denver" target="_blank">Instagram</a> · <a data-fb href="https://www.facebook.com/share/1NiahXi9R6/" target="_blank">Facebook</a> · <a data-tt href="https://www.tiktok.com/@curlycleaner.denver" target="_blank">TikTok</a></div>
+    
   </div>
 </footer>
 
@@ -776,7 +783,7 @@ var DEFAULT = {
     instagramUrl:"https://www.instagram.com/curlycleaner.denver",
     facebookUrl:"https://www.facebook.com/share/1NiahXi9R6/",
     tiktokUrl:"https://www.tiktok.com/@curlycleaner.denver",
-    promoBar:'🎁 <b>15% OFF your first order</b>',
+    promoBar:'🎁 <b>10% OFF your first order</b>',
     brandCu:"Curly", brandCl:"CLEANER", brandSub:"UPHOLSTERY CLEANING · DENVER"
   },
   visibility:{ strip:true, pain:true, services:true, about:true, why:true,
@@ -789,12 +796,12 @@ var DEFAULT = {
     pin:'🐾 <b>Family-owned</b> · husband &amp; wife team · Denver, CO',
     titleSmall:"Curly Cleaner",
     titleMain:"Deep Upholstery Cleaning in Denver",
-    lead:"Your family-owned experts in sofas, mattresses and area rugs. Eco-friendly, pet-safe products — furniture typically dry within 12–24 hours.",
-    hlist:["Sofas & Couches","Mattresses","Area Rugs","Armchairs & Chairs","Pet stains & odor","Delicate fabrics"],
+    lead:"Your family-owned experts in sofas, sectionals, mattresses, chairs and patio furniture — homes, Airbnb, restaurants, offices & more. Eco-friendly, pet-safe products, dry within 12–24 hours.",
+    hlist:["Sofas & sectionals","Mattresses","Chairs & armchairs","Patio furniture","Restaurant booths","Airbnb furniture","Office seating","Area rugs","Pet stains & odor"],
     ctaPrimary:"Get a free quote in 60 seconds",
     ctaSecondary:"💬 Text for a quote",
-    area:'📍 <b>Denver Metro</b> · Free 30 mi · homes & businesses',
-    promo:'🎁 <span class="big15">15%</span> OFF your first order',
+    area:'📍 <b>Denver Metro</b> · Free 30 miles · homes & businesses',
+    promo:'🎁 <span class="big15">10%</span> OFF your first order',
     photo:"", photoCaption:"Matt Andrew &amp; Mary<br>Owners of Curly Cleaner",
     pawText:"Inspired by Perseus 🐶"
   },
@@ -884,7 +891,7 @@ var DEFAULT = {
       {ic:"carpet",label:"Deep cleaning",price:"$0.25–0.40 / sq.ft"} ],
     carpetNote:'🧼 <b>Carpet cleaning</b> — minimum service call <b>from $149</b>.',
     promos:[
-      {pe:"🎁",html:'<b>15% off</b> your first order'},
+      {pe:"🎁",html:'<b>10% off</b> your first order'},
       {pe:"💲",html:'<b>10% off</b> any service over $300'},
       {pe:"👥",html:'<b>Refer a friend — $10 off</b> (valid with referral)'} ],
     promoNote:'ℹ️ One discount per order · offers cannot be combined.',
@@ -909,7 +916,7 @@ var DEFAULT = {
   },
   reviews:{
     title:'Reviews from our <em>clients</em>',
-    sub:"Your review could be here — and it comes with 15% off your first order.",
+    sub:"Your review could be here — and it comes with 10% off your first order.",
     items:[
       {p:'"Two dogs, one toddler, beige sectional — I thought it was hopeless. Looks brand new and smells like nothing."',who:"Sarah M.",where:"Wash Park · sectional"},
       {p:'"Very careful with our linen sofa — they tested the fabric first and explained everything. Dry by the evening."',who:"Dmitry K.",where:"Aurora · sofa + mattress"},
@@ -945,9 +952,9 @@ var DEFAULT = {
       {label:"Monday — Saturday",val:"8:00 am — 8:00 pm"},
       {label:"Sunday",val:"closed"} ],
     note:'<b>Offices & restaurants:</b> Sunday and after-hours service available on request.',
-    areaTitle:"📍 Service area — Denver Metro",
-    big:"30 mi", bigSub:"free travel around Denver · beyond — small surcharge",
-    cities:["Denver","Aurora","Lakewood","Highlands Ranch","Boulder"]
+    areaTitle:"📍 Proudly serving — Denver Metro",
+    big:"30 miles", bigSub:"Serving Denver and surrounding communities within a 30-mile radius.",
+    cities:["Denver","Cherry Creek","Cherry Hills Village","Greenwood Village","Highlands Ranch","Lone Tree","Centennial","Parker","Littleton","Englewood","Lakewood","Golden","Arvada","Westminster","Broomfield","Aurora","Thornton","Wheat Ridge"]
   },
   contact:{
     title:'Get a free quote <em>in 60 seconds</em>',
