@@ -55,6 +55,8 @@ nav.menu a:hover{color:var(--blue)}
   background:linear-gradient(150deg,var(--blue) 0%,var(--blue-dk) 55%,var(--navy) 100%)}
 .hero::before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.06);top:-180px;right:-140px}
 .hero::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,199,39,.12);bottom:-140px;left:-110px}
+.btn.call{background:#fff;color:var(--navy);box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.btn.call:hover{background:#f0f5ff}
 .bubbles{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
 .bubble{position:absolute;bottom:-80px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5),rgba(255,255,255,.06));box-shadow:inset 0 0 12px rgba(255,255,255,.25);animation:rise linear infinite}
 @keyframes rise{0%{transform:translateY(0) scale(.7);opacity:0}10%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-110vh) scale(1.1);opacity:0}}
@@ -395,6 +397,7 @@ body.fe-editing{padding-bottom:70px}
       <div class="cta">
         <a class="btn" href="#contact" data-ed="hero.ctaPrimary">Get a free quote in 60 seconds</a>
         <a class="btn line" data-sms href="sms:+19832156432" data-ed="hero.ctaSecondary">💬 Text for a quote</a>
+        <a class="btn call" data-tel href="tel:+19832156432">📞 (983) 215-6432</a>
       </div>
       <a class="heropromo" href="#contact" data-ed="hero.promo" data-html>🎁 <span class="big15">15%</span> OFF your first order</a>
       <div class="area" data-ed="hero.area" data-html>📍 <b>Denver Metro</b> · Free 30 mi · homes & businesses</div>
@@ -417,22 +420,7 @@ body.fe-editing{padding-bottom:70px}
   </div>
 </div>
 
-<section id="works">
-  <div class="wrap">
-    <h2 class="rv" data-ed="works.title" data-html>Before & <em>after</em></h2>
-    <p class="sub rv" data-ed="works.sub" data-html>Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.</p>
-    <div class="wgal" data-list="works.shots">
-      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-1.jpg" alt="Sofa cleaning before and after — Denver" loading="lazy"></div>
-      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-2.jpg" alt="Couch deep cleaning before and after" loading="lazy"></div>
-      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-3.jpg" alt="Mattress cleaning result" loading="lazy"></div>
-      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-4.jpg" alt="Upholstery stain removal" loading="lazy"></div>
-      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-5.jpg" alt="Armchair cleaning before and after" loading="lazy"></div>
-      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-6.jpg" alt="Sectional sofa cleaning" loading="lazy"></div>
-      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-7.jpg" alt="Upholstery deep clean result" loading="lazy"></div>
-      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-8.jpg" alt="Furniture cleaning Denver" loading="lazy"></div>
-    </div>
-  </div>
-</section>
+
 
 <div class="audtoggle" id="audtoggle">
   <div class="seg">
@@ -601,6 +589,23 @@ body.fe-editing{padding-bottom:70px}
 
 
 
+
+<section id="works">
+  <div class="wrap">
+    <h2 class="rv" data-ed="works.title" data-html>Before & <em>after</em></h2>
+    <p class="sub rv" data-ed="works.sub" data-html>Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.</p>
+    <div class="wgal" data-list="works.shots">
+      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-1.jpg" alt="Sofa cleaning before and after — Denver" loading="lazy"></div>
+      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-2.jpg" alt="Couch deep cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-3.jpg" alt="Mattress cleaning result" loading="lazy"></div>
+      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-4.jpg" alt="Upholstery stain removal" loading="lazy"></div>
+      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-5.jpg" alt="Armchair cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-6.jpg" alt="Sectional sofa cleaning" loading="lazy"></div>
+      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-7.jpg" alt="Upholstery deep clean result" loading="lazy"></div>
+      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-8.jpg" alt="Furniture cleaning Denver" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 
 <section id="reviews">
   <div class="wrap">
