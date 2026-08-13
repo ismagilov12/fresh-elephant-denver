@@ -357,6 +357,82 @@ body.fe-editing{padding-bottom:70px}
 #feLogin #feGo{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-weight:800;cursor:pointer;font-family:'Outfit'}
 #feLogin #feErr{color:#e23;font-size:13px;margin-top:8px}
 .rev .who .nm{display:block;color:var(--blue);font-weight:800}
+
+/* ===== Instagram reels in Before&after ===== */
+.rtitle{margin:38px 0 6px;font-size:clamp(20px,2.4vw,27px);text-align:center}
+.rsub{text-align:center;color:var(--muted);margin-bottom:22px;font-size:15.5px}
+.reelrow{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.reelrow::-webkit-scrollbar{height:7px}
+.reelrow::-webkit-scrollbar-thumb{background:#C7DBF7;border-radius:99px}
+.reel{flex:0 0 300px;max-width:300px;margin:0;scroll-snap-align:center}
+.reelbox{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#1E63D0,#0B2B66);box-shadow:var(--sh);cursor:pointer}
+.reelvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#0B2B66}
+.reelsound{position:absolute;bottom:12px;right:12px;z-index:2;width:40px;height:40px;border:0;border-radius:50%;background:rgba(8,32,82,.55);color:#fff;font-size:17px;line-height:1;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:.2s}
+.reelsound:hover{background:rgba(8,32,82,.78)}
+@media(max-width:400px){.reel{flex:0 0 268px;max-width:268px}}
+.reelhint{text-align:center;color:var(--muted);font-size:14px;margin-top:2px}
+.reelhint a{color:var(--blue);font-weight:700;text-decoration:none}
+
+/* ===== photo lightbox ===== */
+#works .wgal .shot{cursor:zoom-in}
+.lbox{position:fixed;inset:0;z-index:220;display:flex;align-items:center;justify-content:center;background:rgba(6,20,48,.92);padding:24px;animation:qmFade .2s ease}
+.lbox[hidden]{display:none}
+.lbox img{max-width:min(1000px,94vw);max-height:88vh;width:auto;height:auto;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:qmPop .24s cubic-bezier(.2,.8,.3,1)}
+.lbox button{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;border-radius:50%;display:grid;place-items:center;transition:.2s;backdrop-filter:blur(6px)}
+.lbox button:hover{background:rgba(255,255,255,.28)}
+.lbx-close{top:18px;right:20px;width:46px;height:46px;font-size:27px;line-height:1}
+.lbx-prev,.lbx-next{top:50%;transform:translateY(-50%);width:52px;height:52px;font-size:26px;line-height:1}
+.lbx-prev{left:18px}.lbx-next{right:18px}
+.lbx-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.8);font-size:14px;font-weight:700;letter-spacing:1px}
+@media(max-width:640px){.lbox{padding:12px}.lbx-prev,.lbx-next{width:44px;height:44px}.lbx-prev{left:8px}.lbx-next{right:8px}}
+
+/* ===== Team photo band ===== */
+/* About photo: tall poster, never cropped */
+#about .photo-slot.has-img{aspect-ratio:auto;border:0;padding:0;background:#fff;box-shadow:var(--sh);border-radius:22px}
+#about .photo-slot.has-img img{width:100%;height:auto;object-fit:contain;display:block;border-radius:22px}
+#about .agrid{align-items:start}
+
+/* ===== Floating 10% off button ===== */
+.fab10{position:fixed;right:20px;bottom:20px;z-index:95;width:78px;height:78px;border-radius:50%;
+  background:linear-gradient(145deg,var(--yellow),var(--yellow-dk));color:var(--ink);text-decoration:none;
+  display:grid;place-items:center;line-height:1;box-shadow:0 12px 28px rgba(11,43,102,.28),0 0 0 4px rgba(255,255,255,.55);
+  animation:fabWobble 3.4s ease-in-out infinite;will-change:transform}
+.fab10:hover{transform:scale(1.08) rotate(0deg);animation-play-state:paused;box-shadow:0 16px 34px rgba(11,43,102,.34),0 0 0 5px rgba(255,255,255,.7)}
+.fab10 .fabin{display:grid;place-items:center;text-align:center;gap:1px}
+.fab10 small{font-size:8px;font-weight:900;letter-spacing:.5px;opacity:.85}
+.fab10 b{font-size:22px;font-weight:900;letter-spacing:-.6px}
+.fab10::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--yellow);opacity:.6;z-index:-1;animation:fabPulse 2.6s ease-out infinite}
+.fab10::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--yellow);opacity:.4;z-index:-1;animation:fabPulse 2.6s ease-out infinite;animation-delay:1.3s}
+@keyframes fabPulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.75);opacity:0}100%{transform:scale(1.75);opacity:0}}
+@keyframes fabWobble{0%,88%,100%{transform:rotate(0) scale(1)}91%{transform:rotate(-9deg) scale(1.06)}94%{transform:rotate(8deg) scale(1.06)}97%{transform:rotate(-4deg) scale(1.03)}}
+@media(max-width:640px){.fab10{width:70px;height:70px;right:14px;bottom:14px}.fab10 b{font-size:19px}.fab10 small{font-size:7px;letter-spacing:.2px}}
+
+/* ===== hero without the photo column ===== */
+.hero .wrap{grid-template-columns:1fr}
+.hero .hero-in{max-width:780px}
+
+/* ===== quote modal ===== */
+.qmodal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
+.qmodal[hidden]{display:none}
+.qmodal-bd{position:absolute;inset:0;background:rgba(8,32,82,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:qmFade .22s ease}
+.qmodal-card{position:relative;z-index:1;width:100%;max-width:430px;max-height:92vh;overflow-y:auto;background:#fff;color:var(--navy);border-radius:24px;padding:30px 28px 26px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:qmPop .26s cubic-bezier(.2,.8,.3,1)}
+.qmodal-card h3{font-size:22px;margin-bottom:4px}
+.qmodal-card .qs{color:var(--muted);font-size:14px;margin-bottom:16px}
+.qmodal-card form{display:grid;gap:11px}
+.qmodal-card input,.qmodal-card select,.qmodal-card textarea{width:100%;padding:13px 14px;border:1.6px solid #D9E5F7;border-radius:13px;font:inherit;font-size:15px;color:var(--navy);background:#fff;outline:none}
+.qmodal-card input:focus,.qmodal-card select:focus,.qmodal-card textarea:focus{border-color:var(--blue)}
+.qmodal-card textarea{resize:vertical}
+.qmodal-card .ok{display:none;background:var(--light);color:var(--navy);border-radius:13px;padding:12px 14px;font-size:14px;font-weight:700}
+.qmodal-card .micro{font-size:12.5px;color:var(--muted);text-align:center}
+.qmodal-badge{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:900;font-size:12.5px;letter-spacing:.3px;border-radius:99px;padding:6px 14px;margin-bottom:12px}
+.qmodal-x{position:absolute;top:12px;right:14px;width:36px;height:36px;border:0;border-radius:50%;background:var(--soft);color:var(--muted);font-size:24px;line-height:1;cursor:pointer}
+.qmodal-x:hover{background:var(--light);color:var(--navy)}
+@keyframes qmFade{from{opacity:0}to{opacity:1}}
+@keyframes qmPop{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:640px){.qmodal{padding:14px}.qmodal-card{padding:26px 20px 22px;border-radius:20px}}
+@media(prefers-reduced-motion:reduce){.qmodal-bd,.qmodal-card{animation:none}}
+@media(prefers-reduced-motion:reduce){.fab10,.fab10::before,.fab10::after{animation:none}}
+
 </style>
 </head>
 <body>
@@ -417,10 +493,6 @@ body.fe-editing{padding-bottom:70px}
       </div>
       <a class="heropromo" href="#contact" data-ed="hero.promo" data-html>🎁 <span class="big15">10%</span> OFF your first order</a>
       <div class="area" data-ed="hero.area" data-html>📍 <b>Denver Metro</b> · Free 30 miles · homes & businesses</div>
-    </div>
-    <div class="hphoto">
-      <div class="slot" id="heroPhoto"><div><div class="big">📷</div><span id="heroPhotoCap">Matt Andrew &amp; Mary<br>Owners of Curly Cleaner</span></div></div>
-      <div class="pawchip"><img src="cc-logo.png" alt=""><span data-ed="hero.pawText">Inspired by Perseus 🐶</span></div>
     </div>
   </div>
 </div>
@@ -559,15 +631,51 @@ body.fe-editing{padding-bottom:70px}
     <h2 class="rv" data-ed="works.title" data-html>Before & <em>after</em></h2>
     <p class="sub rv" data-ed="works.sub" data-html>Real results from real Denver homes. Follow the process on <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" style="color:var(--blue);font-weight:700;text-decoration:none">Instagram</a>.</p>
     <div class="wgal" data-list="works.shots">
-      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-1.jpg" alt="Sofa cleaning before and after — Denver" loading="lazy"></div>
-      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-2.jpg" alt="Couch deep cleaning before and after" loading="lazy"></div>
-      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-3.jpg" alt="Mattress cleaning result" loading="lazy"></div>
-      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-4.jpg" alt="Upholstery stain removal" loading="lazy"></div>
-      <div class="shot rv"><span class="tag">BEFORE / AFTER</span><img src="work-5.jpg" alt="Armchair cleaning before and after" loading="lazy"></div>
-      <div class="shot rv d1"><span class="tag">BEFORE / AFTER</span><img src="work-6.jpg" alt="Sectional sofa cleaning" loading="lazy"></div>
-      <div class="shot rv d2"><span class="tag">BEFORE / AFTER</span><img src="work-7.jpg" alt="Upholstery deep clean result" loading="lazy"></div>
-      <div class="shot rv d3"><span class="tag">BEFORE / AFTER</span><img src="work-8.jpg" alt="Furniture cleaning Denver" loading="lazy"></div>
+      <div class="shot rv d1"><img src="work-1.jpg" alt="Sofa cleaning before and after — Denver" loading="lazy"></div>
+      <div class="shot rv d2"><img src="work-2.jpg" alt="Couch deep cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d3"><img src="work-3.jpg" alt="Microfiber sofa stain removal before and after" loading="lazy"></div>
+      <div class="shot rv"><img src="work-4.jpg" alt="Sectional sleeper sofa cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d1"><img src="work-5.jpg" alt="Armchair deep cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d2"><img src="work-6.jpg" alt="Loveseat upholstery cleaning before and after" loading="lazy"></div>
+      <div class="shot rv d3"><img src="work-7.jpg" alt="Kids' marker stains removed from sofa — before and after" loading="lazy"></div>
+      <div class="shot rv"><img src="work-8.jpg" alt="Patio cushion cleaning before and after" loading="lazy"></div>
     </div>
+
+    <h3 class="rtitle rv">Watch the <em>process</em> on Instagram</h3>
+    <p class="rsub rv">Real jobs, filmed start to finish &mdash; no filters, no staging.</p>
+    <div class="reelrow" id="igReels">
+      <figure class="reel rv in">
+        <div class="reelbox">
+          <video class="reelvid" data-src="reel-1.mp4" poster="reel-1.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
+          <button class="reelsound" type="button" aria-label="Turn sound on">&#128263;</button>
+        </div>
+      </figure>
+      <figure class="reel rv in">
+        <div class="reelbox">
+          <video class="reelvid" data-src="reel-2.mp4" poster="reel-2.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
+          <button class="reelsound" type="button" aria-label="Turn sound on">&#128263;</button>
+        </div>
+      </figure>
+      <figure class="reel rv in">
+        <div class="reelbox">
+          <video class="reelvid" data-src="reel-3.mp4" poster="reel-3.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
+          <button class="reelsound" type="button" aria-label="Turn sound on">&#128263;</button>
+        </div>
+      </figure>
+      <figure class="reel rv in">
+        <div class="reelbox">
+          <video class="reelvid" data-src="reel-4.mp4" poster="reel-4.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
+          <button class="reelsound" type="button" aria-label="Turn sound on">&#128263;</button>
+        </div>
+      </figure>
+      <figure class="reel rv in">
+        <div class="reelbox">
+          <video class="reelvid" data-src="reel-5.mp4" poster="reel-5.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
+          <button class="reelsound" type="button" aria-label="Turn sound on">&#128263;</button>
+        </div>
+      </figure>
+    </div>
+    <div class="reelhint rv">&#128266; tap a video for sound &middot; <a href="https://www.instagram.com/curlycleaner.denver" target="_blank" rel="noopener">see all reels on Instagram</a></div>
   </div>
 </section>
 
@@ -591,7 +699,7 @@ body.fe-editing{padding-bottom:70px}
   <div class="wrap">
     <div class="agrid">
       <div class="rv">
-        <div class="photo-slot" id="aboutPhoto"><div><div class="big">📷</div><span id="aboutPhotoCap">Family photo —<br>coming soon</span></div></div>
+        <div class="photo-slot has-img" id="aboutPhoto"><img src="team-photo.jpg" alt="Curly Cleaner — Matt Andrew &amp; Mary with Perseus, family-owned upholstery cleaning in Denver"></div>
       </div>
       <div class="rv d1">
         <h2 data-ed="about.title" data-html>Welcome to <em>Curly Cleaner</em></h2>
@@ -605,6 +713,7 @@ body.fe-editing{padding-bottom:70px}
     </div>
   </div>
 </section>
+
 
 <section id="why">
   <div class="wrap">
@@ -833,7 +942,7 @@ var DEFAULT = {
     p1:"When we moved from Ukraine to Colorado, we chose this beautiful state as our new home from day one. We fell in love with everything it has to offer — the majestic mountains, the welcoming spirit of the people, and the vibrant Denver community.",
     p2:'As a <b>husband-and-wife team</b>, we founded Curly Cleaner with a clear mission: to give our neighbors in Denver an upholstery cleaning service that combines <b>professional-grade results</b> with the care only a family business can offer.',
     perseus:'Our company is named after our loyal dog, <b>Perseus</b> — the inspiration behind our standards. <b>If a product isn\'t safe for Perseus, it will never touch your furniture.</b>',
-    photo:"", photoCaption:"Family photo —<br>coming soon"
+    photo:"team-photo.jpg", photoCaption:"Family photo —<br>coming soon"
   },
   why:{
     title:'Why choose <em>Curly Cleaner?</em>',
@@ -1065,13 +1174,14 @@ function render(c){
   fill("prices.commercial",(c.prices.commercial||[]).map(pcard).join(""));
   fill("prices.promos",(c.prices.promos||[]).map(function(p,i){return '<div class="promo rv in'+(i?' d'+i:'')+'"><div class="pe" data-f="pe">'+esc(p.pe)+'</div><div data-f="html" data-f-html>'+p.html+'</div></div>';}).join(""));
   fill("biz.items",(c.biz&&c.biz.items||[]).map(function(it,i){return '<div class="bizcard rv in'+(i?' d'+(i%4):'')+'"><div class="bizem" data-f="em">'+esc(it.em)+'</div><b data-f="b">'+esc(it.b)+'</b></div>';}).join(""));
-  fill("works.shots",(c.works.shots||[]).map(function(u,i){return '<div class="shot rv in'+(i%4?' d'+(i%4):'')+'"><span class="tag">BEFORE / AFTER</span><img src="'+esc(u)+'" alt="Upholstery cleaning Denver" loading="lazy"></div>';}).join(""));
+  fill("works.shots",(c.works.shots||[]).map(function(u,i){return '<div class="shot rv in'+(i%4?' d'+(i%4):'')+'"><img src="'+esc(u)+'" alt="Upholstery cleaning before and after — Denver" loading="lazy"></div>';}).join(""));
   fill("reviews.items",(c.reviews.items||[]).map(function(r,i){return '<div class="rev rv in'+(i?' d'+i:'')+'"><div class="stars">★★★★★</div><p data-f="p">'+esc(r.p)+'</p><div class="who"><span class="nm" data-f="who">'+esc(r.who)+'</span><span data-f="where">'+esc(r.where)+'</span></div></div>';}).join(""));
   fill("faq.items",(c.faq.items||[]).map(function(f){return '<details class="rv in"><summary data-f="q">'+esc(f.q)+'</summary><p data-f="a">'+esc(f.a)+'</p></details>';}).join(""));
   fill("hours.rows",(c.hours.rows||[]).map(function(r){return '<div class="hrow"><span data-f="label">'+esc(r.label)+'</span><b data-f="val">'+esc(r.val)+'</b></div>';}).join(""));
   fill("hours.cities",(c.hours.cities||[]).map(function(t){return '<span class="city"><span data-f="@self">'+esc(t)+'</span></span>';}).join(""));
-  var sel=$('select[name="service"]');
-  if(sel){ sel.innerHTML='<option value="" disabled selected>What needs cleaning?</option>'+(c.contact.services||[]).map(function(o){return '<option>'+esc(o)+'</option>';}).join(""); }
+  $$('select[name="service"]').forEach(function(sel){
+    sel.innerHTML='<option value="" disabled selected>What needs cleaning?</option>'+(c.contact.services||[]).map(function(o){return '<option>'+esc(o)+'</option>';}).join("");
+  });
   photo("heroPhoto","heroPhotoCap",c.hero.photo,c.hero.photoCaption);
   photo("aboutPhoto","aboutPhotoCap",c.about.photo,c.about.photoCaption);
   // visibility
@@ -1354,6 +1464,127 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   layout(); solid();
   window.addEventListener("resize",layout,{passive:true});window.addEventListener("load",layout);
   window.addEventListener("scroll",solid,{passive:true});
+})();
+</script>
+
+<a class="fab10" href="#contact" id="fab10" aria-label="Get 10% off your first order" title="10% off your first order">
+  <span class="fabin"><small>FIRST ORDER</small><b>-10%</b></span>
+</a>
+
+<div class="lbox" id="lbox" hidden>
+  <button class="lbx-close" type="button" aria-label="Close">&times;</button>
+  <button class="lbx-prev" type="button" aria-label="Previous">&#8249;</button>
+  <img id="lbxImg" src="" alt="">
+  <button class="lbx-next" type="button" aria-label="Next">&#8250;</button>
+  <div class="lbx-count" id="lbxCount"></div>
+</div>
+
+<div class="qmodal" id="qmodal" hidden>
+  <div class="qmodal-bd" data-qclose></div>
+  <div class="qmodal-card" role="dialog" aria-modal="true" aria-labelledby="qmTitle">
+    <button class="qmodal-x" type="button" data-qclose aria-label="Close">&times;</button>
+    <div class="qmodal-badge">&#127873; 10% OFF your first order</div>
+    <h3 id="qmTitle">Free quote request</h3>
+    <div class="qs">&#128248; Best way: text a photo of your furniture to <b data-phone-text>(983) 215-6432</b> &mdash; or fill the form:</div>
+    <form class="qform">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="tel" name="phone" placeholder="Phone number" required>
+      <select name="service" required>
+        <option value="" disabled selected>What needs cleaning?</option>
+        <option>Sofa / couch</option>
+        <option>Sectional</option>
+        <option>Mattress</option>
+        <option>Area rug</option>
+        <option>Armchair / chairs</option>
+        <option>Pet stains &amp; odor</option>
+      </select>
+      <textarea name="msg" rows="3" placeholder="Anything we should know? (fabric, stains, pets&hellip;)"></textarea>
+      <button class="btn blue" type="submit" style="width:100%">Get my free quote &mdash; 10% off</button>
+      <div class="ok">&#128054; Got it! We&#39;ll get back to you within 15&ndash;30 minutes during business hours.</div>
+      <div class="micro">No spam &mdash; we only reply with your quote.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab=document.getElementById("fab10"), m=document.getElementById("qmodal");
+  if(!fab||!m) return;
+  var lastFocus=null;
+  function openM(e){
+    if(e)e.preventDefault();
+    lastFocus=document.activeElement;
+    m.hidden=false; document.body.style.overflow="hidden";
+    var f=m.querySelector("input[name=name]"); if(f)setTimeout(function(){f.focus();},60);
+    try{ if(window.track)track("promo_modal_open"); }catch(err){}
+  }
+  function closeM(){ m.hidden=true; document.body.style.overflow=""; if(lastFocus&&lastFocus.focus)lastFocus.focus(); }
+  fab.addEventListener("click",openM);
+  m.addEventListener("click",function(e){ if(e.target.closest&&e.target.closest("[data-qclose]")) closeM(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!m.hidden) closeM(); });
+})();
+</script>
+<script>
+/* ---- reels: lazy load, autoplay in view, tap for sound ---- */
+(function(){
+  var row=document.getElementById("igReels"); if(!row) return;
+  var vids=[].slice.call(row.querySelectorAll(".reelvid"));
+  function load(v){ if(!v.src && v.dataset.src){ v.src=v.dataset.src; v.load(); } }
+  function muteAll(except){
+    vids.forEach(function(v){
+      if(v!==except && !v.muted){ v.muted=true; var b=v.parentNode.querySelector(".reelsound"); if(b){b.innerHTML="&#128263;";b.setAttribute("aria-label","Turn sound on");} }
+    });
+  }
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        var v=e.target;
+        if(e.isIntersecting){ load(v); var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){}); }
+        else { v.pause(); if(!v.muted){ v.muted=true; var b=v.parentNode.querySelector(".reelsound"); if(b)b.innerHTML="&#128263;"; } }
+      });
+    },{threshold:.5});
+    vids.forEach(function(v){io.observe(v);});
+  } else { vids.forEach(function(v){load(v);v.play().catch(function(){});}); }
+  row.addEventListener("click",function(e){
+    var box=e.target.closest&&e.target.closest(".reelbox"); if(!box) return;
+    var v=box.querySelector(".reelvid"), b=box.querySelector(".reelsound"); if(!v) return;
+    load(v);
+    if(v.muted){ muteAll(v); v.muted=false; if(b){b.innerHTML="&#128266;";b.setAttribute("aria-label","Turn sound off");} var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+    else { v.muted=true; if(b){b.innerHTML="&#128263;";b.setAttribute("aria-label","Turn sound on");} }
+  });
+  document.addEventListener("visibilitychange",function(){ if(document.hidden) vids.forEach(function(v){v.pause();}); });
+})();
+
+/* ---- before/after lightbox ---- */
+(function(){
+  var lb=document.getElementById("lbox"); if(!lb) return;
+  var img=document.getElementById("lbxImg"), cnt=document.getElementById("lbxCount"), list=[], i=0;
+  function shots(){ return [].slice.call(document.querySelectorAll("#works .wgal img")); }
+  function show(n){
+    if(!list.length) return;
+    i=(n+list.length)%list.length;
+    img.src=list[i].getAttribute("src"); img.alt=list[i].getAttribute("alt")||"";
+    cnt.textContent=(i+1)+" / "+list.length;
+  }
+  function open(n){ list=shots(); show(n); lb.hidden=false; document.body.style.overflow="hidden"; }
+  function close(){ lb.hidden=true; img.src=""; document.body.style.overflow=""; }
+  document.addEventListener("click",function(e){
+    var t=e.target;
+    if(t.closest&&t.closest("#works .wgal .shot")&&!document.body.classList.contains("fe-editing")){
+      var im=t.closest(".shot").querySelector("img");
+      if(im){ e.preventDefault(); open(shots().indexOf(im)); }
+    }
+  });
+  lb.querySelector(".lbx-close").addEventListener("click",close);
+  lb.querySelector(".lbx-prev").addEventListener("click",function(e){e.stopPropagation();show(i-1);});
+  lb.querySelector(".lbx-next").addEventListener("click",function(e){e.stopPropagation();show(i+1);});
+  lb.addEventListener("click",function(e){ if(e.target===lb) close(); });
+  document.addEventListener("keydown",function(e){
+    if(lb.hidden) return;
+    if(e.key==="Escape") close();
+    else if(e.key==="ArrowLeft") show(i-1);
+    else if(e.key==="ArrowRight") show(i+1);
+  });
 })();
 </script>
 </body>
