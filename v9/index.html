@@ -60,7 +60,7 @@ nav.menu a:hover{color:var(--blue)}
 .hero::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,199,39,.12);bottom:-140px;left:-110px}
 .btn.call{background:#fff;color:var(--navy);box-shadow:0 8px 22px rgba(0,0,0,.18)}
 .btn.call:hover{background:#f0f5ff}
-.herovideo{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.herovideo{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:url(hero-poster.jpg) center center/cover no-repeat}
 .herovideo iframe,.herovideo video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;border:0;object-fit:cover}
 .heroveil{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(30,99,208,.62),rgba(11,43,102,.80))}
 .hero .cta .btn{background:rgba(255,255,255,.16);color:#fff;border:1.6px solid rgba(255,255,255,.55);box-shadow:none;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
@@ -198,6 +198,8 @@ body.hpre .hphoto{opacity:0}
 .prow b{color:var(--navy);font-weight:800;white-space:nowrap}
 .pnote{margin-top:24px;background:linear-gradient(120deg,var(--blue),var(--blue-dk));color:#fff;border-radius:18px;padding:20px 26px;font-size:15px;text-align:center;box-shadow:var(--sh-lg)}
 .pnote b{color:var(--yellow)}
+.pnote a{color:var(--yellow);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.pnote a:hover{color:#fff}
 .promos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
 .promo{background:#fff;border:2px dashed var(--yellow-dk);border-radius:18px;padding:18px 22px;display:flex;gap:13px;align-items:center;font-size:15px}
 .promo .pe{font-size:28px}
@@ -459,7 +461,7 @@ body.fe-editing{padding-bottom:70px}
 </header>
 
 <div class="hero" id="top">
-  <div class="herovideo" aria-hidden="true"><video src="hero-bg.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+  <div class="herovideo" aria-hidden="true"><video id="heroVid" poster="hero-poster.jpg" autoplay muted loop playsinline preload="none" disableremoteplayback></video></div>
   <div class="heroveil" aria-hidden="true"></div>
   <div class="bubbles" aria-hidden="true">
     <span class="bubble" style="left:6%;width:26px;height:26px;animation-duration:15s;animation-delay:0s"></span>
@@ -583,7 +585,7 @@ body.fe-editing{padding-bottom:70px}
       <div class="panel rv d1" style="text-align:center">
         <img src="icons/pet-safe.png" alt="Safe for kids and pets" style="width:110px;height:110px;object-fit:contain;margin:4px auto 6px">
         <h3>🐾 Safe for kids & pets</h3>
-        <div class="pnote" data-html style="margin-top:6px;text-align:left">Only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. We test every fabric first and treat delicate materials with care.<br><br>🏢 Running a business? See <a href="#commercial" style="color:var(--blue);font-weight:700;text-decoration:none">commercial pricing</a> below.</div>
+        <div class="pnote" data-html style="margin-top:6px;text-align:left">Only professional, eco-friendly, non-toxic solutions — safe for children, pregnant women and pets. We test every fabric first and treat delicate materials with care.<br><br>🏢 Running a business? See <a href="#commercial" style="color:var(--yellow);font-weight:800;text-decoration:underline;text-underline-offset:3px">commercial pricing</a> below.</div>
       </div>
     </div>
     <div class="promos" data-list="prices.promos">
@@ -1525,11 +1527,28 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 })();
 </script>
 <script>
+/* ---- hero background video: light file on phones, image only on slow links ---- */
+(function(){
+  var v=document.getElementById("heroVid"); if(!v) return;
+  var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+  if(c&&(c.saveData||/^(slow-)?2g$/.test(c.effectiveType||""))) return; // poster image stays as the background
+  var small=window.matchMedia("(max-width:820px)").matches;
+  v.src=small?"hero-bg-m.mp4":"hero-bg.mp4";
+  v.load();
+  var p=v.play(); if(p&&p.catch)p.catch(function(){});
+  document.addEventListener("touchstart",function once(){ var q=v.play(); if(q&&q.catch)q.catch(function(){}); document.removeEventListener("touchstart",once); },{passive:true});
+})();
+
 /* ---- reels: lazy load, autoplay in view, tap for sound ---- */
 (function(){
   var row=document.getElementById("igReels"); if(!row) return;
   var vids=[].slice.call(row.querySelectorAll(".reelvid"));
-  function load(v){ if(!v.src && v.dataset.src){ v.src=v.dataset.src; v.load(); } }
+  function load(v){ if(!v.src && v.dataset.src){ v.preload="auto"; v.src=v.dataset.src; v.load(); } }
+  load(vids[0]);
+  if("IntersectionObserver" in window){
+    var pre=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ load(e.target); pre.unobserve(e.target); } }); },{rootMargin:"900px"});
+    vids.forEach(function(v){pre.observe(v);});
+  }
   function muteAll(except){
     vids.forEach(function(v){
       if(v!==except && !v.muted){ v.muted=true; var b=v.parentNode.querySelector(".reelsound"); if(b){b.innerHTML="&#128263;";b.setAttribute("aria-label","Turn sound on");} }
@@ -1542,7 +1561,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
         if(e.isIntersecting){ load(v); var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){}); }
         else { v.pause(); if(!v.muted){ v.muted=true; var b=v.parentNode.querySelector(".reelsound"); if(b)b.innerHTML="&#128263;"; } }
       });
-    },{threshold:.5});
+    },{threshold:.4});
     vids.forEach(function(v){io.observe(v);});
   } else { vids.forEach(function(v){load(v);v.play().catch(function(){});}); }
   row.addEventListener("click",function(e){
